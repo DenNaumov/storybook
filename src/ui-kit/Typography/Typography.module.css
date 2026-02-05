@@ -1,0 +1,158 @@
+/* Typography Component - Based on Figma Design System */
+
+.root {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    color: #333333;
+}
+
+/* ========================
+   TITLE 3 VARIANTS
+   font-size: 20px
+   line-height: 25px (125%)
+   letter-spacing: -0.45px
+   ======================== */
+
+.title3Regular {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: -0.45px;
+}
+
+.title3Semibold {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: -0.45px;
+}
+
+.title3Bold {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: -0.45px;
+}
+
+/* ========================
+   HEADLINE VARIANTS
+   font-size: 19px
+   line-height: 24px (126.316%)
+   letter-spacing: -0.45px
+   ======================== */
+
+.headlineRegular {
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.45px;
+}
+
+.headlineSemibold {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.45px;
+}
+
+.headlineBold {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.45px;
+}
+
+/* ========================
+   TEXT VARIANTS
+   font-size: 17px
+   line-height: 22px (129.412%)
+   letter-spacing: -0.4px
+   ======================== */
+
+.textRegular {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.4px;
+}
+
+.textMedium {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.4px;
+}
+
+.textSemibold {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.4px;
+}
+
+.textBold {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.4px;
+}
+
+/* ========================
+   COLORS
+   ======================== */
+
+.colorDefault {
+    color: #333333;
+}
+
+.colorPrimary {
+    color: #007AFF;
+}
+
+.colorSecondary {
+    color: #8E8E93;
+}
+
+.colorSuccess {
+    color: #34C759;
+}
+
+.colorError {
+    color: #FF3B30;
+}
+
+.colorWarning {
+    color: #FF9500;
+}
+
+/* ========================
+   ALIGNMENT
+   ======================== */
+
+.alignLeft {
+    text-align: left;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+/* ========================
+   UTILITIES
+   ======================== */
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
