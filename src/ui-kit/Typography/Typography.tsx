@@ -12,7 +12,19 @@ export type TypographyVariant =
     | 'text-regular'
     | 'text-medium'
     | 'text-semibold'
-    | 'text-bold';
+    | 'text-bold'
+    | 'subheadline1-regular'
+    | 'subheadline1-semibold'
+    | 'subheadline1-bold'
+    | 'subheadline2-regular'
+    | 'subheadline2-semibold'
+    | 'subheadline2-bold'
+    | 'caption1-regular'
+    | 'caption1-semibold'
+    | 'caption1-bold'
+    | 'caption2-regular'
+    | 'caption2-semibold'
+    | 'caption2-bold';
 
 export interface TypographyProps {
     /** The text content to display */
@@ -47,6 +59,18 @@ const variantClassMap: Record<TypographyVariant, string> = {
     'text-medium': styles.textMedium,
     'text-semibold': styles.textSemibold,
     'text-bold': styles.textBold,
+    'subheadline1-regular': styles.subheadline1Regular,
+    'subheadline1-semibold': styles.subheadline1Semibold,
+    'subheadline1-bold': styles.subheadline1Bold,
+    'subheadline2-regular': styles.subheadline2Regular,
+    'subheadline2-semibold': styles.subheadline2Semibold,
+    'subheadline2-bold': styles.subheadline2Bold,
+    'caption1-regular': styles.caption1Regular,
+    'caption1-semibold': styles.caption1Semibold,
+    'caption1-bold': styles.caption1Bold,
+    'caption2-regular': styles.caption2Regular,
+    'caption2-semibold': styles.caption2Semibold,
+    'caption2-bold': styles.caption2Bold,
 };
 
 /** Map color prop to CSS module class name */

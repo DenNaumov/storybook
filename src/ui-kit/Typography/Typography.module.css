@@ -100,6 +100,118 @@
 }
 
 /* ========================
+   SUBHEADLINE 1 VARIANTS
+   font-size: 16px
+   line-height: 21px
+   letter-spacing: -0.23px
+   ======================== */
+
+.subheadline1Regular {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.23px;
+}
+
+.subheadline1Semibold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: -0.23px;
+}
+
+.subheadline1Bold {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: -0.23px;
+}
+
+/* ========================
+   SUBHEADLINE 2 VARIANTS
+   font-size: 15px
+   line-height: 20px
+   letter-spacing: -0.23px
+   ======================== */
+
+.subheadline2Regular {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+}
+
+.subheadline2Semibold {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+}
+
+.subheadline2Bold {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.23px;
+}
+
+/* ========================
+   CAPTION 1 VARIANTS
+   font-size: 13px
+   line-height: 16px
+   letter-spacing: -0.08px
+   ======================== */
+
+.caption1Regular {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.08px;
+}
+
+.caption1Semibold {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: -0.08px;
+}
+
+.caption1Bold {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: -0.08px;
+}
+
+/* ========================
+   CAPTION 2 VARIANTS
+   font-size: 10px
+   line-height: 13px
+   letter-spacing: 0.06px
+   ======================== */
+
+.caption2Regular {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0.06px;
+}
+
+.caption2Semibold {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 13px;
+    letter-spacing: 0.06px;
+}
+
+.caption2Bold {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 13px;
+    letter-spacing: 0.06px;
+}
+
+/* ========================
    COLORS
    ======================== */
 

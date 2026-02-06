@@ -23,6 +23,18 @@ const meta = {
                 'text-medium',
                 'text-semibold',
                 'text-bold',
+                'subheadline1-regular',
+                'subheadline1-semibold',
+                'subheadline1-bold',
+                'subheadline2-regular',
+                'subheadline2-semibold',
+                'subheadline2-bold',
+                'caption1-regular',
+                'caption1-semibold',
+                'caption1-bold',
+                'caption2-regular',
+                'caption2-semibold',
+                'caption2-bold',
             ],
             description: 'Typography variant (size + weight)',
         },
@@ -138,6 +150,106 @@ export const TextBold: Story = {
 };
 
 /* ========================
+   SUBHEADLINE 1 VARIANTS
+   ======================== */
+
+export const Subheadline1Regular: Story = {
+    args: {
+        children: 'Subheadline 1 · Regular',
+        variant: 'subheadline1-regular',
+    },
+};
+
+export const Subheadline1Semibold: Story = {
+    args: {
+        children: 'Subheadline 1 · Semibold',
+        variant: 'subheadline1-semibold',
+    },
+};
+
+export const Subheadline1Bold: Story = {
+    args: {
+        children: 'Subheadline 1 · Bold',
+        variant: 'subheadline1-bold',
+    },
+};
+
+/* ========================
+   SUBHEADLINE 2 VARIANTS
+   ======================== */
+
+export const Subheadline2Regular: Story = {
+    args: {
+        children: 'Subheadline 2 · Regular',
+        variant: 'subheadline2-regular',
+    },
+};
+
+export const Subheadline2Semibold: Story = {
+    args: {
+        children: 'Subheadline 2 · Semibold',
+        variant: 'subheadline2-semibold',
+    },
+};
+
+export const Subheadline2Bold: Story = {
+    args: {
+        children: 'Subheadline 2 · Bold',
+        variant: 'subheadline2-bold',
+    },
+};
+
+/* ========================
+   CAPTION 1 VARIANTS
+   ======================== */
+
+export const Caption1Regular: Story = {
+    args: {
+        children: 'Caption 1 · Regular',
+        variant: 'caption1-regular',
+    },
+};
+
+export const Caption1Semibold: Story = {
+    args: {
+        children: 'Caption 1 · Semibold',
+        variant: 'caption1-semibold',
+    },
+};
+
+export const Caption1Bold: Story = {
+    args: {
+        children: 'Caption 1 · Bold',
+        variant: 'caption1-bold',
+    },
+};
+
+/* ========================
+   CAPTION 2 VARIANTS
+   ======================== */
+
+export const Caption2Regular: Story = {
+    args: {
+        children: 'Caption 2 · Regular',
+        variant: 'caption2-regular',
+    },
+};
+
+export const Caption2Semibold: Story = {
+    args: {
+        children: 'Caption 2 · Semibold',
+        variant: 'caption2-semibold',
+    },
+};
+
+export const Caption2Bold: Story = {
+    args: {
+        children: 'Caption 2 · Bold',
+        variant: 'caption2-bold',
+    },
+};
+
+/* ========================
    COLOR VARIANTS
    ======================== */
 
@@ -174,12 +286,44 @@ export const ColorError: Story = {
 };
 
 /* ========================
+   STYLES & HELPERS
+   ======================== */
+
+const containerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    padding: '24px',
+    background: '#fff',
+    borderRadius: '12px',
+    border: '1px dashed #ccc',
+};
+
+const cardStyle: React.CSSProperties = {
+    padding: '16px',
+    border: '1px dashed #1890ff',
+    borderRadius: '8px',
+};
+
+const grid3ColStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '24px',
+};
+
+const grid4ColStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '24px',
+};
+
+/* ========================
    ALL VARIANTS SHOWCASE
    ======================== */
 
 export const AllTitle3Variants: Story = {
     render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', background: '#fff', borderRadius: '12px', border: '1px dashed #ccc' }}>
+        <div style={containerStyle}>
             <div>
                 <Typography variant="title3-regular" as="p">Title 3 · Regular</Typography>
                 <Typography variant="text-regular" color="secondary" as="p">
@@ -204,7 +348,7 @@ export const AllTitle3Variants: Story = {
 
 export const AllHeadlineVariants: Story = {
     render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', background: '#fff', borderRadius: '12px', border: '1px dashed #ccc' }}>
+        <div style={containerStyle}>
             <div>
                 <Typography variant="headline-regular" as="p">Headline · Regular</Typography>
                 <Typography variant="text-regular" color="secondary" as="p">
@@ -229,7 +373,7 @@ export const AllHeadlineVariants: Story = {
 
 export const AllTextVariants: Story = {
     render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', background: '#fff', borderRadius: '12px', border: '1px dashed #ccc' }}>
+        <div style={containerStyle}>
             <div>
                 <Typography variant="text-regular" as="p">Text · Regular</Typography>
                 <Typography variant="text-regular" color="secondary" as="p">
@@ -262,26 +406,20 @@ export const FullTypographyShowcase: Story = {
     render: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', padding: '32px', maxWidth: '800px' }}>
             {/* Title 3 Section */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+            <div style={grid3ColStyle}>
+                <div style={cardStyle}>
                     <Typography variant="title3-regular" as="h3">Title 3 · Regular</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
-                        font-size: 20px;<br />
-                        font-weight: 400;<br />
-                        line-height: 25px;<br />
-                        letter-spacing: -0.45px;
+                        font-family: "SF Pro"; font-size: 20px; font-weight: 400; line-height: 25px; letter-spacing: -0.45px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="title3-semibold" as="h3">Title 3 · Semibold</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
-                        font-size: 20px;<br />
-                        font-weight: 600;<br />
-                        line-height: 25px;<br />
-                        letter-spacing: -0.45px;
+                        font-family: "SF Pro"; font-size: 20px; font-weight: 600; line-height: 25px; letter-spacing: -0.45px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="title3-bold" as="h3">Title 3 · Bold</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
                         font-size: 20px;<br />
@@ -293,8 +431,8 @@ export const FullTypographyShowcase: Story = {
             </div>
 
             {/* Headline Section */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+            <div style={grid3ColStyle}>
+                <div style={cardStyle}>
                     <Typography variant="headline-regular" as="h4">Headline · Regular</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
                         font-size: 19px;<br />
@@ -303,7 +441,7 @@ export const FullTypographyShowcase: Story = {
                         letter-spacing: -0.45px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="headline-semibold" as="h4">Headline · Semibold</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
                         font-size: 19px;<br />
@@ -312,7 +450,7 @@ export const FullTypographyShowcase: Story = {
                         letter-spacing: -0.45px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="headline-bold" as="h4">Headline · Bold</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
                         font-size: 19px;<br />
@@ -324,26 +462,20 @@ export const FullTypographyShowcase: Story = {
             </div>
 
             {/* Text Section */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+            <div style={grid4ColStyle}>
+                <div style={cardStyle}>
                     <Typography variant="text-regular" as="p">Text · Regular</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
-                        font-size: 17px;<br />
-                        font-weight: 400;<br />
-                        line-height: 22px;<br />
-                        letter-spacing: -0.4px;
+                        font-family: "SF Pro"; font-size: 17px; font-weight: 400; line-height: 22px; letter-spacing: -0.4px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="text-medium" as="p">Text · Medium</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
-                        font-size: 17px;<br />
-                        font-weight: 500;<br />
-                        line-height: 22px;<br />
-                        letter-spacing: -0.4px;
+                        font-family: "SF Pro"; font-size: 17px; font-weight: 500; line-height: 22px; letter-spacing: -0.4px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="text-semibold" as="p">Text · Semibold</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
                         font-size: 17px;<br />
@@ -352,13 +484,137 @@ export const FullTypographyShowcase: Story = {
                         letter-spacing: -0.4px;
                     </Typography>
                 </div>
-                <div style={{ padding: '16px', border: '1px dashed #1890ff', borderRadius: '8px' }}>
+                <div style={cardStyle}>
                     <Typography variant="text-bold" as="p">Text · Bold</Typography>
                     <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
                         font-size: 17px;<br />
                         font-weight: 700;<br />
                         line-height: 22px;<br />
                         letter-spacing: -0.4px;
+                    </Typography>
+                </div>
+            </div>
+
+            {/* Subheadline 1 Section */}
+            <div style={grid3ColStyle}>
+                <div style={cardStyle}>
+                    <Typography variant="subheadline1-regular" as="p">Subheadline 1 · Regular</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 16px;<br />
+                        font-weight: 400;<br />
+                        line-height: 21px;<br />
+                        letter-spacing: -0.23px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="subheadline1-semibold" as="p">Subheadline 1 · Semibold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 16px;<br />
+                        font-weight: 600;<br />
+                        line-height: 21px;<br />
+                        letter-spacing: -0.23px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="subheadline1-bold" as="p">Subheadline 1 · Bold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 16px;<br />
+                        font-weight: 700;<br />
+                        line-height: 21px;<br />
+                        letter-spacing: -0.23px;
+                    </Typography>
+                </div>
+            </div>
+
+            {/* Subheadline 2 Section */}
+            <div style={grid3ColStyle}>
+                <div style={cardStyle}>
+                    <Typography variant="subheadline2-regular" as="p">Subheadline 2 · Regular</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 15px;<br />
+                        font-weight: 400;<br />
+                        line-height: 20px;<br />
+                        letter-spacing: -0.23px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="subheadline2-semibold" as="p">Subheadline 2 · Semibold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 15px;<br />
+                        font-weight: 600;<br />
+                        line-height: 20px;<br />
+                        letter-spacing: -0.23px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="subheadline2-bold" as="p">Subheadline 2 · Bold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 15px;<br />
+                        font-weight: 700;<br />
+                        line-height: 20px;<br />
+                        letter-spacing: -0.23px;
+                    </Typography>
+                </div>
+            </div>
+
+            {/* Caption 1 Section */}
+            <div style={grid3ColStyle}>
+                <div style={cardStyle}>
+                    <Typography variant="caption1-regular" as="p">Caption 1 · Regular</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 13px;<br />
+                        font-weight: 400;<br />
+                        line-height: 16px;<br />
+                        letter-spacing: -0.08px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="caption1-semibold" as="p">Caption 1 · Semibold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 13px;<br />
+                        font-weight: 600;<br />
+                        line-height: 16px;<br />
+                        letter-spacing: -0.08px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="caption1-bold" as="p">Caption 1 · Bold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 13px;<br />
+                        font-weight: 700;<br />
+                        line-height: 16px;<br />
+                        letter-spacing: -0.08px;
+                    </Typography>
+                </div>
+            </div>
+
+            {/* Caption 2 Section */}
+            <div style={grid3ColStyle}>
+                <div style={cardStyle}>
+                    <Typography variant="caption2-regular" as="p">Caption 2 · Regular</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 10px;<br />
+                        font-weight: 400;<br />
+                        line-height: 13px;<br />
+                        letter-spacing: 0.06px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="caption2-semibold" as="p">Caption 2 · Semibold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 10px;<br />
+                        font-weight: 600;<br />
+                        line-height: 13px;<br />
+                        letter-spacing: 0.06px;
+                    </Typography>
+                </div>
+                <div style={cardStyle}>
+                    <Typography variant="caption2-bold" as="p">Caption 2 · Bold</Typography>
+                    <Typography variant="text-regular" color="secondary" as="p" style={{ marginTop: '8px' }}>
+                        font-size: 10px;<br />
+                        font-weight: 700;<br />
+                        line-height: 13px;<br />
+                        letter-spacing: 0.06px;
                     </Typography>
                 </div>
             </div>
