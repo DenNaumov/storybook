@@ -56,20 +56,56 @@ type Story = StoryObj<typeof meta>;
    HELPERS & COMPONENTS
    ======================== */
 
+const variantMetadata: Record<string, { size: string; lh: string; spacing: string; weightLabel: string; weightValue: string }> = {
+    'title3-regular': { size: '20px', lh: '25px', spacing: '-0.45px', weightLabel: 'Regular', weightValue: '400' },
+    'title3-semibold': { size: '20px', lh: '25px', spacing: '-0.45px', weightLabel: 'Semibold', weightValue: '600' },
+    'title3-bold': { size: '20px', lh: '25px', spacing: '-0.45px', weightLabel: 'Bold', weightValue: '700' },
+    'headline-regular': { size: '19px', lh: '24px', spacing: '-0.45px', weightLabel: 'Regular', weightValue: '400' },
+    'headline-semibold': { size: '19px', lh: '24px', spacing: '-0.45px', weightLabel: 'Semibold', weightValue: '600' },
+    'headline-bold': { size: '19px', lh: '24px', spacing: '-0.45px', weightLabel: 'Bold', weightValue: '700' },
+    'text-regular': { size: '17px', lh: '22px', spacing: '-0.4px', weightLabel: 'Regular', weightValue: '400' },
+    'text-medium': { size: '17px', lh: '22px', spacing: '-0.4px', weightLabel: 'Medium', weightValue: '500' },
+    'text-semibold': { size: '17px', lh: '22px', spacing: '-0.4px', weightLabel: 'Semibold', weightValue: '600' },
+    'text-bold': { size: '17px', lh: '22px', spacing: '-0.4px', weightLabel: 'Bold', weightValue: '700' },
+    'subheadline1-regular': { size: '16px', lh: '21px', spacing: '-0.23px', weightLabel: 'Regular', weightValue: '400' },
+    'subheadline1-semibold': { size: '16px', lh: '21px', spacing: '-0.23px', weightLabel: 'Semibold', weightValue: '600' },
+    'subheadline1-bold': { size: '16px', lh: '21px', spacing: '-0.23px', weightLabel: 'Bold', weightValue: '700' },
+    'subheadline2-regular': { size: '15px', lh: '20px', spacing: '-0.23px', weightLabel: 'Regular', weightValue: '400' },
+    'subheadline2-semibold': { size: '15px', lh: '20px', spacing: '-0.23px', weightLabel: 'Semibold', weightValue: '600' },
+    'subheadline2-bold': { size: '15px', lh: '20px', spacing: '-0.23px', weightLabel: 'Bold', weightValue: '700' },
+    'caption1-regular': { size: '13px', lh: '16px', spacing: '-0.08px', weightLabel: 'Regular', weightValue: '400' },
+    'caption1-semibold': { size: '13px', lh: '16px', spacing: '-0.08px', weightLabel: 'Semibold', weightValue: '600' },
+    'caption1-bold': { size: '13px', lh: '16px', spacing: '-0.08px', weightLabel: 'Bold', weightValue: '700' },
+    'caption2-regular': { size: '10px', lh: '13px', spacing: '0.06px', weightLabel: 'Regular', weightValue: '400' },
+    'caption2-semibold': { size: '10px', lh: '13px', spacing: '0.06px', weightLabel: 'Semibold', weightValue: '600' },
+    'caption2-bold': { size: '10px', lh: '13px', spacing: '0.06px', weightLabel: 'Bold', weightValue: '700' },
+};
+
 interface VariantCardProps {
     variant: TypographyVariant;
-    label: string;
-    specs: string;
+    label?: string;
+    specs?: string;
 }
 
-const VariantCard = ({ variant, label, specs }: VariantCardProps) => (
-    <div className={styles.card}>
-        <Typography variant={variant} as="p">{label}</Typography>
-        <Typography variant="text-regular" color="secondary" as="p" className={styles.specs}>
-            {specs}
-        </Typography>
-    </div>
-);
+const VariantCard = ({ variant, label, specs }: VariantCardProps) => {
+    const meta = variantMetadata[variant];
+
+    // Format name: 'subheadline1' -> 'Subheadline 1'
+    const namePart = variant.split('-')[0];
+    const formattedName = namePart.replace(/(\d+)/, ' $1').replace(/^\w/, (c) => c.toUpperCase());
+
+    const displayLabel = label || `${formattedName} ${meta?.weightLabel || ''}`;
+    const displaySpecs = specs || (meta ? `${meta.size} / ${meta.lh}\n${meta.weightLabel} (${meta.weightValue})\n${meta.spacing}` : '');
+
+    return (
+        <div className={styles.card}>
+            <Typography variant={variant} as="p">{displayLabel}</Typography>
+            <Typography variant="caption1-regular" color="secondary" as="p" className={styles.specs}>
+                {displaySpecs}
+            </Typography>
+        </div>
+    );
+};
 
 const Section = ({ children, className }: { children: React.ReactNode; className?: string }) => (
     <div className={className || styles.grid3}>{children}</div>
@@ -122,9 +158,11 @@ export const Caption2Bold: Story = { args: { children: 'Caption 2 · Bold', vari
 export const AllTitle3Variants: Story = {
     render: () => (
         <div className={styles.container}>
-            <VariantCard variant="title3-regular" label="Title 3 · Regular" specs="font-size: 20px; font-weight: 400;" />
-            <VariantCard variant="title3-semibold" label="Title 3 · Semibold" specs="font-size: 20px; font-weight: 600;" />
-            <VariantCard variant="title3-bold" label="Title 3 · Bold" specs="font-size: 20px; font-weight: 700;" />
+            <Section>
+                <VariantCard variant="title3-regular" />
+                <VariantCard variant="title3-semibold" />
+                <VariantCard variant="title3-bold" />
+            </Section>
         </div>
     ),
 };
@@ -132,9 +170,11 @@ export const AllTitle3Variants: Story = {
 export const AllHeadlineVariants: Story = {
     render: () => (
         <div className={styles.container}>
-            <VariantCard variant="headline-regular" label="Headline · Regular" specs="font-size: 19px; font-weight: 400;" />
-            <VariantCard variant="headline-semibold" label="Headline · Semibold" specs="font-size: 19px; font-weight: 600;" />
-            <VariantCard variant="headline-bold" label="Headline · Bold" specs="font-size: 19px; font-weight: 700;" />
+            <Section>
+                <VariantCard variant="headline-regular" />
+                <VariantCard variant="headline-semibold" />
+                <VariantCard variant="headline-bold" />
+            </Section>
         </div>
     ),
 };
@@ -142,10 +182,60 @@ export const AllHeadlineVariants: Story = {
 export const AllTextVariants: Story = {
     render: () => (
         <div className={styles.container}>
-            <VariantCard variant="text-regular" label="Text · Regular" specs="font-size: 17px; font-weight: 400;" />
-            <VariantCard variant="text-medium" label="Text · Medium" specs="font-size: 17px; font-weight: 500;" />
-            <VariantCard variant="text-semibold" label="Text · Semibold" specs="font-size: 17px; font-weight: 600;" />
-            <VariantCard variant="text-bold" label="Text · Bold" specs="font-size: 17px; font-weight: 700;" />
+            <Section className={styles.grid4}>
+                <VariantCard variant="text-regular" />
+                <VariantCard variant="text-medium" />
+                <VariantCard variant="text-semibold" />
+                <VariantCard variant="text-bold" />
+            </Section>
+        </div>
+    ),
+};
+
+export const AllSubheadline1Variants: Story = {
+    render: () => (
+        <div className={styles.container}>
+            <Section>
+                <VariantCard variant="subheadline1-regular" />
+                <VariantCard variant="subheadline1-semibold" />
+                <VariantCard variant="subheadline1-bold" />
+            </Section>
+        </div>
+    ),
+};
+
+export const AllSubheadline2Variants: Story = {
+    render: () => (
+        <div className={styles.container}>
+            <Section>
+                <VariantCard variant="subheadline2-regular" />
+                <VariantCard variant="subheadline2-semibold" />
+                <VariantCard variant="subheadline2-bold" />
+            </Section>
+        </div>
+    ),
+};
+
+export const AllCaption1Variants: Story = {
+    render: () => (
+        <div className={styles.container}>
+            <Section>
+                <VariantCard variant="caption1-regular" />
+                <VariantCard variant="caption1-semibold" />
+                <VariantCard variant="caption1-bold" />
+            </Section>
+        </div>
+    ),
+};
+
+export const AllCaption2Variants: Story = {
+    render: () => (
+        <div className={styles.container}>
+            <Section>
+                <VariantCard variant="caption2-regular" />
+                <VariantCard variant="caption2-semibold" />
+                <VariantCard variant="caption2-bold" />
+            </Section>
         </div>
     ),
 };
@@ -154,60 +244,47 @@ export const FullTypographyShowcase: Story = {
     render: () => (
         <div className={styles.showcase}>
             <Section>
-                <VariantCard variant="title3-regular" label="Title 3" specs="20px / 25px\nRegular (400)\n-0.45px" />
-                <VariantCard variant="title3-semibold" label="Title 3" specs="20px / 25px\nSemibold (600)\n-0.45px" />
-                <VariantCard variant="title3-bold" label="Title 3" specs="20px / 25px\nBold (700)\n-0.45px" />
+                <VariantCard variant="title3-regular" label="Title 3" />
+                <VariantCard variant="title3-semibold" label="Title 3" />
+                <VariantCard variant="title3-bold" label="Title 3" />
             </Section>
 
             <Section>
-                <VariantCard variant="headline-regular" label="Headline" specs="19px / 24px\nRegular (400)\n-0.45px" />
-                <VariantCard variant="headline-semibold" label="Headline" specs="19px / 24px\nSemibold (600)\n-0.45px" />
-                <VariantCard variant="headline-bold" label="Headline" specs="19px / 24px\nBold (700)\n-0.45px" />
+                <VariantCard variant="headline-regular" label="Headline" />
+                <VariantCard variant="headline-semibold" label="Headline" />
+                <VariantCard variant="headline-bold" label="Headline" />
             </Section>
 
             <Section className={styles.grid4}>
-                <VariantCard variant="text-regular" label="Text" specs="17px / 22px\nRegular (400)\n-0.4px" />
-                <VariantCard variant="text-medium" label="Text" specs="17px / 22px\nMedium (500)\n-0.4px" />
-                <VariantCard variant="text-semibold" label="Text" specs="17px / 22px\nSemibold (600)\n-0.4px" />
-                <VariantCard variant="text-bold" label="Text" specs="17px / 22px\nBold (700)\n-0.4px" />
+                <VariantCard variant="text-regular" label="Text" />
+                <VariantCard variant="text-medium" label="Text" />
+                <VariantCard variant="text-semibold" label="Text" />
+                <VariantCard variant="text-bold" label="Text" />
             </Section>
 
             <Section>
-                <VariantCard variant="subheadline1-regular" label="Subheadline 1" specs="16px / 21px\nRegular (400)\n-0.23px" />
-                <VariantCard variant="subheadline1-semibold" label="Subheadline 1" specs="16px / 21px\nSemibold (600)\n-0.23px" />
-                <VariantCard variant="subheadline1-bold" label="Subheadline 1" specs="16px / 21px\nBold (700)\n-0.23px" />
+                <VariantCard variant="subheadline1-regular" label="Subheadline 1" />
+                <VariantCard variant="subheadline1-semibold" label="Subheadline 1" />
+                <VariantCard variant="subheadline1-bold" label="Subheadline 1" />
             </Section>
 
             <Section>
-                <VariantCard variant="subheadline2-regular" label="Subheadline 2" specs="15px / 20px\nRegular (400)\n-0.23px" />
-                <VariantCard variant="subheadline2-semibold" label="Subheadline 2" specs="15px / 20px\nSemibold (600)\n-0.23px" />
-                <VariantCard variant="subheadline2-bold" label="Subheadline 2" specs="15px / 20px\nBold (700)\n-0.23px" />
+                <VariantCard variant="subheadline2-regular" label="Subheadline 2" />
+                <VariantCard variant="subheadline2-semibold" label="Subheadline 2" />
+                <VariantCard variant="subheadline2-bold" label="Subheadline 2" />
             </Section>
 
             <Section>
-                <VariantCard variant="caption1-regular" label="Caption 1" specs="13px / 16px\nRegular (400)\n-0.08px" />
-                <VariantCard variant="caption1-semibold" label="Caption 1" specs="13px / 16px\nSemibold (600)\n-0.08px" />
-                <VariantCard variant="caption1-bold" label="Caption 1" specs="13px / 16px\nBold (700)\n-0.08px" />
+                <VariantCard variant="caption1-regular" label="Caption 1" />
+                <VariantCard variant="caption1-semibold" label="Caption 1" />
+                <VariantCard variant="caption1-bold" label="Caption 1" />
             </Section>
 
             <Section>
-                <VariantCard variant="caption2-regular" label="Caption 2" specs="10px / 13px\nRegular (400)\n0.06px" />
-                <VariantCard variant="caption2-semibold" label="Caption 2" specs="10px / 13px\nSemibold (600)\n0.06px" />
-                <VariantCard variant="caption2-bold" label="Caption 2" specs="10px / 13px\nBold (700)\n0.06px" />
+                <VariantCard variant="caption2-regular" label="Caption 2" />
+                <VariantCard variant="caption2-semibold" label="Caption 2" />
+                <VariantCard variant="caption2-bold" label="Caption 2" />
             </Section>
-        </div>
-    ),
-};
-
-export const ColorPalette: Story = {
-    render: () => (
-        <div className={styles.palette}>
-            <Typography variant="headline-semibold" color="default">Default Color (#333333)</Typography>
-            <Typography variant="headline-semibold" color="primary">Primary Color (#007AFF)</Typography>
-            <Typography variant="headline-semibold" color="secondary">Secondary Color (#8E8E93)</Typography>
-            <Typography variant="headline-semibold" color="success">Success Color (#34C759)</Typography>
-            <Typography variant="headline-semibold" color="error">Error Color (#FF3B30)</Typography>
-            <Typography variant="headline-semibold" color="warning">Warning Color (#FF9500)</Typography>
         </div>
     ),
 };
