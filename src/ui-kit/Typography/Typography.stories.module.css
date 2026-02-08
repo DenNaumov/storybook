@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px dashed #ccc;
+}
+
+.showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+    max-width: 900px;
+}
+
+.grid3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.grid4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.card {
+    padding: 16px;
+    border: 1px dashed #1890ff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.specs {
+    margin-top: 8px;
+    white-space: pre-line;
+    /* Позволяет использовать \n для переноса строк */
+}
+
+.palette {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+}
+
+.truncateWrapper {
+    width: 300px;
+}
