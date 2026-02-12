@@ -9,6 +9,10 @@ const meta = {
         layout: 'centered',
     },
     tags: ['autodocs'],
+    args: {
+        variant: 'text-regular',
+        children: 'Typography',
+    },
     argTypes: {
         variant: {
             control: 'select',

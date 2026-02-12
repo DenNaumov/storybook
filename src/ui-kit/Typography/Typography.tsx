@@ -30,9 +30,9 @@ export interface TypographyProps {
     /** The text content to display */
     children?: React.ReactNode;
     /** Typography variant that defines the visual style (size + weight) */
-    variant?: TypographyVariant;
+    variant: TypographyVariant;
     /** Color scheme for the text */
-    color?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
+    color?: string;
     /** Text alignment */
     align?: 'left' | 'center' | 'right';
     /** Truncate text with ellipsis */
@@ -93,7 +93,7 @@ const alignClassMap: Record<string, string> = {
 /** Typography component for consistent text styling based on Figma design system */
 export const Typography = ({
     children,
-    variant = 'text-regular',
+    variant,
     color = 'default',
     align = 'left',
     truncate = false,
