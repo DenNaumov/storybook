@@ -1,85 +1,85 @@
 .iconButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border: none;
-    background: transparent;
-    border-radius: 12px;
-    cursor: pointer;
-    position: relative;
-    transition: opacity 0.2s ease;
-    color: #2990FF;
-    /* blueTheme/dark/icon/brandMain */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.2s ease;
+  color: #2990FF;
+  /* blueTheme/dark/icon/brandMain */
 }
 
 /* Button Sizes */
 .buttonSizeM {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .buttonSizeS {
-    width: 36px;
-    height: 36px;
+  width: 36px;
+  height: 36px;
 }
 
 /* States */
 .pressed {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 .disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    pointer-events: none;
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Icon Container */
 .iconWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Icon Sizes */
 .iconSizeM {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .iconSizeS {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 /* Badge */
 .badge {
-    position: absolute;
-    left: 10px;
-    top: -6px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 5px;
-    gap: 10px;
-    width: 20px;
-    min-width: 20px;
-    height: 20px;
-    background: #E53935;
-    /* blueTheme/dark/bgFill/error */
-    border-radius: 20px;
+  position: absolute;
+  left: 10px;
+  top: -6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  gap: 10px;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  background: #E53935;
+  /* blueTheme/dark/bgFill/error */
+  border-radius: 20px;
 
-    /* Typography */
-    color: #FFFFFF;
-    font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
-    font-weight: 590;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: -0.08px;
-    pointer-events: none;
+  /* Typography */
+  color: #FFFFFF;
+  font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
+  font-weight: 590;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.08px;
+  pointer-events: none;
 }

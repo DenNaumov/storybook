@@ -1,51 +1,51 @@
 .buttonGroup {
-    display: flex;
-    box-sizing: border-box;
+  display: flex;
+  box-sizing: border-box;
 }
 
 /* Directions */
 .vertical {
-    flex-direction: column;
-    align-items: stretch;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .horizontal {
-    flex-direction: row;
-    align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* Spacing */
 .withSpacing {
-    padding: 8px 16px;
-    background: #0F0F0F;
-    /* Matches Figma spec for spacing=true */
+  padding: 8px 16px;
+  background: #0F0F0F;
+  /* Matches Figma spec for spacing=true */
 }
 
 /* Gap */
 .gap12 {
-    gap: 12px;
+  gap: 12px;
 }
 
 /* Specialized layouts from Figma */
 .inlineHorizontal {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .chipsHorizontal {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 /* Helper to make buttons fill space in horizontal groups */
 .horizontal>* {
-    flex: 1;
+  flex: 1;
 }
 
 /* Except for chips and inline which have their own sizing */
 .chipsHorizontal>*,
 .inlineHorizontal>* {
-    flex: none;
+  flex: none;
 }

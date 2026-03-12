@@ -1,68 +1,68 @@
 .inlineButton {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 24px;
-    gap: 4px;
-    width: 112px;
-    height: 60px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-    box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 4px;
+  width: 112px;
+  height: 60px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  box-sizing: border-box;
 }
 
 /* Variants */
 .variantSurface {
-    background: #212121;
-    /* blueTheme/dark/bgSurface/primary */
-    color: #2990FF;
-    /* blueTheme/dark/text/brandMain */
+  background: #212121;
+  /* blueTheme/dark/bgSurface/primary */
+  color: #2990FF;
+  /* blueTheme/dark/text/brandMain */
 }
 
 .variantBezeled {
-    background: rgba(41, 144, 255, 0.15);
-    color: #2990FF;
-    /* blueTheme/dark/text/brandMain */
+  background: rgba(41, 144, 255, 0.15);
+  color: #2990FF;
+  /* blueTheme/dark/text/brandMain */
 }
 
 .variantPrimary {
-    background: #2990FF;
-    /* blueTheme/dark/bgFill/brandMain */
-    color: #FFFFFF;
-    /* blueTheme/dark/text/onMain */
+  background: #2990FF;
+  /* blueTheme/dark/bgFill/brandMain */
+  color: #FFFFFF;
+  /* blueTheme/dark/text/onMain */
 }
 
 /* States */
 .inlineButton:active:not(.disabled) {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    pointer-events: none;
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Icon Wrapper */
 .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
 }
 
 /* Label */
 .label {
-    font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
-    font-weight: 590;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: -0.08px;
-    white-space: nowrap;
+  font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
+  font-weight: 590;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.08px;
+  white-space: nowrap;
 }
