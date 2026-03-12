@@ -111,7 +111,7 @@ export const Showcase: Story = {
 
 export const Playground: Story = {
   args: {
-    variant: "bezeled",
+    variant: "primary",
     size: "s",
     label: 'Сохранить',
     leftIcon: 'Нет',
