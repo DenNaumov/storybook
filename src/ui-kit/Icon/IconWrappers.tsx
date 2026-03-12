@@ -1,39 +1,48 @@
-import type { BaseIconProps } from './Icon.types';
-import { SvgIcon, type SvgIconProps } from './SvgIcon';
+import type { BaseIconProps, CommonIconProps } from './Icon.types';
+import { Icon16Icons, type Icon16IconKeys } from './packs/16';
+import { Icon20Icons, type Icon20IconKeys } from './packs/20';
+import { Icon24Icons, type Icon24IconKeys } from './packs/24';
+import { Icon28Icons, type Icon28IconKeys } from './packs/28';
 
-export interface NamedIconProps extends Omit<SvgIconProps, 'src' | 'size'> {
-    name: string;
+export interface Icon16Props extends CommonIconProps {
+    icon: Icon16IconKeys;
 }
 
-const buildSrc = (size: number, name: string) => {
-    if (name.endsWith('.svg')) {
-        return `/icons/${size}/${name}`;
-    }
-    if (name.endsWith(`_${size}`)) {
-        return `/icons/${size}/${name}.svg`;
-    }
-    return `/icons/${size}/${name}_${size}.svg`;
-};
+export interface Icon20Props extends CommonIconProps {
+    icon: Icon20IconKeys;
+}
+
+export interface Icon24Props extends CommonIconProps {
+    icon: Icon24IconKeys;
+}
+
+export interface Icon28Props extends CommonIconProps {
+    icon: Icon28IconKeys;
+}
 
 /** Иконки размером 16x16 */
-export const Icon16 = ({ name, ...props }: NamedIconProps) => (
-    <SvgIcon src={buildSrc(16, name)} size={16} {...props} />
-);
+export const Icon16 = ({ icon, size = 16, color, ...props }: Icon16Props) => {
+    const Icon = Icon16Icons[icon];
+    return <Icon width={size} height={size} color={color} {...props} />;
+};
 
 /** Иконки размером 20x20 */
-export const Icon20 = ({ name, ...props }: NamedIconProps) => (
-    <SvgIcon src={buildSrc(20, name)} size={20} {...props} />
-);
+export const Icon20 = ({ icon, size = 20, color, ...props }: Icon20Props) => {
+    const Icon = Icon20Icons[icon];
+    return <Icon width={size} height={size} color={color} {...props} />;
+};
 
 /** Иконки размером 24x24 */
-export const Icon24 = ({ name, ...props }: NamedIconProps) => (
-    <SvgIcon src={buildSrc(24, name)} size={24} {...props} />
-);
+export const Icon24 = ({ icon, size = 24, color, ...props }: Icon24Props) => {
+    const Icon = Icon24Icons[icon];
+    return <Icon width={size} height={size} color={color} {...props} />;
+};
 
 /** Иконки размером 28x28 */
-export const Icon28 = ({ name, ...props }: NamedIconProps) => (
-    <SvgIcon src={buildSrc(28, name)} size={28} {...props} />
-);
+export const Icon28 = ({ icon, size = 28, color, ...props }: Icon28Props) => {
+    const Icon = Icon28Icons[icon];
+    return <Icon width={size} height={size} color={color} {...props} />;
+};
 
 /** Иконка со свободным размером (для кастомных inline-svg) */
 export const ResizableIcon = ({ size = 24, ...props }: BaseIconProps) => (

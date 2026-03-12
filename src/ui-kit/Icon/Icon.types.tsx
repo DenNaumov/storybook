@@ -9,6 +9,13 @@ export interface BaseIconProps extends SVGProps<SVGSVGElement> {
     children?: ReactNode;
 }
 
+export interface CommonIconProps extends Omit<SVGProps<SVGSVGElement>, 'color'> {
+    /** Цвет иконки (по умолчанию currentColor) */
+    color?: string;
+    /** Размер иконки */
+    size?: number;
+}
+
 export const BaseIcon = ({
     color = 'currentColor',
     size,
