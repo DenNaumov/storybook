@@ -9,7 +9,7 @@ import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
 const meta: Meta = {
     title: 'UI Kit/Icons',
     parameters: {
-        layout: 'centered',
+        layout: 'fullscreen',
         backgrounds: {
             default: 'dark',
             values: [{ name: 'dark', value: '#0F0F0F' }],
@@ -26,26 +26,37 @@ const icons28 = Object.keys(Icon28Icons) as Icon28IconKeys[];
 const iconsResizable = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
 const listStyles = {
+    page: {
+        minHeight: '100vh',
+        backgroundColor: '#0F0F0F',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+    },
     wrapper: {
         display: 'flex',
         flexWrap: 'wrap' as const,
-        gap: '12px',
-        padding: '28px',
-        color: '#FFFFFF',
+        gap: '8px',
+        padding: 0,
+        color: '#EDEDED',
         fontFamily: 'sans-serif',
-        backgroundColor: '#0F0F0F',
-        borderRadius: '12px',
-        width: 'min(1100px, 90vw)',
+        backgroundColor: 'transparent',
+        width: 'fit-content',
+        minHeight: 'auto',
+        margin: '0 auto',
+        borderRadius: 0,
     },
     row: {
         display: 'flex',
         alignItems: 'center',
         gap: '10px',
-        padding: '8px 10px',
-        borderRadius: '8px',
+        padding: '6px 10px',
+        borderRadius: '6px',
         backgroundColor: 'rgba(255,255,255,0.04)',
-        minWidth: '220px',
-        flex: '1 1 220px',
+        border: '1px solid rgba(255,255,255,0.08)',
+        minWidth: '200px',
+        flex: '0 0 200px',
     },
     name: {
         fontSize: '12px',
@@ -60,85 +71,197 @@ const listStyles = {
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '28px',
+        minWidth: '32px',
+        lineHeight: 0,
+        fontSize: 0,
     },
 };
 
-export const Pack16: StoryObj = {
+export const Pack16_List: StoryObj = {
     render: () => (
-        <div style={listStyles.wrapper}>
-            {icons16.map((name) => (
-                <div key={name} style={listStyles.row}>
-                    <span style={listStyles.icon}><Icon16 icon={name} /></span>
-                    <span style={listStyles.name}>{name}</span>
-                </div>
-            ))}
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                {icons16.map((name) => (
+                    <div key={name} style={listStyles.row}>
+                        <span style={listStyles.icon}><Icon16 icon={name} /></span>
+                        <span style={listStyles.name}>{name}</span>
+                    </div>
+                ))}
+            </div>
         </div>
     ),
 };
 
-export const Pack20: StoryObj = {
-    render: () => (
-        <div style={listStyles.wrapper}>
-            {icons20.map((name) => (
-                <div key={name} style={listStyles.row}>
-                    <span style={listStyles.icon}><Icon20 icon={name} /></span>
-                    <span style={listStyles.name}>{name}</span>
-                </div>
-            ))}
-        </div>
-    ),
-};
-
-export const Pack24: StoryObj = {
-    render: () => (
-        <div style={listStyles.wrapper}>
-            {icons24.map((name) => (
-                <div key={name} style={listStyles.row}>
-                    <span style={listStyles.icon}><Icon24 icon={name} /></span>
-                    <span style={listStyles.name}>{name}</span>
-                </div>
-            ))}
-        </div>
-    ),
-};
-
-export const Pack28: StoryObj = {
-    render: () => (
-        <div style={listStyles.wrapper}>
-            {icons28.map((name) => (
-                <div key={name} style={listStyles.row}>
-                    <span style={listStyles.icon}><Icon28 icon={name} /></span>
-                    <span style={listStyles.name}>{name}</span>
-                </div>
-            ))}
-        </div>
-    ),
-};
-
-export const CustomColor: StoryObj = {
+export const Pack16_Playground: StoryObj = {
     args: {
-        color: '#2990FF'
+        icon: icons16[0],
+        color: '#2990FF',
+    },
+    argTypes: {
+        icon: { control: 'select', options: icons16 },
+        color: { control: 'color' },
     },
     render: (args: any) => (
-        <div style={{ display: 'flex', gap: '20px', padding: '40px', color: args.color }}>
-            <Icon16 icon="Check" color={args.color} />
-            <Icon16 icon="Cancel" color={args.color} />
-            <Icon16 icon="ChevronRight" color={args.color} />
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                <div style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon16 icon={args.icon} color={args.color} /></span>
+                    <span style={listStyles.name}>{args.icon}</span>
+                </div>
+            </div>
         </div>
-    )
+    ),
 };
 
-export const Resizable: StoryObj = {
+export const Pack20_List: StoryObj = {
     render: () => (
-        <div style={listStyles.wrapper}>
-            {iconsResizable.map((name) => (
-                <div key={name} style={listStyles.row}>
-                    <span style={listStyles.icon}><ResizableIcon icon={name} size={22} /></span>
-                    <span style={listStyles.icon}><ResizableIcon icon={name} size={30} color="#2990FF" /></span>
-                    <span style={listStyles.name}>{name}</span>
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                {icons20.map((name) => (
+                    <div key={name} style={listStyles.row}>
+                        <span style={listStyles.icon}><Icon20 icon={name} /></span>
+                        <span style={listStyles.name}>{name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    ),
+};
+
+export const Pack20_Playground: StoryObj = {
+    args: {
+        icon: icons20[0],
+        color: '#2990FF',
+    },
+    argTypes: {
+        icon: { control: 'select', options: icons20 },
+        color: { control: 'color' },
+    },
+    render: (args: any) => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                <div style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon20 icon={args.icon} color={args.color} /></span>
+                    <span style={listStyles.name}>{args.icon}</span>
                 </div>
-            ))}
+            </div>
+        </div>
+    ),
+};
+
+export const Pack24_List: StoryObj = {
+    render: () => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                {icons24.map((name) => (
+                    <div key={name} style={listStyles.row}>
+                        <span style={listStyles.icon}><Icon24 icon={name} /></span>
+                        <span style={listStyles.name}>{name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    ),
+};
+
+export const Pack24_Playground: StoryObj = {
+    args: {
+        icon: icons24[0],
+        color: '#2990FF',
+    },
+    argTypes: {
+        icon: { control: 'select', options: icons24 },
+        color: { control: 'color' },
+    },
+    render: (args: any) => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                <div style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon24 icon={args.icon} color={args.color} /></span>
+                    <span style={listStyles.name}>{args.icon}</span>
+                </div>
+            </div>
+        </div>
+    ),
+};
+
+export const Pack28_List: StoryObj = {
+    render: () => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                {icons28.map((name) => (
+                    <div key={name} style={listStyles.row}>
+                        <span style={listStyles.icon}><Icon28 icon={name} /></span>
+                        <span style={listStyles.name}>{name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    ),
+};
+
+export const Pack28_Playground: StoryObj = {
+    args: {
+        icon: icons28[0],
+        color: '#2990FF',
+    },
+    argTypes: {
+        icon: { control: 'select', options: icons28 },
+        color: { control: 'color' },
+    },
+    render: (args: any) => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                <div style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon28 icon={args.icon} color={args.color} /></span>
+                    <span style={listStyles.name}>{args.icon}</span>
+                </div>
+            </div>
+        </div>
+    ),
+};
+
+export const Resizable_List: StoryObj = {
+    render: () => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                {iconsResizable.map((name) => (
+                    <div key={name} style={listStyles.row}>
+                        <span style={listStyles.icon}><ResizableIcon icon={name} size={24} style={{ display: 'block' }} /></span>
+                        <span style={listStyles.name}>{name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    ),
+};
+
+export const Resizable_Playground: StoryObj = {
+    args: {
+        icon: "AddCircle28",
+        size: 40,
+        color: "#4444aa",
+    },
+    argTypes: {
+        icon: {
+            control: 'select',
+            options: iconsResizable,
+        },
+        size: {
+            control: { type: 'number', min: 12, max: 96, step: 2 },
+        },
+        color: { control: 'color' },
+    },
+    render: (args: any) => (
+        <div style={listStyles.page}>
+            <div style={listStyles.wrapper}>
+                <div style={listStyles.row}>
+                    <span style={listStyles.icon}>
+                        <ResizableIcon icon={args.icon} size={args.size} color={args.color} style={{ display: 'block' }} />
+                    </span>
+                    <span style={listStyles.name}>{args.icon}</span>
+                </div>
+            </div>
         </div>
     )
 };
