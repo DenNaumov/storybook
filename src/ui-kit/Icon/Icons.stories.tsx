@@ -25,22 +25,52 @@ const icons24 = Object.keys(Icon24Icons) as Icon24IconKeys[];
 const icons28 = Object.keys(Icon28Icons) as Icon28IconKeys[];
 const iconsResizable = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
+const listStyles = {
+    wrapper: {
+        display: 'flex',
+        flexWrap: 'wrap' as const,
+        gap: '12px',
+        padding: '28px',
+        color: '#FFFFFF',
+        fontFamily: 'sans-serif',
+        backgroundColor: '#0F0F0F',
+        borderRadius: '12px',
+        width: 'min(1100px, 90vw)',
+    },
+    row: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        padding: '8px 10px',
+        borderRadius: '8px',
+        backgroundColor: 'rgba(255,255,255,0.04)',
+        minWidth: '220px',
+        flex: '1 1 220px',
+    },
+    name: {
+        fontSize: '12px',
+        opacity: 0.7,
+        flex: 1,
+        textAlign: 'left' as const,
+        whiteSpace: 'nowrap' as const,
+        overflow: 'hidden' as const,
+        textOverflow: 'ellipsis' as const,
+    },
+    icon: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '28px',
+    },
+};
+
 export const Pack16: StoryObj = {
     render: () => (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
-            gap: '24px',
-            padding: '40px',
-            color: '#FFFFFF',
-            fontFamily: 'sans-serif',
-            backgroundColor: '#0F0F0F',
-            borderRadius: '12px'
-        }}>
+        <div style={listStyles.wrapper}>
             {icons16.map((name) => (
-                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <Icon16 icon={name} />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                <div key={name} style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon16 icon={name} /></span>
+                    <span style={listStyles.name}>{name}</span>
                 </div>
             ))}
         </div>
@@ -49,20 +79,11 @@ export const Pack16: StoryObj = {
 
 export const Pack20: StoryObj = {
     render: () => (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
-            gap: '24px',
-            padding: '40px',
-            color: '#FFFFFF',
-            fontFamily: 'sans-serif',
-            backgroundColor: '#0F0F0F',
-            borderRadius: '12px'
-        }}>
+        <div style={listStyles.wrapper}>
             {icons20.map((name) => (
-                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <Icon20 icon={name} />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                <div key={name} style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon20 icon={name} /></span>
+                    <span style={listStyles.name}>{name}</span>
                 </div>
             ))}
         </div>
@@ -71,20 +92,11 @@ export const Pack20: StoryObj = {
 
 export const Pack24: StoryObj = {
     render: () => (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
-            gap: '24px',
-            padding: '40px',
-            color: '#FFFFFF',
-            fontFamily: 'sans-serif',
-            backgroundColor: '#0F0F0F',
-            borderRadius: '12px'
-        }}>
+        <div style={listStyles.wrapper}>
             {icons24.map((name) => (
-                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <Icon24 icon={name} />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                <div key={name} style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon24 icon={name} /></span>
+                    <span style={listStyles.name}>{name}</span>
                 </div>
             ))}
         </div>
@@ -93,20 +105,11 @@ export const Pack24: StoryObj = {
 
 export const Pack28: StoryObj = {
     render: () => (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
-            gap: '24px',
-            padding: '40px',
-            color: '#FFFFFF',
-            fontFamily: 'sans-serif',
-            backgroundColor: '#0F0F0F',
-            borderRadius: '12px'
-        }}>
+        <div style={listStyles.wrapper}>
             {icons28.map((name) => (
-                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <Icon28 icon={name} />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                <div key={name} style={listStyles.row}>
+                    <span style={listStyles.icon}><Icon28 icon={name} /></span>
+                    <span style={listStyles.name}>{name}</span>
                 </div>
             ))}
         </div>
@@ -128,21 +131,12 @@ export const CustomColor: StoryObj = {
 
 export const Resizable: StoryObj = {
     render: () => (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
-            gap: '24px',
-            padding: '40px',
-            color: '#FFFFFF',
-            fontFamily: 'sans-serif',
-            backgroundColor: '#0F0F0F',
-            borderRadius: '12px'
-        }}>
+        <div style={listStyles.wrapper}>
             {iconsResizable.map((name) => (
-                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <ResizableIcon icon={name} size={32} />
-                    <ResizableIcon icon={name} size={48} color="#2990FF" />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                <div key={name} style={listStyles.row}>
+                    <span style={listStyles.icon}><ResizableIcon icon={name} size={22} /></span>
+                    <span style={listStyles.icon}><ResizableIcon icon={name} size={30} color="#2990FF" /></span>
+                    <span style={listStyles.name}>{name}</span>
                 </div>
             ))}
         </div>
