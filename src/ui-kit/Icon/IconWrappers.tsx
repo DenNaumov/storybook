@@ -52,7 +52,7 @@ export const Icon28 = ({ icon, size = 28, color, ...props }: Icon28Props) => {
 /** Иконки со свободным размером из пакета resizable */
 export const ResizableIcon = ({ icon, size = 24, color, ...props }: ResizableIconProps) => {
     const IconComponent = ResizableIcons[icon];
-    return <IconComponent width={size} height={size} color={color} {...props} />;
+    return <IconComponent width={size} height={size} color={color} {...props} style={{ width: size, height: size, ...props.style }} />;
 };
 
 // Короткий алиас, если нужен более общий нейминг
