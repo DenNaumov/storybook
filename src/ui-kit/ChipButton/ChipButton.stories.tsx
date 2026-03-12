@@ -1,5 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChipButton } from './ChipButton';
+import { ResizableIcon } from '../Icon/IconWrappers';
+import { ResizableIcons, type ResizableIconKeys } from '../Icon/packs/resizable';
+
+const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
+const resizableIconMapping = resizableIconNames.reduce<Record<ResizableIconKeys, JSX.Element>>(
+    (acc, name) => {
+        acc[name] = <ResizableIcon icon={name} size={24} />;
+        return acc;
+    },
+    {} as Record<ResizableIconKeys, JSX.Element>
+);
 
 const meta: Meta<typeof ChipButton> = {
     title: 'UI Kit/ChipButton',
@@ -17,6 +28,19 @@ const meta: Meta<typeof ChipButton> = {
             control: 'select',
             options: ['s', 'm', 'l'],
         },
+        startIcon: {
+            control: 'select',
+            options: ['Нет', ...resizableIconNames],
+            mapping: { 'Нет': undefined, ...resizableIconMapping },
+        },
+        endIcon: {
+            control: 'select',
+            options: ['Нет', ...resizableIconNames],
+            mapping: { 'Нет': undefined, ...resizableIconMapping },
+        },
+        className: {
+            table: { disable: true },
+        },
         active: {
             control: 'boolean',
         },
@@ -29,22 +53,10 @@ const meta: Meta<typeof ChipButton> = {
 export default meta;
 type Story = StoryObj<typeof ChipButton>;
 
-const SortIcon = (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 15L12 20L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M7 9L12 4L17 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-);
+const SortIcon = resizableIconMapping.ArrowUpDown;
 
-export const Default: Story = {
-    args: {
-        label: 'Сортировка',
-        size: 'm',
-        startIcon: SortIcon,
-    },
-};
-
-export const DesignGrid: Story = {
+export const Showcase: Story = {
+    parameters: { controls: { disable: true } },
     render: () => (
         <div style={{
             display: 'grid',
@@ -118,4 +130,15 @@ export const DesignGrid: Story = {
             <div style={{ justifySelf: 'center' }}><ChipButton size="l" startIcon={SortIcon} /></div>
         </div>
     ),
+};
+
+export const Playground: Story = {
+    args: {
+        label: 'Сортировка',
+        size: 'm',
+        startIcon: SortIcon,
+        endIcon: undefined,
+        active: false,
+        disabled: false,
+    },
 };

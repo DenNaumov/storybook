@@ -3,7 +3,7 @@ import styles from './ChipButton.module.css';
 
 export type ChipButtonSize = 's' | 'm' | 'l';
 
-export interface ChipButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ChipButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
     /** Size of the chip button */
     size?: ChipButtonSize;
     /** Optional icon to display on the left */
@@ -14,8 +14,6 @@ export interface ChipButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
     active?: boolean;
     /** Text label to display */
     label?: string;
-    /** Optional additional class names */
-    className?: string;
 }
 
 /**
@@ -29,7 +27,6 @@ export const ChipButton = ({
     active = false,
     label,
     disabled,
-    className,
     children,
     ...props
 }: ChipButtonProps) => {
@@ -44,7 +41,6 @@ export const ChipButton = ({
         startIcon ? styles.hasStartIcon : '',
         endIcon ? styles.hasEndIcon : '',
         isIconOnly ? styles.iconOnly : '',
-        className,
     ]
         .filter(Boolean)
         .join(' ');

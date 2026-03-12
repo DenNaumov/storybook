@@ -3,15 +3,13 @@ import styles from './InlineButton.module.css';
 
 export type InlineButtonVariant = 'surface' | 'bezeled' | 'primary';
 
-export interface InlineButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface InlineButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
     /** Visual style of the button */
     variant?: InlineButtonVariant;
     /** Icon to display above the text */
     icon: ReactNode;
     /** Text label to display below the icon */
     label: string;
-    /** Optional additional class names */
-    className?: string;
 }
 
 /**
@@ -23,14 +21,12 @@ export const InlineButton = ({
     icon,
     label,
     disabled,
-    className,
     ...props
 }: InlineButtonProps) => {
     const classes = [
         styles.inlineButton,
         styles[`variant${variant.charAt(0).toUpperCase() + variant.slice(1)}`],
         disabled ? styles.disabled : '',
-        className,
     ]
         .filter(Boolean)
         .join(' ');

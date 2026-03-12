@@ -39,6 +39,9 @@ const meta: Meta<IconButtonStoryArgs> = {
             control: 'select',
             options: resizableIconNames,
         },
+        className: {
+            table: { disable: true },
+        },
         badgeCount: {
             control: 'text',
         },

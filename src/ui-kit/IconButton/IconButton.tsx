@@ -4,7 +4,7 @@ import styles from './IconButton.module.css';
 export type IconButtonSize = 's' | 'm';
 export type IconSize = 's' | 'm';
 
-export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
     /** Size of the button */
     buttonSize?: IconButtonSize;
     /** Size of the icon */
@@ -15,8 +15,6 @@ export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
     badgeCount?: number | string;
     /** Force pressed state */
     pressed?: boolean;
-    /** Optional additional class names */
-    className?: string;
 }
 
 /**
@@ -30,7 +28,6 @@ export const IconButton = ({
     badgeCount,
     pressed = false,
     disabled,
-    className,
     ...props
 }: IconButtonProps) => {
     const classes = [
@@ -38,7 +35,6 @@ export const IconButton = ({
         styles[`buttonSize${buttonSize.toUpperCase()}`],
         pressed ? styles.pressed : '',
         disabled ? styles.disabled : '',
-        className,
     ]
         .filter(Boolean)
         .join(' ');

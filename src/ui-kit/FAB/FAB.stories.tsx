@@ -1,5 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FAB } from './FAB';
+import { ResizableIcon } from '../Icon/IconWrappers';
+import { ResizableIcons, type ResizableIconKeys } from '../Icon/packs/resizable';
+
+const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
+const resizableIconMapping = resizableIconNames.reduce<Record<ResizableIconKeys, JSX.Element>>(
+    (acc, name) => {
+        acc[name] = <ResizableIcon icon={name} size={24} />;
+        return acc;
+    },
+    {} as Record<ResizableIconKeys, JSX.Element>
+);
 
 const meta: Meta<typeof FAB> = {
     title: 'UI Kit/FAB',
@@ -20,7 +31,18 @@ const meta: Meta<typeof FAB> = {
             control: 'select',
             options: ['primary', 'bezeled', 'white'],
         },
+        icon: {
+            control: 'select',
+            options: ['Нет', ...resizableIconNames],
+            mapping: { 'Нет': undefined, ...resizableIconMapping },
+        },
+        className: {
+            table: { disable: true },
+        },
         pressed: {
+            control: 'boolean',
+        },
+        disabled: {
             control: 'boolean',
         },
     },
@@ -29,19 +51,10 @@ const meta: Meta<typeof FAB> = {
 export default meta;
 type Story = StoryObj<typeof FAB>;
 
-export const Default: Story = {
-    args: {
-        variant: 'primary',
-    },
-};
+const AddIcon = resizableIconMapping.Add01;
 
-const PlusIcon = (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-);
-
-export const AllVariants: Story = {
+export const Showcase: Story = {
+    parameters: { controls: { disable: true } },
     render: () => (
         <div style={{
             display: 'grid',
@@ -63,47 +76,35 @@ export const AllVariants: Story = {
             {/* Default Stat Row */}
             <div style={{ opacity: 0.8 }}>Default</div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <FAB variant="primary" icon={PlusIcon} />
+                <FAB variant="primary" icon={AddIcon} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <FAB variant="bezeled" icon={PlusIcon} />
+                <FAB variant="bezeled" icon={AddIcon} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <FAB variant="white" icon={PlusIcon} />
+                <FAB variant="white" icon={AddIcon} />
             </div>
 
             {/* Pressed State Row */}
             <div style={{ opacity: 0.8 }}>Pressed</div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <FAB variant="primary" icon={PlusIcon} pressed />
+                <FAB variant="primary" icon={AddIcon} pressed />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <FAB variant="bezeled" icon={PlusIcon} pressed />
+                <FAB variant="bezeled" icon={AddIcon} pressed />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <FAB variant="white" icon={PlusIcon} pressed />
+                <FAB variant="white" icon={AddIcon} pressed />
             </div>
         </div>
     ),
 };
 
-export const Primary: Story = {
+export const Playground: Story = {
     args: {
         variant: 'primary',
-        icon: PlusIcon,
-    },
-};
-
-export const Bezeled: Story = {
-    args: {
-        variant: 'bezeled',
-        icon: PlusIcon,
-    },
-};
-
-export const White: Story = {
-    args: {
-        variant: 'white',
-        icon: PlusIcon,
+        icon: AddIcon,
+        pressed: false,
+        disabled: false,
     },
 };

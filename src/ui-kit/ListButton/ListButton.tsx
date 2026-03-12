@@ -1,15 +1,13 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
 import styles from './ListButton.module.css';
 
-export interface ListButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ListButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
     /** Text to display on the button */
     label?: string;
     /** Optional icon to display on the left */
     startIcon?: ReactNode;
     /** Force pressed state */
     pressed?: boolean;
-    /** Optional additional class names */
-    className?: string;
 }
 
 /**
@@ -21,7 +19,6 @@ export const ListButton = ({
     startIcon,
     pressed = false,
     disabled,
-    className,
     children,
     ...props
 }: ListButtonProps) => {
@@ -29,7 +26,6 @@ export const ListButton = ({
         styles.listButton,
         pressed ? styles.pressed : '',
         disabled ? styles.disabled : '',
-        className,
     ]
         .filter(Boolean)
         .join(' ');
