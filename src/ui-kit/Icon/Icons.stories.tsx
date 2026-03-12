@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import * as Icon16 from './packs/Icon16';
-import { ResizableIcon } from './IconWrappers';
+import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from './IconWrappers';
 
 const meta: Meta = {
     title: 'UI Kit/Icons',
@@ -15,6 +14,11 @@ const meta: Meta = {
 
 export default meta;
 
+const icons16 = ['cancel', 'check', 'chevron_right', 'code'];
+const icons20 = ['arrow_down_circle_fill', 'arrow_left', 'chevron_right', 'search'];
+const icons24 = ['actions', 'add_circle_fill', 'archive', 'calendar'];
+const icons28 = ['actions', 'add_circle', 'archive', 'cancel', 'FancyIcon.svg'];
+
 export const Pack16: StoryObj = {
     render: () => (
         <div style={{
@@ -27,17 +31,15 @@ export const Pack16: StoryObj = {
             backgroundColor: '#0F0F0F',
             borderRadius: '12px'
         }}>
-            {Object.entries(Icon16).map(([name, Component]) => (
+            {icons16.map((name) => (
                 <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <Component />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name.replace('Icon16', '')}</span>
+                    <Icon16 name={name} />
+                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
                 </div>
             ))}
         </div>
     ),
 };
-
-import * as Icons20 from './packs/Icon20';
 
 export const Pack20: StoryObj = {
     render: () => (
@@ -51,10 +53,54 @@ export const Pack20: StoryObj = {
             backgroundColor: '#0F0F0F',
             borderRadius: '12px'
         }}>
-            {Object.entries(Icons20).map(([name, Component]) => (
+            {icons20.map((name) => (
                 <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                    <Component />
-                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name.replace('Icon20', '')}</span>
+                    <Icon20 name={name} />
+                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                </div>
+            ))}
+        </div>
+    ),
+};
+
+export const Pack24: StoryObj = {
+    render: () => (
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
+            gap: '24px',
+            padding: '40px',
+            color: '#FFFFFF',
+            fontFamily: 'sans-serif',
+            backgroundColor: '#0F0F0F',
+            borderRadius: '12px'
+        }}>
+            {icons24.map((name) => (
+                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                    <Icon24 name={name} />
+                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
+                </div>
+            ))}
+        </div>
+    ),
+};
+
+export const Pack28: StoryObj = {
+    render: () => (
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
+            gap: '24px',
+            padding: '40px',
+            color: '#FFFFFF',
+            fontFamily: 'sans-serif',
+            backgroundColor: '#0F0F0F',
+            borderRadius: '12px'
+        }}>
+            {icons28.map((name) => (
+                <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                    <Icon28 name={name} />
+                    <span style={{ fontSize: '10px', opacity: 0.6 }}>{name}</span>
                 </div>
             ))}
         </div>
@@ -67,9 +113,9 @@ export const CustomColor: StoryObj = {
     },
     render: (args: any) => (
         <div style={{ display: 'flex', gap: '20px', padding: '40px', color: args.color }}>
-            <Icon16.Icon16Check />
-            <Icon16.Icon16Cancel />
-            <Icon16.Icon16Code />
+            <Icon16 name="check" color={args.color} />
+            <Icon16 name="cancel" color={args.color} />
+            <Icon16 name="code" color={args.color} />
         </div>
     )
 };
