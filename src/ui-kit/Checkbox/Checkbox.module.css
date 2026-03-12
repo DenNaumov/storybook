@@ -1,0 +1,89 @@
+/* Checkbox Component - CSS Module */
+
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid #3a3a3a;
+  background: #1f1f1f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 160ms ease, border-color 160ms ease;
+  position: relative;
+}
+
+.box::after {
+  content: '';
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.input:checked + .box {
+  background: #2b8cff;
+  border-color: transparent;
+}
+
+.input:checked + .box::after {
+  border-left-color: #ffffff;
+  border-bottom-color: #ffffff;
+  opacity: 1;
+}
+
+.input:indeterminate + .box {
+  background: #2b8cff;
+  border-color: transparent;
+}
+
+.input:indeterminate + .box::after {
+  width: 10px;
+  height: 2px;
+  transform: none;
+  background: #ffffff;
+  border: none;
+  opacity: 1;
+}
+
+.input:focus-visible + .box {
+  outline: 2px solid rgba(43, 140, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.input:disabled + .box {
+  background: #171717;
+  border-color: #2a2a2a;
+}
+
+.input:disabled:checked + .box,
+.input:disabled:indeterminate + .box {
+  background: #0f2a46;
+  border-color: transparent;
+}
+
+.input:disabled + .box::after {
+  border-left-color: #6f86a1;
+  border-bottom-color: #6f86a1;
+}
+
+.input:disabled:indeterminate + .box::after {
+  background: #6f86a1;
+}

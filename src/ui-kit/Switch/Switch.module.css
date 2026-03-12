@@ -1,0 +1,77 @@
+/* Switch Component - CSS Module */
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.track {
+  width: 44px;
+  height: 24px;
+  background: #2a2a2a;
+  border-radius: 999px;
+  border: 1px solid #3a3a3a;
+  transition: background-color 180ms ease, border-color 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.track::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  transform: translateX(0);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.input:checked + .track {
+  background: #2b8cff;
+  border-color: transparent;
+}
+
+.input:checked + .track::after {
+  transform: translateX(20px);
+  background: #ffffff;
+}
+
+.input:focus-visible + .track {
+  outline: 2px solid rgba(43, 140, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.disabled .track {
+  background: #1d1d1d;
+  border-color: #2a2a2a;
+}
+
+.disabled .track::after {
+  background: #5c5c5c;
+  box-shadow: none;
+}
+
+.invalid .track {
+  background: #e44848;
+  border-color: transparent;
+}
+
+.invalid .track::after {
+  background: #ffffff;
+}

@@ -1,0 +1,123 @@
+.chipButton {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    background: #212121;
+    /* blueTheme/dark/bgFill/primary */
+    border-radius: 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
+    color: #FFFFFF;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+/* Sizes & Dimensions */
+.sizeS {
+    height: 32px;
+    min-height: 32px;
+    min-width: 52px;
+    padding: 6px 12px;
+}
+
+.sizeM {
+    height: 36px;
+    min-height: 36px;
+    min-width: 52px;
+    padding: 8px 12px;
+}
+
+.sizeL {
+    height: 40px;
+    min-height: 40px;
+    min-width: 52px;
+    padding: 10px 12px;
+}
+
+/* Precise Padding Logic from Figma Layers */
+.hasStartIcon.sizeS {
+    padding-left: 8px;
+}
+
+.hasStartIcon.sizeM {
+    padding-left: 8px;
+}
+
+.hasStartIcon.sizeL {
+    padding-left: 8px;
+}
+
+.hasEndIcon.sizeS {
+    padding-right: 8px;
+}
+
+.hasEndIcon.sizeM {
+    padding-right: 8px;
+}
+
+.hasEndIcon.sizeL {
+    padding-right: 8px;
+}
+
+/* In Figma, Icon-only has specific padding to reach 52px width */
+.iconOnly.sizeS {
+    padding: 6px 16px;
+    width: 52px;
+}
+
+.iconOnly.sizeM {
+    padding: 8px 16px;
+    width: 52px;
+}
+
+.iconOnly.sizeL {
+    padding: 10px 16px;
+    width: 52px;
+}
+
+/* States */
+.active {
+    border: 1px solid #2990FF;
+    /* blueTheme/dark/border/brandMain */
+}
+
+.pressed,
+.chipButton:active:not(.disabled) {
+    opacity: 0.2;
+}
+
+.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Label */
+.label {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    letter-spacing: -0.08px;
+    white-space: nowrap;
+}
+
+/* Icon */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #AAAAAA;
+    /* blueTheme/dark/icon/default */
+    transition: color 0.15s ease;
+}
+
+.active .icon {
+    color: #2990FF;
+    /* blueTheme/dark/icon/brandMain */
+}

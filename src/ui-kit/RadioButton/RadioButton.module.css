@@ -1,0 +1,62 @@
+/* RadioButton Component - CSS Module */
+
+.radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #3a3a3a;
+  background: #1f1f1f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 160ms ease, border-color 160ms ease;
+  position: relative;
+}
+
+.circle::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2b8cff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.input:checked + .circle {
+  border-color: #2b8cff;
+}
+
+.input:checked + .circle::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.input:focus-visible + .circle {
+  outline: 2px solid rgba(43, 140, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.input:disabled + .circle {
+  background: #171717;
+  border-color: #2a2a2a;
+}
+
+.input:disabled:checked + .circle::after {
+  background: #6f86a1;
+}

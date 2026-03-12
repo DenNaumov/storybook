@@ -1,0 +1,43 @@
+import type { ReactNode, ButtonHTMLAttributes } from 'react';
+import styles from './ListButton.module.css';
+
+export interface ListButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    /** Text to display on the button */
+    label?: string;
+    /** Optional icon to display on the left */
+    startIcon?: ReactNode;
+    /** Force pressed state */
+    pressed?: boolean;
+    /** Optional additional class names */
+    className?: string;
+}
+
+/**
+ * ListButton component typically used within lists or menus.
+ * Matches the design with a dark background and blue text/icon.
+ */
+export const ListButton = ({
+    label,
+    startIcon,
+    pressed = false,
+    disabled,
+    className,
+    children,
+    ...props
+}: ListButtonProps) => {
+    const classes = [
+        styles.listButton,
+        pressed ? styles.pressed : '',
+        disabled ? styles.disabled : '',
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    return (
+        <button className={classes} disabled={disabled} {...props}>
+            {startIcon && <span className={styles.icon}>{startIcon}</span>}
+            <span className={styles.label}>{label || children}</span>
+        </button>
+    );
+};
