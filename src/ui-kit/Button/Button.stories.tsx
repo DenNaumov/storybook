@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
+import { Icon24 } from '../Icon';
+import { Icon24Icons, type Icon24IconKeys } from '../Icon/packs/24';
 import { Button } from './Button';
 import styles from './Button.stories.module.css';
 
@@ -20,24 +22,28 @@ const meta = {
       control: 'select',
       options: ['primary', 'bezeled', 'outlined', 'text'],
     },
+    primary: { control: false, table: { disable: true } },
     size: {
       control: 'select',
       options: ['s', 'm'],
     },
-    loading: { control: 'boolean' },
-    pressed: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    loading: { control: false, table: { disable: true } },
+    pressed: { control: false, table: { disable: true } },
+    disabled: { control: false, table: { disable: true } },
+    startIcon: { control: false, table: { disable: true } },
+    endIcon: { control: false, table: { disable: true } },
+    children: { control: false, table: { disable: true } },
+    onClick: { control: false, table: { disable: true } },
   },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const Plus = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const icon24Options = Object.keys(Icon24Icons) as Icon24IconKeys[];
+
+const Icon24Preview = ({ name }: { name: Icon24IconKeys }) => <Icon24 icon={name} />;
+const defaultIcon = icon24Options[0];
 
 const StateRow = ({
   state,
@@ -49,8 +55,8 @@ const StateRow = ({
   const commonProps = {
     size,
     label: 'Сохранить',
-    startIcon: <Plus />,
-    endIcon: <Plus />,
+    startIcon: defaultIcon ? <Icon24Preview name={defaultIcon} /> : undefined,
+    endIcon: defaultIcon ? <Icon24Preview name={defaultIcon} /> : undefined,
   };
 
   return (
@@ -65,16 +71,11 @@ const StateRow = ({
 };
 
 export const Showcase: Story = {
+  parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.stage}>
       <div className={styles.header}>
         <div className={styles.title}>Button</div>
-        <div className={styles.chips}>
-          <span className={styles.chip}>Primary</span>
-          <span className={styles.chip}>Bezeled</span>
-          <span className={styles.chip}>Outlined</span>
-          <span className={styles.chip}>Text</span>
-        </div>
       </div>
 
       <div className={styles.sectionTitle}>Size = M</div>
@@ -103,6 +104,75 @@ export const Showcase: Story = {
         <StateRow state="pressed" size="s" />
         <StateRow state="disabled" size="s" />
         <StateRow state="loading" size="s" />
+      </div>
+    </div>
+  ),
+};
+
+export const Playground: Story = {
+  args: {
+    variant: "bezeled",
+    size: "s",
+    label: 'Сохранить',
+    leftIcon: 'Нет',
+    rightIcon: 'Нет',
+    startIcon: null,
+    loading: false,
+    disabled: false
+  },
+  argTypes: {
+    leftIcon: {
+      control: 'select',
+      options: ['Нет', ...icon24Options],
+      name: 'Left icon',
+      mapping: { 'Нет': undefined },
+    },
+    rightIcon: {
+      control: 'select',
+      options: ['Нет', ...icon24Options],
+      name: 'Right icon',
+      mapping: { 'Нет': undefined },
+    },
+  },
+  render: (args: any) => (
+    <div className={styles.stage}>
+      <div className={styles.playgroundGrid}>
+        <div className={styles.gridHead}>default</div>
+        <div className={styles.gridHead}>pressed</div>
+        <div className={styles.gridHead}>disabled</div>
+        <div className={styles.gridHead}>loading</div>
+
+        <Button
+          variant={args.variant}
+          size={args.size}
+          label={args.label}
+          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+        />
+        <Button
+          variant={args.variant}
+          size={args.size}
+          label={args.label}
+          pressed
+          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+        />
+        <Button
+          variant={args.variant}
+          size={args.size}
+          label={args.label}
+          disabled
+          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+        />
+        <Button
+          variant={args.variant}
+          size={args.size}
+          label={args.label}
+          loading
+          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+        />
       </div>
     </div>
   ),

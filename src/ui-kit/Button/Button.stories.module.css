@@ -52,6 +52,17 @@
   background: rgba(0, 0, 0, 0.35);
 }
 
+.playgroundGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 16px 20px;
+  padding: 20px 24px;
+  border-radius: 18px;
+  border: 1px dashed rgba(178, 136, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  align-items: center;
+}
+
 .gridHead {
   color: #a0a0a0;
   font-size: 12px;
