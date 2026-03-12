@@ -1,7 +1,21 @@
+import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { IconButton } from './IconButton';
+import { ResizableIcon } from '../Icon/IconWrappers';
+import { ResizableIcons, type ResizableIconKeys } from '../Icon/packs/resizable';
 
-const meta: Meta<typeof IconButton> = {
+const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
+
+const iconSizeToPixels: Record<'s' | 'm', number> = {
+    s: 20,
+    m: 24,
+};
+
+type IconButtonStoryArgs = Omit<ComponentProps<typeof IconButton>, 'icon'> & {
+    icon: ResizableIconKeys;
+};
+
+const meta: Meta<IconButtonStoryArgs> = {
     title: 'UI Kit/IconButton',
     component: IconButton,
     parameters: {
@@ -21,6 +35,13 @@ const meta: Meta<typeof IconButton> = {
             control: 'select',
             options: ['s', 'm'],
         },
+        icon: {
+            control: 'select',
+            options: resizableIconNames,
+        },
+        badgeCount: {
+            control: 'text',
+        },
         pressed: {
             control: 'boolean',
         },
@@ -31,13 +52,7 @@ const meta: Meta<typeof IconButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof IconButton>;
-
-const PlusIcon = (size: number) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-);
+type Story = StoryObj<IconButtonStoryArgs>;
 
 const NotificationIcon = (size: number) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,15 +61,27 @@ const NotificationIcon = (size: number) => (
     </svg>
 );
 
-export const Default: Story = {
+export const Playground: Story = {
     args: {
-        icon: PlusIcon(24),
+        icon: 'Add01',
         buttonSize: 'm',
         iconSize: 'm',
+        badgeCount: undefined,
+    },
+    render: (args) => {
+        const { icon, ...iconButtonArgs } = args;
+        const size = iconSizeToPixels[args.iconSize ?? 'm'];
+        return (
+            <IconButton
+                {...iconButtonArgs}
+                icon={<ResizableIcon icon={icon} size={size} />}
+            />
+        );
     },
 };
 
-export const DesignGrid: Story = {
+export const Showcase: Story = {
+    parameters: { controls: { disable: true } },
     render: () => (
         <div style={{
             display: 'grid',
@@ -76,31 +103,31 @@ export const DesignGrid: Story = {
             <div style={{ gridColumn: '1 / 4', textAlign: 'center', margin: '16px 0', opacity: 0.8 }}>IconSize=M</div>
 
             <div style={{ opacity: 0.6 }}>Default</div>
-            <center><IconButton icon={PlusIcon(24)} buttonSize="m" iconSize="m" /></center>
-            <center><IconButton icon={PlusIcon(24)} buttonSize="s" iconSize="m" /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" /></center>
 
             <div style={{ opacity: 0.6 }}>Pressed</div>
-            <center><IconButton icon={PlusIcon(24)} buttonSize="m" iconSize="m" pressed /></center>
-            <center><IconButton icon={PlusIcon(24)} buttonSize="s" iconSize="m" pressed /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" pressed /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" pressed /></center>
 
             <div style={{ opacity: 0.6 }}>Disabled</div>
-            <center><IconButton icon={PlusIcon(24)} buttonSize="m" iconSize="m" disabled /></center>
-            <center><IconButton icon={PlusIcon(24)} buttonSize="s" iconSize="m" disabled /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" disabled /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" disabled /></center>
 
             {/* Row: IconSize=S */}
             <div style={{ gridColumn: '1 / 4', textAlign: 'center', margin: '32px 0 16px', opacity: 0.8 }}>IconSize=S</div>
 
             <div style={{ opacity: 0.6 }}>Default</div>
-            <center><IconButton icon={PlusIcon(20)} buttonSize="m" iconSize="s" /></center>
-            <center><IconButton icon={PlusIcon(20)} buttonSize="s" iconSize="s" /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" /></center>
 
             <div style={{ opacity: 0.6 }}>Pressed</div>
-            <center><IconButton icon={PlusIcon(20)} buttonSize="m" iconSize="s" pressed /></center>
-            <center><IconButton icon={PlusIcon(20)} buttonSize="s" iconSize="s" pressed /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" pressed /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" pressed /></center>
 
             <div style={{ opacity: 0.6 }}>Disabled</div>
-            <center><IconButton icon={PlusIcon(20)} buttonSize="m" iconSize="s" disabled /></center>
-            <center><IconButton icon={PlusIcon(20)} buttonSize="s" iconSize="s" disabled /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" disabled /></center>
+            <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" disabled /></center>
 
             {/* Row: Badge */}
             <div style={{ gridColumn: '1 / 4', textAlign: 'center', margin: '32px 0 16px', opacity: 0.8 }}>Badge=Yes</div>
