@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ChipButton } from './chip-button';
 import { ResizableIcon } from '../icon/icon-wrappers';
 import { ResizableIcons, type ResizableIconKeys } from '../icon/packs/resizable';
@@ -34,9 +34,6 @@ const meta: Meta<ChipButtonStoryArgs> = {
     endIcon: {
       control: 'select',
       options: ['Нет', ...resizableIconNames],
-    },
-    className: {
-      table: { disable: true },
     },
     active: {
       control: 'boolean',

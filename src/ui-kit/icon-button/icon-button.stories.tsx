@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { IconButton } from './icon-button';
 import { Icon24, ResizableIcon } from '../icon/icon-wrappers';
 import { ResizableIcons, type ResizableIconKeys } from '../icon/packs/resizable';
@@ -38,9 +38,6 @@ const meta: Meta<IconButtonStoryArgs> = {
     icon: {
       control: 'select',
       options: resizableIconNames,
-    },
-    className: {
-      table: { disable: true },
     },
     badgeCount: {
       control: 'text',

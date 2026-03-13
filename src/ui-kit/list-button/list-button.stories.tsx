@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ListButton } from './list-button';
 import { Icon28 } from '../icon/icon-wrappers';
 import { Icon28Icons, type Icon28IconKeys } from '../icon/packs/28';
@@ -25,9 +25,6 @@ const meta: Meta<ListButtonStoryArgs> = {
     startIcon: {
       control: 'select',
       options: ['Нет', ...icon28Names],
-    },
-    className: {
-      table: { disable: true },
     },
     pressed: {
       control: 'boolean',

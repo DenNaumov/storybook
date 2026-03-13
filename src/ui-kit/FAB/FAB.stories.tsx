@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { FAB } from './fab';
 import { ResizableIcon } from '../icon/icon-wrappers';
 import { ResizableIcons, type ResizableIconKeys } from '../icon/packs/resizable';
@@ -32,9 +32,6 @@ const meta: Meta<FABStoryArgs> = {
     icon: {
       control: 'select',
       options: ['Нет', ...resizableIconNames],
-    },
-    className: {
-      table: { disable: true },
     },
     pressed: {
       control: 'boolean',
