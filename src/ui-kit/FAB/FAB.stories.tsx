@@ -1,18 +1,16 @@
+import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { FAB } from './FAB';
 import { ResizableIcon } from '../Icon/IconWrappers';
 import { ResizableIcons, type ResizableIconKeys } from '../Icon/packs/resizable';
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
-const resizableIconMapping = resizableIconNames.reduce<Record<ResizableIconKeys, JSX.Element>>(
-  (acc, name) => {
-    acc[name] = <ResizableIcon icon={name} size={24} />;
-    return acc;
-  },
-  {} as Record<ResizableIconKeys, JSX.Element>
-);
 
-const meta: Meta<typeof FAB> = {
+type FABStoryArgs = Omit<ComponentProps<typeof FAB>, 'icon'> & {
+  icon?: ResizableIconKeys | 'Нет';
+};
+
+const meta: Meta<FABStoryArgs> = {
   title: 'UI Kit/FAB',
   component: FAB,
   parameters: {
@@ -34,7 +32,6 @@ const meta: Meta<typeof FAB> = {
     icon: {
       control: 'select',
       options: ['Нет', ...resizableIconNames],
-      mapping: { 'Нет': undefined, ...resizableIconMapping },
     },
     className: {
       table: { disable: true },
@@ -49,9 +46,11 @@ const meta: Meta<typeof FAB> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof FAB>;
+type Story = StoryObj<FABStoryArgs>;
 
-const AddIcon = resizableIconMapping.Add01;
+const renderIcon = (icon?: ResizableIconKeys | 'Нет') => (
+  icon && icon !== 'Нет' ? <ResizableIcon icon={icon} size={24} /> : undefined
+);
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
@@ -76,25 +75,25 @@ export const Showcase: Story = {
       {/* Default Stat Row */}
       <div style={{ opacity: 0.8 }}>Default</div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <FAB variant="primary" icon={AddIcon} />
+        <FAB variant="primary" icon={renderIcon('Add01')} />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <FAB variant="bezeled" icon={AddIcon} />
+        <FAB variant="bezeled" icon={renderIcon('Add01')} />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <FAB variant="white" icon={AddIcon} />
+        <FAB variant="white" icon={renderIcon('Add01')} />
       </div>
 
       {/* Pressed State Row */}
       <div style={{ opacity: 0.8 }}>Pressed</div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <FAB variant="primary" icon={AddIcon} pressed />
+        <FAB variant="primary" icon={renderIcon('Add01')} pressed />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <FAB variant="bezeled" icon={AddIcon} pressed />
+        <FAB variant="bezeled" icon={renderIcon('Add01')} pressed />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <FAB variant="white" icon={AddIcon} pressed />
+        <FAB variant="white" icon={renderIcon('Add01')} pressed />
       </div>
     </div>
   ),
@@ -103,8 +102,11 @@ export const Showcase: Story = {
 export const Playground: Story = {
   args: {
     variant: 'primary',
-    icon: AddIcon,
+    icon: 'Add01',
     pressed: false,
     disabled: false,
   },
+  render: ({ icon, ...args }) => (
+    <FAB {...args} icon={renderIcon(icon)} />
+  ),
 };

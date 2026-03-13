@@ -1,18 +1,16 @@
+import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ListButton } from './ListButton';
 import { Icon28 } from '../Icon/IconWrappers';
 import { Icon28Icons, type Icon28IconKeys } from '../Icon/packs/28';
 
 const icon28Names = Object.keys(Icon28Icons) as Icon28IconKeys[];
-const icon28Mapping = icon28Names.reduce<Record<Icon28IconKeys, JSX.Element>>(
-  (acc, name) => {
-    acc[name] = <Icon28 icon={name} size={28} />;
-    return acc;
-  },
-  {} as Record<Icon28IconKeys, JSX.Element>
-);
 
-const meta: Meta<typeof ListButton> = {
+type ListButtonStoryArgs = Omit<ComponentProps<typeof ListButton>, 'startIcon'> & {
+  startIcon?: Icon28IconKeys | 'Нет';
+};
+
+const meta: Meta<ListButtonStoryArgs> = {
   title: 'UI Kit/ListButton',
   component: ListButton,
   parameters: {
@@ -27,7 +25,6 @@ const meta: Meta<typeof ListButton> = {
     startIcon: {
       control: 'select',
       options: ['Нет', ...icon28Names],
-      mapping: { 'Нет': undefined, ...icon28Mapping },
     },
     className: {
       table: { disable: true },
@@ -42,9 +39,11 @@ const meta: Meta<typeof ListButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ListButton>;
+type Story = StoryObj<ListButtonStoryArgs>;
 
-const PersonAddIcon = icon28Mapping.PersonAdd;
+const renderIcon = (icon?: Icon28IconKeys | 'Нет') => (
+  icon && icon !== 'Нет' ? <Icon28 icon={icon} size={28} /> : undefined
+);
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
@@ -59,9 +58,9 @@ export const Showcase: Story = {
       borderRadius: '24px'
     }}>
       {/* With Icon */}
-      <ListButton label="Button_text" startIcon={PersonAddIcon} />
-      <ListButton label="Button_text" startIcon={PersonAddIcon} disabled />
-      <ListButton label="Button_text" startIcon={PersonAddIcon} pressed />
+      <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} />
+      <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} disabled />
+      <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} pressed />
 
       {/* Without Icon */}
       <ListButton label="Button_text" />
@@ -74,8 +73,11 @@ export const Showcase: Story = {
 export const Playground: Story = {
   args: {
     label: 'Button_text',
-    startIcon: PersonAddIcon,
+    startIcon: 'PersonAdd',
     pressed: false,
     disabled: false,
   },
+  render: ({ startIcon, ...args }) => (
+    <ListButton {...args} startIcon={renderIcon(startIcon)} />
+  ),
 };

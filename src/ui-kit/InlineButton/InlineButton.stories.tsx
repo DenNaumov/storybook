@@ -1,18 +1,16 @@
+import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { InlineButton } from './InlineButton';
 import { ResizableIcon } from '../Icon/IconWrappers';
 import { ResizableIcons, type ResizableIconKeys } from '../Icon/packs/resizable';
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
-const resizableIconMapping = resizableIconNames.reduce<Record<ResizableIconKeys, JSX.Element>>(
-  (acc, name) => {
-    acc[name] = <ResizableIcon icon={name} size={24} />;
-    return acc;
-  },
-  {} as Record<ResizableIconKeys, JSX.Element>
-);
 
-const meta: Meta<typeof InlineButton> = {
+type InlineButtonStoryArgs = Omit<ComponentProps<typeof InlineButton>, 'icon'> & {
+  icon: ResizableIconKeys;
+};
+
+const meta: Meta<InlineButtonStoryArgs> = {
   title: 'UI Kit/InlineButton',
   component: InlineButton,
   parameters: {
@@ -31,7 +29,6 @@ const meta: Meta<typeof InlineButton> = {
     icon: {
       control: 'select',
       options: resizableIconNames,
-      mapping: resizableIconMapping,
     },
     className: {
       table: { disable: true },
@@ -43,7 +40,11 @@ const meta: Meta<typeof InlineButton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof InlineButton>;
+type Story = StoryObj<InlineButtonStoryArgs>;
+
+const renderIcon = (icon: ResizableIconKeys) => (
+  <ResizableIcon icon={icon} size={24} />
+);
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
@@ -58,9 +59,9 @@ export const Showcase: Story = {
       alignItems: 'center'
     }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '45px' }}>
-        <InlineButton variant="surface" icon={resizableIconMapping.CalendarRemove24} label="Сбросить" />
-        <InlineButton variant="bezeled" icon={resizableIconMapping.CalendarRemove24} label="Сбросить" />
-        <InlineButton variant="primary" icon={resizableIconMapping.CalendarRemove24} label="Сбросить" />
+        <InlineButton variant="surface" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
+        <InlineButton variant="bezeled" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
+        <InlineButton variant="primary" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
       </div>
     </div>
   ),
@@ -69,8 +70,11 @@ export const Showcase: Story = {
 export const Playground: Story = {
   args: {
     label: 'Сбросить',
-    icon: resizableIconMapping.CalendarRemove24,
+    icon: 'CalendarRemove24',
     variant: 'surface',
     disabled: false,
   },
+  render: ({ icon, ...args }) => (
+    <InlineButton {...args} icon={renderIcon(icon)} />
+  ),
 };
