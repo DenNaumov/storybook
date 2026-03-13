@@ -1,8 +1,9 @@
 .stage {
   min-height: 100vh;
   padding: 48px 56px 80px;
-  background: radial-gradient(circle at 20% 0%, #1a1a1a, #0b0b0b 55%);
-  color: #cfcfcf;
+  background:
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--theme-bg-brand-main) 14%, var(--theme-bg-brand-light)), var(--theme-bg-brand-light) 55%);
+  color: var(--theme-text-secondary);
   font-family: 'Manrope', 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -16,7 +17,7 @@
 .title {
   font-size: 20px;
   font-weight: 600;
-  color: #b3a3ff;
+  color: var(--theme-text-brand-main);
   letter-spacing: 0.02em;
 }
 
@@ -28,15 +29,15 @@
 .chip {
   padding: 6px 12px;
   border-radius: 999px;
-  background: #f2f4f8;
-  color: #0d0d0d;
+  background: var(--theme-bg-surface-primary);
+  color: var(--theme-text-primary);
   font-size: 12px;
   font-weight: 600;
 }
 
 .sectionTitle {
   margin: 28px 0 16px;
-  color: #e6e6e6;
+  color: var(--theme-text-primary);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -48,8 +49,8 @@
   gap: 16px 20px;
   padding: 20px 24px;
   border-radius: 18px;
-  border: 1px dashed rgba(178, 136, 255, 0.35);
-  background: rgba(0, 0, 0, 0.35);
+  border: 1px dashed color-mix(in srgb, var(--theme-border-brand-main) 40%, transparent);
+  background: color-mix(in srgb, var(--theme-bg-surface-primary) 88%, transparent);
 }
 
 .playgroundGrid {
@@ -58,13 +59,13 @@
   gap: 16px 20px;
   padding: 20px 24px;
   border-radius: 18px;
-  border: 1px dashed rgba(178, 136, 255, 0.35);
-  background: rgba(0, 0, 0, 0.35);
+  border: 1px dashed color-mix(in srgb, var(--theme-border-brand-main) 40%, transparent);
+  background: color-mix(in srgb, var(--theme-bg-surface-primary) 88%, transparent);
   align-items: center;
 }
 
 .gridHead {
-  color: #a0a0a0;
+  color: var(--theme-text-secondary);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -73,10 +74,10 @@
 
 .rowLabel {
   align-self: center;
-  color: #d8d8d8;
   font-size: 12px;
-  background: #f0f2f6;
-  color: #0f0f10;
+  background: var(--theme-bg-surface-primary);
+  color: var(--theme-text-primary);
+  border: 1px solid var(--theme-border-default);
   padding: 6px 10px;
   border-radius: 10px;
   width: fit-content;

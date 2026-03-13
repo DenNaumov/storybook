@@ -10,10 +10,6 @@ const meta: Meta = {
   title: 'UI Kit/Icons',
   parameters: {
     layout: 'fullscreen',
-    backgrounds: {
-      default: 'dark',
-      values: [{ name: 'dark', value: '#0F0F0F' }],
-    },
   },
 };
 
@@ -28,7 +24,7 @@ const iconsResizable = Object.keys(ResizableIcons) as ResizableIconKeys[];
 const listStyles = {
   page: {
     minHeight: '100vh',
-    backgroundColor: '#0F0F0F',
+    backgroundColor: 'var(--theme-bg-brand-light)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -39,7 +35,7 @@ const listStyles = {
     flexWrap: 'wrap' as const,
     gap: '8px',
     padding: 0,
-    color: '#EDEDED',
+    color: 'var(--theme-icon-default)',
     fontFamily: 'sans-serif',
     backgroundColor: 'transparent',
     width: 'fit-content',
@@ -53,8 +49,8 @@ const listStyles = {
     gap: '10px',
     padding: '6px 10px',
     borderRadius: '6px',
-    backgroundColor: 'rgba(255,255,255,0.04)',
-    border: '1px solid rgba(255,255,255,0.08)',
+    backgroundColor: 'var(--theme-bg-surface-primary)',
+    border: '1px solid var(--theme-border-default)',
     minWidth: '200px',
     flex: '0 0 200px',
   },
@@ -95,7 +91,7 @@ export const Pack16_List: StoryObj = {
 export const Pack16_Playground: StoryObj = {
   args: {
     icon: icons16[0],
-    color: '#2990FF',
+    color: 'var(--theme-icon-brand-main)',
   },
   argTypes: {
     icon: { control: 'select', options: icons16 },
@@ -131,7 +127,7 @@ export const Pack20_List: StoryObj = {
 export const Pack20_Playground: StoryObj = {
   args: {
     icon: icons20[0],
-    color: '#2990FF',
+    color: 'var(--theme-icon-brand-main)',
   },
   argTypes: {
     icon: { control: 'select', options: icons20 },
@@ -167,7 +163,7 @@ export const Pack24_List: StoryObj = {
 export const Pack24_Playground: StoryObj = {
   args: {
     icon: icons24[0],
-    color: '#2990FF',
+    color: 'var(--theme-icon-brand-main)',
   },
   argTypes: {
     icon: { control: 'select', options: icons24 },
@@ -203,7 +199,7 @@ export const Pack28_List: StoryObj = {
 export const Pack28_Playground: StoryObj = {
   args: {
     icon: icons28[0],
-    color: '#2990FF',
+    color: 'var(--theme-icon-brand-main)',
   },
   argTypes: {
     icon: { control: 'select', options: icons28 },
@@ -238,9 +234,9 @@ export const Resizable_List: StoryObj = {
 
 export const Resizable_Playground: StoryObj = {
   args: {
-    icon: "AddCircle28",
+    icon: 'AddCircle28',
     size: 40,
-    color: "#4444aa",
+    color: 'var(--theme-icon-brand-main)',
   },
   argTypes: {
     icon: {
@@ -263,5 +259,5 @@ export const Resizable_Playground: StoryObj = {
         </div>
       </div>
     </div>
-  )
+  ),
 };
