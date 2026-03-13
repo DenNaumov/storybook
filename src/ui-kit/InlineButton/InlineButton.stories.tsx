@@ -74,7 +74,8 @@ export const Playground: Story = {
     variant: 'surface',
     disabled: false,
   },
-  render: ({ icon, ...args }) => (
-    <InlineButton {...args} icon={renderIcon(icon)} />
-  ),
+  render: (args: InlineButtonStoryArgs) => {
+    const { icon, ...inlineButtonArgs } = args;
+    return <InlineButton {...inlineButtonArgs} icon={renderIcon(icon)} />;
+  },
 };

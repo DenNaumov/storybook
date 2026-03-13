@@ -77,7 +77,8 @@ export const Playground: Story = {
     pressed: false,
     disabled: false,
   },
-  render: ({ startIcon, ...args }) => (
-    <ListButton {...args} startIcon={renderIcon(startIcon)} />
-  ),
+  render: (args: ListButtonStoryArgs) => {
+    const { startIcon, ...listButtonArgs } = args;
+    return <ListButton {...listButtonArgs} startIcon={renderIcon(startIcon)} />;
+  },
 };

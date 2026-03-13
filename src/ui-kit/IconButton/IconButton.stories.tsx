@@ -66,7 +66,7 @@ export const Playground: Story = {
     iconSize: 'm',
     badgeCount: undefined,
   },
-  render: (args) => {
+  render: (args: IconButtonStoryArgs) => {
     const { icon, ...iconButtonArgs } = args;
     const size = iconSizeToPixels[args.iconSize ?? 'm'];
     return (

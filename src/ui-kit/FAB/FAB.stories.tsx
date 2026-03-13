@@ -106,7 +106,8 @@ export const Playground: Story = {
     pressed: false,
     disabled: false,
   },
-  render: ({ icon, ...args }) => (
-    <FAB {...args} icon={renderIcon(icon)} />
-  ),
+  render: (args: FABStoryArgs) => {
+    const { icon, ...fabArgs } = args;
+    return <FAB {...fabArgs} icon={renderIcon(icon)} />;
+  },
 };

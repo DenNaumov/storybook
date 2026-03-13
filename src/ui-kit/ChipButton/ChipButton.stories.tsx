@@ -140,11 +140,14 @@ export const Playground: Story = {
     active: false,
     disabled: false,
   },
-  render: ({ startIcon, endIcon, ...args }) => (
-    <ChipButton
-      {...args}
-      startIcon={renderIcon(startIcon)}
-      endIcon={renderIcon(endIcon)}
-    />
-  ),
+  render: (args: ChipButtonStoryArgs) => {
+    const { startIcon, endIcon, ...chipButtonArgs } = args;
+    return (
+      <ChipButton
+        {...chipButtonArgs}
+        startIcon={renderIcon(startIcon)}
+        endIcon={renderIcon(endIcon)}
+      />
+    );
+  },
 };

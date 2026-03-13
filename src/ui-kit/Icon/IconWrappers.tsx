@@ -1,9 +1,25 @@
+import type { ComponentType, SVGProps } from 'react';
 import type { CommonIconProps } from './Icon.types';
 import { Icon16Icons, type Icon16IconKeys } from './packs/16';
 import { Icon20Icons, type Icon20IconKeys } from './packs/20';
 import { Icon24Icons, type Icon24IconKeys } from './packs/24';
 import { Icon28Icons, type Icon28IconKeys } from './packs/28';
 import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
+
+type SvgComponent = ComponentType<SVGProps<SVGSVGElement>>;
+type SvgModule = SvgComponent | { default?: SvgComponent };
+
+const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
+  if (typeof iconModule === 'function') {
+    return iconModule;
+  }
+
+  if (iconModule && typeof iconModule === 'object' && typeof iconModule.default === 'function') {
+    return iconModule.default;
+  }
+
+  throw new Error('Invalid SVG icon module.');
+};
 
 export interface Icon16Props extends CommonIconProps {
   icon: Icon16IconKeys;
@@ -27,31 +43,31 @@ export interface ResizableIconProps extends CommonIconProps {
 
 /** Иконки размером 16x16 */
 export const Icon16 = ({ icon, size = 16, color, ...props }: Icon16Props) => {
-  const Icon = Icon16Icons[icon];
+  const Icon = resolveSvgComponent(Icon16Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
 /** Иконки размером 20x20 */
 export const Icon20 = ({ icon, size = 20, color, ...props }: Icon20Props) => {
-  const Icon = Icon20Icons[icon];
+  const Icon = resolveSvgComponent(Icon20Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
 /** Иконки размером 24x24 */
 export const Icon24 = ({ icon, size = 24, color, ...props }: Icon24Props) => {
-  const Icon = Icon24Icons[icon];
+  const Icon = resolveSvgComponent(Icon24Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
 /** Иконки размером 28x28 */
 export const Icon28 = ({ icon, size = 28, color, ...props }: Icon28Props) => {
-  const Icon = Icon28Icons[icon];
+  const Icon = resolveSvgComponent(Icon28Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
 /** Иконки со свободным размером из пакета resizable */
 export const ResizableIcon = ({ icon, size = 24, color, ...props }: ResizableIconProps) => {
-  const IconComponent = ResizableIcons[icon];
+  const IconComponent = resolveSvgComponent(ResizableIcons[icon] as SvgModule);
   return <IconComponent width={size} height={size} color={color} {...props} style={{ width: size, height: size, ...props.style }} />;
 };
 
