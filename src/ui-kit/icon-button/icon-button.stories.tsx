@@ -19,11 +19,7 @@ const meta: Meta<IconButtonStoryArgs> = {
   title: 'UI Kit/IconButton',
   component: IconButton,
   parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'dark',
-      values: [{ name: 'dark', value: '#121212' }],
-    },
+    layout: 'fullscreen',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -56,6 +52,57 @@ type Story = StoryObj<IconButtonStoryArgs>;
 
 const NotificationsIcon = <Icon24 icon="Notifications" size={24} />;
 
+const stageStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  minHeight: '100vh',
+  padding: '48px 56px 80px',
+  backgroundColor: 'var(--theme-bg-tabbar)',
+} as const;
+
+const surfaceStyle = {
+  display: 'grid',
+  gridTemplateColumns: '120px 100px 100px',
+  gap: '32px 60px',
+  alignItems: 'center',
+  padding: '40px',
+  backgroundColor: 'var(--theme-bg-brand-light)',
+  border: '1px solid var(--theme-border-default)',
+  borderRadius: '24px',
+  color: 'var(--theme-text-primary)',
+  fontFamily: 'sans-serif',
+} as const;
+
+const headerCellStyle = {
+  textAlign: 'center',
+  color: 'var(--theme-text-secondary)',
+  fontSize: '12px',
+} as const;
+
+const sectionLabelStyle = {
+  gridColumn: '1 / 4',
+  textAlign: 'center',
+  margin: '16px 0',
+  color: 'var(--theme-text-secondary)',
+} as const;
+
+const sectionLabelWideStyle = {
+  gridColumn: '1 / 4',
+  textAlign: 'center',
+  margin: '32px 0 16px',
+  color: 'var(--theme-text-secondary)',
+} as const;
+
+const rowLabelStyle = {
+  color: 'var(--theme-text-secondary)',
+} as const;
+
+const centeredStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+} as const;
+
 export const Playground: Story = {
   args: {
     icon: 'Add01',
@@ -67,10 +114,18 @@ export const Playground: Story = {
     const { icon, ...iconButtonArgs } = args;
     const size = iconSizeToPixels[args.iconSize ?? 'm'];
     return (
-      <IconButton
-        {...iconButtonArgs}
-        icon={<ResizableIcon icon={icon} size={size} />}
-      />
+      <div style={stageStyle}>
+        <div style={surfaceStyle}>
+          <div />
+          <div style={headerCellStyle}>Playground</div>
+          <div style={centeredStyle}>
+            <IconButton
+              {...iconButtonArgs}
+              icon={<ResizableIcon icon={icon} size={size} />}
+            />
+          </div>
+        </div>
+      </div>
     );
   },
 };
@@ -78,66 +133,54 @@ export const Playground: Story = {
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: '120px 100px 100px',
-      gap: '32px 60px',
-      alignItems: 'center',
-      padding: '40px',
-      backgroundColor: '#121212',
-      borderRadius: '24px',
-      color: '#FFFFFF',
-      fontFamily: 'sans-serif'
-    }}>
-      {/* Column Headers */}
-      <div />
-      <div style={{ textAlign: 'center', opacity: 0.6, fontSize: '12px' }}>ButtonSize=M</div>
-      <div style={{ textAlign: 'center', opacity: 0.6, fontSize: '12px' }}>ButtonSize=S</div>
+    <div style={stageStyle}>
+      <div style={surfaceStyle}>
+        <div />
+        <div style={headerCellStyle}>ButtonSize=M</div>
+        <div style={headerCellStyle}>ButtonSize=S</div>
 
-      {/* Row: IconSize=M */}
-      <div style={{ gridColumn: '1 / 4', textAlign: 'center', margin: '16px 0', opacity: 0.8 }}>IconSize=M</div>
+        <div style={sectionLabelStyle}>IconSize=M</div>
 
-      <div style={{ opacity: 0.6 }}>Default</div>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" /></center>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" /></center>
+        <div style={rowLabelStyle}>Default</div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" /></div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" /></div>
 
-      <div style={{ opacity: 0.6 }}>Pressed</div>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" pressed /></center>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" pressed /></center>
+        <div style={rowLabelStyle}>Pressed</div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" pressed /></div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" pressed /></div>
 
-      <div style={{ opacity: 0.6 }}>Disabled</div>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" disabled /></center>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" disabled /></center>
+        <div style={rowLabelStyle}>Disabled</div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" disabled /></div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" disabled /></div>
 
-      {/* Row: IconSize=S */}
-      <div style={{ gridColumn: '1 / 4', textAlign: 'center', margin: '32px 0 16px', opacity: 0.8 }}>IconSize=S</div>
+        <div style={sectionLabelWideStyle}>IconSize=S</div>
 
-      <div style={{ opacity: 0.6 }}>Default</div>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" /></center>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" /></center>
+        <div style={rowLabelStyle}>Default</div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" /></div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" /></div>
 
-      <div style={{ opacity: 0.6 }}>Pressed</div>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" pressed /></center>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" pressed /></center>
+        <div style={rowLabelStyle}>Pressed</div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" pressed /></div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" pressed /></div>
 
-      <div style={{ opacity: 0.6 }}>Disabled</div>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" disabled /></center>
-      <center><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" disabled /></center>
+        <div style={rowLabelStyle}>Disabled</div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" disabled /></div>
+        <div style={centeredStyle}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" disabled /></div>
 
-      {/* Row: Badge */}
-      <div style={{ gridColumn: '1 / 4', textAlign: 'center', margin: '32px 0 16px', opacity: 0.8 }}>Badge=Yes</div>
+        <div style={sectionLabelWideStyle}>Badge=Yes</div>
 
-      <div style={{ opacity: 0.6 }}>Default</div>
-      <center><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" /></center>
-      <div />
+        <div style={rowLabelStyle}>Default</div>
+        <div style={centeredStyle}><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" /></div>
+        <div />
 
-      <div style={{ opacity: 0.6 }}>Pressed</div>
-      <center><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" pressed /></center>
-      <div />
+        <div style={rowLabelStyle}>Pressed</div>
+        <div style={centeredStyle}><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" pressed /></div>
+        <div />
 
-      <div style={{ opacity: 0.6 }}>Disabled</div>
-      <center><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" disabled /></center>
-      <div />
+        <div style={rowLabelStyle}>Disabled</div>
+        <div style={centeredStyle}><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" disabled /></div>
+        <div />
+      </div>
     </div>
   ),
 };

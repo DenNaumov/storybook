@@ -10,8 +10,7 @@
   cursor: pointer;
   position: relative;
   transition: opacity 0.2s ease;
-  color: #2990FF;
-  /* blueTheme/dark/icon/brandMain */
+  color: var(--theme-icon-brand-main);
 }
 
 /* Button Sizes */
@@ -69,12 +68,11 @@
   width: 20px;
   min-width: 20px;
   height: 20px;
-  background: #E53935;
-  /* blueTheme/dark/bgFill/error */
+  background: var(--theme-bg-fill-error);
   border-radius: 20px;
 
   /* Typography */
-  color: #FFFFFF;
+  color: var(--theme-text-on-main);
   font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
   font-weight: 590;
   font-size: 13px;
