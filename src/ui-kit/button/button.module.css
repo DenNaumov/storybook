@@ -31,31 +31,24 @@
 
 /* Variants */
 .variantPrimary {
-  background: #2990FF;
-  /* blueTheme/dark/bgFill/brandMain */
-  color: #FFFFFF;
-  /* blueTheme/dark/text/onMain */
+  background: var(--theme-bg-fill-brand-main);
+  color: var(--theme-text-on-main);
 }
 
 .variantBezeled {
-  background: rgba(41, 144, 255, 0.15);
-  /* From Figma layers */
-  color: #2990FF;
-  /* blueTheme/dark/text/brandMain */
+  background: color-mix(in srgb, var(--theme-bg-fill-brand-main) 15%, transparent);
+  color: var(--theme-text-brand-main);
 }
 
 .variantOutlined {
   background: transparent;
-  border: 1px solid #494C4E;
-  /* blueTheme/dark/border/default */
-  color: #FFFFFF;
-  /* blueTheme/dark/text/onMain */
+  border: 1px solid var(--theme-border-default);
+  color: var(--theme-text-on-main);
 }
 
 .variantText {
   background: transparent;
-  color: #2990FF;
-  /* blueTheme/dark/text/brandMain */
+  color: var(--theme-text-brand-main);
 }
 
 /* States */
