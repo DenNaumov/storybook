@@ -1,23 +1,26 @@
-import type { Preview } from '@storybook/nextjs'
+import type { Preview } from '@storybook/nextjs';
 
-import '../src/styles/globals.css'
+import '../src/styles/globals.css';
+import { ThemeProvider } from '../src/ui-kit/theme';
+import type { ThemeColor, ThemeMode } from '../src/ui-kit/theme';
 
 const preview: Preview = {
   globalTypes: {
-    theme: {
-      name: 'Theme',
-      description: 'Active color theme',
+    themeColor: {
+      name: 'Theme color',
+      description: 'Active brand theme',
       defaultValue: 'blue',
       toolbar: {
         icon: 'paintbrush',
         items: [
           { value: 'blue', title: 'Blue' },
+          { value: 'pink', title: 'Pink' },
         ],
       },
     },
-    colorScheme: {
-      name: 'Color scheme',
-      description: 'Active color scheme',
+    themePreference: {
+      name: 'Theme mode',
+      description: 'Active theme mode',
       defaultValue: 'dark',
       toolbar: {
         icon: 'mirror',
@@ -30,13 +33,13 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      const theme = String(context.globals.theme ?? 'blue');
-      const colorScheme = String(context.globals.colorScheme ?? 'dark');
+      const themeColor = (context.globals.themeColor ?? 'blue') as ThemeColor;
+      const themePreference = (context.globals.themePreference ?? 'dark') as ThemeMode;
 
       return (
-        <div data-theme={theme} data-color-scheme={colorScheme}>
+        <ThemeProvider defaultColor={themeColor} defaultPreference={themePreference}>
           <Story />
-        </div>
+        </ThemeProvider>
       );
     },
   ],
