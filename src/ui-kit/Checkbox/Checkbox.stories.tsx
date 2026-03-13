@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { Checkbox } from './Checkbox';
 import styles from './Checkbox.stories.module.css';

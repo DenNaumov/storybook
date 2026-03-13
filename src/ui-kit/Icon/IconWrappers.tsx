@@ -7,7 +7,7 @@ import { Icon28Icons, type Icon28IconKeys } from './packs/28';
 import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
 
 type SvgComponent = ComponentType<SVGProps<SVGSVGElement>>;
-type SvgModule = SvgComponent | { default?: SvgComponent };
+type SvgModule = SvgComponent | { default?: SvgComponent; ReactComponent?: SvgComponent };
 
 const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
   if (typeof iconModule === 'function') {
@@ -16,6 +16,10 @@ const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
 
   if (iconModule && typeof iconModule === 'object' && typeof iconModule.default === 'function') {
     return iconModule.default;
+  }
+
+  if (iconModule && typeof iconModule === 'object' && typeof iconModule.ReactComponent === 'function') {
+    return iconModule.ReactComponent;
   }
 
   throw new Error('Invalid SVG icon module.');

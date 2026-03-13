@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { RadioButton } from './RadioButton';
 import styles from './RadioButton.stories.module.css';

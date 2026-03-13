@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Typography, TypographyVariant } from './Typography';
 import styles from './Typography.stories.module.css';
 
