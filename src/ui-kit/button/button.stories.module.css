@@ -1,8 +1,7 @@
 .stage {
   min-height: 100vh;
   padding: 48px 56px 80px;
-  background:
-    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--theme-bg-brand-main) 14%, var(--theme-bg-brand-light)), var(--theme-bg-brand-light) 55%);
+  background: var(--theme-bg-brand-light);
   color: var(--theme-text-secondary);
   font-family: 'Manrope', 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
@@ -49,8 +48,8 @@
   gap: 16px 20px;
   padding: 20px 24px;
   border-radius: 18px;
-  border: 1px dashed color-mix(in srgb, var(--theme-border-brand-main) 40%, transparent);
-  background: color-mix(in srgb, var(--theme-bg-surface-primary) 88%, transparent);
+  border: 1px solid var(--theme-border-default);
+  background: var(--theme-bg-surface-primary);
 }
 
 .playgroundGrid {
@@ -59,8 +58,8 @@
   gap: 16px 20px;
   padding: 20px 24px;
   border-radius: 18px;
-  border: 1px dashed color-mix(in srgb, var(--theme-border-brand-main) 40%, transparent);
-  background: color-mix(in srgb, var(--theme-bg-surface-primary) 88%, transparent);
+  border: 1px solid var(--theme-border-default);
+  background: var(--theme-bg-surface-primary);
   align-items: center;
 }
 
