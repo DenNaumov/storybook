@@ -9,7 +9,7 @@ import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
 type SvgComponent = ComponentType<SVGProps<SVGSVGElement>>;
 type SvgModule = SvgComponent | { default?: SvgComponent; ReactComponent?: SvgComponent };
 
-const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
+export const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
   if (typeof iconModule === 'function') {
     return iconModule;
   }
