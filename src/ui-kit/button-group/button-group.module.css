@@ -17,8 +17,7 @@
 /* Spacing */
 .withSpacing {
   padding: 8px 16px;
-  background: #0F0F0F;
-  /* Matches Figma spec for spacing=true */
+  background: var(--theme-bg-tabbar);
 }
 
 /* Gap */
