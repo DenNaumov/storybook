@@ -4,6 +4,7 @@ import { Button } from '../button/button';
 import { ChipButton } from '../chip-button/chip-button';
 import { InlineButton } from '../inline-button/inline-button';
 import { ResizableIcon } from '../icon/icon-wrappers';
+import styles from './button-group.stories.module.css';
 
 const meta: Meta<typeof ButtonGroup> = {
   title: 'UI Kit/ButtonGroup',
@@ -21,29 +22,10 @@ const SortIcon = <ResizableIcon icon="ArrowUpDown" size={24} />;
 
 const CalendarRemoveIcon = <ResizableIcon icon="CalendarRemove24" size={24} />;
 
-const stageStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-  minHeight: '100vh',
-  padding: '48px 56px 80px',
-  backgroundColor: 'var(--theme-bg-tabbar)',
-} as const;
-
-const surfaceStyle = {
-  display: 'grid',
-  gridTemplateColumns: '400px 400px',
-  gap: '40px',
-  padding: '40px',
-  backgroundColor: 'var(--theme-bg-brand-light)',
-  border: '1px solid var(--theme-border-default)',
-  borderRadius: '24px',
-} as const;
-
 export const Showcase: Story = {
   render: () => (
-    <div style={stageStyle}>
-      <div style={surfaceStyle}>
+    <div className={styles.stage}>
+      <div className={styles.surface}>
         <ButtonGroup direction="vertical" withSpacing>
           <Button variant="primary" label="Сохранить" />
         </ButtonGroup>

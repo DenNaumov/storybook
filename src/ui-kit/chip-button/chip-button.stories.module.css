@@ -1,0 +1,38 @@
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 56px 80px;
+  min-height: 100vh;
+  background-color: var(--theme-bg-tabbar);
+}
+
+.surface {
+  display: grid;
+  grid-template-columns: min-content min-content min-content;
+  gap: 24px 88px;
+  align-items: center;
+  padding: 40px;
+  background-color: var(--theme-bg-brand-light);
+  border: 1px solid var(--theme-border-default);
+  border-radius: 24px;
+  color: var(--theme-text-primary);
+  font-family: sans-serif;
+}
+
+.headerCell {
+  text-align: center;
+  color: var(--theme-text-secondary);
+  font-size: 12px;
+}
+
+.centeredCell {
+  justify-self: center;
+}
+
+.playgroundSurface {
+  padding: 40px;
+  background-color: var(--theme-bg-brand-light);
+  border: 1px solid var(--theme-border-default);
+  border-radius: 24px;
+}

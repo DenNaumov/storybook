@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs';
 import { ChipButton } from './chip-button';
 import { ResizableIcon } from '../icon/icon-wrappers';
 import { ResizableIcons, type ResizableIconKeys } from '../icon/packs/resizable';
+import styles from './chip-button.stories.module.css';
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
@@ -47,62 +48,14 @@ const renderIcon = (icon?: ResizableIconKeys | 'Нет') => (
   icon && icon !== 'Нет' ? <ResizableIcon icon={icon} size={24} /> : undefined
 );
 
-const showcaseStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-  padding: '48px 56px 80px',
-  minHeight: '100vh',
-  backgroundColor: 'var(--theme-bg-tabbar)',
-} as const;
-
-const showcaseGridStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'min-content min-content min-content',
-  gap: '24px 88px',
-  alignItems: 'center',
-  padding: '40px',
-  backgroundColor: 'var(--theme-bg-brand-light)',
-  border: '1px solid var(--theme-border-default)',
-  borderRadius: '24px',
-  color: 'var(--theme-text-primary)',
-  fontFamily: 'sans-serif',
-} as const;
-
-const headerCellStyle = {
-  textAlign: 'center',
-  color: 'var(--theme-text-secondary)',
-  fontSize: '12px',
-} as const;
-
-const centeredCellStyle = {
-  justifySelf: 'center',
-} as const;
-
-const playgroundStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'flex-start',
-  padding: '48px 56px 80px',
-  minHeight: '100vh',
-  backgroundColor: 'var(--theme-bg-tabbar)',
-} as const;
-
-const playgroundSurfaceStyle = {
-  padding: '40px',
-  backgroundColor: 'var(--theme-bg-brand-light)',
-  border: '1px solid var(--theme-border-default)',
-  borderRadius: '24px',
-} as const;
-
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={showcaseStyle}>
-      <div style={showcaseGridStyle}>
-        <div style={headerCellStyle}>ButtonSize=S</div>
-        <div style={headerCellStyle}>ButtonSize=M</div>
-        <div style={headerCellStyle}>ButtonSize=L</div>
+    <div className={styles.stage}>
+      <div className={styles.surface}>
+        <div className={styles.headerCell}>ButtonSize=S</div>
+        <div className={styles.headerCell}>ButtonSize=M</div>
+        <div className={styles.headerCell}>ButtonSize=L</div>
 
         <ChipButton size="s" startIcon={renderIcon('ArrowUpDown')} endIcon={renderIcon('ArrowUpDown')} label="Сортировка" />
         <ChipButton size="m" startIcon={renderIcon('ArrowUpDown')} endIcon={renderIcon('ArrowUpDown')} label="Сортировка" />
@@ -144,9 +97,9 @@ export const Showcase: Story = {
         <ChipButton size="m" label="Сортировка" active disabled />
         <ChipButton size="l" label="Сортировка" active disabled />
 
-        <div style={centeredCellStyle}><ChipButton size="s" startIcon={renderIcon('ArrowUpDown')} /></div>
-        <div style={centeredCellStyle}><ChipButton size="m" startIcon={renderIcon('ArrowUpDown')} /></div>
-        <div style={centeredCellStyle}><ChipButton size="l" startIcon={renderIcon('ArrowUpDown')} /></div>
+        <div className={styles.centeredCell}><ChipButton size="s" startIcon={renderIcon('ArrowUpDown')} /></div>
+        <div className={styles.centeredCell}><ChipButton size="m" startIcon={renderIcon('ArrowUpDown')} /></div>
+        <div className={styles.centeredCell}><ChipButton size="l" startIcon={renderIcon('ArrowUpDown')} /></div>
       </div>
     </div>
   ),
@@ -164,8 +117,8 @@ export const Playground: Story = {
   render: (args: ChipButtonStoryArgs) => {
     const { startIcon, endIcon, ...chipButtonArgs } = args;
     return (
-      <div style={playgroundStyle}>
-        <div style={playgroundSurfaceStyle}>
+      <div className={styles.stage}>
+        <div className={styles.playgroundSurface}>
           <ChipButton
             {...chipButtonArgs}
             startIcon={renderIcon(startIcon)}

@@ -1,0 +1,35 @@
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 48px 56px 80px;
+  background-color: var(--theme-bg-tabbar);
+}
+
+.surface {
+  display: grid;
+  grid-template-columns: 120px 100px 100px 100px;
+  gap: 24px 40px;
+  align-items: center;
+  padding: 40px;
+  background-color: var(--theme-bg-brand-light);
+  border: 1px solid var(--theme-border-default);
+  border-radius: 24px;
+  color: var(--theme-text-primary);
+  font-family: sans-serif;
+}
+
+.headerCell {
+  text-align: center;
+  color: var(--theme-text-secondary);
+}
+
+.rowLabel {
+  color: var(--theme-text-secondary);
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
