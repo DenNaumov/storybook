@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import { Checkbox } from './Checkbox';
-import styles from './Checkbox.stories.module.css';
+import { Checkbox } from './checkbox';
+import styles from './checkbox.stories.module.css';
 
 const meta = {
   title: 'UI Kit/Checkbox',

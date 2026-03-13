@@ -1,7 +1,7 @@
 import type { KeyboardEvent, ReactNode } from 'react';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 
-import styles from './TextLine.module.css';
+import styles from './text-line.module.css';
 
 export interface TextLineProps {
   label?: string;

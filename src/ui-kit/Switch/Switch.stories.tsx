@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import { Switch } from './Switch';
-import styles from './Switch.stories.module.css';
+import { Switch } from './switch';
+import styles from './switch.stories.module.css';
 
 const meta = {
   title: 'UI Kit/Switch',

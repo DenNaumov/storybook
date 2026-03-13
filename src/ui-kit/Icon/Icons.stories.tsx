@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from './IconWrappers';
+import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from './icon-wrappers';
 import { Icon16Icons, type Icon16IconKeys } from './packs/16';
 import { Icon20Icons, type Icon20IconKeys } from './packs/20';
 import { Icon24Icons, type Icon24IconKeys } from './packs/24';

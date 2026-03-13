@@ -1,6 +1,6 @@
 import type { ChangeEventHandler } from 'react';
 
-import styles from './Switch.module.css';
+import styles from './switch.module.css';
 
 export interface SwitchProps {
   checked?: boolean;

@@ -1,6 +1,6 @@
 import type { ChangeEventHandler } from 'react';
 
-import styles from './RadioButton.module.css';
+import styles from './radio-button.module.css';
 
 export interface RadioButtonProps {
   checked?: boolean;

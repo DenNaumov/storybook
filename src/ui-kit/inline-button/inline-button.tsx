@@ -1,5 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './InlineButton.module.css';
+import styles from './inline-button.module.css';
 
 export type InlineButtonVariant = 'surface' | 'bezeled' | 'primary';
 

@@ -1,5 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './ListButton.module.css';
+import styles from './list-button.module.css';
 
 export interface ListButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
     /** Text to display on the button */

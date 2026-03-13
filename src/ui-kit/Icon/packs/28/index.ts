@@ -1,4 +1,4 @@
-import FancyIcon from './FancyIcon.svg';
+import FancyIcon from './fancy-icon.svg';
 import Actions from './actions_28.svg';
 import AddCircle from './add_circle_28.svg';
 import Addhome from './addhome_28.svg';

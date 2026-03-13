@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { Typography, TypographyVariant } from './Typography';
-import styles from './Typography.stories.module.css';
+import { Typography, TypographyVariant } from './typography';
+import styles from './typography.stories.module.css';
 
 const meta = {
     title: 'UI Kit/Typography',

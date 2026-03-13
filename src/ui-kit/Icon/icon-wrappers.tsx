@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from 'react';
-import type { CommonIconProps } from './Icon.types';
+import type { CommonIconProps } from './icon.types';
 import { Icon16Icons, type Icon16IconKeys } from './packs/16';
 import { Icon20Icons, type Icon20IconKeys } from './packs/20';
 import { Icon24Icons, type Icon24IconKeys } from './packs/24';

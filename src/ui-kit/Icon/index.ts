@@ -1,5 +1,5 @@
-export * from './Icon.types';
-export * from './IconWrappers';
+export * from './icon.types';
+export * from './icon-wrappers';
 export * from './packs/16';
 export * from './packs/20';
 export * from './packs/24';

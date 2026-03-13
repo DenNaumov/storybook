@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { ChangeEventHandler } from 'react';
 
-import styles from './Checkbox.module.css';
+import styles from './checkbox.module.css';
 
 export interface CheckboxProps {
   checked?: boolean;

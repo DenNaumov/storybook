@@ -1,5 +1,5 @@
-import { Button } from '../Button/Button';
-import styles from './Header.module.css';
+import { Button } from '../button/button';
+import styles from './header.module.css';
 
 type User = {
   name: string;

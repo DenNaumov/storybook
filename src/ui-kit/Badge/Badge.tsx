@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import styles from './Badge.module.css';
+import styles from './badge.module.css';
 
 export type BadgeVariant = 'primary' | 'error' | 'inverse';
 export type BadgeSize = 'dot' | 'medium' | 'large';

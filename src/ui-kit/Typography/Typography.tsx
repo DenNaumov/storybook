@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Typography.module.css';
+import styles from './typography.module.css';
 
 /** Typography variant combining size and weight according to Figma design */
 export type TypographyVariant =

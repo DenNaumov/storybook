@@ -1,5 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './IconButton.module.css';
+import styles from './icon-button.module.css';
 
 export type IconButtonSize = 's' | 'm';
 export type IconSize = 's' | 'm';

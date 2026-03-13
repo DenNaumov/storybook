@@ -1,8 +1,8 @@
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ChipButton } from './ChipButton';
-import { ResizableIcon } from '../Icon/IconWrappers';
-import { ResizableIcons, type ResizableIconKeys } from '../Icon/packs/resizable';
+import { ChipButton } from './chip-button';
+import { ResizableIcon } from '../icon/icon-wrappers';
+import { ResizableIcons, type ResizableIconKeys } from '../icon/packs/resizable';
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 

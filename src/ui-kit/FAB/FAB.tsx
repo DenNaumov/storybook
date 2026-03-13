@@ -1,5 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './FAB.module.css';
+import styles from './fab.module.css';
 
 export type FABVariant = 'primary' | 'bezeled' | 'white';
 

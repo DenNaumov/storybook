@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import { RadioButton } from './RadioButton';
-import styles from './RadioButton.stories.module.css';
+import { RadioButton } from './radio-button';
+import styles from './radio-button.stories.module.css';
 
 const meta = {
   title: 'UI Kit/RadioButton',

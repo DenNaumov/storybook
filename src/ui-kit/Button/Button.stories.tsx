@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import { Icon24 } from '../Icon';
-import { Icon24Icons, type Icon24IconKeys } from '../Icon/packs/24';
-import { Button } from './Button';
-import styles from './Button.stories.module.css';
+import { Icon24 } from '../icon';
+import { Icon24Icons, type Icon24IconKeys } from '../icon/packs/24';
+import { Button } from './button';
+import styles from './button.stories.module.css';
 
 const meta = {
   title: 'UI Kit/Button',

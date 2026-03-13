@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
-import { TextLine } from './TextLine';
-import styles from './TextLine.stories.module.css';
+import { TextLine } from './text-line';
+import styles from './text-line.stories.module.css';
 
 const meta = {
   title: 'UI Kit/TextLine',

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ButtonGroup } from './ButtonGroup';
-import { Button } from '../Button/Button';
-import { ChipButton } from '../ChipButton/ChipButton';
-import { InlineButton } from '../InlineButton/InlineButton';
-import { ResizableIcon } from '../Icon/IconWrappers';
+import { ButtonGroup } from './button-group';
+import { Button } from '../button/button';
+import { ChipButton } from '../chip-button/chip-button';
+import { InlineButton } from '../inline-button/inline-button';
+import { ResizableIcon } from '../icon/icon-wrappers';
 
 const meta: Meta<typeof ButtonGroup> = {
   title: 'UI Kit/ButtonGroup',

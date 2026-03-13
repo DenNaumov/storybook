@@ -1,5 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './ChipButton.module.css';
+import styles from './chip-button.module.css';
 
 export type ChipButtonSize = 's' | 'm' | 'l';
 

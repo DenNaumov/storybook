@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import styles from './Button.module.css';
+import styles from './button.module.css';
 
 export type ButtonVariant = 'primary' | 'bezeled' | 'outlined' | 'text';
 export type ButtonSize = 's' | 'm' | 'small' | 'medium' | 'large';

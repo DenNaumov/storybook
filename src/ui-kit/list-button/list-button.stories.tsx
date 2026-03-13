@@ -1,8 +1,8 @@
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ListButton } from './ListButton';
-import { Icon28 } from '../Icon/IconWrappers';
-import { Icon28Icons, type Icon28IconKeys } from '../Icon/packs/28';
+import { ListButton } from './list-button';
+import { Icon28 } from '../icon/icon-wrappers';
+import { Icon28Icons, type Icon28IconKeys } from '../icon/packs/28';
 
 const icon28Names = Object.keys(Icon28Icons) as Icon28IconKeys[];
 

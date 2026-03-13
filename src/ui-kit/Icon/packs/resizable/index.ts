@@ -1,4 +1,4 @@
-import SBBOL from './SBBOL.svg';
+import SBBOL from './sbbol.svg';
 import Add01 from './add-01.svg';
 import AddCircle28 from './add_circle_28.svg';
 import ArrowLeftRight from './arrow-left-right.svg';

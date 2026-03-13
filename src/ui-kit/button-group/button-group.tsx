@@ -1,5 +1,5 @@
 import type { ReactNode, HTMLAttributes } from 'react';
-import styles from './ButtonGroup.module.css';
+import styles from './button-group.module.css';
 
 export type ButtonGroupDirection = 'vertical' | 'horizontal' | 'inline' | 'chips';
 
