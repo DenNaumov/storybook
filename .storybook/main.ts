@@ -1,21 +1,12 @@
 import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
-  "stories": [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
   ],
-  "addons": [
-    "@chromatic-com/storybook",
-    "@storybook/addon-vitest",
-    "@storybook/addon-a11y",
-    "@storybook/addon-docs",
-    "@storybook/addon-onboarding"
-  ],
-  "framework": "@storybook/nextjs",
-  "staticDirs": [
-    "../public"
-  ],
+  framework: '@storybook/nextjs',
   webpackFinal: async (config) => {
     const rules = config.module?.rules || [];
     const fileLoaderRule = rules.find(
