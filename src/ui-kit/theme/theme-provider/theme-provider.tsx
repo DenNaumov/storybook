@@ -11,7 +11,6 @@ import {
 } from "react";
 import { themes } from "../theme";
 import { flattenThemeToCssVars } from "../theme.utils";
-import { miniApp } from "@telegram-apps/sdk-react";
 import { THEME_COLORS } from "../theme.types";
 import type {
   Theme,
@@ -71,33 +70,11 @@ const getSystemColorScheme = (): ThemeMode => {
 };
 
 /**
- * Try to detect Telegram mini-app dark mode via miniApp.isDark signal.
- * Returns null if not in Telegram context.
- */
-const getTelegramColorScheme = (): ThemeMode | null => {
-  try {
-    if (miniApp && typeof miniApp.isDark === "function") {
-      const isDark = miniApp.isDark();
-      if (typeof isDark === "boolean") {
-        return isDark ? "dark" : "light";
-      }
-    }
-  } catch {
-    // Not in TMA context or SDK not initialized
-  }
-  return null;
-};
-
-/**
  * Resolve the effective theme mode from user preference.
- * Priority: manual preference > Telegram SDK > system media query
+ * Priority: manual preference > system media query
  */
 const resolveThemeMode = (preference: ThemePreference): ThemeMode => {
   if (preference !== "auto") return preference;
-
-  // Try Telegram first
-  const tgScheme = getTelegramColorScheme();
-  if (tgScheme) return tgScheme;
 
   // Fallback to system preference
   return getSystemColorScheme();

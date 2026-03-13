@@ -37,7 +37,11 @@ const preview: Preview = {
       const themePreference = (context.globals.themePreference ?? 'dark') as ThemeMode;
 
       return (
-        <ThemeProvider defaultColor={themeColor} defaultPreference={themePreference}>
+        <ThemeProvider
+          key={`${themeColor}-${themePreference}`}
+          defaultColor={themeColor}
+          defaultPreference={themePreference}
+        >
           <Story />
         </ThemeProvider>
       );
