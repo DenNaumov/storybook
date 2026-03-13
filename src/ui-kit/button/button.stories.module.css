@@ -1,7 +1,7 @@
 .stage {
   min-height: 100vh;
   padding: 48px 56px 80px;
-  background: var(--theme-bg-brand-light);
+  background: var(--theme-bg-tabbar);
   color: var(--theme-text-secondary);
   font-family: 'Manrope', 'Inter', 'Segoe UI', system-ui, sans-serif;
 }
@@ -49,7 +49,7 @@
   padding: 20px 24px;
   border-radius: 18px;
   border: 1px solid var(--theme-border-default);
-  background: var(--theme-bg-surface-primary);
+  background: var(--theme-bg-brand-light);
 }
 
 .playgroundGrid {
@@ -59,7 +59,7 @@
   padding: 20px 24px;
   border-radius: 18px;
   border: 1px solid var(--theme-border-default);
-  background: var(--theme-bg-surface-primary);
+  background: var(--theme-bg-brand-light);
   align-items: center;
 }
 
