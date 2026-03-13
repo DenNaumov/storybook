@@ -1,4 +1,8 @@
 import type { StorybookConfig } from '@storybook/nextjs';
+import type { RuleSetRule } from 'webpack';
+
+const isRuleSetRule = (rule: RuleSetRule | '...'): rule is RuleSetRule =>
+  rule !== '...';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -10,7 +14,10 @@ const config: StorybookConfig = {
   webpackFinal: async (config) => {
     const rules = config.module?.rules || [];
     const fileLoaderRule = rules.find(
-      (rule: any) => rule.test && rule.test.test && rule.test.test('.svg')
+      (rule): rule is RuleSetRule =>
+        isRuleSetRule(rule) &&
+        rule.test instanceof RegExp &&
+        rule.test.test('.svg')
     );
 
     if (fileLoaderRule) {
