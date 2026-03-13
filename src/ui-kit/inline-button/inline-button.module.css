@@ -17,23 +17,18 @@
 
 /* Variants */
 .variantSurface {
-  background: #212121;
-  /* blueTheme/dark/bgSurface/primary */
-  color: #2990FF;
-  /* blueTheme/dark/text/brandMain */
+  background: var(--theme-bg-surface-primary);
+  color: var(--theme-text-brand-main);
 }
 
 .variantBezeled {
-  background: rgba(41, 144, 255, 0.15);
-  color: #2990FF;
-  /* blueTheme/dark/text/brandMain */
+  background: color-mix(in srgb, var(--theme-bg-fill-brand-main) 15%, transparent);
+  color: var(--theme-text-brand-main);
 }
 
 .variantPrimary {
-  background: #2990FF;
-  /* blueTheme/dark/bgFill/brandMain */
-  color: #FFFFFF;
-  /* blueTheme/dark/text/onMain */
+  background: var(--theme-bg-fill-brand-main);
+  color: var(--theme-text-on-main);
 }
 
 /* States */

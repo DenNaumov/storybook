@@ -14,11 +14,7 @@ const meta: Meta<ListButtonStoryArgs> = {
   title: 'UI Kit/ListButton',
   component: ListButton,
   parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'dark',
-      values: [{ name: 'dark', value: '#121212' }],
-    },
+    layout: 'fullscreen',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -42,27 +38,39 @@ const renderIcon = (icon?: Icon28IconKeys | 'Нет') => (
   icon && icon !== 'Нет' ? <Icon28 icon={icon} size={28} /> : undefined
 );
 
+const stageStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  minHeight: '100vh',
+  padding: '48px 56px 80px',
+  backgroundColor: 'var(--theme-bg-tabbar)',
+} as const;
+
+const surfaceStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
+  width: '320px',
+  padding: '24px',
+  backgroundColor: 'var(--theme-bg-brand-light)',
+  border: '1px solid var(--theme-border-default)',
+  borderRadius: '24px',
+} as const;
+
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '12px',
-      width: '320px',
-      padding: '24px',
-      backgroundColor: '#121212',
-      borderRadius: '24px'
-    }}>
-      {/* With Icon */}
-      <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} />
-      <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} disabled />
-      <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} pressed />
+    <div style={stageStyle}>
+      <div style={surfaceStyle}>
+        <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} />
+        <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} disabled />
+        <ListButton label="Button_text" startIcon={renderIcon('PersonAdd')} pressed />
 
-      {/* Without Icon */}
-      <ListButton label="Button_text" />
-      <ListButton label="Button_text" disabled />
-      <ListButton label="Button_text" pressed />
+        <ListButton label="Button_text" />
+        <ListButton label="Button_text" disabled />
+        <ListButton label="Button_text" pressed />
+      </div>
     </div>
   ),
 };
@@ -76,6 +84,12 @@ export const Playground: Story = {
   },
   render: (args: ListButtonStoryArgs) => {
     const { startIcon, ...listButtonArgs } = args;
-    return <ListButton {...listButtonArgs} startIcon={renderIcon(startIcon)} />;
+    return (
+      <div style={stageStyle}>
+        <div style={surfaceStyle}>
+          <ListButton {...listButtonArgs} startIcon={renderIcon(startIcon)} />
+        </div>
+      </div>
+    );
   },
 };

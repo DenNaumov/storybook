@@ -14,11 +14,7 @@ const meta: Meta<InlineButtonStoryArgs> = {
   title: 'UI Kit/InlineButton',
   component: InlineButton,
   parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'dark',
-      values: [{ name: 'dark', value: '#0F0F0F' }],
-    },
+    layout: 'fullscreen',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -43,22 +39,42 @@ const renderIcon = (icon: ResizableIconKeys) => (
   <ResizableIcon icon={icon} size={24} />
 );
 
+const stageStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  minHeight: '100vh',
+  padding: '48px 56px 80px',
+  backgroundColor: 'var(--theme-bg-tabbar)',
+} as const;
+
+const surfaceStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '45px',
+  padding: '40px',
+  backgroundColor: 'var(--theme-bg-brand-light)',
+  border: '1px solid var(--theme-border-default)',
+  borderRadius: '24px',
+  alignItems: 'center',
+} as const;
+
+const stackStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '45px',
+} as const;
+
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '45px',
-      padding: '40px',
-      backgroundColor: '#0F0F0F',
-      borderRadius: '24px',
-      alignItems: 'center'
-    }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '45px' }}>
-        <InlineButton variant="surface" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
-        <InlineButton variant="bezeled" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
-        <InlineButton variant="primary" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
+    <div style={stageStyle}>
+      <div style={surfaceStyle}>
+        <div style={stackStyle}>
+          <InlineButton variant="surface" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
+          <InlineButton variant="bezeled" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
+          <InlineButton variant="primary" icon={renderIcon('CalendarRemove24')} label="Сбросить" />
+        </div>
       </div>
     </div>
   ),
@@ -73,6 +89,12 @@ export const Playground: Story = {
   },
   render: (args: InlineButtonStoryArgs) => {
     const { icon, ...inlineButtonArgs } = args;
-    return <InlineButton {...inlineButtonArgs} icon={renderIcon(icon)} />;
+    return (
+      <div style={stageStyle}>
+        <div style={surfaceStyle}>
+          <InlineButton {...inlineButtonArgs} icon={renderIcon(icon)} />
+        </div>
+      </div>
+    );
   },
 };

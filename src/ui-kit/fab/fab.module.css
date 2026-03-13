@@ -25,39 +25,33 @@
 
 /* Primary: Blue background, White icon */
 .variantPrimary {
-  background-color: #2990FF;
-  /* blueTheme/dark/bgFill/brandMain */
-  color: #FFFFFF;
-  /* blueTheme/dark/icon/onMain */
+  background-color: var(--theme-bg-fill-brand-main);
+  color: var(--theme-icon-on-main);
 }
 
 .variantPrimary:hover:not(.disabled) {
-  background-color: #479BFF;
+  background-color: color-mix(in srgb, var(--theme-bg-fill-brand-main) 85%, var(--theme-bg-fill-white));
 }
 
 /* Bezeled: Light blue transparent background, Blue icon */
 .variantBezeled {
-  background-color: rgba(41, 144, 255, 0.15);
-  /* From Figma layers */
-  color: #2990FF;
-  /* blueTheme/dark/icon/brandMain */
+  background-color: color-mix(in srgb, var(--theme-bg-fill-brand-main) 15%, transparent);
+  color: var(--theme-icon-brand-main);
 }
 
 .variantBezeled:hover:not(.disabled) {
-  background-color: rgba(41, 144, 255, 0.25);
+  background-color: color-mix(in srgb, var(--theme-bg-fill-brand-main) 25%, transparent);
 }
 
 /* White: White background, Blue icon */
 .variantWhite {
-  background-color: #FFFFFF;
-  /* blueTheme/dark/bgFill/white */
-  color: #2990FF;
-  /* blueTheme/dark/icon/brandMain */
+  background-color: var(--theme-bg-fill-white);
+  color: var(--theme-icon-brand-main);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .variantWhite:hover:not(.disabled) {
-  background-color: #F5F5F7;
+  background-color: var(--theme-bg-fill-primary);
 }
 
 /* Icons */
