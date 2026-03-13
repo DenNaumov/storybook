@@ -4,14 +4,13 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
-  background: #212121;
-  /* blueTheme/dark/bgFill/primary */
+  background: var(--theme-bg-fill-primary);
   border-radius: 12px;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
-  color: #FFFFFF;
+  color: var(--theme-text-primary);
   user-select: none;
   box-sizing: border-box;
 }
@@ -81,8 +80,7 @@
 
 /* States */
 .active {
-  border: 1px solid #2990FF;
-  /* blueTheme/dark/border/brandMain */
+  border: 1px solid var(--theme-border-brand-main);
 }
 
 .pressed,
@@ -112,12 +110,10 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: #AAAAAA;
-  /* blueTheme/dark/icon/default */
+  color: var(--theme-icon-default);
   transition: color 0.15s ease;
 }
 
 .active .icon {
-  color: #2990FF;
-  /* blueTheme/dark/icon/brandMain */
+  color: var(--theme-icon-brand-main);
 }
