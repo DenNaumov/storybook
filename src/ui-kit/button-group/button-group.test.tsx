@@ -3,7 +3,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./button-group.module.css";
 import { ButtonGroup } from "./button-group";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("ButtonGroup", () => {
   it("uses vertical direction and default gap by default", () => {

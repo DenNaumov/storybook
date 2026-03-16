@@ -34,7 +34,8 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const themeColor = (context.globals.themeColor ?? "blue") as ThemeColor;
-      const themePreference = (context.globals.themePreference ?? "dark") as ThemeMode;
+      const themePreference = (context.globals.themePreference ??
+        "dark") as ThemeMode;
 
       return (
         <ThemeProvider

@@ -22,7 +22,9 @@ describe("resolveSvgComponent", () => {
   it("returns a ReactComponent export", () => {
     const svgComponent = () => null;
 
-    expect(resolveSvgComponent({ ReactComponent: svgComponent })).toBe(svgComponent);
+    expect(resolveSvgComponent({ ReactComponent: svgComponent })).toBe(
+      svgComponent,
+    );
   });
 
   it("throws on an unsupported SVG module", () => {
@@ -61,7 +63,11 @@ describe("icon wrappers", () => {
     expect(element.props.width).toBe(32);
     expect(element.props.height).toBe(32);
     expect(element.props.color).toBe("#2990FF");
-    expect(element.props.style).toEqual({ width: 32, height: 32, opacity: 0.5 });
+    expect(element.props.style).toEqual({
+      width: 32,
+      height: 32,
+      opacity: 0.5,
+    });
   });
 
   it("renders fixed-size pack icons with the provided size", async () => {
@@ -102,7 +108,8 @@ describe("icon wrappers", () => {
         },
       }));
 
-      const { Icon16, Icon20, Icon24, Icon28 } = await import("./icon-wrappers");
+      const { Icon16, Icon20, Icon24, Icon28 } =
+        await import("./icon-wrappers");
 
       icon16 = Icon16({ icon: "Check", size: 18 });
       icon20 = Icon20({ icon: "Search", size: 22 });

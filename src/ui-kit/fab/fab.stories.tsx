@@ -2,7 +2,10 @@ import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { FAB } from "./fab";
 import { ResizableIcon } from "../icon/icon-wrappers";
-import { ResizableIcons, type ResizableIconKeys } from "../icon/packs/resizable";
+import {
+  ResizableIcons,
+  type ResizableIconKeys,
+} from "../icon/packs/resizable";
 import styles from "./fab.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];

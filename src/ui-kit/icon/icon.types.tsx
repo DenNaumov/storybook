@@ -9,7 +9,10 @@ export interface BaseIconProps extends SVGProps<SVGSVGElement> {
   children?: ReactNode;
 }
 
-export interface CommonIconProps extends Omit<SVGProps<SVGSVGElement>, "color"> {
+export interface CommonIconProps extends Omit<
+  SVGProps<SVGSVGElement>,
+  "color"
+> {
   /** Цвет иконки (по умолчанию currentColor) */
   color?: string;
   /** Размер иконки */

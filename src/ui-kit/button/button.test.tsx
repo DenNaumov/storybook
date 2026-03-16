@@ -5,7 +5,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./button.module.css";
 import { Button } from "./button";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 type ElementWithProps<TProps = Record<string, unknown>> = ReactElement<TProps>;
 
@@ -66,20 +67,26 @@ describe("Button", () => {
     if (!isValidElement(startIconNode)) {
       throw new Error("Expected start icon to be a React element.");
     }
-    const startIconElement = startIconNode as ElementWithProps<{ children?: ReactNode }>;
+    const startIconElement = startIconNode as ElementWithProps<{
+      children?: ReactNode;
+    }>;
     expect(startIconElement.props.children).toBe(startIcon);
 
     const endIconNode = contentChildren[2];
     if (!isValidElement(endIconNode)) {
       throw new Error("Expected end icon to be a React element.");
     }
-    const endIconElement = endIconNode as ElementWithProps<{ children?: ReactNode }>;
+    const endIconElement = endIconNode as ElementWithProps<{
+      children?: ReactNode;
+    }>;
     expect(endIconElement.props.children).toBe(endIcon);
 
     if (!isValidElement(spinner)) {
       throw new Error("Expected spinner to be a React element.");
     }
-    const spinnerElement = spinner as ElementWithProps<{ "aria-hidden"?: string }>;
+    const spinnerElement = spinner as ElementWithProps<{
+      "aria-hidden"?: string;
+    }>;
     expect(spinnerElement.props["aria-hidden"]).toBe("true");
   });
 

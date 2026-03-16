@@ -7,7 +7,10 @@ import styles from "./list-button.stories.module.css";
 
 const icon28Names = Object.keys(Icon28Icons) as Icon28IconKeys[];
 
-type ListButtonStoryArgs = Omit<ComponentProps<typeof ListButton>, "startIcon"> & {
+type ListButtonStoryArgs = Omit<
+  ComponentProps<typeof ListButton>,
+  "startIcon"
+> & {
   startIcon?: Icon28IconKeys | "Нет";
 };
 
@@ -44,8 +47,16 @@ export const Showcase: Story = {
     <div className={styles.stage}>
       <div className={styles.surface}>
         <ListButton label="Button_text" startIcon={renderIcon("PersonAdd")} />
-        <ListButton label="Button_text" startIcon={renderIcon("PersonAdd")} disabled />
-        <ListButton label="Button_text" startIcon={renderIcon("PersonAdd")} pressed />
+        <ListButton
+          label="Button_text"
+          startIcon={renderIcon("PersonAdd")}
+          disabled
+        />
+        <ListButton
+          label="Button_text"
+          startIcon={renderIcon("PersonAdd")}
+          pressed
+        />
 
         <ListButton label="Button_text" />
         <ListButton label="Button_text" disabled />

@@ -39,8 +39,17 @@ export const Showcase: Story = {
           />
           <TextLine placeholder="Label_placeholder" disabled />
           <TextLine label="Label" defaultValue="Value" disabled />
-          <TextLine placeholder="Label_placeholder" error helperText="Error_text" />
-          <TextLine label="Label" defaultValue="Value" error helperText="Error_text" />
+          <TextLine
+            placeholder="Label_placeholder"
+            error
+            helperText="Error_text"
+          />
+          <TextLine
+            label="Label"
+            defaultValue="Value"
+            error
+            helperText="Error_text"
+          />
         </div>
       </div>
     </div>

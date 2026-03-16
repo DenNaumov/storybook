@@ -169,12 +169,19 @@ const renderToken = (token: ThemeToken) => {
         borderRadius: "10px",
         background: token.value,
         color: textColor,
-        border: token.value === "#FFFFFF" ? "1px solid rgba(17, 17, 17, 0.2)" : "none",
+        border:
+          token.value === "#FFFFFF"
+            ? "1px solid rgba(17, 17, 17, 0.2)"
+            : "none",
         boxSizing: "border-box",
       }}
     >
-      <div style={{ fontSize: "13px", lineHeight: 1.25, marginBottom: "22px" }}>{token.name}</div>
-      <div style={{ fontSize: "11px", lineHeight: 1.2, opacity: 0.9 }}>{token.value}</div>
+      <div style={{ fontSize: "13px", lineHeight: 1.25, marginBottom: "22px" }}>
+        {token.name}
+      </div>
+      <div style={{ fontSize: "11px", lineHeight: 1.2, opacity: 0.9 }}>
+        {token.value}
+      </div>
     </div>
   );
 };
@@ -211,7 +218,9 @@ export const Showcase: StoryObj = {
             <div style={rowStyle}>{group.light.map(renderToken)}</div>
           </div>
 
-          <div style={{ marginTop: "8px", padding: "12px", background: "#070707" }}>
+          <div
+            style={{ marginTop: "8px", padding: "12px", background: "#070707" }}
+          >
             <div style={rowStyle}>{group.dark.map(renderToken)}</div>
           </div>
         </section>

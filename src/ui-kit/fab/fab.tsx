@@ -3,7 +3,10 @@ import styles from "./fab.module.css";
 
 export type FABVariant = "primary" | "bezeled" | "white";
 
-export interface FABProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
+export interface FABProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "className"
+> {
   /** Visual style variant */
   variant?: FABVariant;
   /** Icon to display in the FAB */

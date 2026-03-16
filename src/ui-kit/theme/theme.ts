@@ -159,7 +159,10 @@ const brandThemes: BrandThemes = {
 
 // ─── Typed merge for ThemeColors ─────────────────────────────
 
-const mergeThemeColors = (base: ThemeColors, override: DeepPartial<ThemeColors>): ThemeColors => ({
+const mergeThemeColors = (
+  base: ThemeColors,
+  override: DeepPartial<ThemeColors>,
+): ThemeColors => ({
   text: { ...base.text, ...override.text },
   bg: { ...base.bg, ...override.bg },
   bgSurface: { ...base.bgSurface, ...override.bgSurface },
@@ -172,26 +175,36 @@ const mergeThemeColors = (base: ThemeColors, override: DeepPartial<ThemeColors>)
 // ─── Typed Object.fromEntries ────────────────────────────────
 
 /** Type-safe wrapper — Object.fromEntries loses key types by default */
-const typedFromEntries = <K extends string, V>(entries: readonly [K, V][]): Record<K, V> =>
-  Object.fromEntries(entries) as Record<K, V>;
+const typedFromEntries = <K extends string, V>(
+  entries: readonly [K, V][],
+): Record<K, V> => Object.fromEntries(entries) as Record<K, V>;
 
 // ─── Build themes ────────────────────────────────────────────
 
-const buildTheme = (baseColors: ThemeColors, brandOverride: DeepPartial<ThemeColors>): Theme => ({
+const buildTheme = (
+  baseColors: ThemeColors,
+  brandOverride: DeepPartial<ThemeColors>,
+): Theme => ({
   colors: mergeThemeColors(baseColors, brandOverride),
   spacing: SPACING,
   radius: RADIUS,
   opacity: OPACITY,
 });
 
-const normalizeThemes = (base: BaseThemeDefinition, brands: BrandThemes): ResolvedThemes =>
+const normalizeThemes = (
+  base: BaseThemeDefinition,
+  brands: BrandThemes,
+): ResolvedThemes =>
   typedFromEntries(
     THEME_COLORS.map((color) => [
       color,
       typedFromEntries(
-        THEME_MODES.map((mode) => [mode, buildTheme(base.colors[mode], brands[color].colors[mode])])
+        THEME_MODES.map((mode) => [
+          mode,
+          buildTheme(base.colors[mode], brands[color].colors[mode]),
+        ]),
       ),
-    ])
+    ]),
   );
 
 /** All resolved themes: themes[themeColor][themeMode] → Theme */

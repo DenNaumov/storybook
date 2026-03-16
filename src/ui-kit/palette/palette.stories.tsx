@@ -175,14 +175,25 @@ export const Showcase: StoryObj = {
                     borderRadius: "10px",
                     background: token.value,
                     color: textColor,
-                    border: token.value === "#FFFFFF" ? "1px solid rgba(17, 17, 17, 0.24)" : "none",
+                    border:
+                      token.value === "#FFFFFF"
+                        ? "1px solid rgba(17, 17, 17, 0.24)"
+                        : "none",
                     boxSizing: "border-box",
                   }}
                 >
-                  <div style={{ fontSize: "14px", lineHeight: 1.2, marginBottom: "24px" }}>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      lineHeight: 1.2,
+                      marginBottom: "24px",
+                    }}
+                  >
                     {token.name}
                   </div>
-                  <div style={{ fontSize: "12px", lineHeight: 1.2, opacity: 0.9 }}>
+                  <div
+                    style={{ fontSize: "12px", lineHeight: 1.2, opacity: 0.9 }}
+                  >
                     {token.value}
                   </div>
                 </div>

@@ -50,7 +50,8 @@ export const Button = ({
   disabled = false,
   ...props
 }: ButtonProps) => {
-  const resolvedVariant: ButtonVariant = variant ?? (primary ? "primary" : "outlined");
+  const resolvedVariant: ButtonVariant =
+    variant ?? (primary ? "primary" : "outlined");
   const resolvedSize = normalizeSize(size);
   const isDisabled = disabled || loading;
   const content = children ?? label;
@@ -58,7 +59,9 @@ export const Button = ({
   const classes = [
     styles.button,
     styles[`size${resolvedSize.toUpperCase()}`],
-    styles[`variant${resolvedVariant[0].toUpperCase()}${resolvedVariant.slice(1)}`],
+    styles[
+      `variant${resolvedVariant[0].toUpperCase()}${resolvedVariant.slice(1)}`
+    ],
     pressed ? styles.pressed : "",
     isDisabled ? styles.disabled : "",
     loading ? styles.loading : "",

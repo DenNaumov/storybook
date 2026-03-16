@@ -42,12 +42,20 @@
 
 /* Bezeled: Light blue transparent background, Blue icon */
 .variantBezeled {
-  background-color: color-mix(in srgb, var(--theme-bg-fill-brand-main) 15%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--theme-bg-fill-brand-main) 15%,
+    transparent
+  );
   color: var(--theme-icon-brand-main);
 }
 
 .variantBezeled:hover:not(.disabled) {
-  background-color: color-mix(in srgb, var(--theme-bg-fill-brand-main) 25%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--theme-bg-fill-brand-main) 25%,
+    transparent
+  );
 }
 
 /* White: White background, Blue icon */

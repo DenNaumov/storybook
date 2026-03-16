@@ -44,7 +44,14 @@ const meta = {
     },
     color: {
       control: "select",
-      options: ["default", "primary", "secondary", "success", "error", "warning"],
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "error",
+        "warning",
+      ],
       description: "Text color",
     },
     align: {
@@ -54,7 +61,18 @@ const meta = {
     },
     as: {
       control: "select",
-      options: ["h1", "h2", "h3", "h4", "h5", "h6", "p", "span", "div", "label"],
+      options: [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p",
+        "span",
+        "div",
+        "label",
+      ],
       description: "HTML element to render",
     },
     truncate: {
@@ -77,7 +95,13 @@ type Story = StoryObj<typeof meta>;
 
 const variantMetadata: Record<
   string,
-  { size: string; lh: string; spacing: string; weightLabel: string; weightValue: string }
+  {
+    size: string;
+    lh: string;
+    spacing: string;
+    weightLabel: string;
+    weightValue: string;
+  }
 > = {
   "title3-regular": {
     size: "20px",
@@ -246,7 +270,9 @@ const VariantCard = ({ variant, label, specs }: VariantCardProps) => {
 
   // Format name: 'subheadline1' -> 'Subheadline 1'
   const namePart = variant.split("-")[0];
-  const formattedName = namePart.replace(/(\d+)/, " $1").replace(/^\w/, (c) => c.toUpperCase());
+  const formattedName = namePart
+    .replace(/(\d+)/, " $1")
+    .replace(/^\w/, (c) => c.toUpperCase());
 
   const displayLabel = label || `${formattedName} ${meta?.weightLabel || ""}`;
   const displaySpecs =
@@ -260,16 +286,25 @@ const VariantCard = ({ variant, label, specs }: VariantCardProps) => {
       <Typography variant={variant} as="p">
         {displayLabel}
       </Typography>
-      <Typography variant="caption1-regular" color="secondary" as="p" className={styles.specs}>
+      <Typography
+        variant="caption1-regular"
+        color="secondary"
+        as="p"
+        className={styles.specs}
+      >
         {displaySpecs}
       </Typography>
     </div>
   );
 };
 
-const Section = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <div className={className || styles.grid3}>{children}</div>
-);
+const Section = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => <div className={className || styles.grid3}>{children}</div>;
 
 /* ========================
    INDIVIDUAL STORIES
@@ -282,7 +317,9 @@ export const Title3Regular: Story = {
 export const Title3Semibold: Story = {
   args: { children: "Title 3 · Semibold", variant: "title3-semibold" },
 };
-export const Title3Bold: Story = { args: { children: "Title 3 · Bold", variant: "title3-bold" } };
+export const Title3Bold: Story = {
+  args: { children: "Title 3 · Bold", variant: "title3-bold" },
+};
 
 // Headline
 export const HeadlineRegular: Story = {
@@ -296,19 +333,31 @@ export const HeadlineBold: Story = {
 };
 
 // Text
-export const TextRegular: Story = { args: { children: "Text · Regular", variant: "text-regular" } };
-export const TextMedium: Story = { args: { children: "Text · Medium", variant: "text-medium" } };
+export const TextRegular: Story = {
+  args: { children: "Text · Regular", variant: "text-regular" },
+};
+export const TextMedium: Story = {
+  args: { children: "Text · Medium", variant: "text-medium" },
+};
 export const TextSemibold: Story = {
   args: { children: "Text · Semibold", variant: "text-semibold" },
 };
-export const TextBold: Story = { args: { children: "Text · Bold", variant: "text-bold" } };
+export const TextBold: Story = {
+  args: { children: "Text · Bold", variant: "text-bold" },
+};
 
 // Subheadline 1
 export const Subheadline1Regular: Story = {
-  args: { children: "Subheadline 1 · Regular", variant: "subheadline1-regular" },
+  args: {
+    children: "Subheadline 1 · Regular",
+    variant: "subheadline1-regular",
+  },
 };
 export const Subheadline1Semibold: Story = {
-  args: { children: "Subheadline 1 · Semibold", variant: "subheadline1-semibold" },
+  args: {
+    children: "Subheadline 1 · Semibold",
+    variant: "subheadline1-semibold",
+  },
 };
 export const Subheadline1Bold: Story = {
   args: { children: "Subheadline 1 · Bold", variant: "subheadline1-bold" },
@@ -316,10 +365,16 @@ export const Subheadline1Bold: Story = {
 
 // Subheadline 2
 export const Subheadline2Regular: Story = {
-  args: { children: "Subheadline 2 · Regular", variant: "subheadline2-regular" },
+  args: {
+    children: "Subheadline 2 · Regular",
+    variant: "subheadline2-regular",
+  },
 };
 export const Subheadline2Semibold: Story = {
-  args: { children: "Subheadline 2 · Semibold", variant: "subheadline2-semibold" },
+  args: {
+    children: "Subheadline 2 · Semibold",
+    variant: "subheadline2-semibold",
+  },
 };
 export const Subheadline2Bold: Story = {
   args: { children: "Subheadline 2 · Bold", variant: "subheadline2-bold" },

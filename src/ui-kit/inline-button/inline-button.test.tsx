@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./inline-button.module.css";
 import { InlineButton } from "./inline-button";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("InlineButton", () => {
   it("renders the surface variant by default", () => {

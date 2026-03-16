@@ -58,7 +58,7 @@ export const TextLine = ({
       ]
         .filter(Boolean)
         .join(" "),
-    [disabled, readOnly, error, hasValue]
+    [disabled, readOnly, error, hasValue],
   );
 
   const handleInput = () => {

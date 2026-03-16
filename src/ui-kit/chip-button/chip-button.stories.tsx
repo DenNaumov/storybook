@@ -2,12 +2,18 @@ import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ChipButton } from "./chip-button";
 import { ResizableIcon } from "../icon/icon-wrappers";
-import { ResizableIcons, type ResizableIconKeys } from "../icon/packs/resizable";
+import {
+  ResizableIcons,
+  type ResizableIconKeys,
+} from "../icon/packs/resizable";
 import styles from "./chip-button.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
-type ChipButtonStoryArgs = Omit<ComponentProps<typeof ChipButton>, "startIcon" | "endIcon"> & {
+type ChipButtonStoryArgs = Omit<
+  ComponentProps<typeof ChipButton>,
+  "startIcon" | "endIcon"
+> & {
   startIcon?: ResizableIconKeys | "Нет";
   endIcon?: ResizableIconKeys | "Нет";
 };
@@ -97,21 +103,75 @@ export const Showcase: Story = {
           active
         />
 
-        <ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
-        <ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
-        <ChipButton size="l" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
+        <ChipButton
+          size="s"
+          startIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
+        <ChipButton
+          size="m"
+          startIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
+        <ChipButton
+          size="l"
+          startIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
 
-        <ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
-        <ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
-        <ChipButton size="l" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
+        <ChipButton
+          size="s"
+          startIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
+        <ChipButton
+          size="m"
+          startIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
+        <ChipButton
+          size="l"
+          startIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
 
-        <ChipButton size="s" endIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
-        <ChipButton size="m" endIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
-        <ChipButton size="l" endIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
+        <ChipButton
+          size="s"
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
+        <ChipButton
+          size="m"
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
+        <ChipButton
+          size="l"
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
 
-        <ChipButton size="s" endIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
-        <ChipButton size="m" endIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
-        <ChipButton size="l" endIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
+        <ChipButton
+          size="s"
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
+        <ChipButton
+          size="m"
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
+        <ChipButton
+          size="l"
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
 
         <ChipButton size="s" label="Сортировка" />
         <ChipButton size="m" label="Сортировка" />

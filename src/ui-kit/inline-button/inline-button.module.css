@@ -22,7 +22,11 @@
 }
 
 .variantBezeled {
-  background: color-mix(in srgb, var(--theme-bg-fill-brand-main) 15%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--theme-bg-fill-brand-main) 15%,
+    transparent
+  );
   color: var(--theme-text-brand-main);
 }
 

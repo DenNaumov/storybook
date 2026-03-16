@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./icon-button.module.css";
 import { IconButton } from "./icon-button";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("IconButton", () => {
   it("renders default sizes when no explicit sizes are passed", () => {

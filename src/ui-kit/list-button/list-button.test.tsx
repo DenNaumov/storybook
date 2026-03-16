@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./list-button.module.css";
 import { ListButton } from "./list-button";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("ListButton", () => {
   it("renders label without icon by default", () => {

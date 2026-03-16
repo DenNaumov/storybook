@@ -64,15 +64,35 @@ export const Showcase: Story = {
 
         <div />
         <ButtonGroup direction="chips" withSpacing={false}>
-          <ChipButton label="Сортировка" startIcon={SortIcon} endIcon={SortIcon} />
-          <ChipButton label="Сортировка" startIcon={SortIcon} endIcon={SortIcon} />
+          <ChipButton
+            label="Сортировка"
+            startIcon={SortIcon}
+            endIcon={SortIcon}
+          />
+          <ChipButton
+            label="Сортировка"
+            startIcon={SortIcon}
+            endIcon={SortIcon}
+          />
         </ButtonGroup>
 
         <div />
         <ButtonGroup direction="inline" withSpacing={false}>
-          <InlineButton variant="surface" icon={CalendarRemoveIcon} label="Сбросить" />
-          <InlineButton variant="surface" icon={CalendarRemoveIcon} label="Сбросить" />
-          <InlineButton variant="surface" icon={CalendarRemoveIcon} label="Сбросить" />
+          <InlineButton
+            variant="surface"
+            icon={CalendarRemoveIcon}
+            label="Сбросить"
+          />
+          <InlineButton
+            variant="surface"
+            icon={CalendarRemoveIcon}
+            label="Сбросить"
+          />
+          <InlineButton
+            variant="surface"
+            icon={CalendarRemoveIcon}
+            label="Сбросить"
+          />
         </ButtonGroup>
       </div>
     </div>

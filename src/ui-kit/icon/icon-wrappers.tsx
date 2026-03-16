@@ -7,14 +7,20 @@ import { Icon28Icons, type Icon28IconKeys } from "./packs/28";
 import { ResizableIcons, type ResizableIconKeys } from "./packs/resizable";
 
 type SvgComponent = ComponentType<SVGProps<SVGSVGElement>>;
-type SvgModule = SvgComponent | { default?: SvgComponent; ReactComponent?: SvgComponent };
+type SvgModule =
+  | SvgComponent
+  | { default?: SvgComponent; ReactComponent?: SvgComponent };
 
 export const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
   if (typeof iconModule === "function") {
     return iconModule;
   }
 
-  if (iconModule && typeof iconModule === "object" && typeof iconModule.default === "function") {
+  if (
+    iconModule &&
+    typeof iconModule === "object" &&
+    typeof iconModule.default === "function"
+  ) {
     return iconModule.default;
   }
 
@@ -69,7 +75,12 @@ export const Icon28 = ({ icon, size = 28, color, ...props }: Icon28Props) => {
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
-export const ResizableIcon = ({ icon, size = 24, color, ...props }: ResizableIconProps) => {
+export const ResizableIcon = ({
+  icon,
+  size = 24,
+  color,
+  ...props
+}: ResizableIconProps) => {
   const IconComponent = resolveSvgComponent(ResizableIcons[icon] as SvgModule);
   return (
     <IconComponent

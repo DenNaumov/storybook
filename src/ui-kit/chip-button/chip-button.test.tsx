@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./chip-button.module.css";
 import { ChipButton } from "./chip-button";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("ChipButton", () => {
   it("renders label with both icons and applies active state classes", () => {
@@ -28,7 +29,9 @@ describe("ChipButton", () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(3);
     expect(children[1]).toEqual(
-      expect.objectContaining({ props: expect.objectContaining({ children: "Sort" }) })
+      expect.objectContaining({
+        props: expect.objectContaining({ children: "Sort" }),
+      }),
     );
   });
 

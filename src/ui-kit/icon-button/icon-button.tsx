@@ -42,15 +42,18 @@ export const IconButton = ({
     .filter(Boolean)
     .join(" ");
 
-  const iconWrapperClasses = [styles.iconWrapper, styles[`iconSize${iconSize.toUpperCase()}`]].join(
-    " "
-  );
+  const iconWrapperClasses = [
+    styles.iconWrapper,
+    styles[`iconSize${iconSize.toUpperCase()}`],
+  ].join(" ");
 
   return (
     <button className={classes} disabled={disabled} {...props}>
       <div className={iconWrapperClasses}>
         {icon}
-        {badgeCount !== undefined && <span className={styles.badge}>{badgeCount}</span>}
+        {badgeCount !== undefined && (
+          <span className={styles.badge}>{badgeCount}</span>
+        )}
       </div>
     </button>
   );

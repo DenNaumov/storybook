@@ -4,7 +4,8 @@ import { describe, expect, it } from "@jest/globals";
 import styles from "./fab.module.css";
 import { FAB } from "./fab";
 
-const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
+const getClassNames = (className?: string) =>
+  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("FAB", () => {
   it("renders the primary variant by default", () => {

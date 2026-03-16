@@ -6,7 +6,10 @@ import { Icon24Icons, type Icon24IconKeys } from "../icon/packs/24";
 import { Button } from "./button";
 import styles from "./button.stories.module.css";
 
-type ButtonStoryArgs = Omit<ComponentProps<typeof Button>, "startIcon" | "endIcon"> & {
+type ButtonStoryArgs = Omit<
+  ComponentProps<typeof Button>,
+  "startIcon" | "endIcon"
+> & {
   startIcon?: ComponentProps<typeof Button>["startIcon"];
   endIcon?: ComponentProps<typeof Button>["endIcon"];
   leftIcon?: Icon24IconKeys | "Нет";
@@ -50,7 +53,9 @@ type Story = StoryObj<ButtonStoryArgs>;
 
 const icon24Options = Object.keys(Icon24Icons) as Icon24IconKeys[];
 
-const Icon24Preview = ({ name }: { name: Icon24IconKeys }) => <Icon24 icon={name} />;
+const Icon24Preview = ({ name }: { name: Icon24IconKeys }) => (
+  <Icon24 icon={name} />
+);
 const defaultIcon = icon24Options[0];
 
 const StateRow = ({

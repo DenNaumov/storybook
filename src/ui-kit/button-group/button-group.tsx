@@ -1,7 +1,11 @@
 import type { ReactNode, HTMLAttributes } from "react";
 import styles from "./button-group.module.css";
 
-export type ButtonGroupDirection = "vertical" | "horizontal" | "inline" | "chips";
+export type ButtonGroupDirection =
+  | "vertical"
+  | "horizontal"
+  | "inline"
+  | "chips";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   /** Layout direction */

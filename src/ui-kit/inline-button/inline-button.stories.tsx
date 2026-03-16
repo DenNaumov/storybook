@@ -2,12 +2,18 @@ import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { InlineButton } from "./inline-button";
 import { ResizableIcon } from "../icon/icon-wrappers";
-import { ResizableIcons, type ResizableIconKeys } from "../icon/packs/resizable";
+import {
+  ResizableIcons,
+  type ResizableIconKeys,
+} from "../icon/packs/resizable";
 import styles from "./inline-button.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
-type InlineButtonStoryArgs = Omit<ComponentProps<typeof InlineButton>, "icon"> & {
+type InlineButtonStoryArgs = Omit<
+  ComponentProps<typeof InlineButton>,
+  "icon"
+> & {
   icon: ResizableIconKeys;
 };
 
@@ -36,7 +42,9 @@ const meta: Meta<InlineButtonStoryArgs> = {
 export default meta;
 type Story = StoryObj<InlineButtonStoryArgs>;
 
-const renderIcon = (icon: ResizableIconKeys) => <ResizableIcon icon={icon} size={24} />;
+const renderIcon = (icon: ResizableIconKeys) => (
+  <ResizableIcon icon={icon} size={24} />
+);
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
@@ -44,9 +52,21 @@ export const Showcase: Story = {
     <div className={styles.stage}>
       <div className={styles.surface}>
         <div className={styles.stack}>
-          <InlineButton variant="surface" icon={renderIcon("CalendarRemove24")} label="Сбросить" />
-          <InlineButton variant="bezeled" icon={renderIcon("CalendarRemove24")} label="Сбросить" />
-          <InlineButton variant="primary" icon={renderIcon("CalendarRemove24")} label="Сбросить" />
+          <InlineButton
+            variant="surface"
+            icon={renderIcon("CalendarRemove24")}
+            label="Сбросить"
+          />
+          <InlineButton
+            variant="bezeled"
+            icon={renderIcon("CalendarRemove24")}
+            label="Сбросить"
+          />
+          <InlineButton
+            variant="primary"
+            icon={renderIcon("CalendarRemove24")}
+            label="Сбросить"
+          />
         </div>
       </div>
     </div>

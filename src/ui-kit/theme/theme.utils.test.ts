@@ -51,7 +51,9 @@ describe("flattenThemeToCssVars", () => {
   });
 
   it("camelCase groups are converted (bgSurface → bg-surface)", () => {
-    const bgSurfaceKeys = Object.keys(vars).filter((k) => k.startsWith("--theme-bg-surface-"));
+    const bgSurfaceKeys = Object.keys(vars).filter((k) =>
+      k.startsWith("--theme-bg-surface-"),
+    );
     expect(bgSurfaceKeys.length).toBeGreaterThan(0);
   });
 
@@ -71,6 +73,8 @@ describe("flattenThemeToCssVars", () => {
     const blueVars = flattenThemeToCssVars(themes.blue.light);
     const pinkVars = flattenThemeToCssVars(themes.pink.light);
 
-    expect(blueVars["--theme-text-brand-main"]).not.toBe(pinkVars["--theme-text-brand-main"]);
+    expect(blueVars["--theme-text-brand-main"]).not.toBe(
+      pinkVars["--theme-text-brand-main"],
+    );
   });
 });

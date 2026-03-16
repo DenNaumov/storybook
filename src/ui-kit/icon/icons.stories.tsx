@@ -68,7 +68,10 @@ export const Pack16_Playground: StoryObj<FixedPackStoryArgs<Icon16IconKeys>> = {
   },
   render: (args: FixedPackStoryArgs<Icon16IconKeys>) => (
     <IconStoryLayout>
-      <IconStoryRow label={args.icon} icon={<Icon16 icon={args.icon} color={args.color} />} />
+      <IconStoryRow
+        label={args.icon}
+        icon={<Icon16 icon={args.icon} color={args.color} />}
+      />
     </IconStoryLayout>
   ),
 };
@@ -94,7 +97,10 @@ export const Pack20_Playground: StoryObj<FixedPackStoryArgs<Icon20IconKeys>> = {
   },
   render: (args: FixedPackStoryArgs<Icon20IconKeys>) => (
     <IconStoryLayout>
-      <IconStoryRow label={args.icon} icon={<Icon20 icon={args.icon} color={args.color} />} />
+      <IconStoryRow
+        label={args.icon}
+        icon={<Icon20 icon={args.icon} color={args.color} />}
+      />
     </IconStoryLayout>
   ),
 };
@@ -120,7 +126,10 @@ export const Pack24_Playground: StoryObj<FixedPackStoryArgs<Icon24IconKeys>> = {
   },
   render: (args: FixedPackStoryArgs<Icon24IconKeys>) => (
     <IconStoryLayout>
-      <IconStoryRow label={args.icon} icon={<Icon24 icon={args.icon} color={args.color} />} />
+      <IconStoryRow
+        label={args.icon}
+        icon={<Icon24 icon={args.icon} color={args.color} />}
+      />
     </IconStoryLayout>
   ),
 };
@@ -146,7 +155,10 @@ export const Pack28_Playground: StoryObj<FixedPackStoryArgs<Icon28IconKeys>> = {
   },
   render: (args: FixedPackStoryArgs<Icon28IconKeys>) => (
     <IconStoryLayout>
-      <IconStoryRow label={args.icon} icon={<Icon28 icon={args.icon} color={args.color} />} />
+      <IconStoryRow
+        label={args.icon}
+        icon={<Icon28 icon={args.icon} color={args.color} />}
+      />
     </IconStoryLayout>
   ),
 };
@@ -158,7 +170,13 @@ export const Resizable_List: StoryObj = {
         <IconStoryRow
           key={name}
           label={name}
-          icon={<ResizableIcon icon={name} size={24} className={styles.resizableIcon} />}
+          icon={
+            <ResizableIcon
+              icon={name}
+              size={24}
+              className={styles.resizableIcon}
+            />
+          }
         />
       ))}
     </IconStoryLayout>
