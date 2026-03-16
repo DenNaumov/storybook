@@ -8,7 +8,6 @@
   border: none;
   cursor: pointer;
   padding: 16px;
-  /* Matches Figma padding */
   transition:
     background-color 0.2s ease,
     transform 0.1s ease,
@@ -24,7 +23,6 @@
 
 /* Variants */
 
-/* Primary: Blue background, White icon */
 .variantPrimary {
   background-color: var(--theme-bg-fill-brand-main);
   color: var(--theme-icon-on-main);
@@ -38,7 +36,6 @@
   );
 }
 
-/* Bezeled: Light blue transparent background, Blue icon */
 .variantBezeled {
   background-color: color-mix(
     in srgb,
@@ -56,7 +53,6 @@
   );
 }
 
-/* White: White background, Blue icon */
 .variantWhite {
   background-color: var(--theme-bg-fill-white);
   color: var(--theme-icon-brand-main);
@@ -69,7 +65,6 @@
   background-color: var(--theme-bg-fill-primary);
 }
 
-/* Icons */
 .icon {
   display: flex;
   align-items: center;
@@ -78,7 +73,6 @@
   line-height: 1;
 }
 
-/* States */
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;

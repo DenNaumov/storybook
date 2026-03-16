@@ -46,7 +46,6 @@
   pointer-events: none;
 }
 
-/* Icon Wrapper */
 .icon {
   display: flex;
   align-items: center;
@@ -55,7 +54,6 @@
   height: 24px;
 }
 
-/* Label */
 .label {
   font-family:
     "SF Pro",

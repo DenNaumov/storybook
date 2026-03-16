@@ -19,7 +19,6 @@
   box-sizing: border-box;
 }
 
-/* Sizes & Dimensions */
 .sizeS {
   height: 32px;
   min-height: 32px;
@@ -41,7 +40,6 @@
   padding: 10px 12px;
 }
 
-/* Precise Padding Logic from Figma Layers */
 .hasStartIcon.sizeS {
   padding-left: 8px;
 }
@@ -66,7 +64,6 @@
   padding-right: 8px;
 }
 
-/* In Figma, Icon-only has specific padding to reach 52px width */
 .iconOnly.sizeS {
   padding: 6px 16px;
   width: 52px;
@@ -82,7 +79,6 @@
   width: 52px;
 }
 
-/* States */
 .active {
   border: 1px solid var(--theme-border-brand-main);
 }
@@ -98,7 +94,6 @@
   pointer-events: none;
 }
 
-/* Label */
 .label {
   font-size: 13px;
   line-height: 16px;
@@ -107,7 +102,6 @@
   white-space: nowrap;
 }
 
-/* Icon */
 .icon {
   display: flex;
   align-items: center;

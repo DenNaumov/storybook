@@ -35,7 +35,6 @@
   pointer-events: none;
 }
 
-/* Icon Container */
 .iconWrapper {
   position: relative;
   display: flex;
@@ -54,7 +53,6 @@
   height: 20px;
 }
 
-/* Badge */
 .badge {
   position: absolute;
   left: 10px;
@@ -70,8 +68,6 @@
   height: 20px;
   background: var(--theme-bg-fill-error);
   border-radius: 20px;
-
-  /* Typography */
   color: var(--theme-text-on-main);
   font-family:
     "SF Pro",

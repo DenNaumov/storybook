@@ -52,8 +52,6 @@
   font-size: 18px;
 }
 
-/* Specific styling for the white badge to show it on dark/light backgrounds */
 .variantInverse {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
-  /* Subtle shadow for white bg visibility */
 }
