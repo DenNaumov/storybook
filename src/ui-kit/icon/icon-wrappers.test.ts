@@ -1,9 +1,12 @@
+import type { ReactElement, SVGProps } from "react";
 import { isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
 
 import {
   resolveSvgComponent,
 } from "./icon-wrappers";
+
+type SvgIconElement = ReactElement<SVGProps<SVGSVGElement>>;
 
 describe("resolveSvgComponent", () => {
   it("returns a plain component as-is", () => {
@@ -33,7 +36,7 @@ describe("icon wrappers", () => {
   it("renders a resizable icon with merged size and style props", async () => {
     jest.resetModules();
 
-    let element: any;
+    let element: SvgIconElement | undefined;
 
     await jest.isolateModulesAsync(async () => {
       const fakeSvgResizable = (props: Record<string, unknown>) => props;
@@ -63,10 +66,10 @@ describe("icon wrappers", () => {
   it("renders fixed-size pack icons with the provided size", async () => {
     jest.resetModules();
 
-    let icon16: any;
-    let icon20: any;
-    let icon24: any;
-    let icon28: any;
+    let icon16: SvgIconElement | undefined;
+    let icon20: SvgIconElement | undefined;
+    let icon24: SvgIconElement | undefined;
+    let icon28: SvgIconElement | undefined;
 
     await jest.isolateModulesAsync(async () => {
       const fakeSvg16 = (props: Record<string, unknown>) => props;
