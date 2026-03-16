@@ -9,7 +9,7 @@ export interface ButtonProps {
   /** Visual style */
   variant?: ButtonVariant;
   /** How large should the button be? */
-  size?: ButtonSize;
+  size: ButtonSize;
   /** Button contents */
   label?: string;
   /** Button contents */
@@ -37,7 +37,7 @@ const normalizeSize = (size: ButtonSize): "s" | "m" => {
 
 export const Button = ({
   variant = "primary",
-  size = "m",
+  size,
   label,
   children,
   startIcon,

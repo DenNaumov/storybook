@@ -27,39 +27,39 @@ export const Showcase: Story = {
     <div className={styles.stage}>
       <div className={styles.surface}>
         <ButtonGroup direction="vertical" withSpacing>
-          <Button variant="primary" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
         </ButtonGroup>
         <ButtonGroup direction="vertical" withSpacing={false}>
-          <Button variant="primary" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
         </ButtonGroup>
 
         <ButtonGroup direction="vertical" withSpacing>
-          <Button variant="primary" label="Сохранить" />
-          <Button variant="bezeled" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
         </ButtonGroup>
         <ButtonGroup direction="vertical" withSpacing={false}>
-          <Button variant="primary" label="Сохранить" />
-          <Button variant="bezeled" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
         </ButtonGroup>
 
         <ButtonGroup direction="vertical" withSpacing>
-          <Button variant="primary" label="Сохранить" />
-          <Button variant="bezeled" label="Сохранить" />
-          <Button variant="bezeled" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
         </ButtonGroup>
         <ButtonGroup direction="vertical" withSpacing={false}>
-          <Button variant="primary" label="Сохранить" />
-          <Button variant="bezeled" label="Сохранить" />
-          <Button variant="bezeled" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
         </ButtonGroup>
 
         <ButtonGroup direction="horizontal" withSpacing>
-          <Button variant="bezeled" label="Сохранить" />
-          <Button variant="primary" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
         </ButtonGroup>
         <ButtonGroup direction="horizontal" withSpacing={false}>
-          <Button variant="bezeled" label="Сохранить" />
-          <Button variant="primary" label="Сохранить" />
+          <Button variant="bezeled" size="m" label="Сохранить" />
+          <Button variant="primary" size="m" label="Сохранить" />
         </ButtonGroup>
 
         <div />

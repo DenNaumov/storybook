@@ -7,8 +7,8 @@ import { Button } from "./button";
 type ElementWithProps<TProps = Record<string, unknown>> = ReactElement<TProps>;
 
 describe("Button", () => {
-  it("uses primary as the default variant and medium as the default size", () => {
-    const element = Button({ label: "Save" });
+  it("uses primary as the default variant when size is provided", () => {
+    const element = Button({ size: "m", label: "Save" });
 
     expect(isValidElement(element)).toBe(true);
     expect(element.props.type).toBe("button");
@@ -28,6 +28,7 @@ describe("Button", () => {
     const startIcon = "start";
     const endIcon = "end";
     const element = Button({
+      size: "m",
       label: "Save",
       startIcon,
       endIcon,
@@ -86,6 +87,7 @@ describe("Button", () => {
   it("applies pressed and disabled classes when requested", () => {
     const element = Button({
       variant: "text",
+      size: "m",
       label: "Save",
       pressed: true,
       disabled: true,
