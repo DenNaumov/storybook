@@ -7,11 +7,13 @@ import { Button } from "./button";
 import styles from "./button.stories.module.css";
 
 type ButtonStoryArgs = Omit<ComponentProps<typeof Button>, "startIcon" | "endIcon"> & {
+  startIcon?: ComponentProps<typeof Button>["startIcon"];
+  endIcon?: ComponentProps<typeof Button>["endIcon"];
   leftIcon?: Icon24IconKeys | "Нет";
   rightIcon?: Icon24IconKeys | "Нет";
 };
 
-const meta = {
+const meta: Meta<ButtonStoryArgs> = {
   title: "UI Kit/Button",
   component: Button,
   parameters: {
@@ -41,10 +43,10 @@ const meta = {
     children: { control: false, table: { disable: true } },
     onClick: { control: false, table: { disable: true } },
   },
-} satisfies Meta<ButtonStoryArgs>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ButtonStoryArgs>;
 
 const icon24Options = Object.keys(Icon24Icons) as Icon24IconKeys[];
 
@@ -152,32 +154,32 @@ export const Playground: Story = {
           variant={args.variant}
           size={args.size}
           label={args.label}
-          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
         />
         <Button
           variant={args.variant}
           size={args.size}
           label={args.label}
           pressed
-          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
         />
         <Button
           variant={args.variant}
           size={args.size}
           label={args.label}
           disabled
-          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
         />
         <Button
           variant={args.variant}
           size={args.size}
           label={args.label}
           loading
-          startIcon={args.leftIcon ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
+          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
         />
       </div>
     </div>
