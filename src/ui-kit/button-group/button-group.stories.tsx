@@ -61,8 +61,9 @@ export const Showcase: Story = {
           <Button variant="bezeled" size="m" label="Сохранить" />
           <Button variant="primary" size="m" label="Сохранить" />
         </ButtonGroup>
+      </div>
 
-        <div />
+      <div className={styles.surface}>
         <ButtonGroup direction="chips" withSpacing={false}>
           <ChipButton
             size="m"
@@ -77,8 +78,9 @@ export const Showcase: Story = {
             endIcon={SortIcon}
           />
         </ButtonGroup>
+      </div>
 
-        <div />
+      <div className={styles.surface}>
         <ButtonGroup direction="inline" withSpacing={false}>
           <InlineButton
             variant="surface"
