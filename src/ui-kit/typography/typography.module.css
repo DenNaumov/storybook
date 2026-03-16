@@ -1,11 +1,11 @@
 /* Typography Component - Based on Figma Design System */
 
 .root {
-    font-family: "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    font-style: normal;
-    color: var(--theme-text-primary);
+  font-family: "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  color: var(--theme-text-primary);
 }
 
 /* ========================
@@ -16,24 +16,24 @@
    ======================== */
 
 .title3Regular {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 25px;
-    letter-spacing: -0.45px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: -0.45px;
 }
 
 .title3Semibold {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 25px;
-    letter-spacing: -0.45px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.45px;
 }
 
 .title3Bold {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 25px;
-    letter-spacing: -0.45px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: -0.45px;
 }
 
 /* ========================
@@ -44,24 +44,24 @@
    ======================== */
 
 .headlineRegular {
-    font-size: 19px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: -0.45px;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.45px;
 }
 
 .headlineSemibold {
-    font-size: 19px;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: -0.45px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.45px;
 }
 
 .headlineBold {
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.45px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.45px;
 }
 
 /* ========================
@@ -72,31 +72,31 @@
    ======================== */
 
 .textRegular {
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: -0.4px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.4px;
 }
 
 .textMedium {
-    font-size: 17px;
-    font-weight: 500;
-    line-height: 22px;
-    letter-spacing: -0.4px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.4px;
 }
 
 .textSemibold {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 22px;
-    letter-spacing: -0.4px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: -0.4px;
 }
 
 .textBold {
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: -0.4px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.4px;
 }
 
 /* ========================
@@ -107,24 +107,24 @@
    ======================== */
 
 .subheadline1Regular {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: -0.23px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.23px;
 }
 
 .subheadline1Semibold {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 21px;
-    letter-spacing: -0.23px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: -0.23px;
 }
 
 .subheadline1Bold {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 21px;
-    letter-spacing: -0.23px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: -0.23px;
 }
 
 /* ========================
@@ -135,24 +135,24 @@
    ======================== */
 
 .subheadline2Regular {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: -0.23px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.23px;
 }
 
 .subheadline2Semibold {
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 20px;
-    letter-spacing: -0.23px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.23px;
 }
 
 .subheadline2Bold {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
-    letter-spacing: -0.23px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.23px;
 }
 
 /* ========================
@@ -163,24 +163,24 @@
    ======================== */
 
 .caption1Regular {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: -0.08px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.08px;
 }
 
 .caption1Semibold {
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 16px;
-    letter-spacing: -0.08px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: -0.08px;
 }
 
 .caption1Bold {
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: -0.08px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: -0.08px;
 }
 
 /* ========================
@@ -191,24 +191,24 @@
    ======================== */
 
 .caption2Regular {
-    font-size: 10px;
-    font-weight: 400;
-    line-height: 13px;
-    letter-spacing: 0.06px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.06px;
 }
 
 .caption2Semibold {
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 13px;
-    letter-spacing: 0.06px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 13px;
+  letter-spacing: 0.06px;
 }
 
 .caption2Bold {
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 13px;
-    letter-spacing: 0.06px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: 0.06px;
 }
 
 /* ========================
@@ -216,27 +216,27 @@
    ======================== */
 
 .colorDefault {
-    color: var(--theme-text-primary);
+  color: var(--theme-text-primary);
 }
 
 .colorPrimary {
-    color: var(--theme-text-brand-main);
+  color: var(--theme-text-brand-main);
 }
 
 .colorSecondary {
-    color: var(--theme-text-secondary);
+  color: var(--theme-text-secondary);
 }
 
 .colorSuccess {
-    color: var(--theme-icon-success);
+  color: var(--theme-icon-success);
 }
 
 .colorError {
-    color: var(--theme-text-error);
+  color: var(--theme-text-error);
 }
 
 .colorWarning {
-    color: #FF9500;
+  color: #FF9500;
 }
 
 /* ========================
@@ -244,15 +244,15 @@
    ======================== */
 
 .alignLeft {
-    text-align: left;
+  text-align: left;
 }
 
 .alignCenter {
-    text-align: center;
+  text-align: center;
 }
 
 .alignRight {
-    text-align: right;
+  text-align: right;
 }
 
 /* ========================
@@ -260,11 +260,11 @@
    ======================== */
 
 .truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nowrap {
-    white-space: nowrap;
+  white-space: nowrap;
 }
