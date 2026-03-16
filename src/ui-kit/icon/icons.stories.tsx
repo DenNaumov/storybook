@@ -6,6 +6,17 @@ import { Icon24Icons, type Icon24IconKeys } from './packs/24';
 import { Icon28Icons, type Icon28IconKeys } from './packs/28';
 import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
 
+type FixedPackStoryArgs<TIcon extends string> = {
+  icon: TIcon;
+  color?: string;
+};
+
+type ResizableStoryArgs = {
+  icon: ResizableIconKeys;
+  size: number;
+  color?: string;
+};
+
 const meta: Meta = {
   title: 'UI Kit/Icons',
   parameters: {
@@ -88,7 +99,7 @@ export const Pack16_List: StoryObj = {
   ),
 };
 
-export const Pack16_Playground: StoryObj = {
+export const Pack16_Playground: StoryObj<FixedPackStoryArgs<Icon16IconKeys>> = {
   args: {
     icon: icons16[0],
     color: 'var(--theme-icon-brand-main)',
@@ -97,7 +108,7 @@ export const Pack16_Playground: StoryObj = {
     icon: { control: 'select', options: icons16 },
     color: { control: 'color' },
   },
-  render: (args: any) => (
+  render: (args: FixedPackStoryArgs<Icon16IconKeys>) => (
     <div style={listStyles.page}>
       <div style={listStyles.wrapper}>
         <div style={listStyles.row}>
@@ -124,7 +135,7 @@ export const Pack20_List: StoryObj = {
   ),
 };
 
-export const Pack20_Playground: StoryObj = {
+export const Pack20_Playground: StoryObj<FixedPackStoryArgs<Icon20IconKeys>> = {
   args: {
     icon: icons20[0],
     color: 'var(--theme-icon-brand-main)',
@@ -133,7 +144,7 @@ export const Pack20_Playground: StoryObj = {
     icon: { control: 'select', options: icons20 },
     color: { control: 'color' },
   },
-  render: (args: any) => (
+  render: (args: FixedPackStoryArgs<Icon20IconKeys>) => (
     <div style={listStyles.page}>
       <div style={listStyles.wrapper}>
         <div style={listStyles.row}>
@@ -160,7 +171,7 @@ export const Pack24_List: StoryObj = {
   ),
 };
 
-export const Pack24_Playground: StoryObj = {
+export const Pack24_Playground: StoryObj<FixedPackStoryArgs<Icon24IconKeys>> = {
   args: {
     icon: icons24[0],
     color: 'var(--theme-icon-brand-main)',
@@ -169,7 +180,7 @@ export const Pack24_Playground: StoryObj = {
     icon: { control: 'select', options: icons24 },
     color: { control: 'color' },
   },
-  render: (args: any) => (
+  render: (args: FixedPackStoryArgs<Icon24IconKeys>) => (
     <div style={listStyles.page}>
       <div style={listStyles.wrapper}>
         <div style={listStyles.row}>
@@ -196,7 +207,7 @@ export const Pack28_List: StoryObj = {
   ),
 };
 
-export const Pack28_Playground: StoryObj = {
+export const Pack28_Playground: StoryObj<FixedPackStoryArgs<Icon28IconKeys>> = {
   args: {
     icon: icons28[0],
     color: 'var(--theme-icon-brand-main)',
@@ -205,7 +216,7 @@ export const Pack28_Playground: StoryObj = {
     icon: { control: 'select', options: icons28 },
     color: { control: 'color' },
   },
-  render: (args: any) => (
+  render: (args: FixedPackStoryArgs<Icon28IconKeys>) => (
     <div style={listStyles.page}>
       <div style={listStyles.wrapper}>
         <div style={listStyles.row}>
@@ -232,7 +243,7 @@ export const Resizable_List: StoryObj = {
   ),
 };
 
-export const Resizable_Playground: StoryObj = {
+export const Resizable_Playground: StoryObj<ResizableStoryArgs> = {
   args: {
     icon: 'AddCircle28',
     size: 40,
@@ -248,7 +259,7 @@ export const Resizable_Playground: StoryObj = {
     },
     color: { control: 'color' },
   },
-  render: (args: any) => (
+  render: (args: ResizableStoryArgs) => (
     <div style={listStyles.page}>
       <div style={listStyles.wrapper}>
         <div style={listStyles.row}>

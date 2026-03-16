@@ -1,9 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { ComponentProps } from 'react';
 
 import { Icon24 } from '../icon';
 import { Icon24Icons, type Icon24IconKeys } from '../icon/packs/24';
 import { Button } from './button';
 import styles from './button.stories.module.css';
+
+type ButtonStoryArgs = Omit<ComponentProps<typeof Button>, 'startIcon' | 'endIcon'> & {
+  leftIcon?: Icon24IconKeys | 'Нет';
+  rightIcon?: Icon24IconKeys | 'Нет';
+};
 
 const meta = {
   title: 'UI Kit/Button',
@@ -35,7 +41,7 @@ const meta = {
     children: { control: false, table: { disable: true } },
     onClick: { control: false, table: { disable: true } },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<ButtonStoryArgs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -134,7 +140,7 @@ export const Playground: Story = {
       mapping: { 'Нет': undefined },
     },
   },
-  render: (args: any) => (
+  render: (args: ButtonStoryArgs) => (
     <div className={styles.stage}>
       <div className={styles.playgroundGrid}>
         <div className={styles.gridHead}>default</div>

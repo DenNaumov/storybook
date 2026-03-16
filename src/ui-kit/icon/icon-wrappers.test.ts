@@ -30,12 +30,12 @@ describe('resolveSvgComponent', () => {
 });
 
 describe('icon wrappers', () => {
-  it('renders a resizable icon with merged size and style props', () => {
+  it('renders a resizable icon with merged size and style props', async () => {
     jest.resetModules();
 
     let element: any;
 
-    jest.isolateModules(() => {
+    await jest.isolateModulesAsync(async () => {
       const fakeSvgResizable = (props: Record<string, unknown>) => props;
 
       jest.doMock('./packs/resizable', () => ({
@@ -44,7 +44,7 @@ describe('icon wrappers', () => {
         },
       }));
 
-      const { ResizableIcon } = require('./icon-wrappers');
+      const { ResizableIcon } = await import('./icon-wrappers');
       element = ResizableIcon({
         icon: 'Add01',
         size: 32,
@@ -60,7 +60,7 @@ describe('icon wrappers', () => {
     expect(element.props.style).toEqual({ width: 32, height: 32, opacity: 0.5 });
   });
 
-  it('renders fixed-size pack icons with the provided size', () => {
+  it('renders fixed-size pack icons with the provided size', async () => {
     jest.resetModules();
 
     let icon16: any;
@@ -68,7 +68,7 @@ describe('icon wrappers', () => {
     let icon24: any;
     let icon28: any;
 
-    jest.isolateModules(() => {
+    await jest.isolateModulesAsync(async () => {
       const fakeSvg16 = (props: Record<string, unknown>) => props;
       const fakeSvg20 = (props: Record<string, unknown>) => props;
       const fakeSvg24 = (props: Record<string, unknown>) => props;
@@ -98,7 +98,7 @@ describe('icon wrappers', () => {
         },
       }));
 
-      const { Icon16, Icon20, Icon24, Icon28 } = require('./icon-wrappers');
+      const { Icon16, Icon20, Icon24, Icon28 } = await import('./icon-wrappers');
 
       icon16 = Icon16({ icon: 'Check', size: 18 });
       icon20 = Icon20({ icon: 'Search', size: 22 });
