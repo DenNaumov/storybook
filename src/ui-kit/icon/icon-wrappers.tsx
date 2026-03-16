@@ -49,31 +49,26 @@ export interface ResizableIconProps extends CommonIconProps {
   icon: ResizableIconKeys;
 }
 
-/** Иконки размером 16x16 */
 export const Icon16 = ({ icon, size = 16, color, ...props }: Icon16Props) => {
   const Icon = resolveSvgComponent(Icon16Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
-/** Иконки размером 20x20 */
 export const Icon20 = ({ icon, size = 20, color, ...props }: Icon20Props) => {
   const Icon = resolveSvgComponent(Icon20Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
-/** Иконки размером 24x24 */
 export const Icon24 = ({ icon, size = 24, color, ...props }: Icon24Props) => {
   const Icon = resolveSvgComponent(Icon24Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
-/** Иконки размером 28x28 */
 export const Icon28 = ({ icon, size = 28, color, ...props }: Icon28Props) => {
   const Icon = resolveSvgComponent(Icon28Icons[icon] as SvgModule);
   return <Icon width={size} height={size} color={color} {...props} />;
 };
 
-/** Иконки со свободным размером из пакета resizable */
 export const ResizableIcon = ({ icon, size = 24, color, ...props }: ResizableIconProps) => {
   const IconComponent = resolveSvgComponent(ResizableIcons[icon] as SvgModule);
   return (
@@ -87,5 +82,4 @@ export const ResizableIcon = ({ icon, size = 24, color, ...props }: ResizableIco
   );
 };
 
-// Короткий алиас, если нужен более общий нейминг
 export const Icon = ResizableIcon;

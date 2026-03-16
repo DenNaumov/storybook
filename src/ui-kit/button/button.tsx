@@ -37,7 +37,6 @@ const normalizeSize = (size: ButtonSize): "s" | "m" => {
   return size;
 };
 
-/** Primary UI component for user interaction */
 export const Button = ({
   primary,
   variant,

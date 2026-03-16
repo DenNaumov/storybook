@@ -47,7 +47,6 @@ export interface TypographyProps {
   style?: React.CSSProperties;
 }
 
-/** Map variant prop to CSS module class name */
 const variantClassMap: Record<TypographyVariant, string> = {
   "title3-regular": styles.title3Regular,
   "title3-semibold": styles.title3Semibold,
@@ -73,7 +72,6 @@ const variantClassMap: Record<TypographyVariant, string> = {
   "caption2-bold": styles.caption2Bold,
 };
 
-/** Map color prop to CSS module class name */
 const colorClassMap: Record<string, string> = {
   default: styles.colorDefault,
   primary: styles.colorPrimary,
@@ -83,14 +81,12 @@ const colorClassMap: Record<string, string> = {
   warning: styles.colorWarning,
 };
 
-/** Map align prop to CSS module class name */
 const alignClassMap: Record<string, string> = {
   left: styles.alignLeft,
   center: styles.alignCenter,
   right: styles.alignRight,
 };
 
-/** Typography component for consistent text styling based on Figma design system */
 export const Typography = ({
   children,
   variant,
