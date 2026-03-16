@@ -7,7 +7,7 @@ import { ResizableIcon } from "../icon/icon-wrappers";
 import styles from "./button-group.stories.module.css";
 
 const meta: Meta<typeof ButtonGroup> = {
-  title: "UI Kit/ButtonGroup",
+  title: "UI Kit/Buttons/ButtonGroup",
   component: ButtonGroup,
   parameters: {
     layout: "fullscreen",

@@ -20,7 +20,7 @@ type IconButtonStoryArgs = Omit<ComponentProps<typeof IconButton>, "icon"> & {
 };
 
 const meta: Meta<IconButtonStoryArgs> = {
-  title: "UI Kit/IconButton",
+  title: "UI Kit/Buttons/IconButton",
   component: IconButton,
   parameters: {
     layout: "fullscreen",

@@ -15,7 +15,7 @@ type FABStoryArgs = Omit<ComponentProps<typeof FAB>, "icon"> & {
 };
 
 const meta: Meta<FABStoryArgs> = {
-  title: "UI Kit/FAB",
+  title: "UI Kit/Buttons/FAB",
   component: FAB,
   parameters: {
     layout: "fullscreen",

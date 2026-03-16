@@ -15,7 +15,7 @@ type ListButtonStoryArgs = Omit<
 };
 
 const meta: Meta<ListButtonStoryArgs> = {
-  title: "UI Kit/ListButton",
+  title: "UI Kit/Buttons/ListButton",
   component: ListButton,
   parameters: {
     layout: "fullscreen",

@@ -19,7 +19,7 @@ type ChipButtonStoryArgs = Omit<
 };
 
 const meta: Meta<ChipButtonStoryArgs> = {
-  title: "UI Kit/ChipButton",
+  title: "UI Kit/Buttons/ChipButton",
   component: ChipButton,
   parameters: {
     layout: "fullscreen",

@@ -17,7 +17,7 @@ type ButtonStoryArgs = Omit<
 };
 
 const meta: Meta<ButtonStoryArgs> = {
-  title: "UI Kit/Button",
+  title: "UI Kit/Buttons/Button",
   component: Button,
   parameters: {
     layout: "fullscreen",

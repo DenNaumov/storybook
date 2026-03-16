@@ -18,7 +18,7 @@ type InlineButtonStoryArgs = Omit<
 };
 
 const meta: Meta<InlineButtonStoryArgs> = {
-  title: "UI Kit/InlineButton",
+  title: "UI Kit/Buttons/InlineButton",
   component: InlineButton,
   parameters: {
     layout: "fullscreen",
