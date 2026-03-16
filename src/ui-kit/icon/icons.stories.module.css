@@ -10,12 +10,13 @@
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   padding: 0;
   color: var(--theme-icon-default);
   font-family: sans-serif;
   background-color: transparent;
-  width: fit-content;
+  width: min(100%, 1248px);
   min-height: auto;
   margin: 0 auto;
   border-radius: 0;
