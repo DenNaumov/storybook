@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import styles from "./button.module.css";
 
 export type ButtonVariant = "primary" | "bezeled" | "outlined" | "text";
-export type ButtonSize = "s" | "m" | "small" | "medium" | "large";
+export type ButtonSize = "s" | "m" | "small" | "medium";
 
 export interface ButtonProps {
   /** Visual style */
@@ -30,7 +30,6 @@ export interface ButtonProps {
 
 const normalizeSize = (size: ButtonSize): "s" | "m" => {
   if (size === "small") return "s";
-  if (size === "large") return "m";
   if (size === "medium") return "m";
   return size;
 };
