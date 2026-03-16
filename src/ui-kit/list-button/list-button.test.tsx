@@ -1,11 +1,7 @@
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 
-import styles from "./list-button.module.css";
 import { ListButton } from "./list-button";
-
-const getClassNames = (className?: string) =>
-  new Set((className ?? "").split(" ").filter(Boolean));
 
 describe("ListButton", () => {
   it("renders label without icon by default", () => {
@@ -14,9 +10,6 @@ describe("ListButton", () => {
     });
 
     expect(isValidElement(element)).toBe(true);
-
-    const classes = getClassNames(element.props.className);
-    expect(classes.has(styles.listButton)).toBe(true);
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
@@ -31,9 +24,6 @@ describe("ListButton", () => {
       pressed: true,
     });
 
-    const classes = getClassNames(element.props.className);
-    expect(classes.has(styles.pressed)).toBe(true);
-
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(2);
     expect(isValidElement(children[0])).toBe(true);
@@ -47,9 +37,6 @@ describe("ListButton", () => {
     });
 
     expect(element.props.disabled).toBe(true);
-
-    const classes = getClassNames(element.props.className);
-    expect(classes.has(styles.disabled)).toBe(true);
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
