@@ -1,37 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
-import type { ComponentProps } from 'react';
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { ComponentProps } from "react";
 
-import { Icon24 } from '../icon';
-import { Icon24Icons, type Icon24IconKeys } from '../icon/packs/24';
-import { Button } from './button';
-import styles from './button.stories.module.css';
+import { Icon24 } from "../icon";
+import { Icon24Icons, type Icon24IconKeys } from "../icon/packs/24";
+import { Button } from "./button";
+import styles from "./button.stories.module.css";
 
-type ButtonStoryArgs = Omit<ComponentProps<typeof Button>, 'startIcon' | 'endIcon'> & {
-  leftIcon?: Icon24IconKeys | 'Нет';
-  rightIcon?: Icon24IconKeys | 'Нет';
+type ButtonStoryArgs = Omit<ComponentProps<typeof Button>, "startIcon" | "endIcon"> & {
+  leftIcon?: Icon24IconKeys | "Нет";
+  rightIcon?: Icon24IconKeys | "Нет";
 };
 
 const meta = {
-  title: 'UI Kit/Button',
+  title: "UI Kit/Button",
   component: Button,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    variant: 'primary',
-    size: 'm',
-    label: 'Сохранить',
+    variant: "primary",
+    size: "m",
+    label: "Сохранить",
   },
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['primary', 'bezeled', 'outlined', 'text'],
+      control: "select",
+      options: ["primary", "bezeled", "outlined", "text"],
     },
     primary: { control: false, table: { disable: true } },
     size: {
-      control: 'select',
-      options: ['s', 'm'],
+      control: "select",
+      options: ["s", "m"],
     },
     loading: { control: false, table: { disable: true } },
     pressed: { control: false, table: { disable: true } },
@@ -55,12 +55,12 @@ const StateRow = ({
   state,
   size,
 }: {
-  state: 'default' | 'pressed' | 'disabled' | 'loading';
-  size: 's' | 'm';
+  state: "default" | "pressed" | "disabled" | "loading";
+  size: "s" | "m";
 }) => {
   const commonProps = {
     size,
-    label: 'Сохранить',
+    label: "Сохранить",
     startIcon: defaultIcon ? <Icon24Preview name={defaultIcon} /> : undefined,
     endIcon: defaultIcon ? <Icon24Preview name={defaultIcon} /> : undefined,
   };
@@ -68,10 +68,10 @@ const StateRow = ({
   return (
     <>
       <div className={styles.rowLabel}>{state}</div>
-      <Button variant="primary" {...commonProps} pressed={state === 'pressed'} disabled={state === 'disabled'} loading={state === 'loading'} />
-      <Button variant="bezeled" {...commonProps} pressed={state === 'pressed'} disabled={state === 'disabled'} loading={state === 'loading'} />
-      <Button variant="outlined" {...commonProps} pressed={state === 'pressed'} disabled={state === 'disabled'} loading={state === 'loading'} />
-      <Button variant="text" {...commonProps} pressed={state === 'pressed'} disabled={state === 'disabled'} loading={state === 'loading'} />
+      <Button variant="primary" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
+      <Button variant="bezeled" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
+      <Button variant="outlined" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
+      <Button variant="text" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
     </>
   );
 };
@@ -119,25 +119,25 @@ export const Playground: Story = {
   args: {
     variant: "primary",
     size: "s",
-    label: 'Сохранить',
-    leftIcon: 'Нет',
-    rightIcon: 'Нет',
+    label: "Сохранить",
+    leftIcon: "Нет",
+    rightIcon: "Нет",
     startIcon: null,
     loading: false,
     disabled: false
   },
   argTypes: {
     leftIcon: {
-      control: 'select',
-      options: ['Нет', ...icon24Options],
-      name: 'Left icon',
-      mapping: { 'Нет': undefined },
+      control: "select",
+      options: ["Нет", ...icon24Options],
+      name: "Left icon",
+      mapping: { "Нет": undefined },
     },
     rightIcon: {
-      control: 'select',
-      options: ['Нет', ...icon24Options],
-      name: 'Right icon',
-      mapping: { 'Нет': undefined },
+      control: "select",
+      options: ["Нет", ...icon24Options],
+      name: "Right icon",
+      mapping: { "Нет": undefined },
     },
   },
   render: (args: ButtonStoryArgs) => (

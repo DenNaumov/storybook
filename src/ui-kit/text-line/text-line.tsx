@@ -1,7 +1,7 @@
-import type { KeyboardEvent, ReactNode } from 'react';
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import type { KeyboardEvent, ReactNode } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 
-import styles from './text-line.module.css';
+import styles from "./text-line.module.css";
 
 export interface TextLineProps {
   label?: string;
@@ -35,8 +35,8 @@ export const TextLine = ({
   const autoId = useId();
   const inputId = id ?? autoId;
   const isControlled = value !== undefined;
-  const [internalValue, setInternalValue] = useState(defaultValue ?? '');
-  const displayValue = isControlled ? value ?? '' : internalValue;
+  const [internalValue, setInternalValue] = useState(defaultValue ?? "");
+  const displayValue = isControlled ? value ?? "" : internalValue;
   const editableRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -51,18 +51,18 @@ export const TextLine = ({
     () =>
       [
         styles.field,
-        disabled ? styles.disabled : '',
-        readOnly ? styles.readOnly : '',
-        error ? styles.error : '',
-        hasValue ? styles.filled : '',
+        disabled ? styles.disabled : "",
+        readOnly ? styles.readOnly : "",
+        error ? styles.error : "",
+        hasValue ? styles.filled : "",
       ]
         .filter(Boolean)
-        .join(' '),
+        .join(" "),
     [disabled, readOnly, error, hasValue],
   );
 
   const handleInput = () => {
-    const next = editableRef.current?.innerText ?? '';
+    const next = editableRef.current?.innerText ?? "";
     if (!isControlled) {
       setInternalValue(next);
     }
@@ -78,11 +78,11 @@ export const TextLine = ({
   const handleClear = () => {
     if (disabled || readOnly) return;
     if (!isControlled) {
-      setInternalValue('');
+      setInternalValue("");
     }
-    onChange?.('');
+    onChange?.("");
     if (editableRef.current) {
-      editableRef.current.innerText = '';
+      editableRef.current.innerText = "";
       editableRef.current.focus();
     }
   };
@@ -125,7 +125,7 @@ export const TextLine = ({
         {name ? <input type="hidden" name={name} value={displayValue} /> : null}
       </div>
       {helperText ? (
-        <div className={styles.helper} data-error={error ? 'true' : 'false'}>
+        <div className={styles.helper} data-error={error ? "true" : "false"}>
           {helperText}
         </div>
       ) : null}

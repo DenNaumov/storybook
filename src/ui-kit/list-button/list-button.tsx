@@ -1,7 +1,7 @@
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './list-button.module.css';
+import type { ReactNode, ButtonHTMLAttributes } from "react";
+import styles from "./list-button.module.css";
 
-export interface ListButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
+export interface ListButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
     /** Text to display on the button */
     label?: string;
     /** Optional icon to display on the left */
@@ -24,11 +24,11 @@ export const ListButton = ({
 }: ListButtonProps) => {
     const classes = [
         styles.listButton,
-        pressed ? styles.pressed : '',
-        disabled ? styles.disabled : '',
+        pressed ? styles.pressed : "",
+        disabled ? styles.disabled : "",
     ]
         .filter(Boolean)
-        .join(' ');
+        .join(" ");
 
     return (
         <button className={classes} disabled={disabled} {...props}>

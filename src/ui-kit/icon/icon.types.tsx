@@ -1,4 +1,4 @@
-import type { ReactNode, SVGProps } from 'react';
+import type { ReactNode, SVGProps } from "react";
 
 export interface BaseIconProps extends SVGProps<SVGSVGElement> {
   /** Цвет иконки (по умолчанию currentColor) */
@@ -9,7 +9,7 @@ export interface BaseIconProps extends SVGProps<SVGSVGElement> {
   children?: ReactNode;
 }
 
-export interface CommonIconProps extends Omit<SVGProps<SVGSVGElement>, 'color'> {
+export interface CommonIconProps extends Omit<SVGProps<SVGSVGElement>, "color"> {
   /** Цвет иконки (по умолчанию currentColor) */
   color?: string;
   /** Размер иконки */
@@ -17,7 +17,7 @@ export interface CommonIconProps extends Omit<SVGProps<SVGSVGElement>, 'color'> 
 }
 
 export const BaseIcon = ({
-  color = 'currentColor',
+  color = "currentColor",
   size,
   width,
   height,

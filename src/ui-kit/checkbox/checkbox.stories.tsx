@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { Checkbox } from './checkbox';
-import styles from './checkbox.stories.module.css';
+import { Checkbox } from "./checkbox";
+import styles from "./checkbox.stories.module.css";
 
 const meta = {
-  title: 'UI Kit/Checkbox',
+  title: "UI Kit/Checkbox",
   component: Checkbox,
-  parameters: { layout: 'fullscreen' },
-  tags: ['autodocs'],
+  parameters: { layout: "fullscreen" },
+  tags: ["autodocs"],
   argTypes: {
-    checked: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    indeterminate: { control: 'boolean' },
+    checked: { control: "boolean" },
+    disabled: { control: "boolean" },
+    indeterminate: { control: "boolean" },
   },
 } satisfies Meta<typeof Checkbox>;
 

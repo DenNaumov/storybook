@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
-import styles from './button.module.css';
+import styles from "./button.module.css";
 
-export type ButtonVariant = 'primary' | 'bezeled' | 'outlined' | 'text';
-export type ButtonSize = 's' | 'm' | 'small' | 'medium' | 'large';
+export type ButtonVariant = "primary" | "bezeled" | "outlined" | "text";
+export type ButtonSize = "s" | "m" | "small" | "medium" | "large";
 
 export interface ButtonProps {
   /** Is this the principal call to action on the page? (legacy) */
@@ -30,10 +30,10 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-const normalizeSize = (size: ButtonSize): 's' | 'm' => {
-  if (size === 'small') return 's';
-  if (size === 'large') return 'm';
-  if (size === 'medium') return 'm';
+const normalizeSize = (size: ButtonSize): "s" | "m" => {
+  if (size === "small") return "s";
+  if (size === "large") return "m";
+  if (size === "medium") return "m";
   return size;
 };
 
@@ -41,7 +41,7 @@ const normalizeSize = (size: ButtonSize): 's' | 'm' => {
 export const Button = ({
   primary,
   variant,
-  size = 'm',
+  size = "m",
   label,
   children,
   startIcon,
@@ -52,7 +52,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const resolvedVariant: ButtonVariant =
-    variant ?? (primary ? 'primary' : 'outlined');
+    variant ?? (primary ? "primary" : "outlined");
   const resolvedSize = normalizeSize(size);
   const isDisabled = disabled || loading;
   const content = children ?? label;
@@ -61,12 +61,12 @@ export const Button = ({
     styles.button,
     styles[`size${resolvedSize.toUpperCase()}`],
     styles[`variant${resolvedVariant[0].toUpperCase()}${resolvedVariant.slice(1)}`],
-    pressed ? styles.pressed : '',
-    isDisabled ? styles.disabled : '',
-    loading ? styles.loading : '',
+    pressed ? styles.pressed : "",
+    isDisabled ? styles.disabled : "",
+    loading ? styles.loading : "",
   ]
     .filter(Boolean)
-    .join(' ');
+    .join(" ");
 
   return (
     <button
@@ -76,7 +76,7 @@ export const Button = ({
       aria-busy={loading || undefined}
       {...props}
     >
-      <span className={styles.content} data-hidden={loading ? 'true' : 'false'}>
+      <span className={styles.content} data-hidden={loading ? "true" : "false"}>
         {startIcon ? <span className={styles.icon}>{startIcon}</span> : null}
         {content}
         {endIcon ? <span className={styles.icon}>{endIcon}</span> : null}

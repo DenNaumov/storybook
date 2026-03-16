@@ -1,15 +1,15 @@
-import { Children, isValidElement } from 'react';
-import { describe, expect, it } from '@jest/globals';
+import { Children, isValidElement } from "react";
+import { describe, expect, it } from "@jest/globals";
 
-import styles from './icon-button.module.css';
-import { IconButton } from './icon-button';
+import styles from "./icon-button.module.css";
+import { IconButton } from "./icon-button";
 
-const getClassNames = (className?: string) => new Set((className ?? '').split(' ').filter(Boolean));
+const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
 
-describe('IconButton', () => {
-  it('renders default sizes when no explicit sizes are passed', () => {
+describe("IconButton", () => {
+  it("renders default sizes when no explicit sizes are passed", () => {
     const element = IconButton({
-      icon: 'add',
+      icon: "add",
     });
 
     expect(isValidElement(element)).toBe(true);
@@ -25,12 +25,12 @@ describe('IconButton', () => {
     expect(wrapperClasses.has(styles.iconSizeM)).toBe(true);
   });
 
-  it('renders custom sizes and badge count', () => {
+  it("renders custom sizes and badge count", () => {
     const element = IconButton({
-      icon: 'add',
-      buttonSize: 's',
-      iconSize: 's',
-      badgeCount: '9',
+      icon: "add",
+      buttonSize: "s",
+      iconSize: "s",
+      badgeCount: "9",
     });
 
     const classes = getClassNames(element.props.className);
@@ -44,14 +44,14 @@ describe('IconButton', () => {
 
     const wrapperChildren = Children.toArray(wrapper.props.children);
     expect(wrapperChildren).toHaveLength(2);
-    expect(wrapperChildren[0]).toBe('add');
+    expect(wrapperChildren[0]).toBe("add");
     expect(isValidElement(wrapperChildren[1])).toBe(true);
-    expect(wrapperChildren[1].props.children).toBe('9');
+    expect(wrapperChildren[1].props.children).toBe("9");
   });
 
-  it('applies pressed and disabled classes', () => {
+  it("applies pressed and disabled classes", () => {
     const element = IconButton({
-      icon: 'add',
+      icon: "add",
       pressed: true,
       disabled: true,
     });

@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
-import styles from './badge.module.css';
+import type { ReactNode } from "react";
+import styles from "./badge.module.css";
 
-export type BadgeVariant = 'primary' | 'error' | 'inverse';
-export type BadgeSize = 'dot' | 'medium' | 'large';
+export type BadgeVariant = "primary" | "error" | "inverse";
+export type BadgeSize = "dot" | "medium" | "large";
 
 export interface BadgeProps {
   /** Visual style variant */
@@ -22,14 +22,14 @@ export interface BadgeProps {
  * Matches the design with dot, medium, and large variants in blue, red, and inverse themes.
  */
 export const Badge = ({
-  variant = 'primary',
-  size = 'medium',
+  variant = "primary",
+  size = "medium",
   children,
   count,
   className,
   ...props
 }: BadgeProps) => {
-  const isDot = size === 'dot';
+  const isDot = size === "dot";
   const content = isDot ? null : (children ?? count);
 
   const classes = [
@@ -39,7 +39,7 @@ export const Badge = ({
     className,
   ]
     .filter(Boolean)
-    .join(' ');
+    .join(" ");
 
   return (
     <span className={classes} {...props}>

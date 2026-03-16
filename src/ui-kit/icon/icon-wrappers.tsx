@@ -1,28 +1,28 @@
-import type { ComponentType, SVGProps } from 'react';
-import type { CommonIconProps } from './icon.types';
-import { Icon16Icons, type Icon16IconKeys } from './packs/16';
-import { Icon20Icons, type Icon20IconKeys } from './packs/20';
-import { Icon24Icons, type Icon24IconKeys } from './packs/24';
-import { Icon28Icons, type Icon28IconKeys } from './packs/28';
-import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
+import type { ComponentType, SVGProps } from "react";
+import type { CommonIconProps } from "./icon.types";
+import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
+import { Icon20Icons, type Icon20IconKeys } from "./packs/20";
+import { Icon24Icons, type Icon24IconKeys } from "./packs/24";
+import { Icon28Icons, type Icon28IconKeys } from "./packs/28";
+import { ResizableIcons, type ResizableIconKeys } from "./packs/resizable";
 
 type SvgComponent = ComponentType<SVGProps<SVGSVGElement>>;
 type SvgModule = SvgComponent | { default?: SvgComponent; ReactComponent?: SvgComponent };
 
 export const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
-  if (typeof iconModule === 'function') {
+  if (typeof iconModule === "function") {
     return iconModule;
   }
 
-  if (iconModule && typeof iconModule === 'object' && typeof iconModule.default === 'function') {
+  if (iconModule && typeof iconModule === "object" && typeof iconModule.default === "function") {
     return iconModule.default;
   }
 
-  if (iconModule && typeof iconModule === 'object' && typeof iconModule.ReactComponent === 'function') {
+  if (iconModule && typeof iconModule === "object" && typeof iconModule.ReactComponent === "function") {
     return iconModule.ReactComponent;
   }
 
-  throw new Error('Invalid SVG icon module.');
+  throw new Error("Invalid SVG icon module.");
 };
 
 export interface Icon16Props extends CommonIconProps {

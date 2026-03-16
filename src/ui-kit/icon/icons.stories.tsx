@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
-import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from './icon-wrappers';
-import { Icon16Icons, type Icon16IconKeys } from './packs/16';
-import { Icon20Icons, type Icon20IconKeys } from './packs/20';
-import { Icon24Icons, type Icon24IconKeys } from './packs/24';
-import { Icon28Icons, type Icon28IconKeys } from './packs/28';
-import { ResizableIcons, type ResizableIconKeys } from './packs/resizable';
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from "./icon-wrappers";
+import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
+import { Icon20Icons, type Icon20IconKeys } from "./packs/20";
+import { Icon24Icons, type Icon24IconKeys } from "./packs/24";
+import { Icon28Icons, type Icon28IconKeys } from "./packs/28";
+import { ResizableIcons, type ResizableIconKeys } from "./packs/resizable";
 
 type FixedPackStoryArgs<TIcon extends string> = {
   icon: TIcon;
@@ -18,9 +18,9 @@ type ResizableStoryArgs = {
 };
 
 const meta: Meta = {
-  title: 'UI Kit/Icons',
+  title: "UI Kit/Icons",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 
@@ -34,51 +34,51 @@ const iconsResizable = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
 const listStyles = {
   page: {
-    minHeight: '100vh',
-    backgroundColor: 'var(--theme-bg-brand-light)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '24px',
+    minHeight: "100vh",
+    backgroundColor: "var(--theme-bg-brand-light)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "24px",
   },
   wrapper: {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: '8px',
+    display: "flex",
+    flexWrap: "wrap" as const,
+    gap: "8px",
     padding: 0,
-    color: 'var(--theme-icon-default)',
-    fontFamily: 'sans-serif',
-    backgroundColor: 'transparent',
-    width: 'fit-content',
-    minHeight: 'auto',
-    margin: '0 auto',
+    color: "var(--theme-icon-default)",
+    fontFamily: "sans-serif",
+    backgroundColor: "transparent",
+    width: "fit-content",
+    minHeight: "auto",
+    margin: "0 auto",
     borderRadius: 0,
   },
   row: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    padding: '6px 10px',
-    borderRadius: '6px',
-    backgroundColor: 'var(--theme-bg-surface-primary)',
-    border: '1px solid var(--theme-border-default)',
-    minWidth: '200px',
-    flex: '0 0 200px',
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    padding: "6px 10px",
+    borderRadius: "6px",
+    backgroundColor: "var(--theme-bg-surface-primary)",
+    border: "1px solid var(--theme-border-default)",
+    minWidth: "200px",
+    flex: "0 0 200px",
   },
   name: {
-    fontSize: '12px',
+    fontSize: "12px",
     opacity: 0.7,
     flex: 1,
-    textAlign: 'left' as const,
-    whiteSpace: 'nowrap' as const,
-    overflow: 'hidden' as const,
-    textOverflow: 'ellipsis' as const,
+    textAlign: "left" as const,
+    whiteSpace: "nowrap" as const,
+    overflow: "hidden" as const,
+    textOverflow: "ellipsis" as const,
   },
   icon: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minWidth: '32px',
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: "32px",
     lineHeight: 0,
     fontSize: 0,
   },
@@ -102,11 +102,11 @@ export const Pack16_List: StoryObj = {
 export const Pack16_Playground: StoryObj<FixedPackStoryArgs<Icon16IconKeys>> = {
   args: {
     icon: icons16[0],
-    color: 'var(--theme-icon-brand-main)',
+    color: "var(--theme-icon-brand-main)",
   },
   argTypes: {
-    icon: { control: 'select', options: icons16 },
-    color: { control: 'color' },
+    icon: { control: "select", options: icons16 },
+    color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon16IconKeys>) => (
     <div style={listStyles.page}>
@@ -138,11 +138,11 @@ export const Pack20_List: StoryObj = {
 export const Pack20_Playground: StoryObj<FixedPackStoryArgs<Icon20IconKeys>> = {
   args: {
     icon: icons20[0],
-    color: 'var(--theme-icon-brand-main)',
+    color: "var(--theme-icon-brand-main)",
   },
   argTypes: {
-    icon: { control: 'select', options: icons20 },
-    color: { control: 'color' },
+    icon: { control: "select", options: icons20 },
+    color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon20IconKeys>) => (
     <div style={listStyles.page}>
@@ -174,11 +174,11 @@ export const Pack24_List: StoryObj = {
 export const Pack24_Playground: StoryObj<FixedPackStoryArgs<Icon24IconKeys>> = {
   args: {
     icon: icons24[0],
-    color: 'var(--theme-icon-brand-main)',
+    color: "var(--theme-icon-brand-main)",
   },
   argTypes: {
-    icon: { control: 'select', options: icons24 },
-    color: { control: 'color' },
+    icon: { control: "select", options: icons24 },
+    color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon24IconKeys>) => (
     <div style={listStyles.page}>
@@ -210,11 +210,11 @@ export const Pack28_List: StoryObj = {
 export const Pack28_Playground: StoryObj<FixedPackStoryArgs<Icon28IconKeys>> = {
   args: {
     icon: icons28[0],
-    color: 'var(--theme-icon-brand-main)',
+    color: "var(--theme-icon-brand-main)",
   },
   argTypes: {
-    icon: { control: 'select', options: icons28 },
-    color: { control: 'color' },
+    icon: { control: "select", options: icons28 },
+    color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon28IconKeys>) => (
     <div style={listStyles.page}>
@@ -234,7 +234,7 @@ export const Resizable_List: StoryObj = {
       <div style={listStyles.wrapper}>
         {iconsResizable.map((name) => (
           <div key={name} style={listStyles.row}>
-            <span style={listStyles.icon}><ResizableIcon icon={name} size={24} style={{ display: 'block' }} /></span>
+            <span style={listStyles.icon}><ResizableIcon icon={name} size={24} style={{ display: "block" }} /></span>
             <span style={listStyles.name}>{name}</span>
           </div>
         ))}
@@ -245,26 +245,26 @@ export const Resizable_List: StoryObj = {
 
 export const Resizable_Playground: StoryObj<ResizableStoryArgs> = {
   args: {
-    icon: 'AddCircle28',
+    icon: "AddCircle28",
     size: 40,
-    color: 'var(--theme-icon-brand-main)',
+    color: "var(--theme-icon-brand-main)",
   },
   argTypes: {
     icon: {
-      control: 'select',
+      control: "select",
       options: iconsResizable,
     },
     size: {
-      control: { type: 'number', min: 12, max: 96, step: 2 },
+      control: { type: "number", min: 12, max: 96, step: 2 },
     },
-    color: { control: 'color' },
+    color: { control: "color" },
   },
   render: (args: ResizableStoryArgs) => (
     <div style={listStyles.page}>
       <div style={listStyles.wrapper}>
         <div style={listStyles.row}>
           <span style={listStyles.icon}>
-            <ResizableIcon icon={args.icon} size={args.size} color={args.color} style={{ display: 'block' }} />
+            <ResizableIcon icon={args.icon} size={args.size} color={args.color} style={{ display: "block" }} />
           </span>
           <span style={listStyles.name}>{args.icon}</span>
         </div>

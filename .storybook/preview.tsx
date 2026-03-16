@@ -1,40 +1,40 @@
-import type { Preview } from '@storybook/nextjs';
+import type { Preview } from "@storybook/nextjs";
 
-import '../src/styles/globals.css';
-import { ThemeProvider } from '../src/ui-kit/theme';
-import type { ThemeColor, ThemeMode } from '../src/ui-kit/theme';
+import "../src/styles/globals.css";
+import { ThemeProvider } from "../src/ui-kit/theme";
+import type { ThemeColor, ThemeMode } from "../src/ui-kit/theme";
 
 const preview: Preview = {
   globalTypes: {
     themeColor: {
-      name: 'Theme color',
-      description: 'Active brand theme',
-      defaultValue: 'blue',
+      name: "Theme color",
+      description: "Active brand theme",
+      defaultValue: "blue",
       toolbar: {
-        icon: 'paintbrush',
+        icon: "paintbrush",
         items: [
-          { value: 'blue', title: 'Blue' },
-          { value: 'pink', title: 'Pink' },
+          { value: "blue", title: "Blue" },
+          { value: "pink", title: "Pink" },
         ],
       },
     },
     themePreference: {
-      name: 'Theme mode',
-      description: 'Active theme mode',
-      defaultValue: 'dark',
+      name: "Theme mode",
+      description: "Active theme mode",
+      defaultValue: "dark",
       toolbar: {
-        icon: 'mirror',
+        icon: "mirror",
         items: [
-          { value: 'dark', title: 'Dark' },
-          { value: 'light', title: 'Light' },
+          { value: "dark", title: "Dark" },
+          { value: "light", title: "Light" },
         ],
       },
     },
   },
   decorators: [
     (Story, context) => {
-      const themeColor = (context.globals.themeColor ?? 'blue') as ThemeColor;
-      const themePreference = (context.globals.themePreference ?? 'dark') as ThemeMode;
+      const themeColor = (context.globals.themeColor ?? "blue") as ThemeColor;
+      const themePreference = (context.globals.themePreference ?? "dark") as ThemeMode;
 
       return (
         <ThemeProvider
@@ -59,7 +59,7 @@ const preview: Preview = {
       // 'todo' - show a11y violations in the test UI only
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
-      test: 'todo',
+      test: "todo",
     },
   },
 };

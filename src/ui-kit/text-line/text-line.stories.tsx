@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { TextLine } from './text-line';
-import styles from './text-line.stories.module.css';
+import { TextLine } from "./text-line";
+import styles from "./text-line.stories.module.css";
 
 const meta = {
-  title: 'UI Kit/TextLine',
+  title: "UI Kit/TextLine",
   component: TextLine,
-  parameters: { layout: 'fullscreen' },
-  tags: ['autodocs'],
+  parameters: { layout: "fullscreen" },
+  tags: ["autodocs"],
 } satisfies Meta<typeof TextLine>;
 
 export default meta;

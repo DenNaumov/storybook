@@ -1,14 +1,14 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it } from "@jest/globals";
 
-import styles from './button-group.module.css';
-import { ButtonGroup } from './button-group';
+import styles from "./button-group.module.css";
+import { ButtonGroup } from "./button-group";
 
-const getClassNames = (className?: string) => new Set((className ?? '').split(' ').filter(Boolean));
+const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
 
-describe('ButtonGroup', () => {
-  it('uses vertical direction and default gap by default', () => {
+describe("ButtonGroup", () => {
+  it("uses vertical direction and default gap by default", () => {
     const element = ButtonGroup({
-      children: 'content',
+      children: "content",
     });
 
     const classes = getClassNames(element.props.className);
@@ -18,29 +18,29 @@ describe('ButtonGroup', () => {
     expect(classes.has(styles.gap12)).toBe(true);
   });
 
-  it('applies spacing and custom className', () => {
+  it("applies spacing and custom className", () => {
     const element = ButtonGroup({
-      children: 'content',
+      children: "content",
       withSpacing: true,
-      className: 'custom-group',
+      className: "custom-group",
     });
 
     const classes = getClassNames(element.props.className);
 
     expect(classes.has(styles.withSpacing)).toBe(true);
-    expect(classes.has('custom-group')).toBe(true);
+    expect(classes.has("custom-group")).toBe(true);
   });
 
-  it('renders inline and chips directions with the proper layout classes', () => {
+  it("renders inline and chips directions with the proper layout classes", () => {
     const inlineElement = ButtonGroup({
-      children: 'content',
-      direction: 'inline',
+      children: "content",
+      direction: "inline",
       gap: 0,
     });
 
     const chipsElement = ButtonGroup({
-      children: 'content',
-      direction: 'chips',
+      children: "content",
+      direction: "chips",
       gap: 0,
     });
 
@@ -54,17 +54,17 @@ describe('ButtonGroup', () => {
     expect(chipsClasses.has(styles.gap12)).toBe(false);
   });
 
-  it('renders horizontal direction and passes through extra props', () => {
+  it("renders horizontal direction and passes through extra props", () => {
     const element = ButtonGroup({
-      children: 'content',
-      direction: 'horizontal',
-      id: 'group-id',
+      children: "content",
+      direction: "horizontal",
+      id: "group-id",
     });
 
     const classes = getClassNames(element.props.className);
 
     expect(classes.has(styles.horizontal)).toBe(true);
-    expect(element.props.id).toBe('group-id');
-    expect(element.props.children).toBe('content');
+    expect(element.props.id).toBe("group-id");
+    expect(element.props.children).toBe("content");
   });
 });

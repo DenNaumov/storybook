@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
-import type { RuleSetRule } from 'webpack';
+import type { RuleSetRule } from "webpack";
 
-const isRuleSetRule = (rule: RuleSetRule | '...'): rule is RuleSetRule =>
-  rule !== '...';
+const isRuleSetRule = (rule: RuleSetRule | "..."): rule is RuleSetRule =>
+  rule !== "...";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       (rule): rule is RuleSetRule =>
         isRuleSetRule(rule) &&
         rule.test instanceof RegExp &&
-        rule.test.test('.svg')
+        rule.test.test(".svg")
     );
 
     if (fileLoaderRule) {
@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
 
     return config;

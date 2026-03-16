@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { RadioButton } from './radio-button';
-import styles from './radio-button.stories.module.css';
+import { RadioButton } from "./radio-button";
+import styles from "./radio-button.stories.module.css";
 
 const meta = {
-  title: 'UI Kit/RadioButton',
+  title: "UI Kit/RadioButton",
   component: RadioButton,
-  parameters: { layout: 'fullscreen' },
-  tags: ['autodocs'],
+  parameters: { layout: "fullscreen" },
+  tags: ["autodocs"],
   argTypes: {
-    checked: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    checked: { control: "boolean" },
+    disabled: { control: "boolean" },
   },
 } satisfies Meta<typeof RadioButton>;
 

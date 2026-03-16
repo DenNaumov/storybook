@@ -1,7 +1,7 @@
-import type { ReactNode, HTMLAttributes } from 'react';
-import styles from './button-group.module.css';
+import type { ReactNode, HTMLAttributes } from "react";
+import styles from "./button-group.module.css";
 
-export type ButtonGroupDirection = 'vertical' | 'horizontal' | 'inline' | 'chips';
+export type ButtonGroupDirection = "vertical" | "horizontal" | "inline" | "chips";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
     /** Layout direction */
@@ -21,7 +21,7 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
  * Supports Figma specs for Vertical, Horizontal, Inline, and Chips layouts.
  */
 export const ButtonGroup = ({
-    direction = 'vertical',
+    direction = "vertical",
     withSpacing = false,
     gap = 12,
     children,
@@ -30,15 +30,15 @@ export const ButtonGroup = ({
 }: ButtonGroupProps) => {
     const classes = [
         styles.buttonGroup,
-        direction === 'inline' ? styles.inlineHorizontal :
-            direction === 'chips' ? styles.chipsHorizontal :
+        direction === "inline" ? styles.inlineHorizontal :
+            direction === "chips" ? styles.chipsHorizontal :
                 styles[direction],
-        withSpacing ? styles.withSpacing : '',
-        gap === 12 ? styles.gap12 : '',
+        withSpacing ? styles.withSpacing : "",
+        gap === 12 ? styles.gap12 : "",
         className,
     ]
         .filter(Boolean)
-        .join(' ');
+        .join(" ");
 
     return (
         <div className={classes} {...props}>

@@ -1,10 +1,10 @@
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './icon-button.module.css';
+import type { ReactNode, ButtonHTMLAttributes } from "react";
+import styles from "./icon-button.module.css";
 
-export type IconButtonSize = 's' | 'm';
-export type IconSize = 's' | 'm';
+export type IconButtonSize = "s" | "m";
+export type IconSize = "s" | "m";
 
-export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
+export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
     /** Size of the button */
     buttonSize?: IconButtonSize;
     /** Size of the icon */
@@ -22,8 +22,8 @@ export interface IconButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonEle
  * Supports multiple button and icon sizes, states, and an optional badge.
  */
 export const IconButton = ({
-    buttonSize = 'm',
-    iconSize = 'm',
+    buttonSize = "m",
+    iconSize = "m",
     icon,
     badgeCount,
     pressed = false,
@@ -33,16 +33,16 @@ export const IconButton = ({
     const classes = [
         styles.iconButton,
         styles[`buttonSize${buttonSize.toUpperCase()}`],
-        pressed ? styles.pressed : '',
-        disabled ? styles.disabled : '',
+        pressed ? styles.pressed : "",
+        disabled ? styles.disabled : "",
     ]
         .filter(Boolean)
-        .join(' ');
+        .join(" ");
 
     const iconWrapperClasses = [
         styles.iconWrapper,
         styles[`iconSize${iconSize.toUpperCase()}`],
-    ].join(' ');
+    ].join(" ");
 
     return (
         <button className={classes} disabled={disabled} {...props}>

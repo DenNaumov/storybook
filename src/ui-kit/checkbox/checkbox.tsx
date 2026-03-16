@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
-import type { ChangeEventHandler } from 'react';
+import { useEffect, useRef } from "react";
+import type { ChangeEventHandler } from "react";
 
-import styles from './checkbox.module.css';
+import styles from "./checkbox.module.css";
 
 export interface CheckboxProps {
   checked?: boolean;
@@ -39,7 +39,7 @@ export const Checkbox = ({
         checked={checked}
         defaultChecked={defaultChecked}
         disabled={disabled}
-        aria-checked={indeterminate ? 'mixed' : checked ? 'true' : 'false'}
+        aria-checked={indeterminate ? "mixed" : checked ? "true" : "false"}
         name={name}
         id={id}
         onChange={onChange}

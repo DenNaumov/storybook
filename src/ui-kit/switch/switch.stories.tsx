@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import { Switch } from './switch';
-import styles from './switch.stories.module.css';
+import { Switch } from "./switch";
+import styles from "./switch.stories.module.css";
 
 const meta = {
-  title: 'UI Kit/Switch',
+  title: "UI Kit/Switch",
   component: Switch,
-  parameters: { layout: 'fullscreen' },
-  tags: ['autodocs'],
+  parameters: { layout: "fullscreen" },
+  tags: ["autodocs"],
   argTypes: {
-    checked: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-    invalid: { control: 'boolean' },
+    checked: { control: "boolean" },
+    disabled: { control: "boolean" },
+    invalid: { control: "boolean" },
   },
 } satisfies Meta<typeof Switch>;
 

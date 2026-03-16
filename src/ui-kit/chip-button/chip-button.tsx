@@ -1,9 +1,9 @@
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './chip-button.module.css';
+import type { ReactNode, ButtonHTMLAttributes } from "react";
+import styles from "./chip-button.module.css";
 
-export type ChipButtonSize = 's' | 'm' | 'l';
+export type ChipButtonSize = "s" | "m" | "l";
 
-export interface ChipButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
+export interface ChipButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
     /** Size of the chip button */
     size?: ChipButtonSize;
     /** Optional icon to display on the left */
@@ -21,7 +21,7 @@ export interface ChipButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonEle
  * Supports S, M, L sizes, icons on both sides, and active/disabled states.
  */
 export const ChipButton = ({
-    size = 'm',
+    size = "m",
     startIcon,
     endIcon,
     active = false,
@@ -36,14 +36,14 @@ export const ChipButton = ({
     const classes = [
         styles.chipButton,
         styles[`size${size.toUpperCase()}`],
-        active ? styles.active : '',
-        disabled ? styles.disabled : '',
-        startIcon ? styles.hasStartIcon : '',
-        endIcon ? styles.hasEndIcon : '',
-        isIconOnly ? styles.iconOnly : '',
+        active ? styles.active : "",
+        disabled ? styles.disabled : "",
+        startIcon ? styles.hasStartIcon : "",
+        endIcon ? styles.hasEndIcon : "",
+        isIconOnly ? styles.iconOnly : "",
     ]
         .filter(Boolean)
-        .join(' ');
+        .join(" ");
 
     return (
         <button className={classes} disabled={disabled} {...props}>

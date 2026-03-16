@@ -1,6 +1,6 @@
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEventHandler } from "react";
 
-import styles from './switch.module.css';
+import styles from "./switch.module.css";
 
 export interface SwitchProps {
   checked?: boolean;
@@ -23,11 +23,11 @@ export const Switch = ({
 }: SwitchProps) => {
   const classes = [
     styles.switch,
-    disabled ? styles.disabled : '',
-    invalid ? styles.invalid : '',
+    disabled ? styles.disabled : "",
+    invalid ? styles.invalid : "",
   ]
     .filter(Boolean)
-    .join(' ');
+    .join(" ");
 
   return (
     <label className={classes}>

@@ -1,23 +1,23 @@
-import type { StorybookConfig } from '@storybook/nextjs';
-import type { RuleSetRule } from 'webpack';
+import type { StorybookConfig } from "@storybook/nextjs";
+import type { RuleSetRule } from "webpack";
 
-const isRuleSetRule = (rule: RuleSetRule | '...'): rule is RuleSetRule =>
-  rule !== '...';
+const isRuleSetRule = (rule: RuleSetRule | "..."): rule is RuleSetRule =>
+  rule !== "...";
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-docs',
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
   ],
-  framework: '@storybook/nextjs',
+  framework: "@storybook/nextjs",
   webpackFinal: async (config) => {
     const rules = config.module?.rules || [];
     const fileLoaderRule = rules.find(
       (rule): rule is RuleSetRule =>
         isRuleSetRule(rule) &&
         rule.test instanceof RegExp &&
-        rule.test.test('.svg')
+        rule.test.test(".svg")
     );
 
     if (fileLoaderRule) {
@@ -28,8 +28,8 @@ const config: StorybookConfig = {
       test: /\.svg$/i,
       use: [
         {
-          loader: '@svgr/webpack',
-          options: { exportType: 'default' },
+          loader: "@svgr/webpack",
+          options: { exportType: "default" },
         },
       ],
     });

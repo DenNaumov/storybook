@@ -1,18 +1,18 @@
-import { Children, isValidElement } from 'react';
-import { describe, expect, it } from '@jest/globals';
+import { Children, isValidElement } from "react";
+import { describe, expect, it } from "@jest/globals";
 
-import styles from './chip-button.module.css';
-import { ChipButton } from './chip-button';
+import styles from "./chip-button.module.css";
+import { ChipButton } from "./chip-button";
 
-const getClassNames = (className?: string) => new Set((className ?? '').split(' ').filter(Boolean));
+const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
 
-describe('ChipButton', () => {
-  it('renders label with both icons and applies active state classes', () => {
+describe("ChipButton", () => {
+  it("renders label with both icons and applies active state classes", () => {
     const element = ChipButton({
-      size: 'l',
-      label: 'Sort',
-      startIcon: 'start',
-      endIcon: 'end',
+      size: "l",
+      label: "Sort",
+      startIcon: "start",
+      endIcon: "end",
       active: true,
     });
 
@@ -27,13 +27,13 @@ describe('ChipButton', () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(3);
-    expect(children[1]).toEqual(expect.objectContaining({ props: expect.objectContaining({ children: 'Sort' }) }));
+    expect(children[1]).toEqual(expect.objectContaining({ props: expect.objectContaining({ children: "Sort" }) }));
   });
 
-  it('uses iconOnly when there is no label content', () => {
+  it("uses iconOnly when there is no label content", () => {
     const element = ChipButton({
-      size: 's',
-      startIcon: 'start',
+      size: "s",
+      startIcon: "start",
     });
 
     const classes = getClassNames(element.props.className);
@@ -42,10 +42,10 @@ describe('ChipButton', () => {
     expect(classes.has(styles.iconOnly)).toBe(true);
   });
 
-  it('passes through disabled state and children content', () => {
+  it("passes through disabled state and children content", () => {
     const element = ChipButton({
       disabled: true,
-      children: 'Custom content',
+      children: "Custom content",
     });
 
     expect(element.props.disabled).toBe(true);
@@ -56,6 +56,6 @@ describe('ChipButton', () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
     expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe('Custom content');
+    expect(children[0].props.children).toBe("Custom content");
   });
 });

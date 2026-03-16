@@ -1,15 +1,15 @@
-import { Children, isValidElement } from 'react';
-import { describe, expect, it } from '@jest/globals';
+import { Children, isValidElement } from "react";
+import { describe, expect, it } from "@jest/globals";
 
-import styles from './list-button.module.css';
-import { ListButton } from './list-button';
+import styles from "./list-button.module.css";
+import { ListButton } from "./list-button";
 
-const getClassNames = (className?: string) => new Set((className ?? '').split(' ').filter(Boolean));
+const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
 
-describe('ListButton', () => {
-  it('renders label without icon by default', () => {
+describe("ListButton", () => {
+  it("renders label without icon by default", () => {
     const element = ListButton({
-      label: 'Button_text',
+      label: "Button_text",
     });
 
     expect(isValidElement(element)).toBe(true);
@@ -20,13 +20,13 @@ describe('ListButton', () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
     expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe('Button_text');
+    expect(children[0].props.children).toBe("Button_text");
   });
 
-  it('renders the start icon when provided', () => {
+  it("renders the start icon when provided", () => {
     const element = ListButton({
-      label: 'Button_text',
-      startIcon: 'person',
+      label: "Button_text",
+      startIcon: "person",
       pressed: true,
     });
 
@@ -36,12 +36,12 @@ describe('ListButton', () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(2);
     expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe('person');
+    expect(children[0].props.children).toBe("person");
   });
 
-  it('falls back to children content and supports disabled state', () => {
+  it("falls back to children content and supports disabled state", () => {
     const element = ListButton({
-      children: 'Custom text',
+      children: "Custom text",
       disabled: true,
     });
 
@@ -53,6 +53,6 @@ describe('ListButton', () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
     expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe('Custom text');
+    expect(children[0].props.children).toBe("Custom text");
   });
 });

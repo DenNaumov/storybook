@@ -1,49 +1,49 @@
-import type { ComponentProps } from 'react';
-import type { Meta, StoryObj } from '@storybook/nextjs';
-import { IconButton } from './icon-button';
-import { Icon24, ResizableIcon } from '../icon/icon-wrappers';
-import { ResizableIcons, type ResizableIconKeys } from '../icon/packs/resizable';
-import styles from './icon-button.stories.module.css';
+import type { ComponentProps } from "react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { IconButton } from "./icon-button";
+import { Icon24, ResizableIcon } from "../icon/icon-wrappers";
+import { ResizableIcons, type ResizableIconKeys } from "../icon/packs/resizable";
+import styles from "./icon-button.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
-const iconSizeToPixels: Record<'s' | 'm', number> = {
+const iconSizeToPixels: Record<"s" | "m", number> = {
   s: 20,
   m: 24,
 };
 
-type IconButtonStoryArgs = Omit<ComponentProps<typeof IconButton>, 'icon'> & {
+type IconButtonStoryArgs = Omit<ComponentProps<typeof IconButton>, "icon"> & {
   icon: ResizableIconKeys;
 };
 
 const meta: Meta<IconButtonStoryArgs> = {
-  title: 'UI Kit/IconButton',
+  title: "UI Kit/IconButton",
   component: IconButton,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     buttonSize: {
-      control: 'select',
-      options: ['s', 'm'],
+      control: "select",
+      options: ["s", "m"],
     },
     iconSize: {
-      control: 'select',
-      options: ['s', 'm'],
+      control: "select",
+      options: ["s", "m"],
     },
     icon: {
-      control: 'select',
+      control: "select",
       options: resizableIconNames,
     },
     badgeCount: {
-      control: 'text',
+      control: "text",
     },
     pressed: {
-      control: 'boolean',
+      control: "boolean",
     },
     disabled: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -55,14 +55,14 @@ const NotificationsIcon = <Icon24 icon="Notifications" size={24} />;
 
 export const Playground: Story = {
   args: {
-    icon: 'Add01',
-    buttonSize: 'm',
-    iconSize: 'm',
+    icon: "Add01",
+    buttonSize: "m",
+    iconSize: "m",
     badgeCount: undefined,
   },
   render: (args: IconButtonStoryArgs) => {
     const { icon, ...iconButtonArgs } = args;
-    const size = iconSizeToPixels[args.iconSize ?? 'm'];
+    const size = iconSizeToPixels[args.iconSize ?? "m"];
     return (
       <div className={styles.stage}>
         <div className={styles.surface}>

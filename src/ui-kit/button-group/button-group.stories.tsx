@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
-import { ButtonGroup } from './button-group';
-import { Button } from '../button/button';
-import { ChipButton } from '../chip-button/chip-button';
-import { InlineButton } from '../inline-button/inline-button';
-import { ResizableIcon } from '../icon/icon-wrappers';
-import styles from './button-group.stories.module.css';
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import { ButtonGroup } from "./button-group";
+import { Button } from "../button/button";
+import { ChipButton } from "../chip-button/chip-button";
+import { InlineButton } from "../inline-button/inline-button";
+import { ResizableIcon } from "../icon/icon-wrappers";
+import styles from "./button-group.stories.module.css";
 
 const meta: Meta<typeof ButtonGroup> = {
-  title: 'UI Kit/ButtonGroup',
+  title: "UI Kit/ButtonGroup",
   component: ButtonGroup,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;

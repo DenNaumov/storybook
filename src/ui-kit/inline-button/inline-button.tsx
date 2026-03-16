@@ -1,9 +1,9 @@
-import type { ReactNode, ButtonHTMLAttributes } from 'react';
-import styles from './inline-button.module.css';
+import type { ReactNode, ButtonHTMLAttributes } from "react";
+import styles from "./inline-button.module.css";
 
-export type InlineButtonVariant = 'surface' | 'bezeled' | 'primary';
+export type InlineButtonVariant = "surface" | "bezeled" | "primary";
 
-export interface InlineButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
+export interface InlineButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
     /** Visual style of the button */
     variant?: InlineButtonVariant;
     /** Icon to display above the text */
@@ -17,7 +17,7 @@ export interface InlineButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonE
  * Used for specific actions like "Reset", "Filter", etc. in small areas.
  */
 export const InlineButton = ({
-    variant = 'surface',
+    variant = "surface",
     icon,
     label,
     disabled,
@@ -26,10 +26,10 @@ export const InlineButton = ({
     const classes = [
         styles.inlineButton,
         styles[`variant${variant.charAt(0).toUpperCase() + variant.slice(1)}`],
-        disabled ? styles.disabled : '',
+        disabled ? styles.disabled : "",
     ]
         .filter(Boolean)
-        .join(' ');
+        .join(" ");
 
     return (
         <button className={classes} disabled={disabled} {...props}>

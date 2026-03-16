@@ -1,13 +1,13 @@
-import { Children, isValidElement } from 'react';
-import { describe, expect, it } from '@jest/globals';
+import { Children, isValidElement } from "react";
+import { describe, expect, it } from "@jest/globals";
 
-import styles from './fab.module.css';
-import { FAB } from './fab';
+import styles from "./fab.module.css";
+import { FAB } from "./fab";
 
-const getClassNames = (className?: string) => new Set((className ?? '').split(' ').filter(Boolean));
+const getClassNames = (className?: string) => new Set((className ?? "").split(" ").filter(Boolean));
 
-describe('FAB', () => {
-  it('renders the primary variant by default', () => {
+describe("FAB", () => {
+  it("renders the primary variant by default", () => {
     const element = FAB({});
 
     expect(isValidElement(element)).toBe(true);
@@ -18,10 +18,10 @@ describe('FAB', () => {
     expect(classes.has(styles.variantPrimary)).toBe(true);
   });
 
-  it('renders the provided icon and pressed state', () => {
+  it("renders the provided icon and pressed state", () => {
     const element = FAB({
-      variant: 'bezeled',
-      icon: 'icon',
+      variant: "bezeled",
+      icon: "icon",
       pressed: true,
     });
 
@@ -32,13 +32,13 @@ describe('FAB', () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
     expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe('icon');
+    expect(children[0].props.children).toBe("icon");
   });
 
-  it('falls back to children and disables interaction when disabled', () => {
+  it("falls back to children and disables interaction when disabled", () => {
     const element = FAB({
-      variant: 'white',
-      children: 'child-icon',
+      variant: "white",
+      children: "child-icon",
       disabled: true,
     });
 
@@ -50,6 +50,6 @@ describe('FAB', () => {
 
     const child = Children.toArray(element.props.children)[0];
     expect(isValidElement(child)).toBe(true);
-    expect(child.props.children).toBe('child-icon');
+    expect(child.props.children).toBe("child-icon");
   });
 });
