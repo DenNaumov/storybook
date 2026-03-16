@@ -6,25 +6,16 @@ export type ButtonVariant = "primary" | "bezeled" | "outlined" | "text";
 export type ButtonSize = "s" | "m" | "small" | "medium";
 
 export interface ButtonProps {
-  /** Visual style */
   variant?: ButtonVariant;
-  /** Button size */
   size: ButtonSize;
-  /** Button contents */
   label?: string;
-  /** Button contents */
   children?: ReactNode;
-  /** Optional click handler */
   onClick?: () => void;
-  /** Optional icon before the label */
   startIcon?: ReactNode;
-  /** Optional icon after the label */
   endIcon?: ReactNode;
-  /** Shows loading spinner */
   loading?: boolean;
   /** Force pressed state (for stories) */
   pressed?: boolean;
-  /** Disable interaction */
   disabled?: boolean;
 }
 

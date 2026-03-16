@@ -7,11 +7,8 @@ export interface InlineButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  /** Visual style of the button */
   variant?: InlineButtonVariant;
-  /** Icon to display above the text */
   icon: ReactNode;
-  /** Text label to display below the icon */
   label: string;
 }
 

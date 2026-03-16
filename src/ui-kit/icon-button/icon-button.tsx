@@ -8,11 +8,8 @@ export interface IconButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  /** Size of the button */
   buttonSize?: IconButtonSize;
-  /** Size of the icon */
   iconSize?: IconSize;
-  /** Icon component to render */
   icon: ReactNode;
   /** Optional badge value. If provided, shows a red badge. */
   badgeCount?: number | string;

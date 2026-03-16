@@ -8,15 +8,12 @@ export type ButtonGroupDirection =
   | "chips";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
-  /** Layout direction */
   direction?: ButtonGroupDirection;
   /** Add padding around the group (8px 16px) */
   withSpacing?: boolean;
   /** Gap between items (default 12px based on spec) */
   gap?: 12 | 0;
-  /** Group contents (Buttons) */
   children: ReactNode;
-  /** Optional additional class names */
   className?: string;
 }
 

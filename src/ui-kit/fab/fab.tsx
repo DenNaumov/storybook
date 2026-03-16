@@ -7,9 +7,7 @@ export interface FABProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  /** Visual style variant */
   variant?: FABVariant;
-  /** Icon to display in the FAB */
   icon?: ReactNode;
   /** Force pressed state (useful for Storybook) */
   pressed?: boolean;

@@ -27,23 +27,15 @@ export type TypographyVariant =
   | "caption2-bold";
 
 export interface TypographyProps {
-  /** The text content to display */
   children?: React.ReactNode;
   /** Typography variant that defines the visual style (size + weight) */
   variant: TypographyVariant;
-  /** Color scheme for the text */
   color?: string;
-  /** Text alignment */
   align?: "left" | "center" | "right";
-  /** Truncate text with ellipsis */
   truncate?: boolean;
-  /** Prevent text wrapping */
   nowrap?: boolean;
-  /** HTML tag to render */
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div" | "label";
-  /** Additional CSS class names */
   className?: string;
-  /** Inline styles */
   style?: React.CSSProperties;
 }
 

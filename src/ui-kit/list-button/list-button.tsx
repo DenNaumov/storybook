@@ -5,9 +5,7 @@ export interface ListButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  /** Text to display on the button */
   label?: string;
-  /** Optional icon to display on the left */
   startIcon?: ReactNode;
   /** Force pressed state */
   pressed?: boolean;

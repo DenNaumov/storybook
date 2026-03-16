@@ -7,15 +7,10 @@ export interface ChipButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  /** Size of the chip button */
   size?: ChipButtonSize;
-  /** Optional icon to display on the left */
   startIcon?: ReactNode;
-  /** Optional icon to display on the right */
   endIcon?: ReactNode;
-  /** Is the chip in an active/selected state? */
   active?: boolean;
-  /** Text label to display */
   label?: string;
 }
 

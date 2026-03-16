@@ -5,15 +5,12 @@ export type BadgeVariant = "primary" | "error" | "inverse";
 export type BadgeSize = "dot" | "medium" | "large";
 
 export interface BadgeProps {
-  /** Visual style variant */
   variant?: BadgeVariant;
-  /** Size of the badge */
   size?: BadgeSize;
   /** Content to display inside the badge (only for medium and large sizes) */
   children?: ReactNode;
   /** Count value (alternative to children) */
   count?: number | string;
-  /** Optional additional class names */
   className?: string;
 }
 
