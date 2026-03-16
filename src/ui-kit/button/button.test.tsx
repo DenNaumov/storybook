@@ -7,15 +7,19 @@ import { Button } from "./button";
 type ElementWithProps<TProps = Record<string, unknown>> = ReactElement<TProps>;
 
 describe("Button", () => {
-  it("uses outlined as the default variant and medium as the default size", () => {
+  it("uses primary as the default variant and medium as the default size", () => {
     const element = Button({ label: "Save" });
 
     expect(isValidElement(element)).toBe(true);
     expect(element.props.type).toBe("button");
   });
 
-  it("falls back to the primary variant from the legacy primary prop and normalizes legacy sizes", () => {
-    const element = Button({ primary: true, size: "small", label: "Save" });
+  it("uses the explicit variant prop and normalizes legacy sizes", () => {
+    const element = Button({
+      variant: "primary",
+      size: "small",
+      label: "Save",
+    });
 
     expect(element.props.type).toBe("button");
   });

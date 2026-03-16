@@ -33,7 +33,6 @@ const meta: Meta<ButtonStoryArgs> = {
       control: "select",
       options: ["primary", "bezeled", "outlined", "text"],
     },
-    primary: { control: false, table: { disable: true } },
     size: {
       control: "select",
       options: ["s", "m"],
