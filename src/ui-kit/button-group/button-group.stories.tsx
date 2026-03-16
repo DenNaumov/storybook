@@ -63,7 +63,7 @@ export const Showcase: Story = {
         </ButtonGroup>
       </div>
 
-      <div className={styles.surface}>
+      <div className={styles.compactSurface}>
         <ButtonGroup direction="chips" withSpacing={false}>
           <ChipButton
             size="m"
@@ -80,7 +80,7 @@ export const Showcase: Story = {
         </ButtonGroup>
       </div>
 
-      <div className={styles.surface}>
+      <div className={styles.compactSurface}>
         <ButtonGroup direction="inline" withSpacing={false}>
           <InlineButton
             variant="surface"
