@@ -48,7 +48,7 @@ describe("IconButton", () => {
     expect((badgeNode as ElementWithChildren).props.children).toBe("9");
   });
 
-  it("applies pressed and disabled classes", () => {
+  it("passes through pressed and disabled state", () => {
     const element = IconButton({
       icon: "add",
       pressed: true,

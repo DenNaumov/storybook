@@ -84,7 +84,7 @@ describe("Button", () => {
     expect(spinnerElement.props["aria-hidden"]).toBe("true");
   });
 
-  it("applies pressed and disabled classes when requested", () => {
+  it("passes through pressed and disabled state when requested", () => {
     const element = Button({
       variant: "text",
       size: "m",
