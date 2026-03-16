@@ -4,9 +4,7 @@ const createJestConfig = nextJest({
   dir: "./",
 });
 
-const config = {
-  testEnvironment: "node",
+module.exports = createJestConfig({
+  testEnvironment: "jsdom",
   testMatch: ["<rootDir>/src/**/*.test.ts", "<rootDir>/src/**/*.test.tsx"],
-};
-
-module.exports = createJestConfig(config);
+});
