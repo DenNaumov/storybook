@@ -21,7 +21,9 @@ describe("ListButton", () => {
     if (!isValidElement(labelNode)) {
       throw new Error("Expected label node to be a React element.");
     }
-    expect((labelNode as ElementWithChildren).props.children).toBe("Button_text");
+    expect((labelNode as ElementWithChildren).props.children).toBe(
+      "Button_text",
+    );
   });
 
   it("renders the start icon when provided", () => {
@@ -56,6 +58,8 @@ describe("ListButton", () => {
     if (!isValidElement(contentNode)) {
       throw new Error("Expected content node to be a React element.");
     }
-    expect((contentNode as ElementWithChildren).props.children).toBe("Custom text");
+    expect((contentNode as ElementWithChildren).props.children).toBe(
+      "Custom text",
+    );
   });
 });
