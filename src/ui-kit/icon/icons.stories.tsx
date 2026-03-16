@@ -40,13 +40,7 @@ const IconStoryLayout = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
-const IconStoryRow = ({
-  label,
-  icon,
-}: {
-  label: string;
-  icon: ReactNode;
-}) => (
+const IconStoryRow = ({ label, icon }: { label: string; icon: ReactNode }) => (
   <div className={styles.row}>
     <span className={styles.icon}>{icon}</span>
     <span className={styles.name}>{label}</span>

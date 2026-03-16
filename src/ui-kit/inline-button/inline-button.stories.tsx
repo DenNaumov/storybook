@@ -36,9 +36,7 @@ const meta: Meta<InlineButtonStoryArgs> = {
 export default meta;
 type Story = StoryObj<InlineButtonStoryArgs>;
 
-const renderIcon = (icon: ResizableIconKeys) => (
-  <ResizableIcon icon={icon} size={24} />
-);
+const renderIcon = (icon: ResizableIconKeys) => <ResizableIcon icon={icon} size={24} />;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

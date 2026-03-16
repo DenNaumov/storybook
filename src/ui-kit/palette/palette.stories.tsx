@@ -152,7 +152,15 @@ export const Showcase: StoryObj = {
     <div style={pageStyle}>
       {sections.map((section) => (
         <section key={section.title} style={{ marginBottom: "40px" }}>
-          <h2 style={{ margin: "0 0 12px", fontSize: "28px", lineHeight: 1.1, fontWeight: 500, color: "#111111" }}>
+          <h2
+            style={{
+              margin: "0 0 12px",
+              fontSize: "28px",
+              lineHeight: 1.1,
+              fontWeight: 500,
+              color: "#111111",
+            }}
+          >
             {section.title}
           </h2>
           <div style={gridStyle}>
@@ -171,8 +179,12 @@ export const Showcase: StoryObj = {
                     boxSizing: "border-box",
                   }}
                 >
-                  <div style={{ fontSize: "14px", lineHeight: 1.2, marginBottom: "24px" }}>{token.name}</div>
-                  <div style={{ fontSize: "12px", lineHeight: 1.2, opacity: 0.9 }}>{token.value}</div>
+                  <div style={{ fontSize: "14px", lineHeight: 1.2, marginBottom: "24px" }}>
+                    {token.name}
+                  </div>
+                  <div style={{ fontSize: "12px", lineHeight: 1.2, opacity: 0.9 }}>
+                    {token.value}
+                  </div>
                 </div>
               );
             })}

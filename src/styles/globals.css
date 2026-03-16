@@ -146,14 +146,13 @@
   --blue-theme-dark-extra-swipe-complete: var(--green-700);
   --blue-theme-dark-extra-swipe-edit: var(--blue-700);
   --blue-theme-dark-extra-swipe-archive: var(--orange-700);
-
 }
 
 :root,
-:root[data-theme='blue'],
-[data-theme='blue'],
-:root[data-theme='blue'][data-color-scheme='dark'],
-[data-theme='blue'][data-color-scheme='dark'] {
+:root[data-theme="blue"],
+[data-theme="blue"],
+:root[data-theme="blue"][data-color-scheme="dark"],
+[data-theme="blue"][data-color-scheme="dark"] {
   --theme-text-primary: var(--blue-theme-dark-text-primary);
   --theme-text-secondary: var(--blue-theme-dark-text-secondary);
   --theme-text-brand-main: var(--blue-theme-dark-text-brand-main);
@@ -188,8 +187,8 @@
   --theme-extra-swipe-archive: var(--blue-theme-dark-extra-swipe-archive);
 }
 
-:root[data-theme='blue'][data-color-scheme='light'],
-[data-theme='blue'][data-color-scheme='light'] {
+:root[data-theme="blue"][data-color-scheme="light"],
+[data-theme="blue"][data-color-scheme="light"] {
   --theme-text-primary: var(--blue-theme-light-text-primary);
   --theme-text-secondary: var(--blue-theme-light-text-secondary);
   --theme-text-brand-main: var(--blue-theme-light-text-brand-main);

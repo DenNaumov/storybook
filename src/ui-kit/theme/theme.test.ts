@@ -67,17 +67,13 @@ describe("themes (normalizeThemes result)", () => {
 
   it("non-brand tokens are shared between blue and pink (same base)", () => {
     // text.primary should be the same regardless of brand color
-    expect(themes.blue.light.colors.text.primary).toBe(
-      themes.pink.light.colors.text.primary,
-    );
-    expect(themes.blue.dark.colors.text.primary).toBe(
-      themes.pink.dark.colors.text.primary,
-    );
+    expect(themes.blue.light.colors.text.primary).toBe(themes.pink.light.colors.text.primary);
+    expect(themes.blue.dark.colors.text.primary).toBe(themes.pink.dark.colors.text.primary);
   });
 
   it("light and dark modes have different bg surface primary", () => {
     expect(themes.blue.light.colors.bgSurface.primary).not.toBe(
-      themes.blue.dark.colors.bgSurface.primary,
+      themes.blue.dark.colors.bgSurface.primary
     );
   });
 

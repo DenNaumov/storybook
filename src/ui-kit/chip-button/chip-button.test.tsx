@@ -27,7 +27,9 @@ describe("ChipButton", () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(3);
-    expect(children[1]).toEqual(expect.objectContaining({ props: expect.objectContaining({ children: "Sort" }) }));
+    expect(children[1]).toEqual(
+      expect.objectContaining({ props: expect.objectContaining({ children: "Sort" }) })
+    );
   });
 
   it("uses iconOnly when there is no label content", () => {

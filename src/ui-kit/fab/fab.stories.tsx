@@ -39,9 +39,8 @@ const meta: Meta<FABStoryArgs> = {
 export default meta;
 type Story = StoryObj<FABStoryArgs>;
 
-const renderIcon = (icon?: ResizableIconKeys | "Нет") => (
-  icon && icon !== "Нет" ? <ResizableIcon icon={icon} size={24} /> : undefined
-);
+const renderIcon = (icon?: ResizableIconKeys | "Нет") =>
+  icon && icon !== "Нет" ? <ResizableIcon icon={icon} size={24} /> : undefined;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

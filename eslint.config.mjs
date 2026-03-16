@@ -28,7 +28,7 @@ const eslintConfig = defineConfig([
       "react-hooks/static-components": "off",
     },
   },
-  ...storybook.configs["flat/recommended"]
+  ...storybook.configs["flat/recommended"],
 ]);
 
 export default eslintConfig;

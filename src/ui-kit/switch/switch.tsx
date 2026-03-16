@@ -21,11 +21,7 @@ export const Switch = ({
   id,
   onChange,
 }: SwitchProps) => {
-  const classes = [
-    styles.switch,
-    disabled ? styles.disabled : "",
-    invalid ? styles.invalid : "",
-  ]
+  const classes = [styles.switch, disabled ? styles.disabled : "", invalid ? styles.invalid : ""]
     .filter(Boolean)
     .join(" ");
 

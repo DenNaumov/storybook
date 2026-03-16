@@ -70,10 +70,34 @@ const StateRow = ({
   return (
     <>
       <div className={styles.rowLabel}>{state}</div>
-      <Button variant="primary" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
-      <Button variant="bezeled" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
-      <Button variant="outlined" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
-      <Button variant="text" {...commonProps} pressed={state === "pressed"} disabled={state === "disabled"} loading={state === "loading"} />
+      <Button
+        variant="primary"
+        {...commonProps}
+        pressed={state === "pressed"}
+        disabled={state === "disabled"}
+        loading={state === "loading"}
+      />
+      <Button
+        variant="bezeled"
+        {...commonProps}
+        pressed={state === "pressed"}
+        disabled={state === "disabled"}
+        loading={state === "loading"}
+      />
+      <Button
+        variant="outlined"
+        {...commonProps}
+        pressed={state === "pressed"}
+        disabled={state === "disabled"}
+        loading={state === "loading"}
+      />
+      <Button
+        variant="text"
+        {...commonProps}
+        pressed={state === "pressed"}
+        disabled={state === "disabled"}
+        loading={state === "loading"}
+      />
     </>
   );
 };
@@ -126,20 +150,20 @@ export const Playground: Story = {
     rightIcon: "Нет",
     startIcon: null,
     loading: false,
-    disabled: false
+    disabled: false,
   },
   argTypes: {
     leftIcon: {
       control: "select",
       options: ["Нет", ...icon24Options],
       name: "Left icon",
-      mapping: { "Нет": undefined },
+      mapping: { Нет: undefined },
     },
     rightIcon: {
       control: "select",
       options: ["Нет", ...icon24Options],
       name: "Right icon",
-      mapping: { "Нет": undefined },
+      mapping: { Нет: undefined },
     },
   },
   render: (args: ButtonStoryArgs) => (
@@ -154,32 +178,64 @@ export const Playground: Story = {
           variant={args.variant}
           size={args.size}
           label={args.label}
-          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={
+            args.leftIcon && args.leftIcon !== "Нет" ? (
+              <Icon24Preview name={args.leftIcon} />
+            ) : undefined
+          }
+          endIcon={
+            args.rightIcon && args.rightIcon !== "Нет" ? (
+              <Icon24Preview name={args.rightIcon} />
+            ) : undefined
+          }
         />
         <Button
           variant={args.variant}
           size={args.size}
           label={args.label}
           pressed
-          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={
+            args.leftIcon && args.leftIcon !== "Нет" ? (
+              <Icon24Preview name={args.leftIcon} />
+            ) : undefined
+          }
+          endIcon={
+            args.rightIcon && args.rightIcon !== "Нет" ? (
+              <Icon24Preview name={args.rightIcon} />
+            ) : undefined
+          }
         />
         <Button
           variant={args.variant}
           size={args.size}
           label={args.label}
           disabled
-          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={
+            args.leftIcon && args.leftIcon !== "Нет" ? (
+              <Icon24Preview name={args.leftIcon} />
+            ) : undefined
+          }
+          endIcon={
+            args.rightIcon && args.rightIcon !== "Нет" ? (
+              <Icon24Preview name={args.rightIcon} />
+            ) : undefined
+          }
         />
         <Button
           variant={args.variant}
           size={args.size}
           label={args.label}
           loading
-          startIcon={args.leftIcon && args.leftIcon !== "Нет" ? <Icon24Preview name={args.leftIcon} /> : undefined}
-          endIcon={args.rightIcon && args.rightIcon !== "Нет" ? <Icon24Preview name={args.rightIcon} /> : undefined}
+          startIcon={
+            args.leftIcon && args.leftIcon !== "Нет" ? (
+              <Icon24Preview name={args.leftIcon} />
+            ) : undefined
+          }
+          endIcon={
+            args.rightIcon && args.rightIcon !== "Нет" ? (
+              <Icon24Preview name={args.rightIcon} />
+            ) : undefined
+          }
         />
       </div>
     </div>

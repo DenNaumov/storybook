@@ -23,19 +23,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 160ms ease, border-color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
   position: relative;
 }
 
 .circle::after {
-  content: '';
+  content: "";
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #2b8cff;
   opacity: 0;
   transform: scale(0.6);
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
 }
 
 .input:checked + .circle {

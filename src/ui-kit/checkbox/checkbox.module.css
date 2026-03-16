@@ -23,12 +23,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 160ms ease, border-color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
   position: relative;
 }
 
 .box::after {
-  content: '';
+  content: "";
   width: 10px;
   height: 6px;
   border-left: 2px solid transparent;

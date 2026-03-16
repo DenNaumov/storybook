@@ -44,9 +44,8 @@ const meta: Meta<ChipButtonStoryArgs> = {
 export default meta;
 type Story = StoryObj<ChipButtonStoryArgs>;
 
-const renderIcon = (icon?: ResizableIconKeys | "Нет") => (
-  icon && icon !== "Нет" ? <ResizableIcon icon={icon} size={24} /> : undefined
-);
+const renderIcon = (icon?: ResizableIconKeys | "Нет") =>
+  icon && icon !== "Нет" ? <ResizableIcon icon={icon} size={24} /> : undefined;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },
@@ -57,13 +56,46 @@ export const Showcase: Story = {
         <div className={styles.headerCell}>ButtonSize=M</div>
         <div className={styles.headerCell}>ButtonSize=L</div>
 
-        <ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} endIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
-        <ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} endIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
-        <ChipButton size="l" startIcon={renderIcon("ArrowUpDown")} endIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
+        <ChipButton
+          size="s"
+          startIcon={renderIcon("ArrowUpDown")}
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
+        <ChipButton
+          size="m"
+          startIcon={renderIcon("ArrowUpDown")}
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
+        <ChipButton
+          size="l"
+          startIcon={renderIcon("ArrowUpDown")}
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+        />
 
-        <ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} endIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
-        <ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} endIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
-        <ChipButton size="l" startIcon={renderIcon("ArrowUpDown")} endIcon={renderIcon("ArrowUpDown")} label="Сортировка" active />
+        <ChipButton
+          size="s"
+          startIcon={renderIcon("ArrowUpDown")}
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
+        <ChipButton
+          size="m"
+          startIcon={renderIcon("ArrowUpDown")}
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
+        <ChipButton
+          size="l"
+          startIcon={renderIcon("ArrowUpDown")}
+          endIcon={renderIcon("ArrowUpDown")}
+          label="Сортировка"
+          active
+        />
 
         <ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
         <ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} label="Сортировка" />
@@ -97,9 +129,15 @@ export const Showcase: Story = {
         <ChipButton size="m" label="Сортировка" active disabled />
         <ChipButton size="l" label="Сортировка" active disabled />
 
-        <div className={styles.centeredCell}><ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} /></div>
-        <div className={styles.centeredCell}><ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} /></div>
-        <div className={styles.centeredCell}><ChipButton size="l" startIcon={renderIcon("ArrowUpDown")} /></div>
+        <div className={styles.centeredCell}>
+          <ChipButton size="s" startIcon={renderIcon("ArrowUpDown")} />
+        </div>
+        <div className={styles.centeredCell}>
+          <ChipButton size="m" startIcon={renderIcon("ArrowUpDown")} />
+        </div>
+        <div className={styles.centeredCell}>
+          <ChipButton size="l" startIcon={renderIcon("ArrowUpDown")} />
+        </div>
       </div>
     </div>
   ),

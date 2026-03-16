@@ -114,5 +114,9 @@ export const Typography = ({
     .filter(Boolean)
     .join(" ");
 
-  return <Component className={classes} style={style}>{children}</Component>;
+  return (
+    <Component className={classes} style={style}>
+      {children}
+    </Component>
+  );
 };

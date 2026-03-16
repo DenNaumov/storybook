@@ -73,7 +73,11 @@
 
   /* Typography */
   color: var(--theme-text-on-main);
-  font-family: 'SF Pro', -apple-system, system-ui, sans-serif;
+  font-family:
+    "SF Pro",
+    -apple-system,
+    system-ui,
+    sans-serif;
   font-weight: 590;
   font-size: 13px;
   line-height: 16px;

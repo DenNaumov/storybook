@@ -39,12 +39,12 @@
 }
 
 /* Helper to make buttons fill space in horizontal groups */
-.horizontal>* {
+.horizontal > * {
   flex: 1;
 }
 
 /* Except for chips and inline which have their own sizing */
-.chipsHorizontal>*,
-.inlineHorizontal>* {
+.chipsHorizontal > *,
+.inlineHorizontal > * {
   flex: none;
 }

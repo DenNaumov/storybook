@@ -20,7 +20,9 @@
   background: #2a2a2a;
   border-radius: 999px;
   border: 1px solid #3a3a3a;
-  transition: background-color 180ms ease, border-color 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
   display: inline-flex;
   align-items: center;
   padding: 2px;
@@ -28,14 +30,16 @@
 }
 
 .track::after {
-  content: '';
+  content: "";
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background: #f5f5f5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
   transform: translateX(0);
-  transition: transform 180ms ease, background-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease;
 }
 
 .input:checked + .track {

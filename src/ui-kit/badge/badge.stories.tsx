@@ -40,30 +40,44 @@ export const Default: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(3, 100px)",
-      gap: "40px",
-      alignItems: "center",
-      justifyItems: "center",
-      padding: "40px",
-      backgroundColor: "#121212",
-      borderRadius: "24px"
-    }}>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 100px)",
+        gap: "40px",
+        alignItems: "center",
+        justifyItems: "center",
+        padding: "40px",
+        backgroundColor: "#121212",
+        borderRadius: "24px",
+      }}
+    >
       {/* Row 1: Primary (Blue) */}
       <Badge size="dot" variant="primary" />
-      <Badge size="medium" variant="primary">42</Badge>
-      <Badge size="large" variant="primary">42</Badge>
+      <Badge size="medium" variant="primary">
+        42
+      </Badge>
+      <Badge size="large" variant="primary">
+        42
+      </Badge>
 
       {/* Row 2: Error (Red) */}
       <Badge size="dot" variant="error" />
-      <Badge size="medium" variant="error">42</Badge>
-      <Badge size="large" variant="error">42</Badge>
+      <Badge size="medium" variant="error">
+        42
+      </Badge>
+      <Badge size="large" variant="error">
+        42
+      </Badge>
 
       {/* Row 3: Inverse (White bg, blue text) */}
       <Badge size="dot" variant="inverse" />
-      <Badge size="medium" variant="inverse">42</Badge>
-      <Badge size="large" variant="inverse">42</Badge>
+      <Badge size="medium" variant="inverse">
+        42
+      </Badge>
+      <Badge size="large" variant="inverse">
+        42
+      </Badge>
     </div>
   ),
 };

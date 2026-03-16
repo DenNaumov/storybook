@@ -37,7 +37,7 @@ export const ThemeContext = createContext<ThemeContextValue | null>(null);
 const getStoredValue = <T extends string>(
   key: string,
   fallback: T,
-  allowedValues?: readonly string[],
+  allowedValues?: readonly string[]
 ): T => {
   if (typeof window === "undefined") return fallback;
   try {
@@ -64,9 +64,7 @@ const storeValue = (key: string, value: string): void => {
  */
 const getSystemColorScheme = (): ThemeMode => {
   if (typeof window === "undefined") return "light";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 };
 
 /**
@@ -98,14 +96,11 @@ export const ThemeProvider = ({
   const initialPreference = defaultPreference ?? DEFAULT_THEME_PREFERENCE;
   const initialColor = defaultColor ?? DEFAULT_THEME_COLOR;
 
-  const [themePreference, setThemePreferenceState] =
-    useState<ThemePreference>(initialPreference);
+  const [themePreference, setThemePreferenceState] = useState<ThemePreference>(initialPreference);
 
   const [themeColor, setThemeColorState] = useState<ThemeColor>(initialColor);
 
-  const [themeMode, setThemeMode] = useState<ThemeMode>(() =>
-    resolveThemeMode(initialPreference),
-  );
+  const [themeMode, setThemeMode] = useState<ThemeMode>(() => resolveThemeMode(initialPreference));
 
   // Ref to wrapper div for setting CSS custom properties
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -117,11 +112,7 @@ export const ThemeProvider = ({
       "dark",
       "auto",
     ]);
-    const storedColor = getStoredValue(
-      LS_KEY_COLOR,
-      initialColor,
-      THEME_COLORS,
-    );
+    const storedColor = getStoredValue(LS_KEY_COLOR, initialColor, THEME_COLORS);
 
     setThemePreferenceState(storedPref);
     setThemeColorState(storedColor);
@@ -147,10 +138,7 @@ export const ThemeProvider = ({
   }, [themePreference]);
 
   // ── Resolve current theme ──
-  const theme: Theme = useMemo(
-    () => themes[themeColor][themeMode],
-    [themeColor, themeMode],
-  );
+  const theme: Theme = useMemo(() => themes[themeColor][themeMode], [themeColor, themeMode]);
 
   // ── Apply CSS custom properties ──
   useEffect(() => {
@@ -195,14 +183,7 @@ export const ThemeProvider = ({
       themeColor,
       setThemeColor,
     }),
-    [
-      theme,
-      themeMode,
-      themePreference,
-      setThemePreference,
-      themeColor,
-      setThemeColor,
-    ],
+    [theme, themeMode, themePreference, setThemePreference, themeColor, setThemeColor]
   );
 
   return (

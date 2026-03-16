@@ -4,8 +4,7 @@ import type { Theme } from "./theme.types";
  * Converts camelCase to kebab-case.
  * e.g. bgSurface → bg-surface, brandMain → brand-main
  */
-const toKebab = (str: string): string =>
-  str.replace(/([A-Z])/g, "-$1").toLowerCase();
+const toKebab = (str: string): string => str.replace(/([A-Z])/g, "-$1").toLowerCase();
 
 /**
  * Flattens a resolved Theme object into a Record of CSS custom properties.
@@ -21,9 +20,7 @@ export const flattenThemeToCssVars = (theme: Theme): Record<string, string> => {
 
   for (const [group, tokens] of Object.entries(theme.colors)) {
     const kebabGroup = toKebab(group);
-    for (const [token, value] of Object.entries(
-      tokens as unknown as Record<string, string>,
-    )) {
+    for (const [token, value] of Object.entries(tokens as unknown as Record<string, string>)) {
       vars[`--theme-${kebabGroup}-${toKebab(token)}`] = value;
     }
   }

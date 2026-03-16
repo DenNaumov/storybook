@@ -182,27 +182,37 @@ const renderToken = (token: ThemeToken) => {
 export const Showcase: StoryObj = {
   render: () => (
     <div style={pageStyle}>
-      <header style={{ marginBottom: "28px", paddingBottom: "18px", borderBottom: "1px solid rgba(17, 17, 17, 0.08)" }}>
+      <header
+        style={{
+          marginBottom: "28px",
+          paddingBottom: "18px",
+          borderBottom: "1px solid rgba(17, 17, 17, 0.08)",
+        }}
+      >
         <h1 style={headerTitleStyle}>blueTheme</h1>
         <p style={headerSubtitleStyle}>Набор цветов синей темы</p>
       </header>
 
       {groups.map((group) => (
         <section key={group.title} style={{ marginBottom: "28px" }}>
-          <h2 style={{ margin: "0 0 14px", fontSize: "28px", lineHeight: 1.1, fontWeight: 600, color: "#111111" }}>
+          <h2
+            style={{
+              margin: "0 0 14px",
+              fontSize: "28px",
+              lineHeight: 1.1,
+              fontWeight: 600,
+              color: "#111111",
+            }}
+          >
             {group.title}
           </h2>
 
           <div style={{ padding: "12px", background: "#f3f3f3" }}>
-            <div style={rowStyle}>
-              {group.light.map(renderToken)}
-            </div>
+            <div style={rowStyle}>{group.light.map(renderToken)}</div>
           </div>
 
           <div style={{ marginTop: "8px", padding: "12px", background: "#070707" }}>
-            <div style={rowStyle}>
-              {group.dark.map(renderToken)}
-            </div>
+            <div style={rowStyle}>{group.dark.map(renderToken)}</div>
           </div>
         </section>
       ))}

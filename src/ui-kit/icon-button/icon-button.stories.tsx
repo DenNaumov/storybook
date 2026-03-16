@@ -69,10 +69,7 @@ export const Playground: Story = {
           <div />
           <div className={styles.headerCell}>Playground</div>
           <div className={styles.centered}>
-            <IconButton
-              {...iconButtonArgs}
-              icon={<ResizableIcon icon={icon} size={size} />}
-            />
+            <IconButton {...iconButtonArgs} icon={<ResizableIcon icon={icon} size={size} />} />
           </div>
         </div>
       </div>
@@ -92,43 +89,119 @@ export const Showcase: Story = {
         <div className={styles.sectionLabel}>IconSize=M</div>
 
         <div className={styles.rowLabel}>Default</div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" /></div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" /></div>
+        <div className={styles.centered}>
+          <IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" />
+        </div>
+        <div className={styles.centered}>
+          <IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" />
+        </div>
 
         <div className={styles.rowLabel}>Pressed</div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" pressed /></div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" pressed /></div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={24} />}
+            buttonSize="m"
+            iconSize="m"
+            pressed
+          />
+        </div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={24} />}
+            buttonSize="s"
+            iconSize="m"
+            pressed
+          />
+        </div>
 
         <div className={styles.rowLabel}>Disabled</div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="m" iconSize="m" disabled /></div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={24} />} buttonSize="s" iconSize="m" disabled /></div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={24} />}
+            buttonSize="m"
+            iconSize="m"
+            disabled
+          />
+        </div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={24} />}
+            buttonSize="s"
+            iconSize="m"
+            disabled
+          />
+        </div>
 
         <div className={styles.sectionLabelWide}>IconSize=S</div>
 
         <div className={styles.rowLabel}>Default</div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" /></div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" /></div>
+        <div className={styles.centered}>
+          <IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" />
+        </div>
+        <div className={styles.centered}>
+          <IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" />
+        </div>
 
         <div className={styles.rowLabel}>Pressed</div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" pressed /></div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" pressed /></div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={20} />}
+            buttonSize="m"
+            iconSize="s"
+            pressed
+          />
+        </div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={20} />}
+            buttonSize="s"
+            iconSize="s"
+            pressed
+          />
+        </div>
 
         <div className={styles.rowLabel}>Disabled</div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="m" iconSize="s" disabled /></div>
-        <div className={styles.centered}><IconButton icon={<ResizableIcon icon="Add01" size={20} />} buttonSize="s" iconSize="s" disabled /></div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={20} />}
+            buttonSize="m"
+            iconSize="s"
+            disabled
+          />
+        </div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={<ResizableIcon icon="Add01" size={20} />}
+            buttonSize="s"
+            iconSize="s"
+            disabled
+          />
+        </div>
 
         <div className={styles.sectionLabelWide}>Badge=Yes</div>
 
         <div className={styles.rowLabel}>Default</div>
-        <div className={styles.centered}><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" /></div>
+        <div className={styles.centered}>
+          <IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" />
+        </div>
         <div />
 
         <div className={styles.rowLabel}>Pressed</div>
-        <div className={styles.centered}><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" pressed /></div>
+        <div className={styles.centered}>
+          <IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" pressed />
+        </div>
         <div />
 
         <div className={styles.rowLabel}>Disabled</div>
-        <div className={styles.centered}><IconButton icon={NotificationsIcon} buttonSize="m" iconSize="m" badgeCount="9" disabled /></div>
+        <div className={styles.centered}>
+          <IconButton
+            icon={NotificationsIcon}
+            buttonSize="m"
+            iconSize="m"
+            badgeCount="9"
+            disabled
+          />
+        </div>
         <div />
       </div>
     </div>

@@ -36,7 +36,7 @@ export const TextLine = ({
   const inputId = id ?? autoId;
   const isControlled = value !== undefined;
   const [internalValue, setInternalValue] = useState(defaultValue ?? "");
-  const displayValue = isControlled ? value ?? "" : internalValue;
+  const displayValue = isControlled ? (value ?? "") : internalValue;
   const editableRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export const TextLine = ({
       ]
         .filter(Boolean)
         .join(" "),
-    [disabled, readOnly, error, hasValue],
+    [disabled, readOnly, error, hasValue]
   );
 
   const handleInput = () => {

@@ -51,8 +51,7 @@ export const Button = ({
   disabled = false,
   ...props
 }: ButtonProps) => {
-  const resolvedVariant: ButtonVariant =
-    variant ?? (primary ? "primary" : "outlined");
+  const resolvedVariant: ButtonVariant = variant ?? (primary ? "primary" : "outlined");
   const resolvedSize = normalizeSize(size);
   const isDisabled = disabled || loading;
   const content = children ?? label;

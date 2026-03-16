@@ -6,7 +6,7 @@
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 15px 20px;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .header svg {
@@ -23,7 +23,7 @@
   line-height: 1;
 }
 
-.header button+button {
+.header button + button {
   margin-left: 10px;
 }
 

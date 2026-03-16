@@ -1,17 +1,14 @@
 import type { NextConfig } from "next";
 import type { RuleSetRule } from "webpack";
 
-const isRuleSetRule = (rule: RuleSetRule | "..."): rule is RuleSetRule =>
-  rule !== "...";
+const isRuleSetRule = (rule: RuleSetRule | "..."): rule is RuleSetRule => rule !== "...";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(
       (rule): rule is RuleSetRule =>
-        isRuleSetRule(rule) &&
-        rule.test instanceof RegExp &&
-        rule.test.test(".svg")
+        isRuleSetRule(rule) && rule.test instanceof RegExp && rule.test.test(".svg")
     );
 
     if (fileLoaderRule) {

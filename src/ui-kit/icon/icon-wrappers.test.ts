@@ -2,9 +2,7 @@ import type { ReactElement, SVGProps } from "react";
 import { isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
 
-import {
-  resolveSvgComponent,
-} from "./icon-wrappers";
+import { resolveSvgComponent } from "./icon-wrappers";
 
 type SvgIconElement = ReactElement<SVGProps<SVGSVGElement>>;
 

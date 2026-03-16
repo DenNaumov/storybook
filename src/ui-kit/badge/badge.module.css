@@ -11,18 +11,18 @@
 
 /* Variants */
 .variantPrimary {
-  background-color: #2B8CFF;
-  color: #FFFFFF;
+  background-color: #2b8cff;
+  color: #ffffff;
 }
 
 .variantError {
-  background-color: #FF3B30;
-  color: #FFFFFF;
+  background-color: #ff3b30;
+  color: #ffffff;
 }
 
 .variantInverse {
-  background-color: #FFFFFF;
-  color: #2B8CFF;
+  background-color: #ffffff;
+  color: #2b8cff;
 }
 
 /* Sizes */

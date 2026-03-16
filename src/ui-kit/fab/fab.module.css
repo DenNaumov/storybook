@@ -10,7 +10,10 @@
   cursor: pointer;
   padding: 16px;
   /* Matches Figma padding */
-  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
   outline: none;
   user-select: none;
 }
@@ -30,7 +33,11 @@
 }
 
 .variantPrimary:hover:not(.disabled) {
-  background-color: color-mix(in srgb, var(--theme-bg-fill-brand-main) 85%, var(--theme-bg-fill-white));
+  background-color: color-mix(
+    in srgb,
+    var(--theme-bg-fill-brand-main) 85%,
+    var(--theme-bg-fill-white)
+  );
 }
 
 /* Bezeled: Light blue transparent background, Blue icon */
@@ -47,7 +54,9 @@
 .variantWhite {
   background-color: var(--theme-bg-fill-white);
   color: var(--theme-icon-brand-main);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .variantWhite:hover:not(.disabled) {
