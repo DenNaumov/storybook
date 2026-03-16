@@ -11,9 +11,9 @@ export interface IconButtonProps extends Omit<
   buttonSize?: IconButtonSize;
   iconSize?: IconSize;
   icon: ReactNode;
-  /** Optional badge value. If provided, shows a red badge. */
+  /** Badge value */
   badgeCount?: number | string;
-  /** Force pressed state */
+  /** Storybook-only pressed state */
   pressed?: boolean;
 }
 

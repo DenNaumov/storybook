@@ -84,9 +84,7 @@ const resolveThemeMode = (preference: ThemePreference): ThemeMode => {
 
 interface ThemeProviderProps {
   children: ReactNode;
-  /** Override default theme color */
   defaultColor?: ThemeColor;
-  /** Override default theme preference */
   defaultPreference?: ThemePreference;
 }
 

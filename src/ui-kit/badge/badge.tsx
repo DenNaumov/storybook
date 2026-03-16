@@ -7,9 +7,8 @@ export type BadgeSize = "dot" | "medium" | "large";
 export interface BadgeProps {
   variant?: BadgeVariant;
   size?: BadgeSize;
-  /** Content to display inside the badge (only for medium and large sizes) */
   children?: ReactNode;
-  /** Count value (alternative to children) */
+  /** Badge value */
   count?: number | string;
   className?: string;
 }

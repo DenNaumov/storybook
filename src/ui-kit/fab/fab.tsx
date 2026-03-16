@@ -9,7 +9,7 @@ export interface FABProps extends Omit<
 > {
   variant?: FABVariant;
   icon?: ReactNode;
-  /** Force pressed state (useful for Storybook) */
+  /** Storybook-only pressed state */
   pressed?: boolean;
 }
 

@@ -28,7 +28,6 @@ export type TypographyVariant =
 
 export interface TypographyProps {
   children?: React.ReactNode;
-  /** Typography variant that defines the visual style (size + weight) */
   variant: TypographyVariant;
   color?: string;
   align?: "left" | "center" | "right";

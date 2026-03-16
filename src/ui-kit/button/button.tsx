@@ -14,7 +14,7 @@ export interface ButtonProps {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   loading?: boolean;
-  /** Force pressed state (for stories) */
+  /** Storybook-only pressed state */
   pressed?: boolean;
   disabled?: boolean;
 }

@@ -7,7 +7,7 @@ export interface ListButtonProps extends Omit<
 > {
   label?: string;
   startIcon?: ReactNode;
-  /** Force pressed state */
+  /** Storybook-only pressed state */
   pressed?: boolean;
 }
 
