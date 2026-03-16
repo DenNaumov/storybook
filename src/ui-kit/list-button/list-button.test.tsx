@@ -13,8 +13,12 @@ describe("ListButton", () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
-    expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe("Button_text");
+    const labelNode = children[0];
+    expect(isValidElement(labelNode)).toBe(true);
+    if (!isValidElement(labelNode)) {
+      throw new Error("Expected label node to be a React element.");
+    }
+    expect(labelNode.props.children).toBe("Button_text");
   });
 
   it("renders the start icon when provided", () => {
@@ -26,8 +30,12 @@ describe("ListButton", () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(2);
-    expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe("person");
+    const iconNode = children[0];
+    expect(isValidElement(iconNode)).toBe(true);
+    if (!isValidElement(iconNode)) {
+      throw new Error("Expected icon node to be a React element.");
+    }
+    expect(iconNode.props.children).toBe("person");
   });
 
   it("falls back to children content and supports disabled state", () => {
@@ -40,7 +48,11 @@ describe("ListButton", () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
-    expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe("Custom text");
+    const contentNode = children[0];
+    expect(isValidElement(contentNode)).toBe(true);
+    if (!isValidElement(contentNode)) {
+      throw new Error("Expected content node to be a React element.");
+    }
+    expect(contentNode.props.children).toBe("Custom text");
   });
 });

@@ -60,7 +60,11 @@ describe("ChipButton", () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
-    expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe("Custom content");
+    const contentNode = children[0];
+    expect(isValidElement(contentNode)).toBe(true);
+    if (!isValidElement(contentNode)) {
+      throw new Error("Expected content node to be a React element.");
+    }
+    expect(contentNode.props.children).toBe("Custom content");
   });
 });

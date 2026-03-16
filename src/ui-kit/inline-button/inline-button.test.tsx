@@ -22,10 +22,19 @@ describe("InlineButton", () => {
 
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(2);
-    expect(isValidElement(children[0])).toBe(true);
-    expect(children[0].props.children).toBe("calendar");
-    expect(isValidElement(children[1])).toBe(true);
-    expect(children[1].props.children).toBe("Reset");
+    const iconNode = children[0];
+    expect(isValidElement(iconNode)).toBe(true);
+    if (!isValidElement(iconNode)) {
+      throw new Error("Expected icon node to be a React element.");
+    }
+    expect(iconNode.props.children).toBe("calendar");
+
+    const labelNode = children[1];
+    expect(isValidElement(labelNode)).toBe(true);
+    if (!isValidElement(labelNode)) {
+      throw new Error("Expected label node to be a React element.");
+    }
+    expect(labelNode.props.children).toBe("Reset");
   });
 
   it("applies disabled state", () => {

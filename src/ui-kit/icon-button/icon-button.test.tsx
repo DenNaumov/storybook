@@ -13,6 +13,9 @@ describe("IconButton", () => {
 
     const wrapper = Children.toArray(element.props.children)[0];
     expect(isValidElement(wrapper)).toBe(true);
+    if (!isValidElement(wrapper)) {
+      throw new Error("Expected wrapper to be a React element.");
+    }
   });
 
   it("renders custom sizes and badge count", () => {
@@ -25,12 +28,19 @@ describe("IconButton", () => {
 
     const wrapper = Children.toArray(element.props.children)[0];
     expect(isValidElement(wrapper)).toBe(true);
+    if (!isValidElement(wrapper)) {
+      throw new Error("Expected wrapper to be a React element.");
+    }
 
     const wrapperChildren = Children.toArray(wrapper.props.children);
     expect(wrapperChildren).toHaveLength(2);
     expect(wrapperChildren[0]).toBe("add");
-    expect(isValidElement(wrapperChildren[1])).toBe(true);
-    expect(wrapperChildren[1].props.children).toBe("9");
+    const badgeNode = wrapperChildren[1];
+    expect(isValidElement(badgeNode)).toBe(true);
+    if (!isValidElement(badgeNode)) {
+      throw new Error("Expected badge node to be a React element.");
+    }
+    expect(badgeNode.props.children).toBe("9");
   });
 
   it("applies pressed and disabled classes", () => {
