@@ -22,6 +22,12 @@ const eslintConfig = defineConfig([
       "jsx-quotes": ["error", "prefer-double"],
     },
   },
+  {
+    files: ["src/ui-kit/icon/icon-wrappers.tsx"],
+    rules: {
+      "react-hooks/static-components": "off",
+    },
+  },
   ...storybook.configs["flat/recommended"]
 ]);
 
