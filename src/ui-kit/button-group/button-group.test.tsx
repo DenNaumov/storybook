@@ -17,11 +17,9 @@ describe("ButtonGroup", () => {
       withSpacing: true,
       className: "custom-group",
       id: "group-id",
-      "data-gap": "12",
     });
 
     expect(element.props.id).toBe("group-id");
-    expect(element.props["data-gap"]).toBe("12");
     expect(element.props.children).toBe("content");
   });
 

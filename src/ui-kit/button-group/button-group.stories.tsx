@@ -47,7 +47,7 @@ const SortIcon = <ResizableIcon icon="ArrowUpDown" size={24} />;
 const CalendarRemoveIcon = <ResizableIcon icon="CalendarRemove24" size={24} />;
 
 const layoutClassNames: Partial<
-  Record<ButtonGroupStoryArgs["direction"], string>
+  Record<NonNullable<ButtonGroupStoryArgs["direction"]>, string>
 > = {
   vertical: styles.playgroundGroupVertical,
   horizontal: styles.playgroundGroupHorizontal,
@@ -195,14 +195,15 @@ export const Playground: Story = {
     gap: 12,
   },
   render: (args) => {
-    const groupClassName = layoutClassNames[args.direction];
+    const direction = args.direction ?? "vertical";
+    const groupClassName = layoutClassNames[direction];
     const content = getContentByType(args.contentType);
 
     return (
       <div className={styles.stage}>
         <div className={styles.playgroundSurface}>
           <ButtonGroup
-            direction={args.direction}
+            direction={direction}
             withSpacing={args.withSpacing}
             gap={args.gap}
             className={groupClassName}
