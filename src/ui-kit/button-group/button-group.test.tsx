@@ -28,7 +28,7 @@ describe("ButtonGroup", () => {
   it("supports different layout props", () => {
     const element = ButtonGroup({
       children: "content",
-      direction: "inline",
+      direction: "horizontalFixed",
       gap: 0,
     });
 

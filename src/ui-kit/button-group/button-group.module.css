@@ -18,17 +18,11 @@
   background: var(--theme-bg-tabbar);
 }
 
-.gap12 {
+.withGap {
   gap: 12px;
 }
 
-.inlineHorizontal {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.chipsHorizontal {
+.horizontalFixed {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
@@ -38,7 +32,6 @@
   flex: 1;
 }
 
-.chipsHorizontal > *,
-.inlineHorizontal > * {
+.horizontalFixed > * {
   flex: none;
 }

@@ -4,8 +4,7 @@ import styles from "./button-group.module.css";
 export type ButtonGroupDirection =
   | "vertical"
   | "horizontal"
-  | "inline"
-  | "chips";
+  | "horizontalFixed";
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   direction?: ButtonGroupDirection;
@@ -17,7 +16,7 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
 
 /**
  * ButtonGroup component to layout multiple buttons.
- * Supports Figma specs for Vertical, Horizontal, Inline, and Chips layouts.
+ * Supports vertical, horizontal, and fixed-width horizontal layouts.
  */
 export const ButtonGroup = ({
   direction = "vertical",
@@ -27,16 +26,16 @@ export const ButtonGroup = ({
   className,
   ...props
 }: ButtonGroupProps) => {
+  const directionClass =
+    direction === "horizontalFixed"
+      ? styles.horizontalFixed
+      : styles[direction];
+
   const classes = [
     styles.buttonGroup,
-    // Inline and chips use dedicated layout classes instead of the plain direction names.
-    direction === "inline"
-      ? styles.inlineHorizontal
-      : direction === "chips"
-        ? styles.chipsHorizontal
-        : styles[direction],
+    directionClass,
     withSpacing ? styles.withSpacing : "",
-    gap === 12 ? styles.gap12 : "",
+    gap === 12 ? styles.withGap : "",
     className,
   ]
     .filter(Boolean)
