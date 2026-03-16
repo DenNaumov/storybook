@@ -1,8 +1,11 @@
+import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 
 import styles from "./chip-button.module.css";
 import { ChipButton } from "./chip-button";
+
+type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 
 const getClassNames = (className?: string) =>
   new Set((className ?? "").split(" ").filter(Boolean));
@@ -65,6 +68,8 @@ describe("ChipButton", () => {
     if (!isValidElement(contentNode)) {
       throw new Error("Expected content node to be a React element.");
     }
-    expect(contentNode.props.children).toBe("Custom content");
+    expect((contentNode as ElementWithChildren).props.children).toBe(
+      "Custom content",
+    );
   });
 });

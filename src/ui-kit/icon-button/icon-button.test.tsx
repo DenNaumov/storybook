@@ -1,7 +1,10 @@
+import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 
 import { IconButton } from "./icon-button";
+
+type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 
 describe("IconButton", () => {
   it("renders default sizes when no explicit sizes are passed", () => {
@@ -32,7 +35,9 @@ describe("IconButton", () => {
       throw new Error("Expected wrapper to be a React element.");
     }
 
-    const wrapperChildren = Children.toArray(wrapper.props.children);
+    const wrapperChildren = Children.toArray(
+      (wrapper as ElementWithChildren).props.children,
+    );
     expect(wrapperChildren).toHaveLength(2);
     expect(wrapperChildren[0]).toBe("add");
     const badgeNode = wrapperChildren[1];
@@ -40,7 +45,7 @@ describe("IconButton", () => {
     if (!isValidElement(badgeNode)) {
       throw new Error("Expected badge node to be a React element.");
     }
-    expect(badgeNode.props.children).toBe("9");
+    expect((badgeNode as ElementWithChildren).props.children).toBe("9");
   });
 
   it("applies pressed and disabled classes", () => {

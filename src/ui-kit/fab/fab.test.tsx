@@ -1,7 +1,10 @@
+import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 
 import { FAB } from "./fab";
+
+type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 
 describe("FAB", () => {
   it("renders the primary variant by default", () => {
@@ -25,7 +28,7 @@ describe("FAB", () => {
     if (!isValidElement(iconNode)) {
       throw new Error("Expected icon node to be a React element.");
     }
-    expect(iconNode.props.children).toBe("icon");
+    expect((iconNode as ElementWithChildren).props.children).toBe("icon");
   });
 
   it("falls back to children and disables interaction when disabled", () => {
@@ -42,6 +45,6 @@ describe("FAB", () => {
     if (!isValidElement(child)) {
       throw new Error("Expected child node to be a React element.");
     }
-    expect(child.props.children).toBe("child-icon");
+    expect((child as ElementWithChildren).props.children).toBe("child-icon");
   });
 });
