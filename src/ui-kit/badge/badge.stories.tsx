@@ -52,7 +52,6 @@ export const AllVariants: Story = {
         borderRadius: "24px",
       }}
     >
-      {/* Row 1: Primary (Blue) */}
       <Badge size="dot" variant="primary" />
       <Badge size="medium" variant="primary">
         42
@@ -61,7 +60,6 @@ export const AllVariants: Story = {
         42
       </Badge>
 
-      {/* Row 2: Error (Red) */}
       <Badge size="dot" variant="error" />
       <Badge size="medium" variant="error">
         42
@@ -70,7 +68,6 @@ export const AllVariants: Story = {
         42
       </Badge>
 
-      {/* Row 3: Inverse (White bg, blue text) */}
       <Badge size="dot" variant="inverse" />
       <Badge size="medium" variant="inverse">
         42

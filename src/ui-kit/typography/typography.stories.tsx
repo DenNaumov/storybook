@@ -306,11 +306,6 @@ const Section = ({
   className?: string;
 }) => <div className={className || styles.grid3}>{children}</div>;
 
-/* ========================
-   INDIVIDUAL STORIES
-   ======================== */
-
-// Title 3
 export const Title3Regular: Story = {
   args: { children: "Title 3 · Regular", variant: "title3-regular" },
 };
@@ -321,7 +316,6 @@ export const Title3Bold: Story = {
   args: { children: "Title 3 · Bold", variant: "title3-bold" },
 };
 
-// Headline
 export const HeadlineRegular: Story = {
   args: { children: "Headline · Regular", variant: "headline-regular" },
 };
@@ -332,7 +326,6 @@ export const HeadlineBold: Story = {
   args: { children: "Headline · Bold", variant: "headline-bold" },
 };
 
-// Text
 export const TextRegular: Story = {
   args: { children: "Text · Regular", variant: "text-regular" },
 };
@@ -346,7 +339,6 @@ export const TextBold: Story = {
   args: { children: "Text · Bold", variant: "text-bold" },
 };
 
-// Subheadline 1
 export const Subheadline1Regular: Story = {
   args: {
     children: "Subheadline 1 · Regular",
@@ -363,7 +355,6 @@ export const Subheadline1Bold: Story = {
   args: { children: "Subheadline 1 · Bold", variant: "subheadline1-bold" },
 };
 
-// Subheadline 2
 export const Subheadline2Regular: Story = {
   args: {
     children: "Subheadline 2 · Regular",
@@ -380,7 +371,6 @@ export const Subheadline2Bold: Story = {
   args: { children: "Subheadline 2 · Bold", variant: "subheadline2-bold" },
 };
 
-// Caption 1
 export const Caption1Regular: Story = {
   args: { children: "Caption 1 · Regular", variant: "caption1-regular" },
 };
@@ -391,7 +381,6 @@ export const Caption1Bold: Story = {
   args: { children: "Caption 1 · Bold", variant: "caption1-bold" },
 };
 
-// Caption 2
 export const Caption2Regular: Story = {
   args: { children: "Caption 2 · Regular", variant: "caption2-regular" },
 };
@@ -401,10 +390,6 @@ export const Caption2Semibold: Story = {
 export const Caption2Bold: Story = {
   args: { children: "Caption 2 · Bold", variant: "caption2-bold" },
 };
-
-/* ========================
-   VARIANT SHOWCASES
-   ======================== */
 
 export const AllTitle3Variants: Story = {
   render: () => (

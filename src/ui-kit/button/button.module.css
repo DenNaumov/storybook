@@ -63,12 +63,10 @@
 .pressed,
 .button:active:not(.disabled) {
   opacity: 0.2;
-  /* Specifically defined in Figma layers for all variants */
 }
 
 .disabled {
   opacity: 0.35;
-  /* Specifically defined in Figma layers for all variants */
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -94,7 +92,6 @@
   height: 24px;
 }
 
-/* Spinner (Loader) */
 .spinner {
   position: absolute;
   width: 24px;
