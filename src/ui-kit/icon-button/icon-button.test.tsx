@@ -7,8 +7,10 @@ import { IconButton } from "./icon-button";
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 
 describe("IconButton", () => {
-  it("renders default sizes when no explicit sizes are passed", () => {
+  it("renders when explicit sizes are passed", () => {
     const element = IconButton({
+      buttonSize: "m",
+      iconSize: "m",
       icon: "add",
     });
 
@@ -51,6 +53,8 @@ describe("IconButton", () => {
   it("passes through pressed and disabled state", () => {
     const element = IconButton({
       icon: "add",
+      buttonSize: "m",
+      iconSize: "m",
       pressed: true,
       disabled: true,
     });

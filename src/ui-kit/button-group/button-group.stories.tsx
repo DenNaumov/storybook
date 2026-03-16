@@ -65,11 +65,13 @@ export const Showcase: Story = {
         <div />
         <ButtonGroup direction="chips" withSpacing={false}>
           <ChipButton
+            size="m"
             label="Сортировка"
             startIcon={SortIcon}
             endIcon={SortIcon}
           />
           <ChipButton
+            size="m"
             label="Сортировка"
             startIcon={SortIcon}
             endIcon={SortIcon}

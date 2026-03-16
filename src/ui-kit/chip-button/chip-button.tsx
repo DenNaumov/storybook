@@ -7,7 +7,7 @@ export interface ChipButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  size?: ChipButtonSize;
+  size: ChipButtonSize;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   active?: boolean;
@@ -19,7 +19,7 @@ export interface ChipButtonProps extends Omit<
  * Supports S, M, L sizes, icons on both sides, and active/disabled states.
  */
 export const ChipButton = ({
-  size = "m",
+  size,
   startIcon,
   endIcon,
   active = false,

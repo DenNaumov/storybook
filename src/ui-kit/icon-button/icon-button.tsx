@@ -8,8 +8,8 @@ export interface IconButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "className"
 > {
-  buttonSize?: IconButtonSize;
-  iconSize?: IconSize;
+  buttonSize: IconButtonSize;
+  iconSize: IconSize;
   icon: ReactNode;
   /** Badge value */
   badgeCount?: number | string;
@@ -22,8 +22,8 @@ export interface IconButtonProps extends Omit<
  * Supports multiple button and icon sizes, states, and an optional badge.
  */
 export const IconButton = ({
-  buttonSize = "m",
-  iconSize = "m",
+  buttonSize,
+  iconSize,
   icon,
   badgeCount,
   pressed = false,

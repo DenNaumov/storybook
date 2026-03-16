@@ -54,6 +54,7 @@ describe("ChipButton", () => {
 
   it("passes through disabled state and children content", () => {
     const element = ChipButton({
+      size: "m",
       disabled: true,
       children: "Custom content",
     });
