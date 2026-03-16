@@ -57,6 +57,9 @@ describe("icon wrappers", () => {
     });
 
     expect(isValidElement(element)).toBe(true);
+    if (!element) {
+      throw new Error("Expected resizable icon element to be defined.");
+    }
     expect(element.props.width).toBe(32);
     expect(element.props.height).toBe(32);
     expect(element.props.color).toBe("#2990FF");
@@ -110,18 +113,30 @@ describe("icon wrappers", () => {
     });
 
     expect(isValidElement(icon16)).toBe(true);
+    if (!icon16) {
+      throw new Error("Expected Icon16 element to be defined.");
+    }
     expect(icon16.props.width).toBe(18);
     expect(icon16.props.height).toBe(18);
 
     expect(isValidElement(icon20)).toBe(true);
+    if (!icon20) {
+      throw new Error("Expected Icon20 element to be defined.");
+    }
     expect(icon20.props.width).toBe(22);
     expect(icon20.props.height).toBe(22);
 
     expect(isValidElement(icon24)).toBe(true);
+    if (!icon24) {
+      throw new Error("Expected Icon24 element to be defined.");
+    }
     expect(icon24.props.width).toBe(30);
     expect(icon24.props.height).toBe(30);
 
     expect(isValidElement(icon28)).toBe(true);
+    if (!icon28) {
+      throw new Error("Expected Icon28 element to be defined.");
+    }
     expect(icon28.props.width).toBe(34);
     expect(icon28.props.height).toBe(34);
   });
