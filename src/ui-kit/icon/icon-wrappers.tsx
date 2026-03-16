@@ -11,6 +11,7 @@ type SvgModule =
   | SvgComponent
   | { default?: SvgComponent; ReactComponent?: SvgComponent };
 
+// Support direct SVG components and the common module shapes produced by loaders.
 export const resolveSvgComponent = (iconModule: SvgModule): SvgComponent => {
   if (typeof iconModule === "function") {
     return iconModule;
@@ -88,6 +89,7 @@ export const ResizableIcon = ({
       height={size}
       color={color}
       {...props}
+      // Keep SVG dimensions predictable even when imported assets don't declare their own size.
       style={{ width: size, height: size, ...props.style }}
     />
   );

@@ -34,6 +34,7 @@ export const ButtonGroup = ({
 }: ButtonGroupProps) => {
   const classes = [
     styles.buttonGroup,
+    // Inline and chips use dedicated layout classes instead of the plain direction names.
     direction === "inline"
       ? styles.inlineHorizontal
       : direction === "chips"

@@ -34,6 +34,7 @@ export const ChipButton = ({
   ...props
 }: ChipButtonProps) => {
   const content = label || children;
+  // Icon-only chips use a dedicated padding preset to keep the visual width consistent.
   const isIconOnly = !content && (startIcon || endIcon);
 
   const classes = [
