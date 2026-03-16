@@ -33,7 +33,6 @@
   padding: 12px 16px;
 }
 
-/* Variants */
 .variantPrimary {
   background: var(--theme-bg-fill-brand-main);
   color: var(--theme-text-on-main);

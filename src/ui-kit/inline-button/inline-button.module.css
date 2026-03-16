@@ -15,7 +15,6 @@
   box-sizing: border-box;
 }
 
-/* Variants */
 .variantSurface {
   background: var(--theme-bg-surface-primary);
   color: var(--theme-text-brand-main);

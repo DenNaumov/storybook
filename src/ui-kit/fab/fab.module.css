@@ -21,8 +21,6 @@
   opacity: 0.2;
 }
 
-/* Variants */
-
 .variantPrimary {
   background-color: var(--theme-bg-fill-brand-main);
   color: var(--theme-icon-on-main);
