@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { ReactNode } from "react";
 import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from "./icon-wrappers";
 import styles from "./icons.stories.module.css";
 import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
@@ -33,18 +34,32 @@ const icons24 = Object.keys(Icon24Icons) as Icon24IconKeys[];
 const icons28 = Object.keys(Icon28Icons) as Icon28IconKeys[];
 const iconsResizable = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
+const IconStoryLayout = ({ children }: { children: ReactNode }) => (
+  <div className={styles.page}>
+    <div className={styles.wrapper}>{children}</div>
+  </div>
+);
+
+const IconStoryRow = ({
+  label,
+  icon,
+}: {
+  label: string;
+  icon: ReactNode;
+}) => (
+  <div className={styles.row}>
+    <span className={styles.icon}>{icon}</span>
+    <span className={styles.name}>{label}</span>
+  </div>
+);
+
 export const Pack16_List: StoryObj = {
   render: () => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        {icons16.map((name) => (
-          <div key={name} className={styles.row}>
-            <span className={styles.icon}><Icon16 icon={name} /></span>
-            <span className={styles.name}>{name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <IconStoryLayout>
+      {icons16.map((name) => (
+        <IconStoryRow key={name} label={name} icon={<Icon16 icon={name} />} />
+      ))}
+    </IconStoryLayout>
   ),
 };
 
@@ -58,29 +73,19 @@ export const Pack16_Playground: StoryObj<FixedPackStoryArgs<Icon16IconKeys>> = {
     color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon16IconKeys>) => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <div className={styles.row}>
-          <span className={styles.icon}><Icon16 icon={args.icon} color={args.color} /></span>
-          <span className={styles.name}>{args.icon}</span>
-        </div>
-      </div>
-    </div>
+    <IconStoryLayout>
+      <IconStoryRow label={args.icon} icon={<Icon16 icon={args.icon} color={args.color} />} />
+    </IconStoryLayout>
   ),
 };
 
 export const Pack20_List: StoryObj = {
   render: () => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        {icons20.map((name) => (
-          <div key={name} className={styles.row}>
-            <span className={styles.icon}><Icon20 icon={name} /></span>
-            <span className={styles.name}>{name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <IconStoryLayout>
+      {icons20.map((name) => (
+        <IconStoryRow key={name} label={name} icon={<Icon20 icon={name} />} />
+      ))}
+    </IconStoryLayout>
   ),
 };
 
@@ -94,29 +99,19 @@ export const Pack20_Playground: StoryObj<FixedPackStoryArgs<Icon20IconKeys>> = {
     color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon20IconKeys>) => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <div className={styles.row}>
-          <span className={styles.icon}><Icon20 icon={args.icon} color={args.color} /></span>
-          <span className={styles.name}>{args.icon}</span>
-        </div>
-      </div>
-    </div>
+    <IconStoryLayout>
+      <IconStoryRow label={args.icon} icon={<Icon20 icon={args.icon} color={args.color} />} />
+    </IconStoryLayout>
   ),
 };
 
 export const Pack24_List: StoryObj = {
   render: () => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        {icons24.map((name) => (
-          <div key={name} className={styles.row}>
-            <span className={styles.icon}><Icon24 icon={name} /></span>
-            <span className={styles.name}>{name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <IconStoryLayout>
+      {icons24.map((name) => (
+        <IconStoryRow key={name} label={name} icon={<Icon24 icon={name} />} />
+      ))}
+    </IconStoryLayout>
   ),
 };
 
@@ -130,29 +125,19 @@ export const Pack24_Playground: StoryObj<FixedPackStoryArgs<Icon24IconKeys>> = {
     color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon24IconKeys>) => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <div className={styles.row}>
-          <span className={styles.icon}><Icon24 icon={args.icon} color={args.color} /></span>
-          <span className={styles.name}>{args.icon}</span>
-        </div>
-      </div>
-    </div>
+    <IconStoryLayout>
+      <IconStoryRow label={args.icon} icon={<Icon24 icon={args.icon} color={args.color} />} />
+    </IconStoryLayout>
   ),
 };
 
 export const Pack28_List: StoryObj = {
   render: () => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        {icons28.map((name) => (
-          <div key={name} className={styles.row}>
-            <span className={styles.icon}><Icon28 icon={name} /></span>
-            <span className={styles.name}>{name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <IconStoryLayout>
+      {icons28.map((name) => (
+        <IconStoryRow key={name} label={name} icon={<Icon28 icon={name} />} />
+      ))}
+    </IconStoryLayout>
   ),
 };
 
@@ -166,29 +151,23 @@ export const Pack28_Playground: StoryObj<FixedPackStoryArgs<Icon28IconKeys>> = {
     color: { control: "color" },
   },
   render: (args: FixedPackStoryArgs<Icon28IconKeys>) => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <div className={styles.row}>
-          <span className={styles.icon}><Icon28 icon={args.icon} color={args.color} /></span>
-          <span className={styles.name}>{args.icon}</span>
-        </div>
-      </div>
-    </div>
+    <IconStoryLayout>
+      <IconStoryRow label={args.icon} icon={<Icon28 icon={args.icon} color={args.color} />} />
+    </IconStoryLayout>
   ),
 };
 
 export const Resizable_List: StoryObj = {
   render: () => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        {iconsResizable.map((name) => (
-          <div key={name} className={styles.row}>
-            <span className={styles.icon}><ResizableIcon icon={name} size={24} className={styles.resizableIcon} /></span>
-            <span className={styles.name}>{name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <IconStoryLayout>
+      {iconsResizable.map((name) => (
+        <IconStoryRow
+          key={name}
+          label={name}
+          icon={<ResizableIcon icon={name} size={24} className={styles.resizableIcon} />}
+        />
+      ))}
+    </IconStoryLayout>
   ),
 };
 
@@ -209,15 +188,18 @@ export const Resizable_Playground: StoryObj<ResizableStoryArgs> = {
     color: { control: "color" },
   },
   render: (args: ResizableStoryArgs) => (
-    <div className={styles.page}>
-      <div className={styles.wrapper}>
-        <div className={styles.row}>
-          <span className={styles.icon}>
-            <ResizableIcon icon={args.icon} size={args.size} color={args.color} className={styles.resizableIcon} />
-          </span>
-          <span className={styles.name}>{args.icon}</span>
-        </div>
-      </div>
-    </div>
+    <IconStoryLayout>
+      <IconStoryRow
+        label={args.icon}
+        icon={
+          <ResizableIcon
+            icon={args.icon}
+            size={args.size}
+            color={args.color}
+            className={styles.resizableIcon}
+          />
+        }
+      />
+    </IconStoryLayout>
   ),
 };
