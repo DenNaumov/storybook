@@ -8,7 +8,7 @@ export type ButtonSize = "s" | "m" | "small" | "medium";
 export interface ButtonProps {
   /** Visual style */
   variant?: ButtonVariant;
-  /** How large should the button be? */
+  /** Button size */
   size: ButtonSize;
   /** Button contents */
   label?: string;
