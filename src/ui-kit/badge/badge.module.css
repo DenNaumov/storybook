@@ -8,18 +8,18 @@
 }
 
 .variantPrimary {
-  background-color: #2b8cff;
-  color: #ffffff;
+  background-color: var(--theme-bg-fill-brand-main);
+  color: var(--theme-text-on-main);
 }
 
 .variantError {
-  background-color: #ff3b30;
-  color: #ffffff;
+  background-color: var(--theme-bg-fill-error);
+  color: var(--theme-text-on-main);
 }
 
 .variantInverse {
-  background-color: #ffffff;
-  color: #2b8cff;
+  background-color: var(--theme-icon-on-main);
+  color: var(--theme-text-brand-main);
 }
 
 /* Sizes */
@@ -43,10 +43,6 @@
   min-width: 32px;
   padding: 0 12px;
   border-radius: 16px;
-}
-
-.variantInverse {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .label {
