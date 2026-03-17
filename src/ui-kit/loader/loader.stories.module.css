@@ -1,0 +1,46 @@
+.stage {
+  min-height: 100vh;
+  padding: 90px 96px;
+  background: var(--theme-bg-tabbar);
+  box-sizing: border-box;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: #c9a8f8;
+  font-family:
+    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.surface {
+  display: flex;
+  align-items: center;
+  gap: 108px;
+  width: min(100%, 470px);
+  min-height: 134px;
+  padding: 0 62px;
+  border: 4px dashed #9c45ff;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.22);
+  box-sizing: border-box;
+}
+
+@media (max-width: 720px) {
+  .stage {
+    padding: 40px 20px;
+  }
+
+  .surface {
+    gap: 40px;
+    padding: 24px 28px;
+    min-height: 120px;
+    justify-content: space-between;
+  }
+}

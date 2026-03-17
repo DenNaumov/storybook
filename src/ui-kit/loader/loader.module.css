@@ -1,0 +1,39 @@
+.loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--theme-icon-default);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 0.9s linear infinite;
+  transform-origin: center;
+}
+
+.sizeSmall {
+  width: 24px;
+  height: 24px;
+}
+
+.sizeMedium {
+  width: 28px;
+  height: 28px;
+}
+
+.sizeLarge {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
