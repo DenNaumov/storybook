@@ -77,7 +77,6 @@
   transition: opacity 0.2s ease;
 }
 
-.action:hover,
 .action:focus-visible {
   opacity: 0.8;
 }
