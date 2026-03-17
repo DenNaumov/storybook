@@ -54,9 +54,6 @@
 .variantWhite {
   background-color: var(--theme-bg-fill-white);
   color: var(--theme-icon-brand-main);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .variantWhite:hover:not(.disabled) {
@@ -72,7 +69,7 @@
 }
 
 .disabled {
-  opacity: 0.5;
+  opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
 }
