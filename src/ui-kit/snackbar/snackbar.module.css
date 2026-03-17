@@ -8,25 +8,9 @@
   padding: 8px 12px;
   border: none;
   border-radius: 14px;
-  background: var(--theme-bg-fill-primary);
-  color: var(--theme-text-primary);
+  background: rgba(73, 76, 78, 0.75);
+  backdrop-filter: blur(16px);
   box-sizing: border-box;
-}
-
-.variantNeutral {
-  background: var(--theme-bg-fill-primary);
-}
-
-.variantSuccess {
-  background: color-mix(
-    in srgb,
-    var(--theme-icon-success) 14%,
-    var(--theme-bg-fill-primary)
-  );
-}
-
-.variantError {
-  background: var(--theme-bg-fill-primary);
 }
 
 .content {
@@ -58,14 +42,7 @@
 
 .message {
   min-width: 0;
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 22px;
-  letter-spacing: -0.4px;
-  color: inherit;
+  color: var(--theme-text-on-main);
   overflow-wrap: anywhere;
 }
 
@@ -94,13 +71,6 @@
 
 .action {
   padding: 0;
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: -0.4px;
   color: var(--theme-text-brand-main);
 }
 
@@ -110,4 +80,8 @@
   justify-content: center;
   width: 36px;
   height: 36px;
+}
+
+.actionLabel {
+  color: inherit;
 }

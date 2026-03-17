@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 import { Icon20, Icon28 } from "../icon/icon-wrappers";
 import { IconButton } from "../icon-button/icon-button";
+import { Typography } from "../typography/typography";
 import styles from "./snackbar.module.css";
 
 export type SnackbarVariant = "neutral" | "success" | "error";
@@ -72,7 +73,14 @@ export const Snackbar = ({
       <div className={styles.content}>
         {icon && <span className={styles.icon}>{icon}</span>}
         <div className={styles.layout}>
-          <span className={styles.message}>{message}</span>
+          <Typography
+            as="span"
+            variant="caption1-semibold"
+            className={styles.message}
+            style={{ color: "var(--theme-text-on-main)" }}
+          >
+            {message}
+          </Typography>
         </div>
       </div>
 
@@ -85,7 +93,14 @@ export const Snackbar = ({
               aria-label={actionAriaLabel ?? actionLabel}
               onClick={onAction}
             >
-              {actionLabel}
+              <Typography
+                as="span"
+                variant="subheadline1-regular"
+                className={styles.actionLabel}
+                style={{ color: "var(--theme-text-brand-main)" }}
+              >
+                {actionLabel}
+              </Typography>
             </button>
           )}
 
