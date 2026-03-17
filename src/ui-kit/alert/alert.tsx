@@ -34,10 +34,21 @@ export const Alert = ({
   actionsLayout = "stack",
   ...props
 }: AlertProps) => {
+  const hasMedia = Boolean(media);
+  const hasDescription = Boolean(description);
   const hasActions = Boolean(primaryActionLabel || secondaryActionLabel);
 
+  const alertClassName = [
+    styles.alert,
+    hasMedia ? styles.withMedia : "",
+    hasDescription ? styles.withDescription : "",
+    hasActions ? styles.withActions : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <section className={styles.alert} {...props}>
+    <section className={alertClassName} {...props}>
       {media ? <div className={styles.media}>{media}</div> : null}
 
       <div className={styles.body}>

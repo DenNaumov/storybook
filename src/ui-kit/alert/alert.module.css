@@ -11,12 +11,18 @@
   box-sizing: border-box;
 }
 
+.withMedia.withDescription.withActions {
+  min-height: 431px;
+}
+
 .media {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 184px;
+  height: 184px;
   max-width: 100%;
+  flex: none;
 }
 
 .body {
@@ -27,6 +33,10 @@
   gap: 8px;
   width: 100%;
   text-align: center;
+}
+
+.withDescription .body {
+  min-height: 119px;
 }
 
 .title {
@@ -59,6 +69,7 @@
   display: flex;
   width: 100%;
   gap: 12px;
+  min-height: 48px;
 }
 
 .actionsStack {
