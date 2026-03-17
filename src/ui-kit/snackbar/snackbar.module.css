@@ -1,0 +1,111 @@
+.snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 72px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 16px;
+  background: var(--theme-bg-fill-primary);
+  color: var(--theme-text-primary);
+  box-sizing: border-box;
+}
+
+.variantNeutral {
+  background: var(--theme-bg-fill-primary);
+}
+
+.variantSuccess {
+  background: color-mix(
+    in srgb,
+    var(--theme-icon-success) 14%,
+    var(--theme-bg-fill-primary)
+  );
+}
+
+.variantError {
+  background: var(--theme-bg-fill-primary);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.message {
+  min-width: 0;
+  font-family:
+    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.4px;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.action,
+.dismiss {
+  border: none;
+  background: transparent;
+}
+
+.action {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.action:hover,
+.action:focus-visible {
+  opacity: 0.8;
+}
+
+.action {
+  padding: 8px 10px;
+  font-family:
+    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.4px;
+  color: var(--theme-text-brand-main);
+}
+
+.dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .snackbar {
+    align-items: flex-start;
+  }
+
+  .controls {
+    margin-top: -4px;
+  }
+}
