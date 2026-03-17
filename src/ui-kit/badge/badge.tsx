@@ -43,6 +43,7 @@ export const Badge = ({
 
   return (
     <span className={classes} {...props}>
+      {isDot ? <span className={styles.dot} aria-hidden="true" /> : null}
       {content !== null ? (
         <Typography
           as="span"

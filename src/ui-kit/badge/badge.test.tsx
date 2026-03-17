@@ -55,6 +55,13 @@ describe("Badge", () => {
       variant: "error",
     });
 
-    expect(element.props.children).toBeNull();
+    const children = Children.toArray(element.props.children);
+    expect(children).toHaveLength(1);
+
+    const dotNode = children[0];
+    expect(isValidElement(dotNode)).toBe(true);
+    if (!isValidElement(dotNode)) {
+      throw new Error("Expected dot node to be a React element.");
+    }
   });
 });
