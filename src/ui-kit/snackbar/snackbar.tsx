@@ -71,7 +71,9 @@ export const Snackbar = ({
     >
       <div className={styles.content}>
         {icon && <span className={styles.icon}>{icon}</span>}
-        <span className={styles.message}>{message}</span>
+        <div className={styles.layout}>
+          <span className={styles.message}>{message}</span>
+        </div>
       </div>
 
       {(actionLabel || onDismiss) && (
