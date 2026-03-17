@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Icon28 } from "../icon/icon-wrappers";
+import { Illustration } from "../illustration/illustration";
 import { Alert } from "./alert";
 import styles from "./alert.stories.module.css";
 
@@ -94,6 +95,7 @@ export const Showcase: Story = {
             title={defaultTitle}
             description={defaultDescription}
             primaryActionLabel="Сохранить"
+            media={<Illustration illustration="UserLimit" size={184} />}
             onPrimaryAction={noop}
           />
         </div>
@@ -152,7 +154,6 @@ export const Showcase: Story = {
                 />
               </div>
 
-              {/* TODO: replace `media` with <Illustration ... /> when the component is ready. */}
               <div className={styles.exampleCard}>
                 <Alert
                   title={defaultTitle}
@@ -161,11 +162,7 @@ export const Showcase: Story = {
                   secondaryActionLabel="Сохранить"
                   secondaryActionVariant="bezeled"
                   actionsLayout="stack"
-                  media={
-                    <div className={styles.illustrationPlaceholder}>
-                      Illustration
-                    </div>
-                  }
+                  media={<Illustration illustration="UserLimit" size={184} />}
                   onPrimaryAction={noop}
                   onSecondaryAction={noop}
                 />

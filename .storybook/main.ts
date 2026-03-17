@@ -8,6 +8,7 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: ["@storybook/addon-a11y", "@storybook/addon-docs"],
   framework: "@storybook/nextjs",
+  staticDirs: ["../public"],
   webpackFinal: async (config) => {
     const rules = config.module?.rules || [];
     const fileLoaderRule = rules.find(
