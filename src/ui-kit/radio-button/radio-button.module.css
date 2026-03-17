@@ -49,11 +49,6 @@
   transform: scale(1);
 }
 
-.input:focus-visible + .circle {
-  outline: 2px solid rgba(43, 140, 255, 0.6);
-  outline-offset: 2px;
-}
-
 .input:disabled + .circle {
   background: #171717;
   border-color: #2a2a2a;
