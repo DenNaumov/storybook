@@ -55,7 +55,17 @@ describe("Button", () => {
 
     const contentChildren = Children.toArray(contentElement.props.children);
     expect(contentChildren).toHaveLength(3);
-    expect(contentChildren[1]).toBe("Save");
+
+    const labelNode = contentChildren[1];
+    if (!isValidElement(labelNode)) {
+      throw new Error("Expected label to be a React element.");
+    }
+    const labelElement = labelNode as ElementWithProps<{
+      children?: ReactNode;
+      variant?: string;
+    }>;
+    expect(labelElement.props.variant).toBe("text-medium");
+    expect(labelElement.props.children).toBe("Save");
 
     const startIconNode = contentChildren[0];
     if (!isValidElement(startIconNode)) {

@@ -3,7 +3,6 @@
   padding: 48px 56px 80px;
   background: var(--theme-bg-tabbar);
   color: var(--theme-text-secondary);
-  font-family: "Manrope", "Inter", "Segoe UI", system-ui, sans-serif;
 }
 
 .header {

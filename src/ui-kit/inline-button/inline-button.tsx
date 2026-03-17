@@ -1,4 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from "react";
+import { Typography } from "../typography/typography";
 import styles from "./inline-button.module.css";
 
 export type InlineButtonVariant = "surface" | "bezeled" | "primary";
@@ -34,7 +35,14 @@ export const InlineButton = ({
   return (
     <button className={classes} disabled={disabled} {...props}>
       <span className={styles.icon}>{icon}</span>
-      <span className={styles.label}>{label}</span>
+      <Typography
+        as="span"
+        variant="caption1-semibold"
+        className={styles.label}
+        style={{ color: "inherit" }}
+      >
+        {label}
+      </Typography>
     </button>
   );
 };

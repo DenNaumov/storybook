@@ -24,9 +24,6 @@
   align-items: center;
   gap: 8px;
   color: #c9a8f8;
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -45,9 +42,6 @@
   background: color-mix(in srgb, var(--theme-bg-fill-primary) 92%, white);
   border: 1px solid var(--theme-border-default);
   color: var(--theme-text-primary);
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;

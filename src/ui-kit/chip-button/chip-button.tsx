@@ -1,4 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from "react";
+import { Typography } from "../typography/typography";
 import styles from "./chip-button.module.css";
 
 export type ChipButtonSize = "s" | "m" | "l";
@@ -47,7 +48,16 @@ export const ChipButton = ({
   return (
     <button className={classes} disabled={disabled} {...props}>
       {startIcon && <span className={styles.icon}>{startIcon}</span>}
-      {content && <span className={styles.label}>{content}</span>}
+      {content && (
+        <Typography
+          as="span"
+          variant="caption1-regular"
+          className={styles.label}
+          style={{ color: "inherit" }}
+        >
+          {content}
+        </Typography>
+      )}
       {endIcon && <span className={styles.icon}>{endIcon}</span>}
     </button>
   );

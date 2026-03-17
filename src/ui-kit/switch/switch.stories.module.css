@@ -6,13 +6,6 @@
   padding: 48px;
   background: radial-gradient(circle at 20% 0%, #1a1a1a, #0b0b0b 60%);
   color: #d0d0d0;
-  font-family:
-    "SF Pro",
-    "SF Pro Text",
-    -apple-system,
-    "Segoe UI",
-    system-ui,
-    sans-serif;
 }
 
 .card {

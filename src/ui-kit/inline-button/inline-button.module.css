@@ -54,15 +54,6 @@
 }
 
 .label {
-  font-family:
-    "SF Pro",
-    -apple-system,
-    system-ui,
-    sans-serif;
-  font-weight: 590;
-  font-size: 13px;
-  line-height: 16px;
   text-align: center;
-  letter-spacing: -0.08px;
   white-space: nowrap;
 }

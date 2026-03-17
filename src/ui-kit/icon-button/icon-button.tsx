@@ -1,4 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from "react";
+import { Typography } from "../typography/typography";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
@@ -49,7 +50,14 @@ export const IconButton = ({
       <div className={iconWrapperClasses}>
         {icon}
         {badgeCount !== undefined && (
-          <span className={styles.badge}>{badgeCount}</span>
+          <Typography
+            as="span"
+            variant="caption1-semibold"
+            className={styles.badge}
+            style={{ color: "inherit" }}
+          >
+            {badgeCount}
+          </Typography>
         )}
       </div>
     </button>

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Typography } from "../typography/typography";
 
 import styles from "./button.module.css";
 
@@ -62,7 +63,14 @@ export const Button = ({
     >
       <span className={styles.content} data-hidden={loading ? "true" : "false"}>
         {startIcon ? <span className={styles.icon}>{startIcon}</span> : null}
-        {content}
+        <Typography
+          as="span"
+          variant="text-medium"
+          className={styles.label}
+          style={{ color: "inherit" }}
+        >
+          {content}
+        </Typography>
         {endIcon ? <span className={styles.icon}>{endIcon}</span> : null}
       </span>
       {loading ? <span className={styles.spinner} aria-hidden="true" /> : null}
