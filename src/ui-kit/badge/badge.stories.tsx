@@ -31,7 +31,7 @@ const meta: Meta<typeof Badge> = {
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-export const Default: Story = {
+export const Playground: Story = {
   args: {
     variant: "primary",
     size: "medium",
@@ -39,7 +39,8 @@ export const Default: Story = {
   },
 };
 
-export const AllVariants: Story = {
+export const Showcase: Story = {
+  parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.surface}>
       <Badge size="dot" variant="primary" />
@@ -67,19 +68,4 @@ export const AllVariants: Story = {
       </Badge>
     </div>
   ),
-};
-
-export const Dot: Story = {
-  args: {
-    size: "dot",
-    variant: "primary",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: "large",
-    variant: "primary",
-    children: "42",
-  },
 };
