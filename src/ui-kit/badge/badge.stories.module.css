@@ -1,0 +1,10 @@
+.surface {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 40px;
+  align-items: center;
+  justify-items: center;
+  padding: 40px;
+  background-color: #121212;
+  border-radius: 24px;
+}

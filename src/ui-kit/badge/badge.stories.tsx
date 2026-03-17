@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Badge } from "./badge";
+import styles from "./badge.stories.module.css";
 
 const meta: Meta<typeof Badge> = {
   title: "UI Kit/Badge",
@@ -40,18 +41,7 @@ export const Default: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 100px)",
-        gap: "40px",
-        alignItems: "center",
-        justifyItems: "center",
-        padding: "40px",
-        backgroundColor: "#121212",
-        borderRadius: "24px",
-      }}
-    >
+    <div className={styles.surface}>
       <Badge size="dot" variant="primary" />
       <Badge size="medium" variant="primary">
         42

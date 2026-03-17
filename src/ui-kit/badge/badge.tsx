@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Typography } from "../typography/typography";
 import styles from "./badge.module.css";
 
 export type BadgeVariant = "primary" | "error" | "inverse";
@@ -39,7 +40,18 @@ export const Badge = ({
 
   return (
     <span className={classes} {...props}>
-      {content}
+      {content !== null ? (
+        <Typography
+          as="span"
+          variant={
+            size === "large" ? "subheadline2-semibold" : "caption1-semibold"
+          }
+          className={styles.label}
+          style={{ color: "inherit" }}
+        >
+          {content}
+        </Typography>
+      ) : null}
     </span>
   );
 };
