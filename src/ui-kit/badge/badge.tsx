@@ -1,11 +1,14 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import { Typography } from "../typography/typography";
 import styles from "./badge.module.css";
 
 export type BadgeVariant = "primary" | "error" | "inverse";
 export type BadgeSize = "dot" | "medium" | "large";
 
-export interface BadgeProps {
+export interface BadgeProps extends Omit<
+  HTMLAttributes<HTMLSpanElement>,
+  "children" | "className"
+> {
   variant?: BadgeVariant;
   size?: BadgeSize;
   children?: ReactNode;
