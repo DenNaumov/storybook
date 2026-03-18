@@ -8,6 +8,7 @@
     "start": "next start",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "pretty:fix": "prettier --write .",
     "lint": "eslint",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
