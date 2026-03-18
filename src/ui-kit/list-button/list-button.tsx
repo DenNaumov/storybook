@@ -1,4 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from "react";
+import { Typography } from "../typography/typography";
 import styles from "./list-button.module.css";
 
 export interface ListButtonProps extends Omit<
@@ -34,7 +35,13 @@ export const ListButton = ({
   return (
     <button className={classes} disabled={disabled} {...props}>
       {startIcon && <span className={styles.icon}>{startIcon}</span>}
-      <span className={styles.label}>{label || children}</span>
+      <Typography
+        variant="text-regular"
+        className={styles.label}
+        style={{ color: "inherit" }}
+      >
+        {label || children}
+      </Typography>
     </button>
   );
 };
