@@ -42,9 +42,9 @@ describe("IconButton", () => {
     );
     expect(wrapperChildren).toHaveLength(2);
     expect(isValidElement(wrapperChildren[0])).toBe(true);
-    expect((wrapperChildren[0] as ReactElement<{ icon: string }>).props.icon).toBe(
-      "Add01",
-    );
+    expect(
+      (wrapperChildren[0] as ReactElement<{ icon: string }>).props.icon,
+    ).toBe("Add01");
     const badgeNode = wrapperChildren[1];
     expect(isValidElement(badgeNode)).toBe(true);
     if (!isValidElement(badgeNode)) {

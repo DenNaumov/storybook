@@ -52,23 +52,14 @@ export const IconButton = ({
     .filter(Boolean)
     .join(" ");
 
-  const iconWrapperClasses = [
-    styles.iconWrapper,
-    iconSizeMap[iconSize],
-  ].join(" ");
+  const iconWrapperClasses = [styles.iconWrapper, iconSizeMap[iconSize]].join(
+    " ",
+  );
 
   return (
-    <button
-      className={classes}
-      disabled={disabled}
-      type="button"
-      {...props}
-    >
+    <button className={classes} disabled={disabled} type="button" {...props}>
       <div className={iconWrapperClasses}>
-        <ResizableIcon
-          icon={icon}
-          size={iconSizeToPixels[iconSize]}
-        />
+        <ResizableIcon icon={icon} size={iconSizeToPixels[iconSize]} />
         {badgeCount !== undefined && (
           <Badge variant="critical" className={styles.badge}>
             {badgeCount}

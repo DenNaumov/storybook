@@ -78,108 +78,52 @@ export const Showcase: Story = {
 
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="m"
-            iconSize="m"
-          />
+          <IconButton icon="Add01" buttonSize="m" iconSize="m" />
         </div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="s"
-            iconSize="m"
-          />
+          <IconButton icon="Add01" buttonSize="s" iconSize="m" />
         </div>
 
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="m"
-            iconSize="m"
-            pressed
-          />
+          <IconButton icon="Add01" buttonSize="m" iconSize="m" pressed />
         </div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="s"
-            iconSize="m"
-            pressed
-          />
+          <IconButton icon="Add01" buttonSize="s" iconSize="m" pressed />
         </div>
 
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="m"
-            iconSize="m"
-            disabled
-          />
+          <IconButton icon="Add01" buttonSize="m" iconSize="m" disabled />
         </div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="s"
-            iconSize="m"
-            disabled
-          />
+          <IconButton icon="Add01" buttonSize="s" iconSize="m" disabled />
         </div>
 
         <div className={styles.sectionLabelWide}>IconSize=S</div>
 
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="m"
-            iconSize="s"
-          />
+          <IconButton icon="Add01" buttonSize="m" iconSize="s" />
         </div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="s"
-            iconSize="s"
-          />
+          <IconButton icon="Add01" buttonSize="s" iconSize="s" />
         </div>
 
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="m"
-            iconSize="s"
-            pressed
-          />
+          <IconButton icon="Add01" buttonSize="m" iconSize="s" pressed />
         </div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="s"
-            iconSize="s"
-            pressed
-          />
+          <IconButton icon="Add01" buttonSize="s" iconSize="s" pressed />
         </div>
 
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="m"
-            iconSize="s"
-            disabled
-          />
+          <IconButton icon="Add01" buttonSize="m" iconSize="s" disabled />
         </div>
         <div className={styles.centered}>
-          <IconButton
-            icon="Add01"
-            buttonSize="s"
-            iconSize="s"
-            disabled
-          />
+          <IconButton icon="Add01" buttonSize="s" iconSize="s" disabled />
         </div>
 
         <div className={styles.sectionLabelWide}>Badge=Yes</div>
