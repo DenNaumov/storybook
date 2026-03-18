@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 import { Typography } from "../typography/typography";
 import styles from "./badge.module.css";
 
-export type BadgeVariant = "primary" | "error" | "inverse";
+export type BadgeVariant = "default" | "critical" | "white";
 export type BadgeSize = "dot" | "medium" | "large";
 
 export interface BadgeProps extends Omit<
@@ -17,7 +17,7 @@ export interface BadgeProps extends Omit<
 }
 
 export const Badge = ({
-  variant = "primary",
+  variant = "default",
   size = "medium",
   children,
   count,
@@ -28,9 +28,9 @@ export const Badge = ({
   const content = isDot ? null : (children ?? count);
 
   const variantClasses: Record<BadgeVariant, string | undefined> = {
-    primary: styles.variantPrimary,
-    error: styles.variantError,
-    inverse: styles.variantInverse,
+    default: styles.variantDefault,
+    critical: styles.variantCritical,
+    white: styles.variantWhite,
   };
 
   const sizeClasses: Record<BadgeSize, string | undefined> = {

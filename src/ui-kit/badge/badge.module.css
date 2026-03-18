@@ -8,17 +8,17 @@
   white-space: nowrap;
 }
 
-.variantPrimary {
+.variantDefault {
   background-color: var(--theme-bg-fill-brand-main);
   color: var(--theme-text-on-main);
 }
 
-.variantError {
+.variantCritical {
   background-color: var(--theme-bg-fill-error);
   color: var(--theme-text-on-main);
 }
 
-.variantInverse {
+.variantWhite {
   background-color: var(--theme-icon-on-main);
   color: var(--theme-text-brand-main);
 }

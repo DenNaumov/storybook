@@ -19,7 +19,7 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "error", "inverse"],
+      options: ["default", "critical", "white"],
     },
     size: {
       control: "select",
@@ -33,7 +33,7 @@ type Story = StoryObj<typeof Badge>;
 
 export const Playground: Story = {
   args: {
-    variant: "primary",
+    variant: "default",
     size: "medium",
     count: 42,
   },
@@ -43,27 +43,27 @@ export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.surface}>
-      <Badge size="dot" variant="primary" />
-      <Badge size="medium" variant="primary">
+      <Badge size="dot" variant="default" />
+      <Badge size="medium" variant="default">
         42
       </Badge>
-      <Badge size="large" variant="primary">
-        42
-      </Badge>
-
-      <Badge size="dot" variant="error" />
-      <Badge size="medium" variant="error">
-        42
-      </Badge>
-      <Badge size="large" variant="error">
+      <Badge size="large" variant="default">
         42
       </Badge>
 
-      <Badge size="dot" variant="inverse" />
-      <Badge size="medium" variant="inverse">
+      <Badge size="dot" variant="critical" />
+      <Badge size="medium" variant="critical">
         42
       </Badge>
-      <Badge size="large" variant="inverse">
+      <Badge size="large" variant="critical">
+        42
+      </Badge>
+
+      <Badge size="dot" variant="white" />
+      <Badge size="medium" variant="white">
+        42
+      </Badge>
+      <Badge size="large" variant="white">
         42
       </Badge>
     </div>
