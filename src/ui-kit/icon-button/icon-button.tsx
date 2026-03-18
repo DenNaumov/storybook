@@ -24,6 +24,16 @@ export interface IconButtonProps extends Omit<
   pressed?: boolean;
 }
 
+const buttonSizeMap: Record<IconButtonSize, string> = {
+  s: styles.buttonSizeS,
+  m: styles.buttonSizeM,
+};
+
+const iconSizeMap: Record<IconSize, string> = {
+  s: styles.iconSizeS,
+  m: styles.iconSizeM,
+};
+
 export const IconButton = ({
   buttonSize,
   iconSize,
@@ -35,7 +45,7 @@ export const IconButton = ({
 }: IconButtonProps) => {
   const classes = [
     styles.iconButton,
-    styles[`buttonSize${buttonSize.toUpperCase()}`],
+    buttonSizeMap[buttonSize],
     pressed ? styles.pressed : "",
     disabled ? styles.disabled : "",
   ]
@@ -44,7 +54,7 @@ export const IconButton = ({
 
   const iconWrapperClasses = [
     styles.iconWrapper,
-    styles[`iconSize${iconSize.toUpperCase()}`],
+    iconSizeMap[iconSize],
   ].join(" ");
 
   return (

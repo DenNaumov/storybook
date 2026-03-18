@@ -4,7 +4,7 @@ import { Typography } from "../typography/typography";
 import styles from "./button.module.css";
 
 export type ButtonVariant = "primary" | "bezeled" | "outlined" | "text";
-export type ButtonSize = "s" | "m" | "small" | "medium";
+export type ButtonSize = "s" | "m";
 
 export interface ButtonProps {
   variant?: ButtonVariant;
@@ -20,10 +20,16 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-const normalizeSize = (size: ButtonSize): "s" | "m" => {
-  if (size === "small") return "s";
-  if (size === "medium") return "m";
-  return size;
+const variantMap: Record<ButtonVariant, string> = {
+  primary: styles.variantPrimary,
+  bezeled: styles.variantBezeled,
+  outlined: styles.variantOutlined,
+  text: styles.variantText,
+};
+
+const sizeMap: Record<ButtonSize, string> = {
+  s: styles.sizeS,
+  m: styles.sizeM,
 };
 
 export const Button = ({
@@ -38,14 +44,13 @@ export const Button = ({
   disabled = false,
   ...props
 }: ButtonProps) => {
-  const resolvedSize = normalizeSize(size);
   const isDisabled = disabled || loading;
   const content = children ?? label;
 
   const classes = [
     styles.button,
-    styles[`size${resolvedSize.toUpperCase()}`],
-    styles[`variant${variant[0].toUpperCase()}${variant.slice(1)}`],
+    sizeMap[size],
+    variantMap[variant],
     pressed ? styles.pressed : "",
     isDisabled ? styles.disabled : "",
     loading ? styles.loading : "",

@@ -15,6 +15,12 @@ export interface ChipButtonProps extends Omit<
   label?: string;
 }
 
+const sizeMap: Record<ChipButtonSize, string> = {
+  s: styles.sizeS,
+  m: styles.sizeM,
+  l: styles.sizeL,
+};
+
 /**
  * ChipButton component for filters, tags, or small action buttons.
  * Supports S, M, L sizes, icons on both sides, and active/disabled states.
@@ -35,7 +41,7 @@ export const ChipButton = ({
 
   const classes = [
     styles.chipButton,
-    styles[`size${size.toUpperCase()}`],
+    sizeMap[size],
     active ? styles.active : "",
     disabled ? styles.disabled : "",
     startIcon ? styles.hasStartIcon : "",

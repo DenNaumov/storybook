@@ -14,10 +14,10 @@ describe("Button", () => {
     expect(element.props.type).toBe("button");
   });
 
-  it("uses the explicit variant prop and normalizes legacy sizes", () => {
+  it("uses the explicit variant prop", () => {
     const element = Button({
       variant: "primary",
-      size: "small",
+      size: "s",
       label: "Save",
     });
 

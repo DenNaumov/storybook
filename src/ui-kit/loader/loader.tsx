@@ -14,13 +14,19 @@ export interface LoaderProps extends Omit<
   label?: string;
 }
 
+const sizeMap: Record<LoaderSize, string> = {
+  small: styles.sizeSmall,
+  medium: styles.sizeMedium,
+  large: styles.sizeLarge,
+};
+
 export const Loader = ({
   size = "medium",
   label = "Загрузка",
   ...props
 }: LoaderProps) => (
   <span
-    className={[styles.loader, styles[`size${capitalize(size)}`]].join(" ")}
+    className={[styles.loader, sizeMap[size]].join(" ")}
     role="status"
     aria-label={label}
     {...props}
@@ -30,9 +36,6 @@ export const Loader = ({
     </span>
   </span>
 );
-
-const capitalize = (value: string) =>
-  value.charAt(0).toUpperCase() + value.slice(1);
 
 const LoaderGlyph = ({ size }: { size: LoaderSize }) => {
   if (size === "small") {
