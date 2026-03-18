@@ -12,15 +12,10 @@ export interface BadgeProps extends Omit<
   variant?: BadgeVariant;
   size?: BadgeSize;
   children?: ReactNode;
-  /** Badge value */
   count?: number | string;
   className?: string;
 }
 
-/**
- * Badge component for displaying notifications, counts, or status indicators.
- * Matches the design with dot, medium, and large variants in blue, red, and inverse themes.
- */
 export const Badge = ({
   variant = "primary",
   size = "medium",
@@ -32,10 +27,22 @@ export const Badge = ({
   const isDot = size === "dot";
   const content = isDot ? null : (children ?? count);
 
+  const variantClasses: Record<BadgeVariant, string | undefined> = {
+    primary: styles.variantPrimary,
+    error: styles.variantError,
+    inverse: styles.variantInverse,
+  };
+
+  const sizeClasses: Record<BadgeSize, string | undefined> = {
+    dot: styles.sizeDot,
+    medium: styles.sizeMedium,
+    large: styles.sizeLarge,
+  };
+
   const classes = [
     styles.badge,
-    styles[`variant${variant.charAt(0).toUpperCase()}${variant.slice(1)}`],
-    styles[`size${size.charAt(0).toUpperCase()}${size.slice(1)}`],
+    variantClasses[variant],
+    sizeClasses[size],
     className,
   ]
     .filter(Boolean)
