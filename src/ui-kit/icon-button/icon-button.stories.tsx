@@ -1,7 +1,5 @@
-import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { IconButton } from "./icon-button";
-import { Icon24, ResizableIcon } from "../icon/icon-wrappers";
 import {
   ResizableIcons,
   type ResizableIconKeys,
@@ -10,16 +8,7 @@ import styles from "./icon-button.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
-const iconSizeToPixels: Record<"s" | "m", number> = {
-  s: 20,
-  m: 24,
-};
-
-type IconButtonStoryArgs = Omit<ComponentProps<typeof IconButton>, "icon"> & {
-  icon: ResizableIconKeys;
-};
-
-const meta: Meta<IconButtonStoryArgs> = {
+const meta: Meta<typeof IconButton> = {
   title: "UI Kit/Buttons/IconButton",
   component: IconButton,
   parameters: {
@@ -52,9 +41,7 @@ const meta: Meta<IconButtonStoryArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<IconButtonStoryArgs>;
-
-const NotificationsIcon = <Icon24 icon="Notifications" size={24} />;
+type Story = StoryObj<typeof IconButton>;
 
 export const Playground: Story = {
   args: {
@@ -63,19 +50,14 @@ export const Playground: Story = {
     iconSize: "m",
     badgeCount: undefined,
   },
-  render: (args: IconButtonStoryArgs) => {
-    const { icon, ...iconButtonArgs } = args;
-    const size = iconSizeToPixels[args.iconSize ?? "m"];
+  render: (args) => {
     return (
       <div className={styles.stage}>
         <div className={styles.surface}>
           <div />
           <div className={styles.headerCell}>Playground</div>
           <div className={styles.centered}>
-            <IconButton
-              {...iconButtonArgs}
-              icon={<ResizableIcon icon={icon} size={size} />}
-            />
+            <IconButton {...args} />
           </div>
         </div>
       </div>
@@ -97,14 +79,14 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={24} />}
+            icon="Add01"
             buttonSize="m"
             iconSize="m"
           />
         </div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={24} />}
+            icon="Add01"
             buttonSize="s"
             iconSize="m"
           />
@@ -113,7 +95,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={24} />}
+            icon="Add01"
             buttonSize="m"
             iconSize="m"
             pressed
@@ -121,7 +103,7 @@ export const Showcase: Story = {
         </div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={24} />}
+            icon="Add01"
             buttonSize="s"
             iconSize="m"
             pressed
@@ -131,7 +113,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={24} />}
+            icon="Add01"
             buttonSize="m"
             iconSize="m"
             disabled
@@ -139,7 +121,7 @@ export const Showcase: Story = {
         </div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={24} />}
+            icon="Add01"
             buttonSize="s"
             iconSize="m"
             disabled
@@ -151,14 +133,14 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={20} />}
+            icon="Add01"
             buttonSize="m"
             iconSize="s"
           />
         </div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={20} />}
+            icon="Add01"
             buttonSize="s"
             iconSize="s"
           />
@@ -167,7 +149,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={20} />}
+            icon="Add01"
             buttonSize="m"
             iconSize="s"
             pressed
@@ -175,7 +157,7 @@ export const Showcase: Story = {
         </div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={20} />}
+            icon="Add01"
             buttonSize="s"
             iconSize="s"
             pressed
@@ -185,7 +167,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={20} />}
+            icon="Add01"
             buttonSize="m"
             iconSize="s"
             disabled
@@ -193,7 +175,7 @@ export const Showcase: Story = {
         </div>
         <div className={styles.centered}>
           <IconButton
-            icon={<ResizableIcon icon="Add01" size={20} />}
+            icon="Add01"
             buttonSize="s"
             iconSize="s"
             disabled
@@ -205,7 +187,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
           <IconButton
-            icon={NotificationsIcon}
+            icon="Home28"
             buttonSize="m"
             iconSize="m"
             badgeCount="9"
@@ -216,7 +198,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
           <IconButton
-            icon={NotificationsIcon}
+            icon="Home28"
             buttonSize="m"
             iconSize="m"
             badgeCount="9"
@@ -228,7 +210,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
           <IconButton
-            icon={NotificationsIcon}
+            icon="Home28"
             buttonSize="m"
             iconSize="m"
             badgeCount="9"

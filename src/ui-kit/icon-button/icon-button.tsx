@@ -1,17 +1,24 @@
-import type { ReactNode, ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes } from "react";
 import { Badge } from "../badge/badge";
+import { ResizableIcon } from "../icon/icon-wrappers";
+import type { ResizableIconKeys } from "../icon/packs/resizable";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
 export type IconSize = "s" | "m";
 
+const iconSizeToPixels: Record<IconSize, number> = {
+  s: 20,
+  m: 24,
+};
+
 export interface IconButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
-  "className"
+  "className" | "children"
 > {
   buttonSize: IconButtonSize;
   iconSize: IconSize;
-  icon: ReactNode;
+  icon: ResizableIconKeys;
   badgeCount?: number | string;
   /** Storybook-only pressed state */
   pressed?: boolean;
@@ -41,9 +48,17 @@ export const IconButton = ({
   ].join(" ");
 
   return (
-    <button className={classes} disabled={disabled} {...props}>
+    <button
+      className={classes}
+      disabled={disabled}
+      type="button"
+      {...props}
+    >
       <div className={iconWrapperClasses}>
-        {icon}
+        <ResizableIcon
+          icon={icon}
+          size={iconSizeToPixels[iconSize]}
+        />
         {badgeCount !== undefined && (
           <Badge variant="critical" className={styles.badge}>
             {badgeCount}
