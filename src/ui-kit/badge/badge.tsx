@@ -1,14 +1,11 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Typography } from "../typography/typography";
 import styles from "./badge.module.css";
 
 export type BadgeVariant = "default" | "critical" | "white";
 export type BadgeSize = "dot" | "medium" | "large";
 
-export interface BadgeProps extends Omit<
-  HTMLAttributes<HTMLSpanElement>,
-  "children" | "className"
-> {
+export interface BadgeProps {
   variant?: BadgeVariant;
   size?: BadgeSize;
   children?: ReactNode;
@@ -22,7 +19,6 @@ export const Badge = ({
   children,
   count,
   className,
-  ...props
 }: BadgeProps) => {
   const isDot = size === "dot";
   const content = isDot ? null : (children ?? count);
@@ -49,7 +45,7 @@ export const Badge = ({
     .join(" ");
 
   return (
-    <span className={classes} {...props}>
+    <span className={classes}>
       {isDot ? <span className={styles.dot} aria-hidden="true" /> : null}
       {content !== null ? (
         <Typography
