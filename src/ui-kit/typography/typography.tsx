@@ -63,13 +63,13 @@ const variantClassMap: Record<TypographyVariant, string> = {
   "caption2-bold": styles.caption2Bold,
 };
 
-const colorClassMap: Record<string, string> = {
-  default: styles.colorDefault,
-  primary: styles.colorPrimary,
-  secondary: styles.colorSecondary,
-  success: styles.colorSuccess,
-  error: styles.colorError,
-  warning: styles.colorWarning,
+const colorValueMap: Record<string, string> = {
+  default: "var(--theme-text-primary)",
+  primary: "var(--theme-text-brand-main)",
+  secondary: "var(--theme-text-secondary)",
+  success: "var(--theme-icon-success)",
+  error: "var(--theme-text-error)",
+  warning: "#ff9500",
 };
 
 const alignClassMap: Record<string, string> = {
@@ -92,7 +92,6 @@ export const Typography = ({
   const classes = [
     styles.root,
     variantClassMap[variant],
-    colorClassMap[color],
     alignClassMap[align],
     truncate && styles.truncate,
     nowrap && styles.nowrap,
@@ -101,8 +100,10 @@ export const Typography = ({
     .filter(Boolean)
     .join(" ");
 
+  const textColor = colorValueMap[color] || color;
+
   return (
-    <Component className={classes} style={style}>
+    <Component className={classes} style={{ color: textColor, ...style }}>
       {children}
     </Component>
   );

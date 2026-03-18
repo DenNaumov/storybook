@@ -211,33 +211,6 @@
   letter-spacing: 0.06px;
 }
 
-/* ========================
-   COLORS
-   ======================== */
-
-.colorDefault {
-  color: var(--theme-text-primary);
-}
-
-.colorPrimary {
-  color: var(--theme-text-brand-main);
-}
-
-.colorSecondary {
-  color: var(--theme-text-secondary);
-}
-
-.colorSuccess {
-  color: var(--theme-icon-success);
-}
-
-.colorError {
-  color: var(--theme-text-error);
-}
-
-.colorWarning {
-  color: #ff9500;
-}
 
 /* ========================
    ALIGNMENT
