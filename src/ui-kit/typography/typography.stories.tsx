@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import {
-  Typography,
-  TypographyVariant,
-  typographyColors,
-} from "./typography";
+import { Typography, TypographyVariant, typographyColors } from "./typography";
 import styles from "./typography.stories.module.css";
 
 const meta = {

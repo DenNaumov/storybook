@@ -44,7 +44,6 @@ export const typographyColors = [
   "secondary",
   "success",
   "error",
-  "warning",
 ] as const;
 
 export type TypographyColor = (typeof typographyColors)[number] | (string & {});
@@ -74,16 +73,12 @@ const variantClassMap: Record<TypographyVariant, string> = {
   "caption2-bold": styles.caption2Bold,
 };
 
-const colorClassMap: Record<
-  (typeof typographyColors)[number],
-  string
-> = {
+const colorClassMap: Record<(typeof typographyColors)[number], string> = {
   default: "var(--theme-text-primary)",
   primary: "var(--theme-text-brand-main)",
   secondary: "var(--theme-text-secondary)",
   success: "var(--theme-icon-success)",
   error: "var(--theme-text-error)",
-  warning: "#ff9500",
 };
 
 const alignClassMap: Record<string, string> = {
@@ -114,18 +109,12 @@ export const Typography = ({
     .filter(Boolean)
     .join(" ");
 
-  const colorStyle = color 
-    ? (colorClassMap[color as keyof typeof colorClassMap] || color) 
+  const colorStyle = color
+    ? { color: colorClassMap[color as keyof typeof colorClassMap] || color }
     : undefined;
 
   return (
-    <Component 
-      className={classes} 
-      style={{ 
-        ...(colorStyle ? { color: colorStyle } : {}), 
-        ...style 
-      }}
-    >
+    <Component className={classes} style={{ ...colorStyle, ...style }}>
       {children}
     </Component>
   );
