@@ -29,7 +29,7 @@ export type TypographyVariant =
 export interface TypographyProps {
   children?: React.ReactNode;
   variant: TypographyVariant;
-  color?: string;
+  color?: TypographyColor;
   align?: "left" | "center" | "right";
   truncate?: boolean;
   nowrap?: boolean;
@@ -37,6 +37,17 @@ export interface TypographyProps {
   className?: string;
   style?: React.CSSProperties;
 }
+
+export const typographyColors = [
+  "default",
+  "primary",
+  "secondary",
+  "success",
+  "error",
+  "warning",
+] as const;
+
+export type TypographyColor = (typeof typographyColors)[number] | (string & {});
 
 const variantClassMap: Record<TypographyVariant, string> = {
   "title3-regular": styles.title3Regular,
@@ -63,7 +74,10 @@ const variantClassMap: Record<TypographyVariant, string> = {
   "caption2-bold": styles.caption2Bold,
 };
 
-const colorValueMap: Record<string, string> = {
+const colorClassMap: Record<
+  (typeof typographyColors)[number],
+  string
+> = {
   default: "var(--theme-text-primary)",
   primary: "var(--theme-text-brand-main)",
   secondary: "var(--theme-text-secondary)",
@@ -81,7 +95,7 @@ const alignClassMap: Record<string, string> = {
 export const Typography = ({
   children,
   variant,
-  color = "default",
+  color,
   align = "left",
   truncate = false,
   nowrap = false,
@@ -100,10 +114,18 @@ export const Typography = ({
     .filter(Boolean)
     .join(" ");
 
-  const textColor = colorValueMap[color] || color;
+  const colorStyle = color 
+    ? (colorClassMap[color as keyof typeof colorClassMap] || color) 
+    : undefined;
 
   return (
-    <Component className={classes} style={{ color: textColor, ...style }}>
+    <Component 
+      className={classes} 
+      style={{ 
+        ...(colorStyle ? { color: colorStyle } : {}), 
+        ...style 
+      }}
+    >
       {children}
     </Component>
   );

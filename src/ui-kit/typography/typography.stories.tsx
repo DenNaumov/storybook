@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Typography, TypographyVariant } from "./typography";
+import {
+  Typography,
+  TypographyVariant,
+  typographyColors,
+} from "./typography";
 import styles from "./typography.stories.module.css";
 
 const meta = {
@@ -44,14 +48,7 @@ const meta = {
     },
     color: {
       control: "select",
-      options: [
-        "default",
-        "primary",
-        "secondary",
-        "success",
-        "error",
-        "warning",
-      ],
+      options: typographyColors,
       description: "Text color",
     },
     align: {
@@ -539,4 +536,10 @@ export const TruncatedText: Story = {
       </div>
     ),
   ],
+};
+export const CustomColor: Story = {
+  args: {
+    children: "Custom HEX Color",
+    color: "#7B61FF",
+  },
 };
