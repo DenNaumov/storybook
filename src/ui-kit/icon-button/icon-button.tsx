@@ -1,5 +1,5 @@
 import type { ReactNode, ButtonHTMLAttributes } from "react";
-import { Typography } from "../typography/typography";
+import { Badge } from "../badge/badge";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
@@ -12,16 +12,11 @@ export interface IconButtonProps extends Omit<
   buttonSize: IconButtonSize;
   iconSize: IconSize;
   icon: ReactNode;
-  /** Badge value */
   badgeCount?: number | string;
   /** Storybook-only pressed state */
   pressed?: boolean;
 }
 
-/**
- * IconButton component based on Figma design.
- * Supports multiple button and icon sizes, states, and an optional badge.
- */
 export const IconButton = ({
   buttonSize,
   iconSize,
@@ -50,14 +45,9 @@ export const IconButton = ({
       <div className={iconWrapperClasses}>
         {icon}
         {badgeCount !== undefined && (
-          <Typography
-            as="span"
-            variant="caption1-semibold"
-            className={styles.badge}
-            style={{ color: "inherit" }}
-          >
+          <Badge variant="critical" className={styles.badge}>
             {badgeCount}
-          </Typography>
+          </Badge>
         )}
       </div>
     </button>
