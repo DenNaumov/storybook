@@ -52,7 +52,7 @@ describe("Badge", () => {
   it("renders dot badge without text content", () => {
     const element = Badge({
       size: "dot",
-      variant: "error",
+      variant: "critical",
     });
 
     const children = Children.toArray(element.props.children);
