@@ -11,7 +11,7 @@ describe("IconButton", () => {
     const element = IconButton({
       buttonSize: "m",
       iconSize: "m",
-      icon: "add",
+      icon: "Add01",
     });
 
     expect(isValidElement(element)).toBe(true);
@@ -25,7 +25,7 @@ describe("IconButton", () => {
 
   it("renders custom sizes and badge count", () => {
     const element = IconButton({
-      icon: "add",
+      icon: "Add01",
       buttonSize: "s",
       iconSize: "s",
       badgeCount: "9",
@@ -41,7 +41,10 @@ describe("IconButton", () => {
       (wrapper as ElementWithChildren).props.children,
     );
     expect(wrapperChildren).toHaveLength(2);
-    expect(wrapperChildren[0]).toBe("add");
+    expect(isValidElement(wrapperChildren[0])).toBe(true);
+    expect((wrapperChildren[0] as ReactElement<{ icon: string }>).props.icon).toBe(
+      "Add01",
+    );
     const badgeNode = wrapperChildren[1];
     expect(isValidElement(badgeNode)).toBe(true);
     if (!isValidElement(badgeNode)) {
@@ -52,7 +55,7 @@ describe("IconButton", () => {
 
   it("passes through pressed and disabled state", () => {
     const element = IconButton({
-      icon: "add",
+      icon: "Add01",
       buttonSize: "m",
       iconSize: "m",
       pressed: true,
