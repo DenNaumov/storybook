@@ -1,0 +1,70 @@
+.stage {
+  min-height: 100vh;
+  padding: 20px 40px 40px;
+  background: #1f1f1f;
+  box-sizing: border-box;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px;
+  align-items: start;
+}
+
+.previewColumn,
+.examplesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  color: #9a9a9a;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.phoneFrame {
+  display: flex;
+  justify-content: center;
+  padding: 72px 32px 60px;
+  border-radius: 36px;
+  background: #111;
+  box-sizing: border-box;
+  min-height: 880px;
+}
+
+.examplesStack {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  width: 100%;
+  align-items: center;
+}
+
+.selectionFrame {
+  width: 100%;
+  max-width: 392px;
+  padding: 24px;
+  border: 2px dashed #7a2fff;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.selectionInner {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .phoneFrame {
+    min-height: auto;
+    padding: 48px 24px;
+  }
+}

@@ -1,0 +1,46 @@
+.stage {
+  min-height: 100vh;
+  padding: 20px 40px 40px;
+  background: #1f1f1f;
+  box-sizing: border-box;
+}
+
+.phoneFrame {
+  display: flex;
+  justify-content: center;
+  padding: 72px 32px;
+  border-radius: 36px;
+  background: #111;
+  min-height: 960px;
+  box-sizing: border-box;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  max-width: 408px;
+}
+
+.selectionFrame {
+  padding: 20px;
+  border: 2px dashed #7a2fff;
+  border-radius: 10px;
+}
+
+.selectionInner {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .stage {
+    padding-inline: 16px;
+  }
+
+  .phoneFrame {
+    min-height: auto;
+    padding: 40px 16px;
+  }
+}
