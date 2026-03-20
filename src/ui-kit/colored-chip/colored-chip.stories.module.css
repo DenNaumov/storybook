@@ -1,0 +1,130 @@
+.stage {
+  min-height: 100vh;
+  padding: 20px 40px 40px;
+  background: var(--theme-bg-tabbar);
+  box-sizing: border-box;
+}
+
+.phoneFrame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  isolation: isolate;
+  width: 382px;
+  max-width: 100%;
+  min-height: 1248px;
+  padding: 56px 64px;
+  border-radius: 32px;
+  background: var(--theme-bg-brand-light);
+  box-sizing: border-box;
+  box-shadow: 0 4px 52px rgb(0 0 0 / 4%);
+}
+
+.componentFrame {
+  display: flex;
+  justify-content: center;
+  width: 254px;
+  padding: 20px;
+  border: 1px dashed var(--theme-border-brand-main);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.frameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  z-index: 0;
+}
+
+.frameContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.heading {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-brand-main);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.lead {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-secondary);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.warningText {
+  width: 100%;
+  margin: 16px 0 0;
+  color: #ff5d1a;
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid var(--theme-border-default);
+}
+
+.selectionFrame {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  width: 254px;
+  min-height: 832px;
+  padding: 20px;
+  gap: 56px;
+  border: 1px dashed var(--theme-border-brand-main);
+  border-radius: 5px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.chipGrid {
+  display: grid;
+  justify-items: center;
+  gap: 56px;
+  width: 100%;
+}
+
+.multilineHint {
+  align-self: flex-end;
+  color: var(--theme-text-primary);
+  font-family: Nunito, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.08px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .stage {
+    padding-inline: 16px;
+  }
+
+  .phoneFrame {
+    min-height: auto;
+    padding: 32px 24px;
+  }
+}
