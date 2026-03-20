@@ -8,6 +8,7 @@ import styles from "./banner-screen.stories.module.css";
 type BannerScreenStoryArgs = ComponentProps<typeof BannerScreen>;
 
 const noop = () => undefined;
+const bannerMedia = <Illustration illustration="EmptyListNoAdd" size={184} />;
 
 const meta: Meta<BannerScreenStoryArgs> = {
   title: "UI Kit/Feedback/BannerScreen",
@@ -33,11 +34,11 @@ export const Playground: Story = {
     title: "Список пуст",
     description: "В списке нет значений",
     actionLabel: "Создать",
-    media: <Illustration illustration="EmptyListNoAdd" size={184} />,
+    media: bannerMedia,
   },
   render: (args) => (
     <div className={styles.stage}>
-      <div className={styles.phoneFrame}>
+      <div className={styles.componentFrame}>
         <BannerScreen {...args} />
       </div>
     </div>
@@ -50,37 +51,44 @@ export const Showcase: Story = {
     <div className={styles.stage}>
       <div className={styles.layout}>
         <div className={styles.previewColumn}>
-          <div className={styles.sectionTitle}>
-            <Icon28
-              icon="FancyIcon"
-              size={28}
-              color="currentColor"
-              aria-hidden="true"
-            />
-            <span>BannerScreen</span>
-          </div>
-
+          <div className={styles.canvasTitle}>BannerScreen</div>
           <div className={styles.phoneFrame}>
+            <div className={styles.frameHeader}>
+              <div className={styles.frameContent}>
+                <h1 className={styles.heading}>BannerScreen</h1>
+                <p className={styles.lead}>Баннер-заглушка на экран</p>
+              </div>
+              <div className={styles.divider} />
+            </div>
+
             <BannerScreen
               title="Список пуст"
               description="В списке нет значений"
               actionLabel="Создать"
-              media={<Illustration illustration="EmptyListNoAdd" size={184} />}
+              media={bannerMedia}
               onAction={noop}
             />
           </div>
         </div>
 
         <div className={styles.examplesColumn}>
-          <div className={styles.sectionTitle}>BannerScreen</div>
+          <div className={styles.canvasTitle}>BannerScreen</div>
 
           <div className={styles.phoneFrame}>
+            <div className={styles.frameHeader}>
+              <div className={styles.frameContent}>
+                <h1 className={styles.heading}>BannerScreen</h1>
+                <p className={styles.lead}>Баннер-заглушка на экран</p>
+              </div>
+              <div className={styles.divider} />
+            </div>
+
             <div className={styles.examplesStack}>
               <BannerScreen
                 title="Список пуст"
                 description="В списке нет значений"
                 actionLabel="Создать"
-                media={<Illustration illustration="EmptyListNoAdd" size={184} />}
+                media={bannerMedia}
                 onAction={noop}
               />
 
@@ -90,9 +98,7 @@ export const Showcase: Story = {
                     title="Список пуст"
                     description="В списке нет значений"
                     actionLabel="Создать"
-                    media={
-                      <Illustration illustration="EmptyListNoAdd" size={184} />
-                    }
+                    media={bannerMedia}
                     onAction={noop}
                   />
                 </div>
@@ -101,7 +107,7 @@ export const Showcase: Story = {
               <BannerScreen
                 title="Список пуст"
                 description="В списке нет значений"
-                media={<Illustration illustration="EmptyListNoAdd" size={184} />}
+                media={bannerMedia}
               />
             </div>
           </div>

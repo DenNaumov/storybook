@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
-  width: min(350px, 100%);
-  margin: 0 auto;
+  gap: 20px;
+  width: min(326px, 100%);
   text-align: center;
   box-sizing: border-box;
 }
@@ -22,19 +20,33 @@
 .body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   width: 100%;
+  min-height: 53px;
 }
 
 .title {
   margin: 0;
   width: 100%;
+  font-family: "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 590;
+  line-height: 24px;
+  letter-spacing: -0.45px;
 }
 
 .description {
   margin: 0;
   width: 100%;
+  font-family: "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.23px;
 }
 
 .action {

@@ -1,7 +1,7 @@
 .stage {
   min-height: 100vh;
   padding: 20px 40px 40px;
-  background: #1f1f1f;
+  background: var(--theme-bg-tabbar);
   box-sizing: border-box;
 }
 
@@ -19,8 +19,8 @@
   gap: 12px;
 }
 
-.sectionTitle {
-  color: #9a9a9a;
+.canvasTitle {
+  color: var(--theme-text-secondary);
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -28,34 +28,92 @@
 
 .phoneFrame {
   display: flex;
-  justify-content: center;
-  padding: 72px 32px 60px;
-  border-radius: 36px;
-  background: #111;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  width: 600px;
+  max-width: 100%;
+  min-height: 1347px;
+  padding: 56px 64px;
+  border-radius: 32px;
+  background: var(--theme-bg-brand-light);
   box-sizing: border-box;
-  min-height: 880px;
+  box-shadow: 0 4px 52px rgb(0 0 0 / 4%);
+}
+
+.componentFrame {
+  display: flex;
+  justify-content: center;
+  width: 366px;
+  padding: 20px;
+  border: 1px dashed var(--theme-border-brand-main);
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.frameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.frameContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.heading {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-brand-main);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.lead {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-secondary);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid var(--theme-border-default);
 }
 
 .examplesStack {
   display: flex;
   flex-direction: column;
-  gap: 72px;
+  gap: 56px;
   width: 100%;
   align-items: center;
 }
 
 .selectionFrame {
-  width: 100%;
-  max-width: 392px;
-  padding: 24px;
-  border: 2px dashed #7a2fff;
-  border-radius: 10px;
+  width: 366px;
+  max-width: 100%;
+  padding: 20px;
+  border: 1px dashed var(--theme-border-brand-main);
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
 .selectionInner {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 1100px) {
@@ -65,6 +123,7 @@
 
   .phoneFrame {
     min-height: auto;
-    padding: 48px 24px;
+    padding: 32px 24px;
+    gap: 40px;
   }
 }

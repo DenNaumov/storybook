@@ -1,9 +1,9 @@
-import { Children, isValidElement } from "react";
+import { isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
 import { BannerScreen } from "./banner-screen";
 
 describe("BannerScreen", () => {
-  it("renders illustration, text and action", () => {
+  it("renders media, text and action", () => {
     const onAction = jest.fn();
     const element = BannerScreen({
       title: "Список пуст",
@@ -14,8 +14,7 @@ describe("BannerScreen", () => {
     });
 
     expect(isValidElement(element)).toBe(true);
-
-    const children = Children.toArray(element.props.children);
+    const children = element.props.children;
     expect(children).toHaveLength(3);
 
     const actionNode = children[2];
@@ -24,7 +23,7 @@ describe("BannerScreen", () => {
       throw new Error("Expected action wrapper to be a React element.");
     }
 
-    const actionButton = Children.toArray(actionNode.props.children)[0];
+    const actionButton = actionNode.props.children;
     expect(isValidElement(actionButton)).toBe(true);
     if (!isValidElement(actionButton)) {
       throw new Error("Expected action button to be a React element.");
@@ -34,20 +33,15 @@ describe("BannerScreen", () => {
     expect(actionButton.props.label).toBe("Создать");
   });
 
-  it("renders custom media when provided", () => {
+  it("passes through custom className and media", () => {
     const element = BannerScreen({
       title: "Список пуст",
       media: "custom-media",
+      className: "custom-banner-screen",
     });
 
-    const children = Children.toArray(element.props.children);
-    const mediaNode = children[0];
-
-    expect(isValidElement(mediaNode)).toBe(true);
-    if (!isValidElement(mediaNode)) {
-      throw new Error("Expected media node to be a React element.");
-    }
-
-    expect(mediaNode.props.children).toBe("custom-media");
+    expect(isValidElement(element)).toBe(true);
+    expect(element.props.className).toContain("custom-banner-screen");
+    expect(element.props.children[0].props.children).toBe("custom-media");
   });
 });

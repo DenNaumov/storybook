@@ -34,6 +34,15 @@ export const BannerList = ({
   ...props
 }: BannerListProps) => {
   const isCollapsible = collapsible ?? Boolean(details || onToggle);
+  const rootClassName = [
+    styles.bannerList,
+    isCollapsible ? styles.collapsible : styles.static,
+    expanded ? styles.expanded : styles.collapsed,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   const headerContent = (
     <>
       <span className={styles.icon} aria-hidden="true">
@@ -41,7 +50,7 @@ export const BannerList = ({
           <ResizableIcon
             icon="InformationCircle"
             size={24}
-            color="var(--theme-text-brand-main)"
+            color="var(--theme-icon-brand-main)"
           />
         )}
       </span>
@@ -49,7 +58,7 @@ export const BannerList = ({
       <div className={styles.content}>
         <Typography
           as="span"
-          variant="subheadline1-semibold"
+          variant="subheadline2-semibold"
           className={styles.title}
           style={{ color: "var(--theme-text-primary)" }}
         >
@@ -59,7 +68,7 @@ export const BannerList = ({
         {description ? (
           <Typography
             as="span"
-            variant="subheadline1-regular"
+            variant="subheadline2-regular"
             className={styles.description}
             color="secondary"
           >
@@ -72,8 +81,8 @@ export const BannerList = ({
         <span className={styles.chevron} aria-hidden="true">
           <Icon20
             icon={expanded ? "ChevronUp" : "ChevronDown"}
-            size={20}
-            color="var(--theme-text-secondary)"
+            size={24}
+            color="var(--theme-icon-default)"
           />
         </span>
       ) : null}
@@ -82,7 +91,7 @@ export const BannerList = ({
 
   return (
     <section
-      className={[styles.bannerList, className].filter(Boolean).join(" ")}
+      className={rootClassName}
       {...props}
     >
       {isCollapsible ? (

@@ -42,7 +42,7 @@ export const Playground: Story = {
 
       return (
         <div className={styles.stage}>
-          <div className={styles.phoneFrame}>
+          <div className={styles.componentFrame}>
             <BannerList
               {...args}
               expanded={expanded}
@@ -61,37 +61,70 @@ export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.stage}>
-      <div className={styles.phoneFrame}>
-        <div className={styles.stack}>
-          <BannerList
-            title="Произошла ошибка"
-            description="Некорректно заполнены поля объекта"
-            details={detailsText}
-            expanded
-          />
+      <div className={styles.layout}>
+        <div className={styles.previewColumn}>
+          <div className={styles.canvasTitle}>BannerScreen</div>
+          <div className={styles.phoneFrame}>
+            <div className={styles.frameHeader}>
+              <div className={styles.frameContent}>
+                <h1 className={styles.heading}>BannerList</h1>
+                <p className={styles.lead}>Баннер внутри форм и списков</p>
+              </div>
+              <div className={styles.divider} />
+            </div>
 
-          <div className={styles.selectionFrame}>
-            <div className={styles.selectionInner}>
+            <BannerList
+              title="Произошла ошибка"
+              description="Некорректно заполнены поля объекта"
+              details={detailsText}
+              expanded
+            />
+          </div>
+        </div>
+
+        <div className={styles.previewColumn}>
+          <div className={styles.canvasTitle}>BannerScreen</div>
+          <div className={styles.phoneFrame}>
+            <div className={styles.frameHeader}>
+              <div className={styles.frameContent}>
+                <h1 className={styles.heading}>BannerList</h1>
+                <p className={styles.lead}>Баннер внутри форм и списков</p>
+              </div>
+              <div className={styles.divider} />
+            </div>
+
+            <div className={styles.stack}>
               <BannerList
                 title="Произошла ошибка"
                 description="Некорректно заполнены поля объекта"
                 details={detailsText}
                 expanded
               />
+
+              <div className={styles.selectionFrame}>
+                <div className={styles.selectionInner}>
+                  <BannerList
+                    title="Произошла ошибка"
+                    description="Некорректно заполнены поля объекта"
+                    details={detailsText}
+                    expanded
+                  />
+                </div>
+              </div>
+
+              <BannerList
+                title="Произошла ошибка"
+                description="Некорректно заполнены поля объекта"
+                expanded={false}
+                collapsible
+              />
+
+              <BannerList
+                title="Произошла ошибка"
+                description="Некорректно заполнены поля объекта Поле «Наименование задачи»: Поле является обязательным к заполнению Поле «Тип»: Какой-то текст ошибки Поле «Тип»: Какой-то текст ошибки Поле «Тип»: Какой-то текст ошибки"
+              />
             </div>
           </div>
-
-          <BannerList
-            title="Произошла ошибка"
-            description="Некорректно заполнены поля объекта"
-            expanded={false}
-            collapsible
-          />
-
-          <BannerList
-            title="Произошла ошибка"
-            description="Некорректно заполнены поля объекта Поле «Наименование задачи»: Поле является обязательным к заполнению Поле «Тип»: Какой-то текст ошибки Поле «Тип»: Какой-то текст ошибки Поле «Тип»: Какой-то текст ошибки"
-          />
         </div>
       </div>
     </div>
