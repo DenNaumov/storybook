@@ -39,20 +39,20 @@ export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.stage}>
-      <div className={styles.title}>
-        <Icon28
-          icon="FancyIcon"
-          size={28}
-          color="currentColor"
-          aria-hidden="true"
-        />
-        <span>Loader</span>
-      </div>
+      <div className={styles.phoneFrame}>
+        <div className={styles.frameHeader}>
+          <div className={styles.frameContent}>
+            <h1 className={styles.heading}>Loader</h1>
+            <p className={styles.lead}>Компонент загрузки</p>
+          </div>
+          <div className={styles.divider} />
+        </div>
 
-      <div className={styles.surface}>
-        <Loader size="small" />
-        <Loader size="medium" />
-        <Loader size="large" />
+        <div className={styles.selectionFrame}>
+          <Loader size="small" />
+          <Loader size="medium" />
+          <Loader size="large" />
+        </div>
       </div>
     </div>
   ),

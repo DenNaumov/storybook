@@ -1,43 +1,88 @@
 .stage {
   min-height: 100vh;
-  padding: 90px 96px;
+  padding: 20px 40px 40px;
   background: var(--theme-bg-tabbar);
   box-sizing: border-box;
 }
 
-.title {
+.phoneFrame {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 18px;
-  color: #c9a8f8;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 24px;
+  gap: 56px;
+  width: 636px;
+  max-width: 100%;
+  min-height: 800px;
+  padding: 56px 64px;
+  border-radius: 32px;
+  background: var(--theme-bg-brand-light);
+  box-sizing: border-box;
+  box-shadow: 0 4px 52px rgb(0 0 0 / 4%);
 }
 
-.surface {
+.frameHeader {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.frameContent {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 108px;
-  width: min(100%, 470px);
-  min-height: 134px;
-  padding: 0 62px;
-  border: 4px dashed #9c45ff;
-  border-radius: 16px;
-  background: rgba(0, 0, 0, 0.22);
+  gap: 4px;
+  width: 100%;
+}
+
+.heading {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-brand-main);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.lead {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-secondary);
+  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid var(--theme-border-default);
+}
+
+.selectionFrame {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 508px;
+  min-height: 200px;
+  padding: 40px;
+  gap: 120px;
+  border: 2px dashed var(--theme-border-brand-main);
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .stage {
-    padding: 40px 20px;
+    padding-inline: 16px;
   }
 
-  .surface {
-    gap: 40px;
-    padding: 24px 28px;
-    min-height: 120px;
-    justify-content: space-between;
+  .phoneFrame {
+    min-height: auto;
+    padding: 32px 24px;
   }
 }
