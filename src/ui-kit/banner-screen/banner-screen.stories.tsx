@@ -1,6 +1,5 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Icon28 } from "../icon/icon-wrappers";
 import { Illustration } from "../illustration/illustration";
 import { BannerScreen } from "./banner-screen";
 import styles from "./banner-screen.stories.module.css";

@@ -5,12 +5,15 @@ import LoaderIcon28Svg from "./loader_28.svg";
 import LoaderIcon32Svg from "./loader_32.svg";
 import styles from "./loader.module.css";
 
+// Resolve SVG components at the module level to satisfy the linter.
+const LoaderIconSmall = resolveSvgComponent(LoaderIcon24Svg);
+const LoaderIconMedium = resolveSvgComponent(LoaderIcon28Svg);
+const LoaderIconLarge = resolveSvgComponent(LoaderIcon32Svg);
+
 export type LoaderSize = "small" | "medium" | "large";
 
-export interface LoaderProps extends Omit<
-  HTMLAttributes<HTMLSpanElement>,
-  "children"
-> {
+export interface LoaderProps
+  extends Omit<HTMLAttributes<HTMLSpanElement>, "children"> {
   size?: LoaderSize;
 }
 
@@ -34,12 +37,13 @@ export const Loader = ({ size = "medium", ...props }: LoaderProps) => (
 );
 
 const LoaderGlyph = ({ size }: { size: LoaderSize }) => {
-  const icons = {
-    small: LoaderIcon24Svg,
-    medium: LoaderIcon28Svg,
-    large: LoaderIcon32Svg,
-  };
+  if (size === "small") {
+    return <LoaderIconSmall />;
+  }
 
-  const Icon = resolveSvgComponent(icons[size]);
-  return <Icon />;
+  if (size === "large") {
+    return <LoaderIconLarge />;
+  }
+
+  return <LoaderIconMedium />;
 };
