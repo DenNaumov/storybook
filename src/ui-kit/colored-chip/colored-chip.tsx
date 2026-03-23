@@ -9,7 +9,7 @@ export interface ColoredChipProps extends Omit<
   "children"
 > {
   label: ReactNode;
-  color?: string;
+  color: string;
   startIcon?: ResizableIconKeys;
   endIcon?: ResizableIconKeys;
   multiline?: boolean;
@@ -21,7 +21,7 @@ const renderIcon = (icon: ResizableIconKeys) => {
 
 export const ColoredChip = ({
   label,
-  color = "#fa8703",
+  color,
   startIcon,
   endIcon,
   multiline = false,
@@ -55,7 +55,6 @@ export const ColoredChip = ({
         as="span"
         variant="caption1-regular"
         className={styles.label}
-        style={{ color: "inherit" }}
       >
         {label}
       </Typography>

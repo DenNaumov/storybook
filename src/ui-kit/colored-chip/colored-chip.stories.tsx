@@ -2,6 +2,7 @@ import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ColoredChip } from "./colored-chip";
 import { ResizableIcons } from "../icon/packs/resizable";
+import { typographyColors } from "../typography/typography";
 import styles from "./colored-chip.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons);

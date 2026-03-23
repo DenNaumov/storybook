@@ -1,4 +1,3 @@
-import { Icon20 } from "../icon/icon-wrappers";
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 import { ColoredChip } from "./colored-chip";
@@ -9,7 +8,7 @@ describe("ColoredChip", () => {
       label: "Сортировка",
       color: "#00c621",
       startIcon: "Unarchive24",
-      endIcon: <Icon20 icon="Cancel" size={20} color="currentColor" />,
+      endIcon: "InformationSquare",
     });
 
     expect(isValidElement(element)).toBe(true);
@@ -21,6 +20,7 @@ describe("ColoredChip", () => {
   it("applies multiline class when requested", () => {
     const element = ColoredChip({
       label: "Много\nстрок",
+      color: "#00c621",
       multiline: true,
     });
 
