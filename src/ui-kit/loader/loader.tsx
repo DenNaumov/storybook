@@ -1,7 +1,8 @@
 import type { HTMLAttributes } from "react";
-import { LoaderIcon24 } from "./loader-icon-24";
-import { LoaderIcon28 } from "./loader-icon-28";
-import { LoaderIcon32 } from "./loader-icon-32";
+import { resolveSvgComponent } from "../icon/icon-wrappers";
+import LoaderIcon24Svg from "./loader_24.svg";
+import LoaderIcon28Svg from "./loader_28.svg";
+import LoaderIcon32Svg from "./loader_32.svg";
 import styles from "./loader.module.css";
 
 export type LoaderSize = "small" | "medium" | "large";
@@ -36,13 +37,12 @@ export const Loader = ({
 );
 
 const LoaderGlyph = ({ size }: { size: LoaderSize }) => {
-  if (size === "small") {
-    return <LoaderIcon24 />;
-  }
+  const icons = {
+    small: LoaderIcon24Svg,
+    medium: LoaderIcon28Svg,
+    large: LoaderIcon32Svg,
+  };
 
-  if (size === "large") {
-    return <LoaderIcon32 />;
-  }
-
-  return <LoaderIcon28 />;
+  const Icon = resolveSvgComponent(icons[size]);
+  return <Icon />;
 };
