@@ -12,8 +12,10 @@ const LoaderIconLarge = resolveSvgComponent(LoaderIcon32Svg);
 
 export type LoaderSize = "small" | "medium" | "large";
 
-export interface LoaderProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, "children"> {
+export interface LoaderProps extends Omit<
+  HTMLAttributes<HTMLSpanElement>,
+  "children"
+> {
   size?: LoaderSize;
 }
 

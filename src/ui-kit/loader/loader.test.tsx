@@ -1,27 +1,42 @@
-import { describe, expect, it, jest } from "@jest/globals";
+import { describe, expect, it, jest, beforeEach } from "@jest/globals";
 import { isValidElement } from "react";
 
+// Using a factory that returns a component or an object that matches resolveSvgComponent expectations.
 const MockIcon = () => null;
-jest.mock("./loader_24.svg", () => ({
-  __esModule: true,
-  default: MockIcon,
-  ReactComponent: MockIcon,
-}));
-jest.mock("./loader_28.svg", () => ({
-  __esModule: true,
-  default: MockIcon,
-  ReactComponent: MockIcon,
-}));
-jest.mock("./loader_32.svg", () => ({
-  __esModule: true,
-  default: MockIcon,
-  ReactComponent: MockIcon,
-}));
-
-import { Loader } from "./loader";
 
 describe("Loader", () => {
+  beforeEach(() => {
+    jest.resetModules();
+    jest.doMock(
+      "./loader_24.svg",
+      () => ({
+        __esModule: true,
+        default: MockIcon,
+      }),
+      { virtual: true },
+    );
+    jest.doMock(
+      "./loader_28.svg",
+      () => ({
+        __esModule: true,
+        default: MockIcon,
+      }),
+      { virtual: true },
+    );
+    jest.doMock(
+      "./loader_32.svg",
+      () => ({
+        __esModule: true,
+        default: MockIcon,
+      }),
+      { virtual: true },
+    );
+  });
+
   it("uses medium size by default", () => {
+    // Require inside the test to ensure mocks are applied
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Loader } = require("./loader");
     const element = Loader({});
 
     expect(isValidElement(element)).toBe(true);
@@ -30,6 +45,8 @@ describe("Loader", () => {
   });
 
   it("renders the requested icon size for each variant", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Loader } = require("./loader");
     const element = Loader({ size: "large" });
 
     expect(isValidElement(element)).toBe(true);
