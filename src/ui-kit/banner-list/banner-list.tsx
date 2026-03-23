@@ -1,8 +1,4 @@
-import type {
-  ButtonHTMLAttributes,
-  HTMLAttributes,
-  ReactNode,
-} from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 import { Icon20, ResizableIcon } from "../icon/icon-wrappers";
 import { Typography } from "../typography/typography";
 import styles from "./banner-list.module.css";
@@ -90,10 +86,7 @@ export const BannerList = ({
   );
 
   return (
-    <section
-      className={rootClassName}
-      {...props}
-    >
+    <section className={rootClassName} {...props}>
       {isCollapsible ? (
         <button
           type="button"
@@ -108,7 +101,9 @@ export const BannerList = ({
         <div className={styles.header}>{headerContent}</div>
       )}
 
-      {expanded && details ? <div className={styles.details}>{details}</div> : null}
+      {expanded && details ? (
+        <div className={styles.details}>{details}</div>
+      ) : null}
     </section>
   );
 };

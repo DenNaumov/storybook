@@ -20,10 +20,7 @@ const sizeMap: Record<LoaderSize, string> = {
   large: styles.sizeLarge,
 };
 
-export const Loader = ({
-  size = "medium",
-  ...props
-}: LoaderProps) => (
+export const Loader = ({ size = "medium", ...props }: LoaderProps) => (
   <span
     className={[styles.loader, sizeMap[size]].join(" ")}
     role="status"

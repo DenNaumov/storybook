@@ -51,17 +51,11 @@ export const ColoredChip = ({
         <span className={styles.icon}>{renderIcon(startIcon)}</span>
       )}
 
-      <Typography
-        as="span"
-        variant="caption1-regular"
-        className={styles.label}
-      >
+      <Typography as="span" variant="caption1-regular" className={styles.label}>
         {label}
       </Typography>
 
-      {endIcon && (
-        <span className={styles.icon}>{renderIcon(endIcon)}</span>
-      )}
+      {endIcon && <span className={styles.icon}>{renderIcon(endIcon)}</span>}
     </div>
   );
 };

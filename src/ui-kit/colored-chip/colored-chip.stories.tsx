@@ -20,7 +20,10 @@ const meta: Meta<ColoredChipStoryArgs> = {
     label: { control: "text" },
     color: { control: "color" },
     multiline: { control: "boolean" },
-    startIcon: { control: "select", options: [undefined, ...resizableIconNames] },
+    startIcon: {
+      control: "select",
+      options: [undefined, ...resizableIconNames],
+    },
     endIcon: { control: "select", options: [undefined, ...resizableIconNames] },
     className: { table: { disable: true } },
     style: { table: { disable: true } },
