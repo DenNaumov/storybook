@@ -7,7 +7,7 @@ import styles from "./loader.stories.module.css";
 type LoaderStoryArgs = ComponentProps<typeof Loader>;
 
 const meta: Meta<LoaderStoryArgs> = {
-  title: "UI Kit/Feedback/Loader",
+  title: "UI Kit/Loader",
   component: Loader,
   parameters: {
     layout: "fullscreen",
@@ -18,9 +18,6 @@ const meta: Meta<LoaderStoryArgs> = {
       control: "select",
       options: ["small", "medium", "large"],
     },
-    label: {
-      control: "text",
-    },
   },
 };
 
@@ -30,7 +27,6 @@ type Story = StoryObj<LoaderStoryArgs>;
 export const Playground: Story = {
   args: {
     size: "medium",
-    label: "Загрузка",
   },
   render: (args) => (
     <div className={styles.stage}>

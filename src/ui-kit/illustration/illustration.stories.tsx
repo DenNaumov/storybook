@@ -13,7 +13,7 @@ type IllustrationStoryArgs = ComponentProps<typeof Illustration>;
 const illustrationNames = Object.keys(illustrationSrcMap) as IllustrationName[];
 
 const meta: Meta<IllustrationStoryArgs> = {
-  title: "UI Kit/Media/Illustration",
+  title: "UI Kit/Illustration",
   component: Illustration,
   parameters: {
     layout: "fullscreen",

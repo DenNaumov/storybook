@@ -7,7 +7,7 @@ describe("ColoredChip", () => {
   it("renders label with both icons", () => {
     const element = ColoredChip({
       label: "Сортировка",
-      tone: "green",
+      color: "#00c621",
       startIcon: "Unarchive24",
       endIcon: <Icon20 icon="Cancel" size={20} color="currentColor" />,
     });

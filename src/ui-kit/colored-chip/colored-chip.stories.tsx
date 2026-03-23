@@ -1,13 +1,15 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Icon20 } from "../icon/icon-wrappers";
 import { ColoredChip } from "./colored-chip";
+import { ResizableIcons } from "../icon/packs/resizable";
 import styles from "./colored-chip.stories.module.css";
+
+const resizableIconNames = Object.keys(ResizableIcons);
 
 type ColoredChipStoryArgs = ComponentProps<typeof ColoredChip>;
 
 const meta: Meta<ColoredChipStoryArgs> = {
-  title: "UI Kit/Feedback/ColoredChip",
+  title: "UI Kit/ColoredChip",
   component: ColoredChip,
   parameters: {
     layout: "fullscreen",
@@ -15,10 +17,12 @@ const meta: Meta<ColoredChipStoryArgs> = {
   tags: ["autodocs"],
   argTypes: {
     label: { control: "text" },
-    tone: { control: "select", options: ["orange", "green"] },
+    color: { control: "color" },
     multiline: { control: "boolean" },
-    startIcon: { control: false },
-    endIcon: { control: false },
+    startIcon: { control: "select", options: [undefined, ...resizableIconNames] },
+    endIcon: { control: "select", options: [undefined, ...resizableIconNames] },
+    className: { table: { disable: true } },
+    style: { table: { disable: true } },
   },
 };
 
@@ -28,7 +32,7 @@ type Story = StoryObj<ColoredChipStoryArgs>;
 export const Playground: Story = {
   args: {
     label: "Стадия_номер_1",
-    tone: "orange",
+    color: "#fa8703",
   },
   render: (args) => (
     <div className={styles.stage}>
@@ -47,90 +51,55 @@ export const Showcase: Story = {
         <div className={styles.frameHeader}>
           <div className={styles.frameContent}>
             <h1 className={styles.heading}>ColoredChip</h1>
-            <p className={styles.lead}>Чипса с цветом</p>
-            <p className={styles.lead}>
-              Поэтому сюда цвета все ваши и описание про отступы, если иконки
-              есть или нет.
-            </p>
-            <p className={styles.warningText}>
-              Если иконки нет, то отступ 12px. Если есть, то вместо одного
-              отступа с этой стороны, отступ становится 8px.
-            </p>
           </div>
           <div className={styles.divider} />
         </div>
 
         <div className={styles.selectionFrame}>
           <div className={styles.chipGrid}>
-            <ColoredChip label="Стадия_номер_1" tone="orange" />
+            <ColoredChip label="Стадия_номер_1" color="#fa8703" />
             <ColoredChip
               label="Меточка"
-              tone="green"
+              color="#00c621"
               startIcon="Unarchive24"
             />
             <ColoredChip
               label="Стадия_номер_1"
-              tone="orange"
-              endIcon={
-                <Icon20
-                  icon="ChevronRight"
-                  size={20}
-                  color="var(--colored-chip-icon-orange)"
-                />
-              }
+              color="#fa8703"
+              endIcon="LinkForward"
             />
             <ColoredChip
               label="Сортировка"
-              tone="green"
+              color="#00c621"
               startIcon="Unarchive24"
-              endIcon={
-                <Icon20
-                  icon="Cancel"
-                  size={20}
-                  color="var(--theme-icon-default)"
-                />
-              }
+              endIcon="InformationSquare"
             />
             <ColoredChip
               label={"Много-много\nтекста в\nнесколько строк"}
-              tone="green"
+              color="#00c621"
               multiline
             />
             <ColoredChip
               label={"Много-много\nтекста в\nнесколько строк"}
-              tone="green"
+              color="#00c621"
               startIcon="Unarchive24"
               multiline
             />
             <ColoredChip
               label={"Много-много\nтекста в\nнесколько строк"}
-              tone="green"
-              endIcon={
-                <Icon20
-                  icon="ChevronRight"
-                  size={20}
-                  color="var(--colored-chip-icon-green)"
-                />
-              }
+              color="#00c621"
+              endIcon="LinkForward"
               multiline
             />
             <ColoredChip
               label={"Много-\nмного\nтекста в\nнесколько\nстрок"}
-              tone="green"
+              color="#00c621"
               startIcon="Unarchive24"
-              endIcon={
-                <Icon20
-                  icon="Cancel"
-                  size={20}
-                  color="var(--theme-icon-default)"
-                />
-              }
+              endIcon="InformationSquare"
               multiline
             />
           </div>
         </div>
-
-        <div className={styles.multilineHint}>Multiline = Yes</div>
       </div>
     </div>
   ),

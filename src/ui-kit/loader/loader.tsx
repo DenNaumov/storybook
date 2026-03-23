@@ -11,7 +11,6 @@ export interface LoaderProps extends Omit<
   "children"
 > {
   size?: LoaderSize;
-  label?: string;
 }
 
 const sizeMap: Record<LoaderSize, string> = {
@@ -22,13 +21,12 @@ const sizeMap: Record<LoaderSize, string> = {
 
 export const Loader = ({
   size = "medium",
-  label = "Загрузка",
   ...props
 }: LoaderProps) => (
   <span
     className={[styles.loader, sizeMap[size]].join(" ")}
     role="status"
-    aria-label={label}
+    aria-label="Загрузка"
     {...props}
   >
     <span className={styles.icon} aria-hidden="true">

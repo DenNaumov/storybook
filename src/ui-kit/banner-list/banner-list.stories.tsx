@@ -9,7 +9,7 @@ type BannerListStoryArgs = ComponentProps<typeof BannerList>;
 const detailsText = `Поле «Наименование задачи»:\nПоле является обязательным к заполнению\nПоле «Тип»: Какой-то текст ошибки\nПоле «Тип»: Какой-то текст ошибки\nПоле «Тип»: Какой-то текст ошибки`;
 
 const meta: Meta<BannerListStoryArgs> = {
-  title: "UI Kit/Feedback/BannerList",
+  title: "UI Kit/BannerList",
   component: BannerList,
   parameters: {
     layout: "fullscreen",

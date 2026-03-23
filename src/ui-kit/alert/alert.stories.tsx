@@ -14,7 +14,7 @@ const defaultDescription =
   "Измените тариф в SberCRM, чтобы добавить пользователей, или напишите в поддержку";
 
 const meta: Meta<AlertStoryArgs> = {
-  title: "UI Kit/Feedback/Alert",
+  title: "UI Kit/Alert",
   component: Alert,
   parameters: {
     layout: "fullscreen",

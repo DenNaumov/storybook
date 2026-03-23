@@ -1,6 +1,4 @@
 .coloredChip {
-  --colored-chip-icon-green: #00c621;
-  --colored-chip-icon-orange: #fa8703;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -11,14 +9,6 @@
   padding: 4px 12px;
   border-radius: 12px;
   box-sizing: border-box;
-}
-
-.toneOrange {
-  background: rgb(250 135 3 / 15%);
-}
-
-.toneGreen {
-  background: rgb(0 198 33 / 15%);
 }
 
 .singleline {

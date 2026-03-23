@@ -9,7 +9,7 @@ type SnackbarStoryArgs = ComponentProps<typeof Snackbar>;
 const noop = () => undefined;
 
 const meta: Meta<SnackbarStoryArgs> = {
-  title: "UI Kit/Feedback/Snackbar",
+  title: "UI Kit/Snackbar",
   component: Snackbar,
   parameters: {
     layout: "fullscreen",

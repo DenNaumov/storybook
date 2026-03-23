@@ -11,7 +11,7 @@ const noop = () => undefined;
 const bannerMedia = <Illustration illustration="EmptyListNoAdd" size={184} />;
 
 const meta: Meta<BannerScreenStoryArgs> = {
-  title: "UI Kit/Feedback/BannerScreen",
+  title: "UI Kit/BannerScreen",
   component: BannerScreen,
   parameters: {
     layout: "fullscreen",
