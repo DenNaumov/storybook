@@ -145,6 +145,12 @@
 }
 
 /* Hidden elements */
-.leftIcon, .cursor, .chipGroup, .searchPlaceholder, .rightButtons, .errorText, .assistiveText {
+.leftIcon,
+.cursor,
+.chipGroup,
+.searchPlaceholder,
+.rightButtons,
+.errorText,
+.assistiveText {
   display: none;
 }

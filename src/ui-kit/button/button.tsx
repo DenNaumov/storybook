@@ -6,7 +6,10 @@ import styles from "./button.module.css";
 export type ButtonVariant = "primary" | "bezeled" | "outlined" | "text";
 export type ButtonSize = "s" | "m";
 
-export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
+export interface ButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "size"
+> {
   variant?: ButtonVariant;
   size: ButtonSize;
   label?: string;
