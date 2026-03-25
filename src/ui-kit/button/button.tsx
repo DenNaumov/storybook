@@ -6,7 +6,7 @@ import styles from "./button.module.css";
 export type ButtonVariant = "primary" | "bezeled" | "outlined" | "text";
 export type ButtonSize = "s" | "m";
 
-export interface ButtonProps {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
   variant?: ButtonVariant;
   size: ButtonSize;
   label?: string;
@@ -60,7 +60,7 @@ export const Button = ({
 
   return (
     <button
-      type="button"
+      type={props.type || "button"}
       className={classes}
       disabled={isDisabled}
       aria-busy={loading || undefined}

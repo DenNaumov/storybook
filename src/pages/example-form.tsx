@@ -3,6 +3,7 @@ import { useForm, FormProvider, useFormContext } from "react-hook-form";
 import Head from "next/head";
 
 import { TextField } from "@/ui-kit/text-field/text-field";
+import { Button } from "@/ui-kit/button/button";
 import styles from "@/styles/example-form.module.css";
 
 interface FormData {
@@ -19,22 +20,21 @@ const EmployeeFormFields = () => {
 
   return (
     <>
-      <div className={styles.row}>
-        <TextField
-          className={styles.textField}
-          label="Имя"
-          placeholder="Иван"
-          disabled={isSubmitting}
-          {...register("firstName", { required: true })}
-        />
-        <TextField
-          className={styles.textField}
-          label="Фамилия"
-          placeholder="Иванов"
-          disabled={isSubmitting}
-          {...register("lastName", { required: true })}
-        />
-      </div>
+      <TextField
+        className={styles.textField}
+        label="Имя"
+        placeholder="Иван"
+        disabled={isSubmitting}
+        {...register("firstName", { required: true })}
+      />
+      
+      <TextField
+        className={styles.textField}
+        label="Фамилия"
+        placeholder="Иванов"
+        disabled={isSubmitting}
+        {...register("lastName", { required: true })}
+      />
 
       <TextField
         label="Отчество"
@@ -43,27 +43,26 @@ const EmployeeFormFields = () => {
         {...register("middleName")}
       />
 
-      <div className={styles.row}>
-        <TextField
-          className={styles.textField}
-          label="Телефон"
-          type="tel"
-          placeholder="+7 (999) 000-00-00"
-          disabled={isSubmitting}
-          {...register("phone", { required: true })}
-        />
-        <TextField
-          className={styles.textField}
-          label="Емейл"
-          type="email"
-          placeholder="ivan@example.com"
-          disabled={isSubmitting}
-          {...register("email", { 
-            required: true,
-            pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-          })}
-        />
-      </div>
+      <TextField
+        className={styles.textField}
+        label="Телефон"
+        type="tel"
+        placeholder="+7 (999) 000-00-00"
+        disabled={isSubmitting}
+        {...register("phone", { required: true })}
+      />
+      
+      <TextField
+        className={styles.textField}
+        label="Емейл"
+        type="email"
+        placeholder="ivan@example.com"
+        disabled={isSubmitting}
+        {...register("email", { 
+          required: true,
+          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+        })}
+      />
 
       <TextField
         label="Должность"
@@ -72,13 +71,14 @@ const EmployeeFormFields = () => {
         {...register("position", { required: true })}
       />
 
-      <button
+      <Button
         type="submit"
-        className={styles.submitBtn}
+        size="m"
+        loading={isSubmitting}
         disabled={isSubmitting}
       >
         {isSubmitting ? "Отправка..." : "Отправить анкету"}
-      </button>
+      </Button>
     </>
   );
 };
