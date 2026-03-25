@@ -14,18 +14,30 @@ export const ProfileFormFields = () => {
     <>
       <TextField
         className={styles.textField}
-        label="Имя"
-        placeholder="Иван"
+        label="E-mail"
+        type="email"
+        placeholder="ivan@example.com"
         disabled={isSubmitting}
-        {...register("firstName", { required: true })}
+        {...register("email", {
+          required: true,
+          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        })}
       />
 
       <TextField
         className={styles.textField}
         label="Фамилия"
-        placeholder="Иванов"
+        placeholder="Петров"
         disabled={isSubmitting}
         {...register("lastName", { required: true })}
+      />
+
+      <TextField
+        className={styles.textField}
+        label="Имя"
+        placeholder="Иван"
+        disabled={isSubmitting}
+        {...register("firstName", { required: true })}
       />
 
       <TextField
@@ -42,18 +54,6 @@ export const ProfileFormFields = () => {
         placeholder="+7 (999) 000-00-00"
         disabled={isSubmitting}
         {...register("phone", { required: true })}
-      />
-
-      <TextField
-        className={styles.textField}
-        label="Емейл"
-        type="email"
-        placeholder="ivan@example.com"
-        disabled={isSubmitting}
-        {...register("email", {
-          required: true,
-          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        })}
       />
 
       <TextField
