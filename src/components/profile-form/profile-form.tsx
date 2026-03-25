@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { EmployeeFormFields } from "./employee-form-fields";
-import type { EmployeeFormData } from "./employee-form.types";
+import { ProfileFormFields } from "./profile-form-fields";
+import type { ProfileFormData } from "./profile-form.types";
 import styles from "@/styles/example-form.module.css";
 
-export const EmployeeForm = () => {
-  const methods = useForm<EmployeeFormData>();
+export const ProfileForm = () => {
+  const methods = useForm<ProfileFormData>();
   const { handleSubmit, reset } = methods;
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const onSubmit = async (data: EmployeeFormData) => {
+  const onSubmit = async (data: ProfileFormData) => {
     console.log("Form submitted with data:", data);
 
     // Имитация отправки данных на сервер
@@ -28,7 +28,7 @@ export const EmployeeForm = () => {
     <div className={styles.card}>
       <FormProvider {...methods}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <EmployeeFormFields />
+          <ProfileFormFields />
         </form>
       </FormProvider>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { EmployeeForm } from "@/components/employee-form/employee-form";
+import { ProfileForm } from "@/components/profile-form/profile-form";
 import styles from "@/styles/example-form.module.css";
 
 export default function ExampleFormPage() {
@@ -11,7 +11,7 @@ export default function ExampleFormPage() {
       </Head>
 
       <div className={styles.container}>
-        <EmployeeForm />
+        <ProfileForm />
       </div>
     </>
   );

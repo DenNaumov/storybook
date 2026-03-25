@@ -1,4 +1,4 @@
-export interface EmployeeFormData {
+export interface ProfileFormData {
   firstName: string;
   lastName: string;
   middleName: string;

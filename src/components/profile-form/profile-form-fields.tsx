@@ -1,14 +1,14 @@
 import { useFormContext } from "react-hook-form";
 import { TextField } from "@/ui-kit/text-field/text-field";
 import { Button } from "@/ui-kit/button/button";
-import type { EmployeeFormData } from "./employee-form.types";
+import type { ProfileFormData } from "./profile-form.types";
 import styles from "@/styles/example-form.module.css";
 
-export const EmployeeFormFields = () => {
+export const ProfileFormFields = () => {
   const {
     register,
     formState: { isSubmitting },
-  } = useFormContext<EmployeeFormData>();
+  } = useFormContext<ProfileFormData>();
 
   return (
     <>
