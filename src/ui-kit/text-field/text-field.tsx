@@ -24,7 +24,7 @@ export const TextField: React.FC<TextFieldProps> = ({
           <div className={styles.textContainer}>
             <Typography
               variant="caption1-regular"
-              color="secondary"
+              color="var(--theme-text-secondary)"
               as="label"
               className={styles.label}
             >
@@ -34,7 +34,7 @@ export const TextField: React.FC<TextFieldProps> = ({
               <Typography
                 as="div"
                 variant="subheadline2-semibold"
-                color="primary"
+                color="var(--theme-text-primary)"
                 className={styles.bodyText}
               >
                 <input

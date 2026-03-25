@@ -47,7 +47,7 @@
   min-height: 56px;
 
   /* blueTheme/dark/bgFill/primary */
-  background: #212121;
+  background: var(--theme-bg-fill-primary);
   border-radius: 12px;
 
   /* Inside auto layout */
