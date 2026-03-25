@@ -1,0 +1,163 @@
+.wrapper {
+  /* State=DisabledFilled */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 358px;
+  height: 56px;
+
+  /* Inside auto layout from _Field_settings */
+  flex: none;
+  order: 7;
+  flex-grow: 0;
+}
+
+.settings {
+  /* _Field_settings */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+
+  width: 358px;
+  height: 56px;
+
+  opacity: 0.5;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bg {
+  /* Field_bg */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 4px 8px 16px;
+  gap: 4px;
+
+  width: 358px;
+  height: 56px;
+  min-height: 56px;
+
+  /* blueTheme/dark/bgFill/primary */
+  background: #212121;
+  border-radius: 12px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.textContainer {
+  /* Text */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+
+  width: 338px;
+  height: 40px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.label {
+  /* Label */
+  width: 338px;
+  height: 16px;
+
+  /* Caption 1 · Regular */
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  /* identical to box height, or 123% */
+  letter-spacing: -0.08px;
+
+  /* blueTheme/dark/text/secondary */
+  color: #AAAAAA;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.textZone {
+  /* Text_zone */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+
+  width: 338px;
+  height: 20px;
+  max-height: 128px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bodyText {
+  /* Body_text */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 2px;
+
+  width: 338px;
+  height: 20px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.input {
+  /* Input */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  width: 40px;
+  height: 20px;
+
+  /* Subheadline 2 · Semibold */
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 590;
+  font-size: 15px;
+  line-height: 20px;
+  /* identical to box height, or 133% */
+  letter-spacing: -0.23px;
+
+  /* blueTheme/dark/text/primary */
+  color: #FFFFFF;
+}
+
+/* Hidden elements */
+.leftIcon, .cursor, .chipGroup, .searchPlaceholder, .rightButtons, .errorText, .assistiveText {
+  display: none;
+}
