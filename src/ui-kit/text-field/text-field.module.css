@@ -5,7 +5,7 @@
   align-items: flex-start;
   padding: 0px;
 
-  width: 358px;
+  width: 100%;
   height: 56px;
 
   /* Inside auto layout from _Field_settings */
@@ -22,7 +22,7 @@
   padding: 0px;
   gap: 4px;
 
-  width: 358px;
+  width: 100%;
   height: 56px;
 
   opacity: 0.5;
@@ -42,7 +42,7 @@
   padding: 8px 4px 8px 16px;
   gap: 4px;
 
-  width: 358px;
+  width: 100%;
   height: 56px;
   min-height: 56px;
 
@@ -65,7 +65,7 @@
   padding: 0px;
   gap: 4px;
 
-  width: 338px;
+  width: 100%;
   height: 40px;
 
   /* Inside auto layout */
@@ -76,7 +76,7 @@
 
 .label {
   /* Label */
-  width: 338px;
+  width: 100%;
   height: 16px;
 
   /* Inside auto layout */
@@ -94,7 +94,7 @@
   padding: 0px;
   gap: 8px;
 
-  width: 338px;
+  width: 100%;
   height: 20px;
   max-height: 128px;
 
@@ -113,7 +113,7 @@
   padding: 0px;
   gap: 2px;
 
-  width: 338px;
+  width: 100%;
   height: 20px;
 
   /* Inside auto layout */
