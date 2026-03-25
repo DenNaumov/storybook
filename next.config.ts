@@ -6,9 +6,10 @@ const isRuleSetRule = (rule: RuleSetRule | "..."): rule is RuleSetRule =>
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  turbopack: {},
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(
-      (rule): rule is RuleSetRule =>
+      (rule: RuleSetRule | "...") =>
         isRuleSetRule(rule) &&
         rule.test instanceof RegExp &&
         rule.test.test(".svg"),

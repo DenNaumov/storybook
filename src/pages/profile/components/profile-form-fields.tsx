@@ -63,14 +63,16 @@ export const ProfileFormFields = () => {
         {...register("position", { required: true })}
       />
 
-      <Button
-        type="submit"
-        size="m"
-        loading={isSubmitting}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? "Отправка..." : "Отправить анкету"}
-      </Button>
+      <div className={styles.submitWrapper}>
+        <Button
+          type="submit"
+          size="m"
+          loading={isSubmitting}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Отправка..." : "Отправить"}
+        </Button>
+      </div>
     </>
   );
 };

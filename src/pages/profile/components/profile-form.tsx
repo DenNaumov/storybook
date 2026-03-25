@@ -9,6 +9,7 @@ export const ProfileForm = () => {
   const { handleSubmit, reset } = methods;
 
   const [isSuccess, setIsSuccess] = useState(false);
+  console.log(isSuccess);
 
   const onSubmit = async (data: ProfileFormData) => {
     console.log("Form submitted with data:", data);
