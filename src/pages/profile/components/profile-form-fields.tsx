@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
-import { TextField } from "@/ui-kit/text-field/text-field";
-import { Button } from "@/ui-kit/button/button";
+import { TextField } from "@/shared/ui-kit/text-field/text-field";
+import { Button } from "@/shared/ui-kit/button/button";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
 
