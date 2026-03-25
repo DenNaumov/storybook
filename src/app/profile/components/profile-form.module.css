@@ -1,9 +1,6 @@
 .card {
-  width: min(500px, 92vw);
-  padding: 32px 36px 40px;
-  border-radius: 28px;
-  background: var(--theme-bg-tabbar, #f9f9f9);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 24px 0;
 }
 
 .title {
@@ -27,7 +24,7 @@
 }
 
 .textField {
-  flex: 1;
+  width: 100%;
 }
 
 .successBox {
