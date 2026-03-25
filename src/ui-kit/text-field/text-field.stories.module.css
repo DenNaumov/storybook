@@ -1,0 +1,68 @@
+.stage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: var(--theme-bg-surface-primary, #1a1a1a);
+}
+
+.card {
+  width: min(420px, 92vw);
+  padding: 28px 30px 32px;
+  border-radius: 28px;
+  background: var(--theme-bg-tabbar, rgba(12, 12, 12, 0.95));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+.title {
+  color: var(--theme-text-primary, #ffffff);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--theme-text-secondary, #9a9a9a);
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button {
+  margin-top: 8px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: var(--theme-bg-fill-brand-main, #2990ff);
+  color: var(--theme-text-on-main, #ffffff);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.successMessage {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--theme-bg-surface-success, rgba(46, 204, 113, 0.1));
+  color: var(--theme-icon-success, #2ecc71);
+  font-size: 14px;
+  text-align: center;
+}
