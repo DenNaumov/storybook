@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { TextField } from "@/ui-kit/text-field/text-field";
 import { Button } from "@/ui-kit/button/button";
 import type { ProfileFormData } from "./profile-form.types";
-import styles from "@/styles/example-form.module.css";
+import styles from "./profile-form.module.css";
 
 export const ProfileFormFields = () => {
   const {

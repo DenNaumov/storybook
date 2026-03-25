@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { ProfileFormFields } from "./profile-form-fields";
 import type { ProfileFormData } from "./profile-form.types";
-import styles from "@/styles/example-form.module.css";
+import styles from "./profile-form.module.css";
 
 export const ProfileForm = () => {
   const methods = useForm<ProfileFormData>();

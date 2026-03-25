@@ -1,12 +1,3 @@
-.container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px;
-  background: var(--theme-bg-surface-primary, #ffffff);
-}
-
 .card {
   width: min(500px, 92vw);
   padding: 32px 36px 40px;
@@ -35,38 +26,8 @@
   gap: 16px;
 }
 
-.row {
-  display: flex;
-  gap: 16px;
-}
-
 .textField {
   flex: 1;
-}
-
-.submitBtn {
-  margin-top: 16px;
-  height: 52px;
-  border-radius: 12px;
-  border: none;
-  background: var(--theme-bg-fill-brand-main, #2990ff);
-  color: var(--theme-text-on-main, #ffffff);
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.submitBtn:hover {
-  opacity: 0.9;
-}
-
-.submitBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .successBox {
