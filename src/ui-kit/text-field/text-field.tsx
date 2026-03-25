@@ -2,23 +2,21 @@ import React from 'react';
 import { Typography } from '../typography/typography';
 import styles from './text-field.module.css';
 
-export interface TextFieldProps {
+export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  value?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TextField: React.FC<TextFieldProps> = ({
+export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(({
   label = 'Label',
   value,
   placeholder,
-  disabled = true,
+  disabled = false,
   onChange,
-}) => {
+  className,
+  ...restProps
+}, ref) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${className || ''}`}>
       <div className={`${styles.settings} ${disabled ? styles.disabled : ''}`}>
         <div className={styles.bg}>
           <div className={styles.textContainer}>
@@ -38,12 +36,14 @@ export const TextField: React.FC<TextFieldProps> = ({
                 className={styles.bodyText}
               >
                 <input
+                  ref={ref}
                   className={styles.input}
                   value={value}
                   placeholder={placeholder}
                   disabled={disabled}
                   onChange={onChange}
                   spellCheck={false}
+                  {...restProps}
                 />
               </Typography>
             </div>
@@ -52,4 +52,6 @@ export const TextField: React.FC<TextFieldProps> = ({
       </div>
     </div>
   );
-};
+});
+
+TextField.displayName = 'TextField';

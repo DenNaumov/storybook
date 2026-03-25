@@ -18,7 +18,8 @@
     "@lottiefiles/dotlottie-react": "^0.18.7",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.72.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.2.4",
