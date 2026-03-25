@@ -16,7 +16,6 @@ export const ProfileFormFields = () => {
         className={styles.textField}
         label="E-mail"
         type="email"
-        placeholder="ivan@example.com"
         disabled={isSubmitting}
         {...register("email", {
           required: true,
@@ -27,7 +26,6 @@ export const ProfileFormFields = () => {
       <TextField
         className={styles.textField}
         label="Фамилия"
-        placeholder="Петров"
         disabled={isSubmitting}
         {...register("lastName", { required: true })}
       />
@@ -35,14 +33,12 @@ export const ProfileFormFields = () => {
       <TextField
         className={styles.textField}
         label="Имя"
-        placeholder="Иван"
         disabled={isSubmitting}
         {...register("firstName", { required: true })}
       />
 
       <TextField
         label="Отчество"
-        placeholder="Иванович"
         disabled={isSubmitting}
         {...register("middleName")}
       />
@@ -51,16 +47,14 @@ export const ProfileFormFields = () => {
         className={styles.textField}
         label="Телефон"
         type="tel"
-        placeholder="+7 (999) 000-00-00"
         disabled={isSubmitting}
-        {...register("phone", { required: true })}
+        {...register("phone")}
       />
 
       <TextField
         label="Должность"
-        placeholder="Frontend Developer"
         disabled={isSubmitting}
-        {...register("position", { required: true })}
+        {...register("position")}
       />
 
       <div className={styles.submitWrapper}>

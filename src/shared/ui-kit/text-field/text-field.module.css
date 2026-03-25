@@ -18,7 +18,6 @@
 }
 
 .bg {
-  /* Field_bg */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,11 +28,9 @@
   height: 56px;
   min-height: 56px;
 
-  /* blueTheme/dark/bgFill/primary */
   background: var(--theme-bg-fill-primary);
   border-radius: 12px;
 
-  /* Inside auto layout */
   flex: none;
   order: 0;
   align-self: stretch;
@@ -41,7 +38,6 @@
 }
 
 .textContainer {
-  /* Text */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,18 +47,20 @@
   width: 100%;
   height: 40px;
 
-  /* Inside auto layout */
   flex: none;
   order: 0;
   flex-grow: 1;
 }
 
+.textContainerCentered {
+  height: 20px;
+  justify-content: center;
+}
+
 .label {
-  /* Label */
   width: 100%;
   height: 16px;
 
-  /* Inside auto layout */
   flex: none;
   order: 0;
   align-self: stretch;
@@ -70,7 +68,6 @@
 }
 
 .textZone {
-  /* Text_zone */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -81,7 +78,6 @@
   height: 20px;
   max-height: 128px;
 
-  /* Inside auto layout */
   flex: none;
   order: 1;
   align-self: stretch;
@@ -89,7 +85,6 @@
 }
 
 .bodyText {
-  /* Body_text */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -99,15 +94,19 @@
   width: 100%;
   height: 20px;
 
-  /* Inside auto layout */
   flex: none;
   order: 1;
   align-self: stretch;
   flex-grow: 1;
 }
 
+.inputContainer {
+  position: relative;
+  width: 100%;
+  height: 20px;
+}
+
 .input {
-  /* Input */
   appearance: none;
   background: transparent;
   border: none;
@@ -118,13 +117,33 @@
   font: inherit;
   letter-spacing: inherit;
 
-  width: 100%; /* Overriding 40px to make it usable */
+  width: 100%;
   height: 20px;
+  /* }
+
+.input { */
+  position: relative;
+  z-index: 2;
 }
 
 .input:disabled {
   cursor: not-allowed;
-  opacity: 1; /* Keeping the visual but parent has 0.5 opacity */
+  opacity: 1;
+}
+
+.centerPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.centerPlaceholderText {
+  width: 100%;
+  text-align: left;
 }
 
 /* Hidden elements */
