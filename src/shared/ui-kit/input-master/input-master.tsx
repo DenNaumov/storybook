@@ -10,15 +10,14 @@ export interface InputMasterProps
     React.InputHTMLAttributes<HTMLInputElement>,
     "defaultValue" | "value" | "onChange"
   > {
-  value: string;
-  onChange: (value: string) => void;
   label?: React.ReactNode;
+  value: string;
+  onValueChange: (value: string) => void;
   assistiveText?: React.ReactNode;
   errorText?: React.ReactNode;
   error?: boolean;
   clearable?: boolean;
   onClear?: () => void;
-  clearAriaLabel?: string;
   className?: string;
 }
 
@@ -26,7 +25,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
   (
     {
       value,
-      onChange,
+      onValueChange: onChange,
       label,
       assistiveText,
       errorText,
@@ -34,7 +33,6 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
       disabled = false,
       clearable = false,
       onClear,
-      clearAriaLabel = "Clear input",
       className,
       placeholder,
       id,
@@ -54,6 +52,10 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     const hasValue = value.length > 0;
     const isExpanded = focused || hasValue || disabled;
     const showClearButton = clearable && hasValue && !disabled;
+    const clearLabel =
+      typeof label === "string" && label.trim().length > 0
+        ? `Очистить ${label}`
+        : "Очистить";
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setFocused(true);
@@ -133,7 +135,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
               className={styles.clearButton}
               onMouseDown={(event) => event.preventDefault()}
               onClick={handleClear}
-              aria-label={clearAriaLabel}
+              aria-label={clearLabel}
             />
           ) : null}
         </div>

@@ -23,7 +23,7 @@ const TextLineExample = ({
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <TextLine {...props} value={value} onChange={setValue} />;
+  return <TextLine {...props} value={value} onValueChange={setValue} />;
 };
 
 export const Showcase: Story = {

@@ -12,7 +12,7 @@ export interface TextLineProps {
   id?: string;
   name?: string;
   className?: string;
-  onChange: (value: string) => void;
+  onValueChange: (value: string) => void;
 }
 
 export const TextLine = ({
@@ -35,7 +35,6 @@ export const TextLine = ({
     error={error}
     clearable={clearable}
     className={className}
-    clearAriaLabel={label ? `Очистить ${label}` : "Очистить"}
     spellCheck={false}
   />
 );

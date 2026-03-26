@@ -19,6 +19,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     {
       label = "Label",
       value,
+      onChange,
       error = false,
       className,
       clearable = true,
@@ -31,10 +32,10 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       ref={ref}
       label={label}
       value={value}
+      onValueChange={onChange}
       error={error}
       clearable={clearable}
       className={className}
-      clearAriaLabel={`Clear ${label}`}
       spellCheck={false}
     />
   ),

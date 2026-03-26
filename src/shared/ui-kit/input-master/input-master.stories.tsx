@@ -42,7 +42,6 @@ const meta: Meta<InputMasterStoryArgs> = {
     onBlur: { control: false, table: { disable: true } },
     onClear: { control: false, table: { disable: true } },
     className: { control: false, table: { disable: true } },
-    clearAriaLabel: { control: "text" },
   },
 };
 
@@ -78,7 +77,7 @@ const PlaygroundPreview = ({
             {...args}
             label={label}
             value={value}
-            onChange={setValue}
+            onValueChange={setValue}
             errorText={showErrorText ? errorText : undefined}
             assistiveText={showAssistiveText ? assistiveText : undefined}
           />
