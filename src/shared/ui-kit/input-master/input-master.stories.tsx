@@ -27,8 +27,6 @@ type InputMasterStoryArgs = Omit<
   errorText?: string;
   assistiveText?: string;
   showInnerLabel: boolean;
-  showPrefix: boolean;
-  showSuffix: boolean;
   showErrorText: boolean;
   showAssistiveText: boolean;
 };
@@ -50,8 +48,6 @@ const meta: Meta<InputMasterStoryArgs> = {
     error: false,
     clearable: true,
     showInnerLabel: true,
-    showPrefix: false,
-    showSuffix: false,
     showErrorText: false,
     showAssistiveText: true,
   },
@@ -86,8 +82,6 @@ const PlaygroundPreview = ({
   errorText = "Error_text",
   assistiveText = "Assistive_text",
   showInnerLabel,
-  showPrefix,
-  showSuffix,
   showErrorText,
   showAssistiveText,
   error = false,
@@ -133,12 +127,6 @@ const PlaygroundPreview = ({
                   {innerLabel}
                 </label>
               ) : null
-            }
-            beforeInput={() =>
-              showPrefix ? <span className={styles.affix}>+7</span> : null
-            }
-            afterInput={() =>
-              showSuffix ? <span className={styles.affix}>RU</span> : null
             }
             inputRowClassName={styles.inputRow}
             inputClassName={({ disabled: isDisabled, error: isError }) =>
