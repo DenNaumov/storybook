@@ -44,6 +44,12 @@ const StatesPreview = () => {
           value={value}
           onChange={setValue}
         />
+        <TextField
+          label="Label"
+          value="Value"
+          error
+          onChange={() => undefined}
+        />
       </div>
     </div>
   );

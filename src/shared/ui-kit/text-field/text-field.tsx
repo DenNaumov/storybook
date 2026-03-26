@@ -15,6 +15,7 @@ export interface TextFieldProps
   label?: string;
   value: string;
   onChange: (value: string) => void;
+  error?: boolean;
   clearable?: boolean;
   onClear?: () => void;
 }
@@ -26,6 +27,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       value,
       placeholder,
       disabled = false,
+      error = false,
       onChange,
       onFocus,
       onBlur,
@@ -79,6 +81,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           className={[
             styles.field,
             showFloatingLabel ? styles.fieldExpanded : styles.fieldDefault,
+            error ? styles.error : "",
             disabled ? styles.disabled : "",
           ]
             .filter(Boolean)
@@ -123,6 +126,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
                 value={value}
                 placeholder={showFloatingLabel ? placeholder : ""}
                 disabled={disabled}
+                aria-invalid={error || undefined}
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}

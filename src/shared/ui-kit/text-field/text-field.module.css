@@ -26,6 +26,11 @@
   opacity: 0.5;
 }
 
+.error {
+  background: #351515;
+  box-shadow: inset 0 0 0 1px rgba(235, 87, 87, 0.4);
+}
+
 .content {
   display: flex;
   flex: 1;
@@ -95,6 +100,10 @@
 
 .input:disabled {
   cursor: not-allowed;
+}
+
+.error .input {
+  color: #ffd6d6;
 }
 
 .centerPlaceholder {
