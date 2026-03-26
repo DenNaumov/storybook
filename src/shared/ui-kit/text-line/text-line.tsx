@@ -88,7 +88,7 @@ export const TextLine = ({
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.container}>
       {label ? (
         <label className={styles.label} htmlFor={inputId}>
           {label}

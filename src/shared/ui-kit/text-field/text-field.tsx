@@ -81,7 +81,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     };
 
     return (
-      <div className={[styles.wrapper, className].filter(Boolean).join(" ")}>
+      <div className={[styles.container, className].filter(Boolean).join(" ")}>
         <div
           className={[
             styles.field,

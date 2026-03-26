@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { ProfileFormFields } from "./profile-form-fields";
 import type { ProfileFormData } from "./profile-form.types";
@@ -19,30 +19,26 @@ export const ProfileForm = () => {
   });
   const { handleSubmit, reset } = methods;
 
-  const [isSuccess, setIsSuccess] = useState(false);
-  console.log(isSuccess);
-
   const onSubmit = async (data: ProfileFormData) => {
     console.log("Form submitted with data:", data);
 
     // Имитация отправки данных на сервер
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    setIsSuccess(true);
     reset(); // Очищаем форму
-
-    setTimeout(() => {
-      setIsSuccess(false);
-    }, 5000);
   };
 
   return (
-    <div className={styles.card}>
+    <section className={styles.panel}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Личные данные</h1>
+      </header>
+
       <FormProvider {...methods}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <ProfileFormFields />
         </form>
       </FormProvider>
-    </div>
+    </section>
   );
 };
