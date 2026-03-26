@@ -1,5 +1,5 @@
-import type { KeyboardEvent, ReactNode } from "react";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import type { ChangeEvent, ReactNode } from "react";
+import { useId, useMemo, useRef, useState } from "react";
 
 import styles from "./text-line.module.css";
 
@@ -37,13 +37,7 @@ export const TextLine = ({
   const isControlled = value !== undefined;
   const [internalValue, setInternalValue] = useState(defaultValue ?? "");
   const displayValue = isControlled ? (value ?? "") : internalValue;
-  const editableRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (editableRef.current && editableRef.current.innerText !== displayValue) {
-      editableRef.current.innerText = displayValue;
-    }
-  }, [displayValue]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const hasValue = displayValue.length > 0;
 
@@ -61,18 +55,12 @@ export const TextLine = ({
     [disabled, readOnly, error, hasValue],
   );
 
-  const handleInput = () => {
-    const next = editableRef.current?.innerText ?? "";
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const next = event.target.value;
     if (!isControlled) {
       setInternalValue(next);
     }
     onChange?.(next);
-  };
-
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (readOnly || disabled) {
-      event.preventDefault();
-    }
   };
 
   const handleClear = () => {
@@ -81,9 +69,8 @@ export const TextLine = ({
       setInternalValue("");
     }
     onChange?.("");
-    if (editableRef.current) {
-      editableRef.current.innerText = "";
-      editableRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   };
 
@@ -95,21 +82,19 @@ export const TextLine = ({
         </label>
       ) : null}
       <div className={classes} data-has-value={hasValue}>
-        <div
+        <input
           id={inputId}
-          ref={editableRef}
+          ref={inputRef}
           className={styles.input}
-          role="textbox"
-          aria-multiline="true"
-          aria-disabled={disabled || undefined}
-          aria-readonly={readOnly || undefined}
+          type="text"
+          name={name}
+          value={displayValue}
+          placeholder={placeholder}
+          disabled={disabled}
+          readOnly={readOnly}
           aria-invalid={error || undefined}
-          data-placeholder={placeholder}
-          contentEditable={!disabled && !readOnly}
           spellCheck={false}
-          onInput={handleInput}
-          onKeyDown={handleKeyDown}
-          suppressContentEditableWarning
+          onChange={handleChange}
         />
         {clearable && hasValue ? (
           <button
@@ -122,7 +107,6 @@ export const TextLine = ({
             <span />
           </button>
         ) : null}
-        {name ? <input type="hidden" name={name} value={displayValue} /> : null}
       </div>
       {helperText ? (
         <div className={styles.helper} data-error={error ? "true" : "false"}>

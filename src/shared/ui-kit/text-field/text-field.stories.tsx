@@ -37,12 +37,12 @@ const StatesPreview = () => {
           label="Label"
           placeholder="Label_placeholder"
           value={emptyValue}
-          onChange={(event) => setEmptyValue(event.target.value)}
+          onChange={setEmptyValue}
         />
         <TextField
           label="Label"
           value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={setValue}
         />
       </div>
     </div>

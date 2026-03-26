@@ -14,7 +14,7 @@ export interface TextFieldProps
   > {
   label?: string;
   value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: (value: string) => void;
   clearable?: boolean;
   onClear?: () => void;
 }
@@ -59,7 +59,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(event);
+      onChange(event.target.value);
     };
 
     const handleClear = () => {
@@ -68,14 +68,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       if (!input) {
         return;
       }
-
-      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-        HTMLInputElement.prototype,
-        "value",
-      )?.set;
-
-      nativeInputValueSetter?.call(input, "");
-      input.dispatchEvent(new Event("input", { bubbles: true }));
+      onChange("");
       input.focus();
       onClear?.();
     };
