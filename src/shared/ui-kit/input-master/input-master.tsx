@@ -1,29 +1,9 @@
-import React, {
-  useId,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import React, { useId, useImperativeHandle, useRef, useState } from "react";
 import { IconButton } from "../icon-button/icon-button";
+import styles from "./input-master.module.css";
 
-export interface InputMasterState {
-  inputId: string;
-  hasValue: boolean;
-  disabled: boolean;
-  error: boolean;
-  focused: boolean;
-}
-
-type SlotClassName = string | ((state: InputMasterState) => string);
-
-const resolveClassName = (
-  className: SlotClassName | undefined,
-  state: InputMasterState,
-) => (typeof className === "function" ? className(state) : className);
-
-type ResolvedInputProps = Partial<
-  React.InputHTMLAttributes<HTMLInputElement>
->;
+const joinClasses = (...classNames: Array<string | false | undefined>) =>
+  classNames.filter(Boolean).join(" ");
 
 export interface InputMasterProps
   extends Omit<
@@ -32,23 +12,14 @@ export interface InputMasterProps
   > {
   value: string;
   onChange: (value: string) => void;
+  label?: React.ReactNode;
+  assistiveText?: React.ReactNode;
+  errorText?: React.ReactNode;
   error?: boolean;
   clearable?: boolean;
   onClear?: () => void;
   clearAriaLabel?: string;
-  topContent?: (state: InputMasterState) => React.ReactNode;
-  innerContent?: (state: InputMasterState) => React.ReactNode;
-  beforeInput?: (state: InputMasterState) => React.ReactNode;
-  afterInput?: (state: InputMasterState) => React.ReactNode;
-  errorContent?: (state: InputMasterState) => React.ReactNode;
-  assistiveContent?: (state: InputMasterState) => React.ReactNode;
-  inputProps?: (state: InputMasterState) => ResolvedInputProps;
   className?: string;
-  fieldClassName?: SlotClassName;
-  contentClassName?: SlotClassName;
-  inputRowClassName?: SlotClassName;
-  inputClassName?: SlotClassName;
-  clearButtonClassName?: SlotClassName;
 }
 
 export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
@@ -56,24 +27,16 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     {
       value,
       onChange,
+      label,
+      assistiveText,
+      errorText,
       error = false,
       disabled = false,
       clearable = false,
       onClear,
       clearAriaLabel = "Clear input",
-      topContent,
-      innerContent,
-      beforeInput,
-      afterInput,
-      errorContent,
-      assistiveContent,
-      inputProps,
       className,
-      fieldClassName,
-      contentClassName,
-      inputRowClassName,
-      inputClassName,
-      clearButtonClassName,
+      placeholder,
       id,
       onFocus,
       onBlur,
@@ -88,14 +51,9 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-    const state: InputMasterState = {
-      inputId,
-      hasValue: value.length > 0,
-      disabled,
-      error,
-      focused,
-    };
-    const showClearButton = clearable && state.hasValue && !disabled;
+    const hasValue = value.length > 0;
+    const isExpanded = focused || hasValue || disabled;
+    const showClearButton = clearable && hasValue && !disabled;
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setFocused(true);
@@ -123,65 +81,67 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
       onClear?.();
     };
 
-    const resolvedFieldClassName = resolveClassName(fieldClassName, state);
-    const resolvedContentClassName = resolveClassName(contentClassName, state);
-    const resolvedInputRowClassName = resolveClassName(inputRowClassName, state);
-    const resolvedInputClassName = resolveClassName(inputClassName, state);
-    const resolvedClearButtonClassName = resolveClassName(
-      clearButtonClassName,
-      state,
-    );
-    const resolvedInputProps = inputProps?.(state);
-
-    const inputRow = (
-      <div className={resolvedInputRowClassName}>
-        {beforeInput?.(state)}
-        <input
-          {...restProps}
-          {...resolvedInputProps}
-          id={inputId}
-          ref={inputRef}
-          className={resolvedInputClassName}
-          value={value}
-          disabled={disabled}
-          aria-invalid={error || undefined}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
-        {afterInput?.(state)}
-        {showClearButton ? (
-          <IconButton
-            buttonSize="m"
-            iconSize="m"
-            icon="Cancel"
-            className={resolvedClearButtonClassName}
-            onMouseDown={(event) => event.preventDefault()}
-            onClick={handleClear}
-            aria-label={clearAriaLabel}
-          />
-        ) : null}
-      </div>
-    );
-
     return (
-      <div className={className}>
-        {topContent?.(state)}
-        <div className={resolvedFieldClassName}>
-          {resolvedContentClassName ? (
-            <div className={resolvedContentClassName}>
-              {innerContent?.(state)}
-              {inputRow}
-            </div>
-          ) : (
-            <>
-              {innerContent?.(state)}
-              {inputRow}
-            </>
+      <div className={joinClasses(styles.container, className)}>
+        <div
+          className={joinClasses(
+            styles.field,
+            isExpanded ? styles.fieldExpanded : styles.fieldDefault,
+            disabled && styles.fieldDisabled,
+            error && styles.fieldError,
           )}
+        >
+          <div
+            className={joinClasses(
+              styles.content,
+              isExpanded ? styles.contentExpanded : styles.contentCentered,
+            )}
+          >
+            {isExpanded && label ? (
+              <label htmlFor={inputId} className={styles.label}>
+                {label}
+              </label>
+            ) : null}
+            <div className={styles.inputRow}>
+              {!isExpanded && (placeholder || label) ? (
+                <label htmlFor={inputId} className={styles.centerLabel}>
+                  {placeholder || label}
+                </label>
+              ) : null}
+              <input
+                {...restProps}
+                id={inputId}
+                ref={inputRef}
+                className={joinClasses(
+                  styles.input,
+                  disabled && styles.inputDisabled,
+                )}
+                value={value}
+                placeholder={isExpanded ? placeholder : ""}
+                disabled={disabled}
+                aria-invalid={error || undefined}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              />
+            </div>
+          </div>
+          {showClearButton ? (
+            <IconButton
+              buttonSize="m"
+              iconSize="m"
+              icon="Cancel"
+              className={styles.clearButton}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={handleClear}
+              aria-label={clearAriaLabel}
+            />
+          ) : null}
         </div>
-        {errorContent?.(state)}
-        {assistiveContent?.(state)}
+        {errorText ? <div className={styles.errorText}>{errorText}</div> : null}
+        {assistiveText ? (
+          <div className={styles.assistiveText}>{assistiveText}</div>
+        ) : null}
       </div>
     );
   },

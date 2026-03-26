@@ -9,24 +9,10 @@ type InputMasterStoryArgs = Omit<
   ComponentProps<typeof InputMaster>,
   | "value"
   | "onChange"
-  | "topContent"
-  | "innerContent"
-  | "beforeInput"
-  | "afterInput"
-  | "errorContent"
-  | "assistiveContent"
-  | "fieldClassName"
-  | "contentClassName"
-  | "inputRowClassName"
-  | "inputClassName"
-  | "clearButtonClassName"
-  | "inputProps"
 > & {
   value: string;
-  innerLabel?: string;
   errorText?: string;
   assistiveText?: string;
-  showInnerLabel: boolean;
   showErrorText: boolean;
   showAssistiveText: boolean;
 };
@@ -41,13 +27,12 @@ const meta: Meta<InputMasterStoryArgs> = {
   args: {
     value: "Value",
     placeholder: "Placeholder",
-    innerLabel: "Label",
+    label: "Label",
     errorText: "Error_text",
     assistiveText: "Assistive_text",
     disabled: false,
     error: false,
     clearable: true,
-    showInnerLabel: true,
     showErrorText: false,
     showAssistiveText: true,
   },
@@ -56,18 +41,6 @@ const meta: Meta<InputMasterStoryArgs> = {
     onFocus: { control: false, table: { disable: true } },
     onBlur: { control: false, table: { disable: true } },
     onClear: { control: false, table: { disable: true } },
-    topContent: { control: false, table: { disable: true } },
-    innerContent: { control: false, table: { disable: true } },
-    beforeInput: { control: false, table: { disable: true } },
-    afterInput: { control: false, table: { disable: true } },
-    errorContent: { control: false, table: { disable: true } },
-    assistiveContent: { control: false, table: { disable: true } },
-    fieldClassName: { control: false, table: { disable: true } },
-    contentClassName: { control: false, table: { disable: true } },
-    inputRowClassName: { control: false, table: { disable: true } },
-    inputClassName: { control: false, table: { disable: true } },
-    clearButtonClassName: { control: false, table: { disable: true } },
-    inputProps: { control: false, table: { disable: true } },
     className: { control: false, table: { disable: true } },
     clearAriaLabel: { control: "text" },
   },
@@ -78,14 +51,11 @@ type Story = StoryObj<InputMasterStoryArgs>;
 
 const PlaygroundPreview = ({
   value: initialValue,
-  innerLabel = "Label",
+  label = "Label",
   errorText = "Error_text",
   assistiveText = "Assistive_text",
-  showInnerLabel,
   showErrorText,
   showAssistiveText,
-  error = false,
-  disabled = false,
   ...args
 }: InputMasterStoryArgs) => {
   const [value, setValue] = useState(initialValue);
@@ -106,67 +76,11 @@ const PlaygroundPreview = ({
         <div className={styles.preview}>
           <InputMaster
             {...args}
+            label={label}
             value={value}
             onChange={setValue}
-            disabled={disabled}
-            error={error}
-            className={styles.container}
-            fieldClassName={({ disabled: isDisabled, error: isError }) =>
-              [
-                styles.field,
-                isDisabled ? styles.fieldDisabled : "",
-                isError ? styles.fieldError : "",
-              ]
-                .filter(Boolean)
-                .join(" ")
-            }
-            contentClassName={styles.content}
-            innerContent={({ inputId }) =>
-              showInnerLabel ? (
-                <label className={styles.innerLabel} htmlFor={inputId}>
-                  {innerLabel}
-                </label>
-              ) : null
-            }
-            inputRowClassName={styles.inputRow}
-            inputClassName={({ disabled: isDisabled, error: isError }) =>
-              [
-                styles.input,
-                isDisabled ? styles.inputDisabled : "",
-                isError ? styles.inputError : "",
-              ]
-                .filter(Boolean)
-                .join(" ")
-            }
-            clearButtonClassName={styles.clear}
-            errorContent={() =>
-              showErrorText ? (
-                <div
-                  className={[
-                    styles.errorText,
-                    error ? styles.errorTextVisible : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                >
-                  {errorText}
-                </div>
-              ) : null
-            }
-            assistiveContent={() =>
-              showAssistiveText ? (
-                <div
-                  className={[
-                    styles.assistiveText,
-                    error ? styles.assistiveTextMuted : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                >
-                  {assistiveText}
-                </div>
-              ) : null
-            }
+            errorText={showErrorText ? errorText : undefined}
+            assistiveText={showAssistiveText ? assistiveText : undefined}
           />
         </div>
       </div>
