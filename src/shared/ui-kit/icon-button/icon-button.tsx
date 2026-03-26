@@ -1,7 +1,9 @@
 import type { ButtonHTMLAttributes } from "react";
 import { Badge } from "../badge/badge";
-import { ResizableIcon } from "../icon/icon-wrappers";
+import { Icon24, ResizableIcon } from "../icon/icon-wrappers";
+import type { Icon24IconKeys } from "../icon/packs/24";
 import type { ResizableIconKeys } from "../icon/packs/resizable";
+import { ResizableIcons } from "../icon/packs/resizable";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
@@ -14,15 +16,19 @@ const iconSizeToPixels: Record<IconSize, number> = {
 
 export interface IconButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
-  "className" | "children"
+  "children"
 > {
   buttonSize: IconButtonSize;
   iconSize: IconSize;
-  icon: ResizableIconKeys;
+  icon: ResizableIconKeys | Icon24IconKeys;
   badgeCount?: number | string;
   /** Storybook-only pressed state */
   pressed?: boolean;
 }
+
+const isResizableIcon = (
+  icon: ResizableIconKeys | Icon24IconKeys,
+): icon is ResizableIconKeys => icon in ResizableIcons;
 
 const buttonSizeMap: Record<IconButtonSize, string> = {
   s: styles.buttonSizeS,
@@ -41,6 +47,7 @@ export const IconButton = ({
   badgeCount,
   pressed = false,
   disabled,
+  className,
   ...props
 }: IconButtonProps) => {
   const classes = [
@@ -48,6 +55,7 @@ export const IconButton = ({
     buttonSizeMap[buttonSize],
     pressed ? styles.pressed : "",
     disabled ? styles.disabled : "",
+    className || "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -59,7 +67,11 @@ export const IconButton = ({
   return (
     <button className={classes} disabled={disabled} type="button" {...props}>
       <div className={iconWrapperClasses}>
-        <ResizableIcon icon={icon} size={iconSizeToPixels[iconSize]} />
+        {isResizableIcon(icon) ? (
+          <ResizableIcon icon={icon} size={iconSizeToPixels[iconSize]} />
+        ) : (
+          <Icon24 icon={icon} size={iconSizeToPixels[iconSize]} />
+        )}
         {badgeCount !== undefined && (
           <Badge variant="critical" className={styles.badge}>
             {badgeCount}

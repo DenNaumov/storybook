@@ -7,7 +7,16 @@ import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
 
 export const ProfileForm = () => {
-  const methods = useForm<ProfileFormData>();
+  const methods = useForm<ProfileFormData>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      middleName: "",
+      phone: "",
+      email: "",
+      position: "",
+    },
+  });
   const { handleSubmit, reset } = methods;
 
   const [isSuccess, setIsSuccess] = useState(false);

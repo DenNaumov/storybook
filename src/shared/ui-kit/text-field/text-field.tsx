@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, {
+  useId,
+  useImperativeHandle,
+  useRef,
+} from "react";
+import { IconButton } from "../icon-button/icon-button";
 import { Typography } from "../typography/typography";
 import styles from "./text-field.module.css";
 
 export interface TextFieldProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "defaultValue" | "value" | "onChange"
+  > {
   label?: string;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  clearable?: boolean;
+  onClear?: () => void;
 }
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -18,83 +30,123 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       onFocus,
       onBlur,
       className,
+      clearable = true,
+      onClear,
+      id,
       ...restProps
     },
     ref,
   ) => {
-    const [isFocused, setIsFocused] = useState(false);
+    const inputId = useId();
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [isFocused, setIsFocused] = React.useState(false);
 
-    const hasValue =
-      value !== undefined && value !== null && String(value).length > 0;
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-    const showCenteredPlaceholder = !hasValue && !isFocused && !disabled;
+    const hasValue = value.length > 0;
+    const showFloatingLabel = isFocused || hasValue || disabled;
+    const showClearButton = clearable && hasValue && !disabled;
     const displayPlaceholder = placeholder || label;
 
-    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(true);
-      onFocus?.(e);
+      onFocus?.(event);
     };
 
-    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(false);
-      onBlur?.(e);
+      onBlur?.(event);
+    };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(event);
+    };
+
+    const handleClear = () => {
+      const input = inputRef.current;
+
+      if (!input) {
+        return;
+      }
+
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+        HTMLInputElement.prototype,
+        "value",
+      )?.set;
+
+      nativeInputValueSetter?.call(input, "");
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      input.focus();
+      onClear?.();
     };
 
     return (
-      <div className={`${styles.wrapper} ${className || ""}`}>
-        <div className={`${styles.settings} ${disabled ? styles.disabled : ""}`}>
-          <div className={styles.bg}>
-            <div
-              className={`${styles.textContainer} ${showCenteredPlaceholder ? styles.textContainerCentered : ""
-                }`}
-            >
-              {!showCenteredPlaceholder && (
+      <div className={[styles.wrapper, className].filter(Boolean).join(" ")}>
+        <div
+          className={[
+            styles.field,
+            showFloatingLabel ? styles.fieldExpanded : styles.fieldDefault,
+            disabled ? styles.disabled : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          <div
+            className={[
+              styles.content,
+              !showFloatingLabel ? styles.contentCentered : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {showFloatingLabel ? (
+              <label htmlFor={id ?? inputId} className={styles.label}>
                 <Typography
                   variant="caption1-regular"
-                  color="var(--theme-text-secondary)"
-                  as="label"
-                  className={styles.label}
+                  color="primary"
                 >
                   {label}
                 </Typography>
+              </label>
+            ) : null}
+
+            <div className={styles.inputRow}>
+              {!showFloatingLabel && (
+                <label htmlFor={id ?? inputId} className={styles.centerPlaceholder}>
+                  <Typography
+                    variant="text-semibold"
+                    color="var(--theme-text-secondary)"
+                  >
+                    {displayPlaceholder}
+                  </Typography>
+                </label>
               )}
 
-              <div className={styles.textZone}>
-                <Typography
-                  as="div"
-                  variant="subheadline2-semibold"
-                  color="var(--theme-text-primary)"
-                  className={styles.bodyText}
-                >
-                  <div className={styles.inputContainer}>
-                    <input
-                      ref={ref}
-                      className={styles.input}
-                      value={value}
-                      placeholder={showCenteredPlaceholder ? "" : placeholder}
-                      disabled={disabled}
-                      onChange={onChange}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                      spellCheck={false}
-                      {...restProps}
-                    />
+              <input
+                {...restProps}
+                id={id ?? inputId}
+                ref={inputRef}
+                className={styles.input}
+                value={value}
+                placeholder={showFloatingLabel ? placeholder : ""}
+                disabled={disabled}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                spellCheck={false}
+              />
 
-                    {showCenteredPlaceholder && (
-                      <div className={styles.centerPlaceholder}>
-                        <Typography
-                          as="div"
-                          variant="subheadline2-semibold"
-                          color="var(--theme-text-secondary)"
-                          className={styles.centerPlaceholderText}
-                        >
-                          {displayPlaceholder}
-                        </Typography>
-                      </div>
-                    )}
-                  </div>
-                </Typography>
-              </div>
+              {showClearButton && (
+                <IconButton
+                  buttonSize="m"
+                  iconSize="m"
+                  icon="Cancel"
+                  className={styles.clearButton}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={handleClear}
+                  aria-label={`Clear ${label}`}
+                />
+              )}
             </div>
           </div>
         </div>

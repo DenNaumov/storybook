@@ -1,8 +1,8 @@
 import type { Preview } from "@storybook/nextjs";
 
 import "../src/styles/globals.css";
-import { ThemeProvider } from "../src/ui-kit/theme";
-import type { ThemeColor, ThemeMode } from "../src/ui-kit/theme";
+import { ThemeProvider } from "../src/shared/ui-kit/theme";
+import type { ThemeColor, ThemeMode } from "../src/shared/ui-kit/theme";
 
 const preview: Preview = {
   globalTypes: {

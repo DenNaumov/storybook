@@ -1,4 +1,4 @@
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { TextField } from "@/shared/ui-kit/text-field/text-field";
 import { Button } from "@/shared/ui-kit/button/button";
 import type { ProfileFormData } from "./profile-form.types";
@@ -6,55 +6,86 @@ import styles from "./profile-form.module.css";
 
 export const ProfileFormFields = () => {
   const {
-    register,
+    control,
     formState: { isSubmitting },
   } = useFormContext<ProfileFormData>();
 
   return (
     <>
-      <TextField
-        className={styles.textField}
-        label="E-mail"
-        type="email"
-        disabled={isSubmitting}
-        {...register("email", {
+      <Controller
+        name="email"
+        control={control}
+        rules={{
           required: true,
           pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        })}
+        }}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            className={styles.textField}
+            label="E-mail"
+            type="email"
+            disabled={isSubmitting}
+          />
+        )}
       />
 
-      <TextField
-        className={styles.textField}
-        label="Фамилия"
-        disabled={isSubmitting}
-        {...register("lastName", { required: true })}
+      <Controller
+        name="lastName"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            className={styles.textField}
+            label="Фамилия"
+            disabled={isSubmitting}
+          />
+        )}
       />
 
-      <TextField
-        className={styles.textField}
-        label="Имя"
-        disabled={isSubmitting}
-        {...register("firstName", { required: true })}
+      <Controller
+        name="firstName"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            className={styles.textField}
+            label="Имя"
+            disabled={isSubmitting}
+          />
+        )}
       />
 
-      <TextField
-        label="Отчество"
-        disabled={isSubmitting}
-        {...register("middleName")}
+      <Controller
+        name="middleName"
+        control={control}
+        render={({ field }) => (
+          <TextField {...field} label="Отчество" disabled={isSubmitting} />
+        )}
       />
 
-      <TextField
-        className={styles.textField}
-        label="Телефон"
-        type="tel"
-        disabled={isSubmitting}
-        {...register("phone")}
+      <Controller
+        name="phone"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            className={styles.textField}
+            label="Телефон"
+            type="tel"
+            disabled={isSubmitting}
+          />
+        )}
       />
 
-      <TextField
-        label="Должность"
-        disabled={isSubmitting}
-        {...register("position")}
+      <Controller
+        name="position"
+        control={control}
+        render={({ field }) => (
+          <TextField {...field} label="Должность" disabled={isSubmitting} />
+        )}
       />
 
       <div className={styles.submitWrapper}>
