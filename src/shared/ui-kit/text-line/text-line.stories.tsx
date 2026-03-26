@@ -49,13 +49,13 @@ export const Showcase: Story = {
           <TextLineExample
             placeholder="Label_placeholder"
             error
-            helperText="Error_text"
+            assistiveText="Assistive_text"
           />
           <TextLineExample
             label="Label"
             initialValue="Value"
             error
-            helperText="Error_text"
+            assistiveText="Assistive_text"
           />
         </div>
       </div>

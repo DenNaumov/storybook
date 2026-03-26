@@ -1,19 +1,18 @@
-import type { ChangeEvent, ReactNode } from "react";
-import { useId, useMemo, useRef } from "react";
-
-import { IconButton } from "../icon-button/icon-button";
+import type { ReactNode } from "react";
+import { InputMaster } from "../input-master/input-master";
 import styles from "./text-line.module.css";
 
 export interface TextLineProps {
   label?: string;
   placeholder?: string;
   value: string;
-  helperText?: ReactNode;
+  assistiveText?: ReactNode;
   disabled?: boolean;
   error?: boolean;
   clearable?: boolean;
   id?: string;
   name?: string;
+  className?: string;
   onChange: (value: string) => void;
 }
 
@@ -21,84 +20,58 @@ export const TextLine = ({
   label,
   placeholder,
   value,
-  helperText,
+  assistiveText,
   disabled = false,
   error = false,
   clearable = false,
-  id,
-  name,
-  onChange,
+  className,
+  ...restProps
 }: TextLineProps) => {
-  const autoId = useId();
-  const inputId = id ?? autoId;
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const hasValue = value.length > 0;
-
-  const classes = useMemo(
-    () =>
-      [
-        styles.field,
-        disabled ? styles.disabled : "",
-        error ? styles.error : "",
-        hasValue ? styles.filled : "",
-      ]
-        .filter(Boolean)
-        .join(" "),
-    [disabled, error, hasValue],
-  );
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
-  };
-
-  const handleClear = () => {
-    if (disabled) return;
-    onChange("");
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
-
   return (
-    <div className={styles.container}>
-      {label ? (
-        <label className={styles.label} htmlFor={inputId}>
-          {label}
-        </label>
-      ) : null}
-      <div className={classes} data-has-value={hasValue}>
-        <input
-          id={inputId}
-          ref={inputRef}
-          className={styles.input}
-          type="text"
-          name={name}
-          value={value}
-          placeholder={placeholder}
-          disabled={disabled}
-          aria-invalid={error || undefined}
-          spellCheck={false}
-          onChange={handleChange}
-        />
-        {clearable && hasValue ? (
-          <IconButton
-            className={styles.clear}
-            buttonSize="m"
-            iconSize="m"
-            icon="Cancel"
-            aria-label="Очистить"
-            onClick={handleClear}
-            onMouseDown={(event) => event.preventDefault()}
-            disabled={disabled}
-          />
-        ) : null}
-      </div>
-      {helperText ? (
-        <div className={styles.helper} data-error={error ? "true" : "false"}>
-          {helperText}
-        </div>
-      ) : null}
-    </div>
+    <InputMaster
+      {...restProps}
+      value={value}
+      disabled={disabled}
+      error={error}
+      clearable={clearable}
+      placeholder={placeholder}
+      className={[styles.container, className].filter(Boolean).join(" ")}
+      topContent={({ inputId, hasValue }) =>
+        label ? (
+          <label
+            className={[
+              styles.label,
+              hasValue ? styles.labelFilled : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            htmlFor={inputId}
+          >
+            {label}
+          </label>
+        ) : null
+      }
+      fieldClassName={({ disabled: isDisabled }) =>
+        [
+          styles.field,
+          isDisabled ? styles.disabled : "",
+          error ? styles.error : "",
+        ]
+          .filter(Boolean)
+          .join(" ")
+      }
+      inputRowClassName={styles.inputRow}
+      inputClassName={styles.input}
+      clearButtonClassName={styles.clear}
+      assistiveContent={() =>
+        assistiveText ? (
+          <div className={styles.helper} data-error={error ? "true" : "false"}>
+            {assistiveText}
+          </div>
+        ) : null
+      }
+      clearAriaLabel={label ? `Очистить ${label}` : "Очистить"}
+      spellCheck={false}
+    />
   );
 };
