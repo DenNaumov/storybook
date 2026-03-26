@@ -10,7 +10,6 @@ export interface TextLineProps {
   value: string;
   helperText?: ReactNode;
   disabled?: boolean;
-  readOnly?: boolean;
   error?: boolean;
   clearable?: boolean;
   id?: string;
@@ -24,7 +23,6 @@ export const TextLine = ({
   value,
   helperText,
   disabled = false,
-  readOnly = false,
   error = false,
   clearable = false,
   id,
@@ -42,13 +40,12 @@ export const TextLine = ({
       [
         styles.field,
         disabled ? styles.disabled : "",
-        readOnly ? styles.readOnly : "",
         error ? styles.error : "",
         hasValue ? styles.filled : "",
       ]
         .filter(Boolean)
         .join(" "),
-    [disabled, readOnly, error, hasValue],
+    [disabled, error, hasValue],
   );
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +53,7 @@ export const TextLine = ({
   };
 
   const handleClear = () => {
-    if (disabled || readOnly) return;
+    if (disabled) return;
     onChange("");
     if (inputRef.current) {
       inputRef.current.focus();
@@ -80,7 +77,6 @@ export const TextLine = ({
           value={value}
           placeholder={placeholder}
           disabled={disabled}
-          readOnly={readOnly}
           aria-invalid={error || undefined}
           spellCheck={false}
           onChange={handleChange}
@@ -94,7 +90,7 @@ export const TextLine = ({
             aria-label="Очистить"
             onClick={handleClear}
             onMouseDown={(event) => event.preventDefault()}
-            disabled={disabled || readOnly}
+            disabled={disabled}
           />
         ) : null}
       </div>

@@ -44,12 +44,6 @@ export const Showcase: Story = {
             initialValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Valu"
             clearable
           />
-          <TextLineExample label="Label" initialValue="Value" readOnly />
-          <TextLineExample
-            label="Label"
-            initialValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value"
-            readOnly
-          />
           <TextLineExample placeholder="Label_placeholder" disabled />
           <TextLineExample label="Label" initialValue="Value" disabled />
           <TextLineExample
