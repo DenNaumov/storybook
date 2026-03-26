@@ -86,7 +86,6 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
         <div
           className={joinClasses(
             styles.field,
-            isExpanded ? styles.fieldExpanded : styles.fieldDefault,
             disabled && styles.fieldDisabled,
             error && styles.fieldError,
           )}

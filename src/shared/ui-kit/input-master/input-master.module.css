@@ -9,6 +9,7 @@
 .field {
   width: 100%;
   min-height: 56px;
+  height: 56px;
   padding: 8px 4px 8px 16px;
   border-radius: 12px;
   background: var(--theme-bg-surface-primary);
@@ -18,14 +19,6 @@
   transition:
     background-color 160ms ease,
     box-shadow 160ms ease;
-}
-
-.fieldExpanded {
-  height: 80px;
-}
-
-.fieldDefault {
-  height: 56px;
 }
 
 .field:focus-within {
@@ -52,7 +45,8 @@
 }
 
 .contentExpanded {
-  height: 64px;
+  justify-content: center;
+  height: 40px;
 }
 
 .contentCentered {
