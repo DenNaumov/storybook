@@ -58,43 +58,27 @@
 }
 
 .clear {
-  width: 28px;
-  height: 28px;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  color: #b3b3b3;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+}
+
+.clear:hover {
   color: #b3b3b3;
 }
 
-.clear span {
-  width: 14px;
-  height: 14px;
-  position: relative;
-  display: inline-block;
-}
-
-.clear span::before,
-.clear span::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: 0;
-  width: 14px;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
-}
-
-.clear span::before {
-  transform: rotate(45deg);
-}
-
-.clear span::after {
-  transform: rotate(-45deg);
+.clear:focus-visible {
+  outline: 2px solid rgba(43, 140, 255, 0.7);
+  outline-offset: 2px;
 }
 
 .filled .label {

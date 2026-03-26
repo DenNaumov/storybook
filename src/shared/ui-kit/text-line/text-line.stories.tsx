@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { ComponentProps } from "react";
+import { useState } from "react";
 
 import { TextLine } from "./text-line";
 import styles from "./text-line.stories.module.css";
@@ -13,6 +15,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const TextLineExample = ({
+  initialValue = "",
+  ...props
+}: Omit<ComponentProps<typeof TextLine>, "value" | "onChange"> & {
+  initialValue?: string;
+}) => {
+  const [value, setValue] = useState(initialValue);
+
+  return <TextLine {...props} value={value} onChange={setValue} />;
+};
+
 export const Showcase: Story = {
   render: () => (
     <div className={styles.stage}>
@@ -23,30 +36,30 @@ export const Showcase: Story = {
         </div>
         <div className={styles.divider} />
         <div className={styles.stack}>
-          <TextLine placeholder="Label_placeholder" />
-          <TextLine label="Label" />
-          <TextLine label="Label" defaultValue="Value" clearable />
-          <TextLine
+          <TextLineExample placeholder="Label_placeholder" />
+          <TextLineExample label="Label" />
+          <TextLineExample label="Label" initialValue="Value" clearable />
+          <TextLineExample
             label="Label"
-            defaultValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Valu"
+            initialValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Valu"
             clearable
           />
-          <TextLine label="Label" defaultValue="Value" readOnly />
-          <TextLine
+          <TextLineExample label="Label" initialValue="Value" readOnly />
+          <TextLineExample
             label="Label"
-            defaultValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value"
+            initialValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value"
             readOnly
           />
-          <TextLine placeholder="Label_placeholder" disabled />
-          <TextLine label="Label" defaultValue="Value" disabled />
-          <TextLine
+          <TextLineExample placeholder="Label_placeholder" disabled />
+          <TextLineExample label="Label" initialValue="Value" disabled />
+          <TextLineExample
             placeholder="Label_placeholder"
             error
             helperText="Error_text"
           />
-          <TextLine
+          <TextLineExample
             label="Label"
-            defaultValue="Value"
+            initialValue="Value"
             error
             helperText="Error_text"
           />

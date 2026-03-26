@@ -1,13 +1,13 @@
 import type { ChangeEvent, ReactNode } from "react";
-import { useId, useMemo, useRef, useState } from "react";
+import { useId, useMemo, useRef } from "react";
 
+import { IconButton } from "../icon-button/icon-button";
 import styles from "./text-line.module.css";
 
 export interface TextLineProps {
   label?: string;
   placeholder?: string;
-  value?: string;
-  defaultValue?: string;
+  value: string;
   helperText?: ReactNode;
   disabled?: boolean;
   readOnly?: boolean;
@@ -15,14 +15,13 @@ export interface TextLineProps {
   clearable?: boolean;
   id?: string;
   name?: string;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
 export const TextLine = ({
   label,
   placeholder,
   value,
-  defaultValue,
   helperText,
   disabled = false,
   readOnly = false,
@@ -34,12 +33,9 @@ export const TextLine = ({
 }: TextLineProps) => {
   const autoId = useId();
   const inputId = id ?? autoId;
-  const isControlled = value !== undefined;
-  const [internalValue, setInternalValue] = useState(defaultValue ?? "");
-  const displayValue = isControlled ? (value ?? "") : internalValue;
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const hasValue = displayValue.length > 0;
+  const hasValue = value.length > 0;
 
   const classes = useMemo(
     () =>
@@ -56,19 +52,12 @@ export const TextLine = ({
   );
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const next = event.target.value;
-    if (!isControlled) {
-      setInternalValue(next);
-    }
-    onChange?.(next);
+    onChange(event.target.value);
   };
 
   const handleClear = () => {
     if (disabled || readOnly) return;
-    if (!isControlled) {
-      setInternalValue("");
-    }
-    onChange?.("");
+    onChange("");
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -88,7 +77,7 @@ export const TextLine = ({
           className={styles.input}
           type="text"
           name={name}
-          value={displayValue}
+          value={value}
           placeholder={placeholder}
           disabled={disabled}
           readOnly={readOnly}
@@ -97,15 +86,16 @@ export const TextLine = ({
           onChange={handleChange}
         />
         {clearable && hasValue ? (
-          <button
+          <IconButton
             className={styles.clear}
-            type="button"
+            buttonSize="m"
+            iconSize="m"
+            icon="Cancel"
             aria-label="Очистить"
             onClick={handleClear}
+            onMouseDown={(event) => event.preventDefault()}
             disabled={disabled || readOnly}
-          >
-            <span />
-          </button>
+          />
         ) : null}
       </div>
       {helperText ? (
