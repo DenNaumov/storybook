@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex: 1 1 auto;
   width: 100%;
-  min-height: 100vh;
   padding: 0 16px;
   gap: 12px;
   box-sizing: border-box;
@@ -58,7 +58,7 @@
 .submitWrapper {
   width: 100%;
   margin-top: auto;
-  padding: 16px 0 calc(16px + env(safe-area-inset-bottom, 0px));
+  padding: 16px 0 env(safe-area-inset-bottom, 0px);
 }
 
 .submitWrapper button {
