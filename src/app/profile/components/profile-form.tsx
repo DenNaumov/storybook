@@ -17,15 +17,27 @@ export const ProfileForm = () => {
       position: "",
     },
   });
-  const { handleSubmit, reset } = methods;
+  const {
+    handleSubmit,
+    reset,
+    formState: { dirtyFields },
+  } = methods;
 
   const onSubmit = async (data: ProfileFormData) => {
-    console.log("Form submitted with data:", data);
+    const changedFields: Partial<ProfileFormData> = {};
+
+    for (const key of Object.keys(dirtyFields) as Array<
+      keyof ProfileFormData
+    >) {
+      changedFields[key] = data[key];
+    }
+
+    console.log("Form submitted with changed fields:", changedFields);
 
     // Имитация отправки данных на сервер
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    reset(); // Очищаем форму
+    reset(data);
   };
 
   return (
