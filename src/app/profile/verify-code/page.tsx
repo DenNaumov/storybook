@@ -3,6 +3,7 @@
 import type { ClipboardEvent } from "react";
 import { useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { removeLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./page.module.css";
@@ -83,7 +84,7 @@ export default function ProfileVerifyCodePage() {
           label="Продолжить"
           disabled={normalizedCode.length !== CODE_LENGTH}
           className={styles.primaryAction}
-          onClick={() => router.push(pathname.replace(/\/verify-code\/?$/, ""))}
+          onClick={() => router.push(removeLastPathSegment(pathname, "verify-code"))}
         />
         <Button
           variant="text"

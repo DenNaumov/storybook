@@ -2,6 +2,7 @@
 
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { appendPathSegment } from "@/shared/lib/routing/pathname";
 import { useForm, FormProvider } from "react-hook-form";
 import { ProfileFormFields } from "./profile-form-fields";
 import type { ProfileFormData } from "./profile-form.types";
@@ -42,7 +43,7 @@ export const ProfileForm = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     if (isEmailChanged) {
-      router.push(`${pathname.replace(/\/$/, "")}/verify`);
+      router.push(appendPathSegment(pathname, "verify"));
       return;
     }
 

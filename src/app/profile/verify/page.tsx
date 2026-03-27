@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { replaceLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
 import { InputMaster } from "@/shared/ui-kit/input-master/input-master";
 import { ResizableIcon } from "@/shared/ui-kit/icon/icon-wrappers";
@@ -61,7 +62,9 @@ export default function ProfileVerifyPage() {
           disabled={password.trim().length === 0}
           className={styles.primaryAction}
           onClick={() =>
-            router.push(pathname.replace(/\/verify\/?$/, "/verify-code"))
+            router.push(
+              replaceLastPathSegment(pathname, "verify", "verify-code"),
+            )
           }
         />
       </div>
