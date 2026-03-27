@@ -2,56 +2,56 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ComponentProps } from "react";
 import { useState } from "react";
 
-import { TextLine } from "./text-line";
-import styles from "./text-line.stories.module.css";
+import { TextArea } from "./text-area";
+import styles from "./text-area.stories.module.css";
 
 const meta = {
-  title: "UI Kit/TextLine",
-  component: TextLine,
+  title: "UI Kit/TextArea",
+  component: TextArea,
   parameters: { layout: "fullscreen" },
   tags: ["autodocs"],
-} satisfies Meta<typeof TextLine>;
+} satisfies Meta<typeof TextArea>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const TextLineExample = ({
+const TextAreaExample = ({
   initialValue = "",
   ...props
-}: Omit<ComponentProps<typeof TextLine>, "value" | "onChange"> & {
+}: Omit<ComponentProps<typeof TextArea>, "value" | "onChange"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <TextLine {...props} value={value} onValueChange={setValue} />;
+  return <TextArea {...props} value={value} onValueChange={setValue} />;
 };
 
 export const Showcase: Story = {
   render: () => (
     <div className={styles.stage}>
       <div className={styles.card}>
-        <div className={styles.title}>TextLine</div>
+        <div className={styles.title}>TextArea</div>
         <div className={styles.subtitle}>
           Текстовое поле, которое не TextArea, но всё равно многострочный)))
         </div>
         <div className={styles.divider} />
         <div className={styles.stack}>
-          <TextLineExample placeholder="Label_placeholder" />
-          <TextLineExample label="Label" />
-          <TextLineExample label="Label" initialValue="Value" clearable />
-          <TextLineExample
+          <TextAreaExample placeholder="Label_placeholder" />
+          <TextAreaExample label="Label" />
+          <TextAreaExample label="Label" initialValue="Value" clearable />
+          <TextAreaExample
             label="Label"
             initialValue="Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Value Valu"
             clearable
           />
-          <TextLineExample placeholder="Label_placeholder" disabled />
-          <TextLineExample label="Label" initialValue="Value" disabled />
-          <TextLineExample
+          <TextAreaExample placeholder="Label_placeholder" disabled />
+          <TextAreaExample label="Label" initialValue="Value" disabled />
+          <TextAreaExample
             placeholder="Label_placeholder"
             error
             assistiveText="Assistive_text"
           />
-          <TextLineExample
+          <TextAreaExample
             label="Label"
             initialValue="Value"
             error

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { InputMaster } from "../input-master/input-master";
 
-export interface TextLineProps {
+export interface TextAreaProps {
   label?: string;
   placeholder?: string;
   value: string;
@@ -15,7 +15,7 @@ export interface TextLineProps {
   onValueChange: (value: string) => void;
 }
 
-export const TextLine = ({
+export const TextArea = ({
   label,
   placeholder,
   value,
@@ -25,7 +25,7 @@ export const TextLine = ({
   clearable = false,
   className,
   ...restProps
-}: TextLineProps) => (
+}: TextAreaProps) => (
   <InputMaster
     {...restProps}
     label={label}
