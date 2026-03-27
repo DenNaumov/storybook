@@ -101,7 +101,7 @@ export const ProfileFormFields = () => {
           loading={isSubmitting}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Отправка..." : "Отправить"}
+          {isSubmitting ? "Сохранение..." : "Сохранить"}
         </Button>
       </div>
     </>
