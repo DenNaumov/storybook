@@ -28,12 +28,15 @@ export default function ProfileVerifyCodePage() {
     <section className={styles.screen}>
       <div className={styles.content}>
         <header className={styles.header}>
-          <Typography as="h1" variant="title3-bold" className={styles.title}>
+          <Typography
+            variant="headline-semibold"
+            color="default"
+            className={styles.title}
+          >
             Введите код из письма
           </Typography>
           <Typography
-            as="p"
-            variant="title3-regular"
+            variant="subheadline1-regular"
             color="secondary"
             className={styles.description}
           >
