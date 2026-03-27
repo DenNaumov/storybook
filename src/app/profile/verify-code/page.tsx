@@ -2,10 +2,10 @@
 
 import type { ClipboardEvent } from "react";
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/shared/ui-kit/button/button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "../verify/components/profile-verify-flow.module.css";
+import styles from "./page.module.css";
 
 const CODE_LENGTH = 6;
 
@@ -14,6 +14,7 @@ const sanitizeCode = (value: string) =>
 
 export default function ProfileVerifyCodePage() {
   const router = useRouter();
+  const pathname = usePathname();
   const [code, setCode] = useState("");
   const normalizedCode = useMemo(() => sanitizeCode(code), [code]);
 
@@ -82,7 +83,7 @@ export default function ProfileVerifyCodePage() {
           label="Продолжить"
           disabled={normalizedCode.length !== CODE_LENGTH}
           className={styles.primaryAction}
-          onClick={() => router.push("/profile")}
+          onClick={() => router.push(pathname.replace(/\/verify-code\/?$/, ""))}
         />
         <Button
           variant="text"

@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/shared/ui-kit/button/button";
 import { InputMaster } from "@/shared/ui-kit/input-master/input-master";
 import { ResizableIcon } from "@/shared/ui-kit/icon/icon-wrappers";
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "./components/profile-verify-flow.module.css";
+import styles from "./page.module.css";
 
 export default function ProfileVerifyPage() {
   const router = useRouter();
+  const pathname = usePathname();
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -59,7 +60,9 @@ export default function ProfileVerifyPage() {
           label="Продолжить"
           disabled={password.trim().length === 0}
           className={styles.primaryAction}
-          onClick={() => router.push("/profile/verify-code")}
+          onClick={() =>
+            router.push(pathname.replace(/\/verify\/?$/, "/verify-code"))
+          }
         />
       </div>
     </section>

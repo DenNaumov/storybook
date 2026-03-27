@@ -1,0 +1,95 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding: 10px 16px 20px;
+  background: var(--theme-bg-brand-light);
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  max-width: 320px;
+}
+
+.description {
+  max-width: 360px;
+}
+
+.codeInputGroup {
+  position: relative;
+  display: block;
+  margin-top: 40px;
+  cursor: text;
+}
+
+.codeRow {
+  display: grid;
+  gap: 10px;
+}
+
+.codeCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  background: var(--theme-bg-surface-primary);
+}
+
+.code {
+  min-height: 24px;
+}
+
+.hiddenCodeInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 24px;
+}
+
+.primaryAction {
+  width: 100%;
+  height: 76px;
+  border-radius: 20px;
+}
+
+.secondaryAction {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 0;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
