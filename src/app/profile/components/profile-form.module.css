@@ -58,7 +58,7 @@
 .submitWrapper {
   width: 100%;
   margin-top: auto;
-  padding: 16px 0 env(safe-area-inset-bottom, 0px);
+  padding: 16px 0 calc(60px + 16px + env(safe-area-inset-bottom, 0px));
 }
 
 .submitWrapper button {

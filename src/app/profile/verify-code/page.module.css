@@ -3,7 +3,7 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  padding: 10px 16px 20px;
+  padding: 10px 16px 0;
   background: var(--theme-bg-brand-light);
   box-sizing: border-box;
 }
@@ -66,8 +66,9 @@
 .footer {
   display: flex;
   flex-direction: column;
+  margin-top: auto;
   gap: 20px;
-  padding-top: 24px;
+  padding: 24px 0 calc(60px + 16px + env(safe-area-inset-bottom, 0px));
 }
 
 .primaryAction {
