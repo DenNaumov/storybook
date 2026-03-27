@@ -1,19 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { replaceLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
-import { InputMaster } from "@/shared/ui-kit/input-master/input-master";
-import { ResizableIcon } from "@/shared/ui-kit/icon/icon-wrappers";
+import { PasswordField } from "@/shared/ui-kit/password-field/password-field";
 import { Typography } from "@/shared/ui-kit/typography/typography";
+import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function ProfileVerifyPage() {
   const router = useRouter();
   const pathname = usePathname();
   const [password, setPassword] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
     <section className={styles.screen}>
@@ -33,25 +31,12 @@ export default function ProfileVerifyPage() {
         </header>
 
         <div className={styles.passwordField}>
-          <InputMaster
+          <PasswordField
             label="Пароль"
-            type={passwordVisible ? "text" : "password"}
             value={password}
-            onValueChange={setPassword}
+            onChange={setPassword}
             autoComplete="current-password"
           />
-          <button
-            type="button"
-            className={styles.visibilityButton}
-            onClick={() => setPasswordVisible((current) => !current)}
-            aria-label={passwordVisible ? "Скрыть пароль" : "Показать пароль"}
-            aria-pressed={passwordVisible}
-          >
-            <ResizableIcon
-              icon={passwordVisible ? "ViewOffSlash" : "View"}
-              size={24}
-            />
-          </button>
         </div>
       </div>
 

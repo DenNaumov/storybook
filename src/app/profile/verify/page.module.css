@@ -29,33 +29,7 @@
 }
 
 .passwordField {
-  position: relative;
   margin-top: 40px;
-}
-
-.passwordField input {
-  padding-right: 40px;
-}
-
-.passwordField label {
-  color: var(--theme-text-brand-main);
-}
-
-.visibilityButton {
-  position: absolute;
-  top: 8px;
-  right: 4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  border-radius: 12px;
-  background: transparent;
-  color: var(--theme-icon-default);
-  cursor: pointer;
 }
 
 .codeInputGroup {
