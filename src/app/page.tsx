@@ -29,6 +29,8 @@ export default function Home() {
             />
             Profile
           </Link>
+          <Link href={"/profile/verify"}>Profile verify</Link>
+          <Link href={"/profile/verify-code"}>Profile verify code</Link>
         </div>
       </main>
     </div>

@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { useForm, FormProvider } from "react-hook-form";
 import { ProfileFormFields } from "./profile-form-fields";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
 
 export const ProfileForm = () => {
+  const router = useRouter();
   const methods = useForm<ProfileFormData>({
     defaultValues: {
       firstName: "",
@@ -24,6 +26,7 @@ export const ProfileForm = () => {
   } = methods;
 
   const onSubmit = async (data: ProfileFormData) => {
+    const isEmailChanged = Boolean(dirtyFields.email);
     const changedFields: Partial<ProfileFormData> = {};
 
     for (const key of Object.keys(dirtyFields) as Array<
@@ -36,6 +39,11 @@ export const ProfileForm = () => {
 
     // Имитация отправки данных на сервер
     await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    if (isEmailChanged) {
+      router.push("/profile/verify");
+      return;
+    }
 
     reset(data);
   };
