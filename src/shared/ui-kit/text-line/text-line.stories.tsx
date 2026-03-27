@@ -39,11 +39,7 @@ const StatesPreview = () => {
           value={emptyValue}
           onChange={setEmptyValue}
         />
-        <TextLine
-          label="Label"
-          value={value}
-          onChange={setValue}
-        />
+        <TextLine label="Label" value={value} onChange={setValue} />
         <TextLine
           label="Label"
           value="Value"

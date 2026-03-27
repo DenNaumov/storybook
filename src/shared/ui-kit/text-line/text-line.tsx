@@ -1,11 +1,10 @@
 import React from "react";
 import { InputMaster } from "../input-master/input-master";
 
-export interface TextLineProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "defaultValue" | "value" | "onChange"
-  > {
+export interface TextLineProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "defaultValue" | "value" | "onChange"
+> {
   label?: string;
   value: string;
   onChange: (value: string) => void;

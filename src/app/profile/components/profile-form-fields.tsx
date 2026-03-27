@@ -31,13 +31,7 @@ const ProfileFormField = ({
   const fieldLabel = isRequired ? `${label} *` : label;
 
   return (
-    <TextLine
-      {...field}
-      className={styles.textField}
-      label={fieldLabel}
-      type={type}
-      disabled={disabled}
-    />
+    <TextLine {...field} label={fieldLabel} type={type} disabled={disabled} />
   );
 };
 
@@ -101,7 +95,7 @@ export const ProfileFormFields = () => {
           loading={isSubmitting}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Сохранение..." : "Сохранить"}
+          Сохранить
         </Button>
       </div>
     </>

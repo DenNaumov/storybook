@@ -7,8 +7,7 @@ import styles from "./input-master.stories.module.css";
 
 type InputMasterStoryArgs = Omit<
   ComponentProps<typeof InputMaster>,
-  | "value"
-  | "onChange"
+  "value" | "onChange"
 > & {
   value: string;
   errorText?: string;

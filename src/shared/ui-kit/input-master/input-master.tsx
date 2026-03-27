@@ -5,11 +5,10 @@ import styles from "./input-master.module.css";
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
   classNames.filter(Boolean).join(" ");
 
-export interface InputMasterProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "defaultValue" | "value" | "onChange"
-  > {
+export interface InputMasterProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "defaultValue" | "value" | "onChange"
+> {
   label?: React.ReactNode;
   value: string;
   onValueChange: (value: string) => void;
