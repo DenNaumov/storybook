@@ -1,102 +1,96 @@
-import { Controller, useFormContext } from "react-hook-form";
+import type { InputHTMLAttributes } from "react";
+import {
+  useController,
+  useFormContext,
+  type FieldPath,
+  type RegisterOptions,
+} from "react-hook-form";
 import { TextLine } from "@/shared/ui-kit/text-line/text-line";
 import { Button } from "@/shared/ui-kit/button/button";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
 
+interface ProfileFormFieldProps {
+  name: FieldPath<ProfileFormData>;
+  label: string;
+  disabled: boolean;
+  type?: InputHTMLAttributes<HTMLInputElement>["type"];
+  rules?: RegisterOptions<ProfileFormData, FieldPath<ProfileFormData>>;
+}
+
+const ProfileFormField = ({
+  name,
+  label,
+  disabled,
+  type,
+  rules,
+}: ProfileFormFieldProps) => {
+  const { control } = useFormContext<ProfileFormData>();
+  const { field } = useController<ProfileFormData>({ name, control, rules });
+  const isRequired = Boolean(rules?.required);
+  const fieldLabel = isRequired ? `${label} *` : label;
+
+  return (
+    <TextLine
+      {...field}
+      className={styles.textField}
+      label={fieldLabel}
+      type={type}
+      disabled={disabled}
+    />
+  );
+};
+
 export const ProfileFormFields = () => {
   const {
-    control,
     formState: { isSubmitting },
   } = useFormContext<ProfileFormData>();
 
   return (
     <>
       <div className={styles.fieldsGroup}>
-        <Controller
+        <ProfileFormField
           name="email"
-          control={control}
+          label="E-mail"
+          type="email"
+          disabled={isSubmitting}
           rules={{
             required: true,
             pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
           }}
-          render={({ field }) => (
-            <TextLine
-              {...field}
-              className={styles.textField}
-              label="E-mail"
-              type="email"
-              disabled={isSubmitting}
-            />
-          )}
         />
 
-        <Controller
+        <ProfileFormField
           name="lastName"
-          control={control}
+          label="Фамилия"
+          disabled={isSubmitting}
           rules={{ required: true }}
-          render={({ field }) => (
-            <TextLine
-              {...field}
-              className={styles.textField}
-              label="Фамилия"
-              disabled={isSubmitting}
-            />
-          )}
         />
 
-        <Controller
+        <ProfileFormField
           name="firstName"
-          control={control}
+          label="Имя"
+          disabled={isSubmitting}
           rules={{ required: true }}
-          render={({ field }) => (
-            <TextLine
-              {...field}
-              className={styles.textField}
-              label="Имя"
-              disabled={isSubmitting}
-            />
-          )}
         />
 
-        <Controller
+        <ProfileFormField
           name="middleName"
-          control={control}
-          render={({ field }) => (
-            <TextLine
-              {...field}
-              className={styles.textField}
-              label="Отчество"
-              disabled={isSubmitting}
-            />
-          )}
+          label="Отчество"
+          disabled={isSubmitting}
         />
 
-        <Controller
+        <ProfileFormField
           name="phone"
-          control={control}
-          render={({ field }) => (
-            <TextLine
-              {...field}
-              className={styles.textField}
-              label="Телефон"
-              type="tel"
-              disabled={isSubmitting}
-            />
-          )}
+          label="Телефон"
+          type="tel"
+          disabled={isSubmitting}
         />
 
-        <Controller
+        <ProfileFormField
           name="position"
-          control={control}
-          render={({ field }) => (
-            <TextLine
-              {...field}
-              className={styles.textField}
-              label="Должность"
-              disabled={isSubmitting}
-            />
-          )}
+          label="Должность"
+          disabled={isSubmitting}
         />
       </div>
 
