@@ -13,7 +13,6 @@ import styles from "./profile-form.module.css";
 interface ProfileFormFieldProps {
   name: FieldPath<ProfileFormData>;
   label: string;
-  disabled: boolean;
   type?: InputHTMLAttributes<HTMLInputElement>["type"];
   rules?: RegisterOptions<ProfileFormData, FieldPath<ProfileFormData>>;
 }
@@ -21,17 +20,24 @@ interface ProfileFormFieldProps {
 const ProfileFormField = ({
   name,
   label,
-  disabled,
   type,
   rules,
 }: ProfileFormFieldProps) => {
-  const { control } = useFormContext<ProfileFormData>();
+  const {
+    control,
+    formState: { isSubmitting },
+  } = useFormContext<ProfileFormData>();
   const { field } = useController<ProfileFormData>({ name, control, rules });
   const isRequired = Boolean(rules?.required);
   const fieldLabel = isRequired ? `${label} *` : label;
 
   return (
-    <TextLine {...field} label={fieldLabel} type={type} disabled={disabled} />
+    <TextLine
+      {...field}
+      label={fieldLabel}
+      type={type}
+      disabled={isSubmitting}
+    />
   );
 };
 
@@ -47,7 +53,6 @@ export const ProfileFormFields = () => {
           name="email"
           label="E-mail"
           type="email"
-          disabled={isSubmitting}
           rules={{
             required: true,
             pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -57,35 +62,20 @@ export const ProfileFormFields = () => {
         <ProfileFormField
           name="lastName"
           label="Фамилия"
-          disabled={isSubmitting}
           rules={{ required: true }}
         />
 
         <ProfileFormField
           name="firstName"
           label="Имя"
-          disabled={isSubmitting}
           rules={{ required: true }}
         />
 
-        <ProfileFormField
-          name="middleName"
-          label="Отчество"
-          disabled={isSubmitting}
-        />
+        <ProfileFormField name="middleName" label="Отчество" />
 
-        <ProfileFormField
-          name="phone"
-          label="Телефон"
-          type="tel"
-          disabled={isSubmitting}
-        />
+        <ProfileFormField name="phone" label="Телефон" type="tel" />
 
-        <ProfileFormField
-          name="position"
-          label="Должность"
-          disabled={isSubmitting}
-        />
+        <ProfileFormField name="position" label="Должность" />
       </div>
 
       <div className={styles.submitWrapper}>
