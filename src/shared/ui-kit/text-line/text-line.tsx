@@ -1,7 +1,7 @@
 import React from "react";
 import { InputMaster } from "../input-master/input-master";
 
-export interface TextFieldProps
+export interface TextLineProps
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     "defaultValue" | "value" | "onChange"
@@ -14,7 +14,7 @@ export interface TextFieldProps
   onClear?: () => void;
 }
 
-export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+export const TextLine = React.forwardRef<HTMLInputElement, TextLineProps>(
   (
     {
       label = "Label",
@@ -41,4 +41,4 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
   ),
 );
 
-TextField.displayName = "TextField";
+TextLine.displayName = "TextLine";

@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { TextField } from "@/shared/ui-kit/text-field/text-field";
+import { TextLine } from "@/shared/ui-kit/text-line/text-line";
 import { Button } from "@/shared/ui-kit/button/button";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
@@ -21,7 +21,7 @@ export const ProfileFormFields = () => {
             pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
           }}
           render={({ field }) => (
-            <TextField
+            <TextLine
               {...field}
               className={styles.textField}
               label="E-mail"
@@ -36,7 +36,7 @@ export const ProfileFormFields = () => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <TextField
+            <TextLine
               {...field}
               className={styles.textField}
               label="Фамилия"
@@ -50,7 +50,7 @@ export const ProfileFormFields = () => {
           control={control}
           rules={{ required: true }}
           render={({ field }) => (
-            <TextField
+            <TextLine
               {...field}
               className={styles.textField}
               label="Имя"
@@ -63,7 +63,7 @@ export const ProfileFormFields = () => {
           name="middleName"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextLine
               {...field}
               className={styles.textField}
               label="Отчество"
@@ -76,7 +76,7 @@ export const ProfileFormFields = () => {
           name="phone"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextLine
               {...field}
               className={styles.textField}
               label="Телефон"
@@ -90,7 +90,7 @@ export const ProfileFormFields = () => {
           name="position"
           control={control}
           render={({ field }) => (
-            <TextField
+            <TextLine
               {...field}
               className={styles.textField}
               label="Должность"

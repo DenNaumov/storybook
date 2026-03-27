@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import React, { useEffect, useRef, useState } from "react";
 
-import { TextField } from "./text-field";
-import styles from "./text-field.stories.module.css";
+import { TextLine } from "./text-line";
+import styles from "./text-line.stories.module.css";
 
 const meta = {
-  title: "UI Kit/TextField",
-  component: TextField,
+  title: "UI Kit/TextLine",
+  component: TextLine,
   parameters: { layout: "fullscreen" },
   tags: ["autodocs"],
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof TextLine>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -26,25 +26,25 @@ const StatesPreview = () => {
   return (
     <div className={styles.stage}>
       <div className={styles.stack}>
-        <TextField
+        <TextLine
           label="Label"
           placeholder="Label_placeholder"
           value=""
           onChange={() => undefined}
         />
-        <TextField
+        <TextLine
           ref={focusedRef}
           label="Label"
           placeholder="Label_placeholder"
           value={emptyValue}
           onChange={setEmptyValue}
         />
-        <TextField
+        <TextLine
           label="Label"
           value={value}
           onChange={setValue}
         />
-        <TextField
+        <TextLine
           label="Label"
           value="Value"
           error
