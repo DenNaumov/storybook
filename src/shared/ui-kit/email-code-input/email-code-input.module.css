@@ -1,0 +1,63 @@
+.root {
+  position: relative;
+  display: block;
+  width: 100%;
+  cursor: text;
+}
+
+.rootDisabled {
+  cursor: not-allowed;
+}
+
+.row {
+  display: grid;
+  gap: 10px;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  background: var(--theme-bg-surface-primary);
+  box-shadow: inset 0 0 0 1px transparent;
+}
+
+.cellError {
+  box-shadow: inset 0 0 0 1px var(--theme-border-error);
+}
+
+.cellDisabled {
+  opacity: 0.4;
+}
+
+.digit {
+  min-height: 24px;
+}
+
+.hiddenInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+}
+
+.hiddenInput:disabled {
+  cursor: not-allowed;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

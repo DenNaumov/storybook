@@ -1,28 +1,18 @@
 "use client";
 
-import type { ClipboardEvent } from "react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { removeLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
+import { ButtonGroup } from "@/shared/ui-kit/button-group/button-group";
+import { EmailCodeInput } from "@/shared/ui-kit/email-code-input/email-code-input";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./page.module.css";
-
-const CODE_LENGTH = 6;
-
-const sanitizeCode = (value: string) =>
-  value.replace(/\D/g, "").slice(0, CODE_LENGTH);
 
 export default function ProfileVerifyCodePage() {
   const router = useRouter();
   const pathname = usePathname();
   const [code, setCode] = useState("");
-  const normalizedCode = useMemo(() => sanitizeCode(code), [code]);
-
-  const handlePaste = (event: ClipboardEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setCode(sanitizeCode(event.clipboardData.getData("text")));
-  };
 
   return (
     <section className={styles.screen}>
@@ -46,56 +36,24 @@ export default function ProfileVerifyCodePage() {
           </Typography>
         </header>
 
-        <label className={styles.codeInputGroup}>
-          <span className={styles.visuallyHidden}>Код из письма</span>
-          <input
-            className={styles.hiddenCodeInput}
-            type="text"
-            inputMode="numeric"
-            autoComplete="one-time-code"
-            value={normalizedCode}
-            maxLength={CODE_LENGTH}
-            onPaste={handlePaste}
-            onChange={(event) => setCode(sanitizeCode(event.target.value))}
-          />
-
-          <div
-            className={styles.codeRow}
-            style={{
-              gridTemplateColumns: `repeat(${CODE_LENGTH}, minmax(0, 1fr))`,
-            }}
-            aria-hidden="true"
-          >
-            {Array.from({ length: CODE_LENGTH }, (_, index) => {
-              const symbol = normalizedCode[index] ?? "";
-
-              return (
-                <div key={index} className={styles.codeCell}>
-                  <Typography variant="headline-semibold" className={styles.code}>
-                    {symbol}
-                  </Typography>
-                </div>
-              );
-            })}
-          </div>
-        </label>
+        <div className={styles.codeInputGroup}>
+          <EmailCodeInput digits={code} onDigitsChange={setCode} />
+        </div>
       </div>
 
-      <div className={styles.footer}>
+      <ButtonGroup className={styles.footer}>
         <Button
           size="m"
           label="Продолжить"
-          disabled={normalizedCode.length !== CODE_LENGTH}
-          className={styles.primaryAction}
+          disabled={code.length !== 6}
           onClick={() => router.push(removeLastPathSegment(pathname, "verify-code"))}
         />
         <Button
           variant="text"
           size="m"
           label="Отправить код повторно"
-          className={styles.secondaryAction}
         />
-      </div>
+      </ButtonGroup>
     </section>
   );
 }

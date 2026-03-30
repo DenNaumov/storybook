@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { replaceLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
+import { ButtonGroup } from "@/shared/ui-kit/button-group/button-group";
 import { PasswordField } from "@/shared/ui-kit/password-field/password-field";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import { useState } from "react";
@@ -43,19 +44,18 @@ export default function ProfileVerifyPage() {
         </div>
       </div>
 
-      <div className={styles.footer}>
+      <ButtonGroup className={styles.footer}>
         <Button
           size="m"
           label="Продолжить"
           disabled={password.trim().length === 0}
-          className={styles.primaryAction}
           onClick={() =>
             router.push(
               replaceLastPathSegment(pathname, "verify", "verify-code"),
             )
           }
         />
-      </div>
+      </ButtonGroup>
     </section>
   );
 }
