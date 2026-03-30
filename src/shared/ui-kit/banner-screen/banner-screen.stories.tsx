@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Illustration } from "../illustration/illustration";
+import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import { BannerScreen } from "./banner-screen";
 import styles from "./banner-screen.stories.module.css";
 
@@ -51,15 +52,11 @@ export const Showcase: Story = {
       <div className={styles.layout}>
         <div className={styles.previewColumn}>
           <div className={styles.canvasTitle}>BannerScreen</div>
-          <div className={styles.phoneFrame}>
-            <div className={styles.frameHeader}>
-              <div className={styles.frameContent}>
-                <h1 className={styles.heading}>BannerScreen</h1>
-                <p className={styles.lead}>Баннер-заглушка на экран</p>
-              </div>
-              <div className={styles.divider} />
-            </div>
-
+          <StoryPreviewFrame
+            className={styles.phoneFrame}
+            title="BannerScreen"
+            description="Баннер-заглушка на экран"
+          >
             <BannerScreen
               title="Список пуст"
               description="В списке нет значений"
@@ -67,21 +64,17 @@ export const Showcase: Story = {
               media={bannerMedia}
               onAction={noop}
             />
-          </div>
+          </StoryPreviewFrame>
         </div>
 
         <div className={styles.examplesColumn}>
           <div className={styles.canvasTitle}>BannerScreen</div>
 
-          <div className={styles.phoneFrame}>
-            <div className={styles.frameHeader}>
-              <div className={styles.frameContent}>
-                <h1 className={styles.heading}>BannerScreen</h1>
-                <p className={styles.lead}>Баннер-заглушка на экран</p>
-              </div>
-              <div className={styles.divider} />
-            </div>
-
+          <StoryPreviewFrame
+            className={styles.phoneFrame}
+            title="BannerScreen"
+            description="Баннер-заглушка на экран"
+          >
             <div className={styles.examplesStack}>
               <BannerScreen
                 title="Список пуст"
@@ -109,7 +102,7 @@ export const Showcase: Story = {
                 media={bannerMedia}
               />
             </div>
-          </div>
+          </StoryPreviewFrame>
         </div>
       </div>
     </div>

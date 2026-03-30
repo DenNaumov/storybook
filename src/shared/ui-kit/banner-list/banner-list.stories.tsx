@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import { BannerList } from "./banner-list";
 import styles from "./banner-list.stories.module.css";
 
@@ -65,35 +66,27 @@ export const Showcase: Story = {
       <div className={styles.layout}>
         <div className={styles.previewColumn}>
           <div className={styles.canvasTitle}>BannerScreen</div>
-          <div className={styles.phoneFrame}>
-            <div className={styles.frameHeader}>
-              <div className={styles.frameContent}>
-                <h1 className={styles.heading}>BannerList</h1>
-                <p className={styles.lead}>Баннер внутри форм и списков</p>
-              </div>
-              <div className={styles.divider} />
-            </div>
-
+          <StoryPreviewFrame
+            className={styles.phoneFrame}
+            title="BannerList"
+            description="Баннер внутри форм и списков"
+          >
             <BannerList
               title="Произошла ошибка"
               description="Некорректно заполнены поля объекта"
               details={detailsText}
               expanded
             />
-          </div>
+          </StoryPreviewFrame>
         </div>
 
         <div className={styles.previewColumn}>
           <div className={styles.canvasTitle}>BannerScreen</div>
-          <div className={styles.phoneFrame}>
-            <div className={styles.frameHeader}>
-              <div className={styles.frameContent}>
-                <h1 className={styles.heading}>BannerList</h1>
-                <p className={styles.lead}>Баннер внутри форм и списков</p>
-              </div>
-              <div className={styles.divider} />
-            </div>
-
+          <StoryPreviewFrame
+            className={styles.phoneFrame}
+            title="BannerList"
+            description="Баннер внутри форм и списков"
+          >
             <div className={styles.stack}>
               <BannerList
                 title="Произошла ошибка"
@@ -125,7 +118,7 @@ export const Showcase: Story = {
                 description="Некорректно заполнены поля объекта Поле «Наименование задачи»: Поле является обязательным к заполнению Поле «Тип»: Какой-то текст ошибки Поле «Тип»: Какой-то текст ошибки Поле «Тип»: Какой-то текст ошибки"
               />
             </div>
-          </div>
+          </StoryPreviewFrame>
         </div>
       </div>
     </div>

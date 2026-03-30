@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import { Loader } from "./loader";
 import styles from "./loader.stories.module.css";
 
@@ -38,21 +39,17 @@ export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.stage}>
-      <div className={styles.phoneFrame}>
-        <div className={styles.frameHeader}>
-          <div className={styles.frameContent}>
-            <h1 className={styles.heading}>Loader</h1>
-            <p className={styles.lead}>Компонент загрузки</p>
-          </div>
-          <div className={styles.divider} />
-        </div>
-
+      <StoryPreviewFrame
+        className={styles.phoneFrame}
+        title="Loader"
+        description="Компонент загрузки"
+      >
         <div className={styles.selectionFrame}>
           <Loader size="small" />
           <Loader size="medium" />
           <Loader size="large" />
         </div>
-      </div>
+      </StoryPreviewFrame>
     </div>
   ),
 };

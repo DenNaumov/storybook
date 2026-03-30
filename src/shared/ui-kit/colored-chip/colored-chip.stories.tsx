@@ -2,6 +2,7 @@ import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ColoredChip } from "./colored-chip";
 import { ResizableIcons } from "../icon/packs/resizable";
+import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import styles from "./colored-chip.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons);
@@ -50,14 +51,11 @@ export const Showcase: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div className={styles.stage}>
-      <div className={styles.phoneFrame}>
-        <div className={styles.frameHeader}>
-          <div className={styles.frameContent}>
-            <h1 className={styles.heading}>ColoredChip</h1>
-          </div>
-          <div className={styles.divider} />
-        </div>
-
+      <StoryPreviewFrame
+        className={styles.phoneFrame}
+        headerClassName={styles.previewHeader}
+        title="ColoredChip"
+      >
         <div className={styles.selectionFrame}>
           <div className={styles.chipGrid}>
             <ColoredChip label="Стадия_номер_1" color="#fa8703" />
@@ -103,7 +101,7 @@ export const Showcase: Story = {
             />
           </div>
         </div>
-      </div>
+      </StoryPreviewFrame>
     </div>
   ),
 };

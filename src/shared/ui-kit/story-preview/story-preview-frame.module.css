@@ -1,0 +1,45 @@
+.phoneFrame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  max-width: 100%;
+  padding: 56px 64px;
+  border-radius: 32px;
+  background: var(--theme-bg-brand-light);
+  box-sizing: border-box;
+  box-shadow: 0 4px 52px rgb(0 0 0 / 4%);
+}
+
+.frameHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.frameContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.heading {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-brand-main);
+}
+
+.lead {
+  width: 100%;
+  margin: 0;
+  color: var(--theme-text-secondary);
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid var(--theme-border-default);
+}

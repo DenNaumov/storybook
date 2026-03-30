@@ -20,47 +20,6 @@
   box-shadow: 0 4px 52px rgb(0 0 0 / 4%);
 }
 
-.frameHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  width: 100%;
-}
-
-.frameContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  width: 100%;
-}
-
-.heading {
-  width: 100%;
-  margin: 0;
-  color: var(--theme-text-brand-main);
-  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 60px;
-}
-
-.lead {
-  width: 100%;
-  margin: 0;
-  color: var(--theme-text-secondary);
-  font-family: Lato, "Helvetica Neue", Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 160%;
-}
-
-.divider {
-  width: 100%;
-  border-top: 1px solid var(--theme-border-default);
-}
-
 .selectionFrame {
   display: flex;
   flex-direction: row;
