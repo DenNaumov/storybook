@@ -32,54 +32,7 @@
   margin-top: 40px;
 }
 
-.codeInputGroup {
-  position: relative;
-  display: block;
-  margin-top: 40px;
-  cursor: text;
-}
-
-.codeRow {
-  display: grid;
-  gap: 10px;
-}
-
-.codeCell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  background: var(--theme-bg-surface-primary);
-}
-
-.code {
-  min-height: 24px;
-}
-
-.hiddenCodeInput {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: text;
-}
-
 .footer {
   margin-top: auto;
   padding: 24px 0 calc(60px + 16px + env(safe-area-inset-bottom, 0px));
-}
-
-.visuallyHidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
