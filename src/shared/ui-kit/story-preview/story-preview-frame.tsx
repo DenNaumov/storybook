@@ -19,7 +19,7 @@ export const StoryPreviewFrame = ({
   className,
   headerClassName,
 }: StoryPreviewFrameProps) => (
-  <div className={joinClasses(styles.phoneFrame, className)}>
+  <div className={joinClasses(styles.previewFrame, className)}>
     <div className={joinClasses(styles.frameHeader, headerClassName)}>
       <div className={styles.frameContent}>
         <h1 className={styles.heading}>{title}</h1>

@@ -52,7 +52,7 @@ export const Showcase: Story = {
   render: () => (
     <div className={styles.stage}>
       <StoryPreviewFrame
-        className={styles.phoneFrame}
+        className={styles.previewFrame}
         headerClassName={styles.previewHeader}
         title="ColoredChip"
       >

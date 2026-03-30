@@ -67,7 +67,7 @@ export const Showcase: Story = {
         <div className={styles.previewColumn}>
           <div className={styles.canvasTitle}>BannerScreen</div>
           <StoryPreviewFrame
-            className={styles.phoneFrame}
+            className={styles.previewFrame}
             title="BannerList"
             description="Баннер внутри форм и списков"
           >
@@ -83,7 +83,7 @@ export const Showcase: Story = {
         <div className={styles.previewColumn}>
           <div className={styles.canvasTitle}>BannerScreen</div>
           <StoryPreviewFrame
-            className={styles.phoneFrame}
+            className={styles.previewFrame}
             title="BannerList"
             description="Баннер внутри форм и списков"
           >

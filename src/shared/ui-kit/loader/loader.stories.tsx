@@ -40,7 +40,7 @@ export const Showcase: Story = {
   render: () => (
     <div className={styles.stage}>
       <StoryPreviewFrame
-        className={styles.phoneFrame}
+        className={styles.previewFrame}
         title="Loader"
         description="Компонент загрузки"
       >

@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-.phoneFrame {
+.previewFrame {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@
     padding-inline: 16px;
   }
 
-  .phoneFrame {
+  .previewFrame {
     min-height: auto;
     padding: 32px 24px;
   }
