@@ -1,20 +1,36 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { IconButton } from "./icon-button";
-import {
-  ResizableIcons,
-  type ResizableIconKeys,
-} from "../icon/packs/resizable";
+import { ResizableIcons } from "../icon/packs/resizable";
+import { IconButton, type SvgIconComponent } from "./icon-button";
 import styles from "./icon-button.stories.module.css";
 
-const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
+const AddIcon = ResizableIcons.Add01;
+const HomeIcon = ResizableIcons.Home28;
 
-const meta: Meta<typeof IconButton> = {
+type IconButtonStoryArgs = Omit<
+  React.ComponentProps<typeof IconButton>,
+  "icon"
+> & {
+  iconName: "Add01" | "Home28";
+};
+
+const iconMap: Record<IconButtonStoryArgs["iconName"], SvgIconComponent> = {
+  Add01: AddIcon,
+  Home28: HomeIcon,
+};
+
+const meta: Meta<IconButtonStoryArgs> = {
   title: "UI Kit/Buttons/IconButton",
   component: IconButton,
   parameters: {
     layout: "fullscreen",
   },
   tags: ["autodocs"],
+  args: {
+    iconName: "Add01",
+    buttonSize: "m",
+    iconSize: "m",
+    badgeCount: undefined,
+  },
   argTypes: {
     buttonSize: {
       control: "select",
@@ -24,9 +40,9 @@ const meta: Meta<typeof IconButton> = {
       control: "select",
       options: ["s", "m"],
     },
-    icon: {
+    iconName: {
       control: "select",
-      options: resizableIconNames,
+      options: ["Add01", "Home28"],
     },
     badgeCount: {
       control: "text",
@@ -37,27 +53,26 @@ const meta: Meta<typeof IconButton> = {
     disabled: {
       control: "boolean",
     },
+    icon: {
+      control: false,
+      table: { disable: true },
+    },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof IconButton>;
+
+type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  args: {
-    icon: "Add01",
-    buttonSize: "m",
-    iconSize: "m",
-    badgeCount: undefined,
-  },
-  render: (args) => {
+  render: ({ iconName, ...args }) => {
     return (
       <div className={styles.stage}>
         <div className={styles.surface}>
           <div />
           <div className={styles.headerCell}>Playground</div>
           <div className={styles.centered}>
-            <IconButton {...args} />
+            <IconButton {...args} icon={iconMap[iconName]} />
           </div>
         </div>
       </div>
@@ -78,52 +93,52 @@ export const Showcase: Story = {
 
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="m" iconSize="m" />
+          <IconButton icon={AddIcon} buttonSize="m" iconSize="m" />
         </div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="s" iconSize="m" />
+          <IconButton icon={AddIcon} buttonSize="s" iconSize="m" />
         </div>
 
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="m" iconSize="m" pressed />
+          <IconButton icon={AddIcon} buttonSize="m" iconSize="m" pressed />
         </div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="s" iconSize="m" pressed />
+          <IconButton icon={AddIcon} buttonSize="s" iconSize="m" pressed />
         </div>
 
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="m" iconSize="m" disabled />
+          <IconButton icon={AddIcon} buttonSize="m" iconSize="m" disabled />
         </div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="s" iconSize="m" disabled />
+          <IconButton icon={AddIcon} buttonSize="s" iconSize="m" disabled />
         </div>
 
         <div className={styles.sectionLabelWide}>IconSize=S</div>
 
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="m" iconSize="s" />
+          <IconButton icon={AddIcon} buttonSize="m" iconSize="s" />
         </div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="s" iconSize="s" />
+          <IconButton icon={AddIcon} buttonSize="s" iconSize="s" />
         </div>
 
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="m" iconSize="s" pressed />
+          <IconButton icon={AddIcon} buttonSize="m" iconSize="s" pressed />
         </div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="s" iconSize="s" pressed />
+          <IconButton icon={AddIcon} buttonSize="s" iconSize="s" pressed />
         </div>
 
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="m" iconSize="s" disabled />
+          <IconButton icon={AddIcon} buttonSize="m" iconSize="s" disabled />
         </div>
         <div className={styles.centered}>
-          <IconButton icon="Add01" buttonSize="s" iconSize="s" disabled />
+          <IconButton icon={AddIcon} buttonSize="s" iconSize="s" disabled />
         </div>
 
         <div className={styles.sectionLabelWide}>Badge=Yes</div>
@@ -131,7 +146,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Default</div>
         <div className={styles.centered}>
           <IconButton
-            icon="Home28"
+            icon={HomeIcon}
             buttonSize="m"
             iconSize="m"
             badgeCount="9"
@@ -142,7 +157,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Pressed</div>
         <div className={styles.centered}>
           <IconButton
-            icon="Home28"
+            icon={HomeIcon}
             buttonSize="m"
             iconSize="m"
             badgeCount="9"
@@ -154,7 +169,7 @@ export const Showcase: Story = {
         <div className={styles.rowLabel}>Disabled</div>
         <div className={styles.centered}>
           <IconButton
-            icon="Home28"
+            icon={HomeIcon}
             buttonSize="m"
             iconSize="m"
             badgeCount="9"
