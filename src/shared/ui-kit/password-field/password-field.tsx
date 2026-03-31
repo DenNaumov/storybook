@@ -10,7 +10,7 @@ export interface PasswordFieldProps
   > {
   label?: string;
   value: string;
-  onValueChange: (value: string) => void;
+  onChange: (value: string) => void;
   error?: boolean;
   errorText?: string;
   clearable?: boolean;
@@ -25,7 +25,7 @@ export const PasswordField = React.forwardRef<
     {
       label = "Пароль",
       value,
-      onValueChange,
+      onChange,
       error = false,
       errorText,
       className,
@@ -45,7 +45,7 @@ export const PasswordField = React.forwardRef<
           label={label}
           type={passwordVisible ? "text" : "password"}
           value={value}
-          onValueChange={onValueChange}
+          onValueChange={onChange}
           error={error}
           errorText={errorText}
           clearable={clearable}

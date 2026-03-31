@@ -45,7 +45,7 @@ const ProfileFormField = ({
       name={fieldName}
       value={fieldValue}
       onBlur={handleBlur}
-      onValueChange={handleValueChange}
+      onChange={handleValueChange}
       ref={fieldRef}
       disabled={isSubmitting}
     />

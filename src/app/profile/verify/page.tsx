@@ -57,7 +57,7 @@ export default function ProfileVerifyPage() {
           <PasswordField
             label="Пароль"
             value={password}
-            onValueChange={setPassword}
+            onChange={setPassword}
             autoComplete="current-password"
           />
         </div>
