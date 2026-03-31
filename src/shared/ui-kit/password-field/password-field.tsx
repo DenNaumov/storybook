@@ -3,11 +3,10 @@ import { InputMaster } from "../input-master/input-master";
 import { ResizableIcon } from "../icon/icon-wrappers";
 import styles from "./password-field.module.css";
 
-export interface PasswordFieldProps
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "defaultValue" | "value" | "onChange" | "type"
-  > {
+export interface PasswordFieldProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "defaultValue" | "value" | "onChange" | "type"
+> {
   label?: string;
   value: string;
   onChange: (value: string) => void;

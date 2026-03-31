@@ -49,9 +49,9 @@ describe("pathname routing helpers", () => {
     });
 
     it("returns the original path when suffix does not match", () => {
-      expect(removeLastPathSegment("/settings/account/profile", "verify-code")).toBe(
-        "/settings/account/profile",
-      );
+      expect(
+        removeLastPathSegment("/settings/account/profile", "verify-code"),
+      ).toBe("/settings/account/profile");
     });
   });
 });

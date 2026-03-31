@@ -16,6 +16,10 @@ export default function ProfileVerifyCodePage() {
   const [code, setCode] = useState("");
   const email = searchParams.get("email") ?? "";
 
+  const handleContinueClick = () => {
+    router.push(removeLastPathSegment(pathname, "verify-code"));
+  };
+
   return (
     <section className={styles.screen}>
       <div className={styles.content}>
@@ -58,13 +62,9 @@ export default function ProfileVerifyCodePage() {
           size="m"
           label="Продолжить"
           disabled={code.length !== 6}
-          onClick={() => router.push(removeLastPathSegment(pathname, "verify-code"))}
+          onClick={handleContinueClick}
         />
-        <Button
-          variant="text"
-          size="m"
-          label="Отправить код повторно"
-        />
+        <Button variant="text" size="m" label="Отправить код повторно" />
       </ButtonGroup>
     </section>
   );

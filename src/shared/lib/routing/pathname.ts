@@ -43,10 +43,7 @@ export const replaceLastPathSegment = (
   return appendPathSegment(parentPath, normalizedNext);
 };
 
-export const removeLastPathSegment = (
-  pathname: string,
-  segment: string,
-) => {
+export const removeLastPathSegment = (pathname: string, segment: string) => {
   const basePath = normalizePathname(pathname);
   const normalizedSegment = segment.replace(/^\/+|\/+$/g, "");
 
