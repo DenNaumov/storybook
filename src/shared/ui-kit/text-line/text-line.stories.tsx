@@ -30,21 +30,21 @@ const StatesPreview = () => {
           label="Label"
           placeholder="Label_placeholder"
           value=""
-          onChange={() => undefined}
+          onValueChange={() => undefined}
         />
         <TextLine
           ref={focusedRef}
           label="Label"
           placeholder="Label_placeholder"
           value={emptyValue}
-          onChange={setEmptyValue}
+          onValueChange={setEmptyValue}
         />
-        <TextLine label="Label" value={value} onChange={setValue} />
+        <TextLine label="Label" value={value} onValueChange={setValue} />
         <TextLine
           label="Label"
           value="Value"
           error
-          onChange={() => undefined}
+          onValueChange={() => undefined}
         />
       </div>
     </div>

@@ -28,14 +28,25 @@ const ProfileFormField = ({
     formState: { isSubmitting },
   } = useFormContext<ProfileFormData>();
   const { field } = useController<ProfileFormData>({ name, control, rules });
+  const {
+    name: fieldName,
+    value: fieldValue,
+    onBlur: handleBlur,
+    onChange: handleValueChange,
+    ref: fieldRef,
+  } = field;
   const isRequired = Boolean(rules?.required);
   const fieldLabel = isRequired ? `${label} *` : label;
 
   return (
     <TextLine
-      {...field}
       label={fieldLabel}
       type={type}
+      name={fieldName}
+      value={fieldValue}
+      onBlur={handleBlur}
+      onValueChange={handleValueChange}
+      ref={fieldRef}
       disabled={isSubmitting}
     />
   );

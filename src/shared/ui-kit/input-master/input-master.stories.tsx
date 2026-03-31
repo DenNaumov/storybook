@@ -7,7 +7,7 @@ import styles from "./input-master.stories.module.css";
 
 type InputMasterStoryArgs = Omit<
   ComponentProps<typeof InputMaster>,
-  "value" | "onChange"
+  "value" | "onValueChange"
 > & {
   value: string;
   errorText?: string;
@@ -36,7 +36,7 @@ const meta: Meta<InputMasterStoryArgs> = {
     showAssistiveText: true,
   },
   argTypes: {
-    onChange: { control: false, table: { disable: true } },
+    onValueChange: { control: false, table: { disable: true } },
     onFocus: { control: false, table: { disable: true } },
     onBlur: { control: false, table: { disable: true } },
     onClear: { control: false, table: { disable: true } },

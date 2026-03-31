@@ -7,7 +7,7 @@ export interface TextLineProps extends Omit<
 > {
   label?: string;
   value: string;
-  onChange: (value: string) => void;
+  onValueChange: (value: string) => void;
   error?: boolean;
   clearable?: boolean;
   onClear?: () => void;
@@ -18,7 +18,7 @@ export const TextLine = React.forwardRef<HTMLInputElement, TextLineProps>(
     {
       label = "Label",
       value,
-      onChange,
+      onValueChange,
       error = false,
       className,
       clearable = true,
@@ -31,7 +31,7 @@ export const TextLine = React.forwardRef<HTMLInputElement, TextLineProps>(
       ref={ref}
       label={label}
       value={value}
-      onValueChange={onChange}
+      onValueChange={onValueChange}
       error={error}
       clearable={clearable}
       className={className}

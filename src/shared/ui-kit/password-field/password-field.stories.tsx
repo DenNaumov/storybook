@@ -35,7 +35,7 @@ export const Playground: Story = {
         }}
       >
         <div style={{ maxWidth: 358 }}>
-          <PasswordField {...args} value={value} onChange={setValue} />
+          <PasswordField {...args} value={value} onValueChange={setValue} />
         </div>
       </div>
     );
