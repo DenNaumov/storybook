@@ -51,6 +51,6 @@ const StatesPreview = () => {
   );
 };
 
-export const States: Story = {
+export const States = {
   render: () => <StatesPreview />,
-};
+} satisfies Story;
