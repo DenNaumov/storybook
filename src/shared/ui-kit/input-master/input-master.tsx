@@ -1,5 +1,6 @@
 import React, { useId, useImperativeHandle, useRef, useState } from "react";
 import { IconButton } from "../icon-button/icon-button";
+import { Icon24Icons } from "../icon/packs/24";
 import styles from "./input-master.module.css";
 
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
@@ -131,8 +132,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
             <IconButton
               buttonSize="m"
               iconSize="m"
-              icon="Cancel"
-              className={styles.clearButton}
+              icon={Icon24Icons.Cancel}
               onMouseDown={(event) => event.preventDefault()}
               onClick={handleClear}
               aria-label={clearLabel}

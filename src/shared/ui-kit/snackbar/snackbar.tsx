@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { Icon20, Icon28 } from "../icon/icon-wrappers";
+import { Icon28 } from "../icon/icon-wrappers";
+import { Icon20Icons } from "../icon/packs/20";
 import { IconButton } from "../icon-button/icon-button";
 import { Typography } from "../typography/typography";
 import styles from "./snackbar.module.css";
@@ -109,14 +110,7 @@ export const Snackbar = ({
               <IconButton
                 buttonSize="s"
                 iconSize="s"
-                icon={
-                  <Icon20
-                    icon="Cancel"
-                    size={20}
-                    color="var(--theme-icon-default)"
-                    aria-hidden="true"
-                  />
-                }
+                icon={Icon20Icons.Cancel}
                 aria-label={dismissAriaLabel}
                 onClick={onDismiss}
               />
