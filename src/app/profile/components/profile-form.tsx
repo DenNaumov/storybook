@@ -29,6 +29,7 @@ export const ProfileForm = () => {
 
   const onSubmit = async (data: ProfileFormData) => {
     const isEmailChanged = Boolean(dirtyFields.email);
+    const nextEmail = data.email.trim();
     const changedFields: Partial<ProfileFormData> = {};
 
     for (const key of Object.keys(dirtyFields) as Array<
@@ -43,7 +44,14 @@ export const ProfileForm = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     if (isEmailChanged) {
-      router.push(appendPathSegment(pathname, "verify"));
+      if (!nextEmail) {
+        return;
+      }
+
+      const verifyPath = appendPathSegment(pathname, "verify");
+      const searchParams = new URLSearchParams({ email: nextEmail });
+
+      router.push(`${verifyPath}?${searchParams.toString()}`);
       return;
     }
 

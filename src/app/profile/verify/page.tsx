@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { replaceLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
 import { ButtonGroup } from "@/shared/ui-kit/button-group/button-group";
@@ -12,7 +12,24 @@ import styles from "./page.module.css";
 export default function ProfileVerifyPage() {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [password, setPassword] = useState("");
+  const email = searchParams.get("email") ?? "";
+
+  const handleContinueClick = () => {
+    if (!email) {
+      return;
+    }
+
+    const verifyCodePath = replaceLastPathSegment(
+      pathname,
+      "verify",
+      "verify-code",
+    );
+
+    const nextSearchParams = new URLSearchParams({ email });
+    router.push(`${verifyCodePath}?${nextSearchParams.toString()}`);
+  };
 
   return (
     <section className={styles.screen}>
@@ -30,7 +47,9 @@ export default function ProfileVerifyPage() {
             color="secondary"
             className={styles.description}
           >
-            Для смены email введите ваш текущий пароль от приложения
+            {email
+              ? `Для смены email на ${email} введите ваш текущий пароль от приложения`
+              : "Для смены email введите ваш текущий пароль от приложения"}
           </Typography>
         </header>
 
@@ -48,12 +67,8 @@ export default function ProfileVerifyPage() {
         <Button
           size="m"
           label="Продолжить"
-          disabled={password.trim().length === 0}
-          onClick={() =>
-            router.push(
-              replaceLastPathSegment(pathname, "verify", "verify-code"),
-            )
-          }
+          disabled={!email || password.trim().length === 0}
+          onClick={handleContinueClick}
         />
       </ButtonGroup>
     </section>

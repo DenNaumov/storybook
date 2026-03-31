@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { removeLastPathSegment } from "@/shared/lib/routing/pathname";
 import { Button } from "@/shared/ui-kit/button/button";
 import { ButtonGroup } from "@/shared/ui-kit/button-group/button-group";
@@ -12,7 +12,9 @@ import styles from "./page.module.css";
 export default function ProfileVerifyCodePage() {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [code, setCode] = useState("");
+  const email = searchParams.get("email") ?? "";
 
   return (
     <section className={styles.screen}>
@@ -30,9 +32,19 @@ export default function ProfileVerifyCodePage() {
             color="secondary"
             className={styles.description}
           >
-            Отправили на mail@mail.ru.
-            <br />
-            Если во «Входящих» нет, проверьте «Спам».
+            {email ? (
+              <>
+                Отправили на {email}.
+                <br />
+                Если во «Входящих» нет, проверьте «Спам».
+              </>
+            ) : (
+              <>
+                Отправили письмо с кодом.
+                <br />
+                Если во «Входящих» нет, проверьте «Спам».
+              </>
+            )}
           </Typography>
         </header>
 
