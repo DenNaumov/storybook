@@ -13,7 +13,7 @@ export interface InputMasterProps extends Omit<
   value?: string | null;
   onValueChange: (value: string) => void;
   assistiveText?: React.ReactNode;
-  errorText?: React.ReactNode;
+  errorText?: string;
   error?: boolean;
   clearable?: boolean;
   onClear?: () => void;

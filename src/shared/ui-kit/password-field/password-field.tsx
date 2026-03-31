@@ -12,6 +12,7 @@ export interface PasswordFieldProps
   value: string;
   onChange: (value: string) => void;
   error?: boolean;
+  errorText?: string;
   clearable?: boolean;
   onClear?: () => void;
 }
@@ -26,6 +27,7 @@ export const PasswordField = React.forwardRef<
       value,
       onChange,
       error = false,
+      errorText,
       className,
       clearable = false,
       autoComplete = "current-password",
@@ -45,6 +47,7 @@ export const PasswordField = React.forwardRef<
           value={value}
           onValueChange={onChange}
           error={error}
+          errorText={errorText}
           clearable={clearable}
           autoComplete={autoComplete}
           className={styles.field}
