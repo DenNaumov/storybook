@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import type { CSSProperties, HTMLAttributes } from "react";
 import { DotLottieReact, setWasmUrl } from "@lottiefiles/dotlottie-react";
 import {
@@ -8,6 +7,13 @@ import {
   type IllustrationName,
 } from "./illustration.constants";
 import styles from "./illustration.module.css";
+
+let isDotLottieWasmConfigured = false;
+
+if (!isDotLottieWasmConfigured) {
+  setWasmUrl("/dotlottie-player.wasm");
+  isDotLottieWasmConfigured = true;
+}
 
 export interface IllustrationProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -30,10 +36,6 @@ export const Illustration = ({
   style,
   ...props
 }: IllustrationProps) => {
-  useEffect(() => {
-    setWasmUrl("/dotlottie-player.wasm");
-  }, []);
-
   const rootStyle = {
     width: size,
     height: size,

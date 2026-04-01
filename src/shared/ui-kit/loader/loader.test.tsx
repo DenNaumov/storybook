@@ -3,12 +3,13 @@ import { isValidElement } from "react";
 
 // Using a factory that returns a component or an object that matches resolveSvgComponent expectations.
 const MockIcon = () => null;
+const resolveSvgPath = (fileName: string) => require.resolve(`./${fileName}`);
 
 describe("Loader", () => {
   beforeEach(() => {
     jest.resetModules();
     jest.doMock(
-      "./loader_24.svg",
+      resolveSvgPath("loader_24.svg"),
       () => ({
         __esModule: true,
         default: MockIcon,
@@ -16,7 +17,7 @@ describe("Loader", () => {
       { virtual: true },
     );
     jest.doMock(
-      "./loader_28.svg",
+      resolveSvgPath("loader_28.svg"),
       () => ({
         __esModule: true,
         default: MockIcon,
@@ -24,10 +25,17 @@ describe("Loader", () => {
       { virtual: true },
     );
     jest.doMock(
-      "./loader_32.svg",
+      resolveSvgPath("loader_32.svg"),
       () => ({
         __esModule: true,
         default: MockIcon,
+      }),
+      { virtual: true },
+    );
+    jest.doMock(
+      "../icon/icon-wrappers",
+      () => ({
+        resolveSvgComponent: (component: typeof MockIcon) => component,
       }),
       { virtual: true },
     );
