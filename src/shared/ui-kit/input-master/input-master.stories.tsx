@@ -18,7 +18,7 @@ type InputMasterStoryArgs = Omit<
 
 const meta: Meta<InputMasterStoryArgs> = {
   title: "UI Kit/Inputs/InputMaster",
-  component: InputMaster,
+  component: InputMaster as unknown as React.ComponentType<InputMasterStoryArgs>,
   parameters: {
     layout: "fullscreen",
   },
@@ -36,7 +36,6 @@ const meta: Meta<InputMasterStoryArgs> = {
     showAssistiveText: true,
   },
   argTypes: {
-    onValueChange: { control: false, table: { disable: true } },
     onFocus: { control: false, table: { disable: true } },
     onBlur: { control: false, table: { disable: true } },
     onClear: { control: false, table: { disable: true } },

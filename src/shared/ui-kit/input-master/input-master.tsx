@@ -25,7 +25,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
   (
     {
       value,
-      onValueChange: onChange,
+      onValueChange,
       label,
       assistiveText,
       errorText,
@@ -69,7 +69,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(event.target.value);
+      onValueChange(event.target.value);
     };
 
     const handleClear = () => {
@@ -79,7 +79,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
         return;
       }
 
-      onChange("");
+      onValueChange("");
       input.focus();
       onClear?.();
     };
