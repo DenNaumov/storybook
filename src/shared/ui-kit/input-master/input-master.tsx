@@ -97,16 +97,26 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
             className={joinClasses(
               styles.content,
               isExpanded ? styles.contentExpanded : styles.contentCentered,
+              error && styles.contentError,
             )}
           >
             {isExpanded && label ? (
-              <label htmlFor={inputId} className={styles.label}>
+              <label
+                htmlFor={inputId}
+                className={joinClasses(styles.label, error && styles.labelError)}
+              >
                 {label}
               </label>
             ) : null}
             <div className={styles.inputRow}>
               {!isExpanded && (placeholder || label) ? (
-                <label htmlFor={inputId} className={styles.centerLabel}>
+                <label
+                  htmlFor={inputId}
+                  className={joinClasses(
+                    styles.centerLabel,
+                    error && styles.centerLabelError,
+                  )}
+                >
                   {placeholder || label}
                 </label>
               ) : null}
@@ -117,6 +127,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                 className={joinClasses(
                   styles.input,
                   disabled && styles.inputDisabled,
+                  error && styles.inputError,
                 )}
                 value={normalizedValue}
                 placeholder={isExpanded ? placeholder : ""}
