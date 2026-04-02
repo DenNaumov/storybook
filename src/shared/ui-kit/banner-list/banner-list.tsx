@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { Icon20, ResizableIcon } from "../icon/icon-wrappers";
+import { Icon20, ResizableIcon } from "../icon";
 import { Typography } from "../typography/typography";
 import styles from "./banner-list.module.css";
 

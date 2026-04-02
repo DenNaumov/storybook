@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { Icon28 } from "../icon/icon-wrappers";
+import { Icon28 } from "../icon";
 import { Icon20Icons } from "../icon/packs/20";
 import { IconButton } from "../icon-button/icon-button";
 import { Typography } from "../typography/typography";

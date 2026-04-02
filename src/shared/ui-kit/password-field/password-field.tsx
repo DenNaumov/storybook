@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { InputMaster } from "../input-master/input-master";
-import { ResizableIcon } from "../icon/icon-wrappers";
+import { ResizableIcon } from "../icon";
 import styles from "./password-field.module.css";
 
 export interface PasswordFieldProps extends Omit<

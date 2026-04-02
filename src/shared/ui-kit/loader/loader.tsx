@@ -1,14 +1,12 @@
 import type { HTMLAttributes } from "react";
-import { resolveSvgComponent } from "../icon/icon-wrappers";
 import LoaderIcon24Svg from "./assets/loader_24.svg";
 import LoaderIcon28Svg from "./assets/loader_28.svg";
 import LoaderIcon32Svg from "./assets/loader_32.svg";
 import styles from "./loader.module.css";
 
-// Resolve SVG components at the module level to satisfy the linter.
-const LoaderIconSmall = resolveSvgComponent(LoaderIcon24Svg);
-const LoaderIconMedium = resolveSvgComponent(LoaderIcon28Svg);
-const LoaderIconLarge = resolveSvgComponent(LoaderIcon32Svg);
+const LoaderIconSmall = LoaderIcon24Svg;
+const LoaderIconMedium = LoaderIcon28Svg;
+const LoaderIconLarge = LoaderIcon32Svg;
 
 export type LoaderSize = "small" | "medium" | "large";
 

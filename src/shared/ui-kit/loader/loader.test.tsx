@@ -1,7 +1,6 @@
 import { describe, expect, it, jest, beforeEach } from "@jest/globals";
 import { isValidElement } from "react";
 
-// Using a factory that returns a component or an object that matches resolveSvgComponent expectations.
 const MockIcon = () => null;
 const resolveSvgPath = (fileName: string) =>
   require.resolve(`./assets/${fileName}`);
@@ -30,13 +29,6 @@ describe("Loader", () => {
       () => ({
         __esModule: true,
         default: MockIcon,
-      }),
-      { virtual: true },
-    );
-    jest.doMock(
-      "../icon/icon-wrappers",
-      () => ({
-        resolveSvgComponent: (component: typeof MockIcon) => component,
       }),
       { virtual: true },
     );

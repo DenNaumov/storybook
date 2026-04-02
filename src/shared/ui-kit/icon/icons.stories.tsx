@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ReactNode } from "react";
-import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from "./icon-wrappers";
+import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from ".";
 import styles from "./icons.stories.module.css";
 import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
 import { Icon20Icons, type Icon20IconKeys } from "./packs/20";

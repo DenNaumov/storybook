@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ChipButton } from "./chip-button";
-import { ResizableIcon } from "../icon/icon-wrappers";
+import { ResizableIcon } from "../icon";
 import {
   ResizableIcons,
   type ResizableIconKeys,

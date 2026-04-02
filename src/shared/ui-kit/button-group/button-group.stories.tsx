@@ -4,7 +4,7 @@ import { ButtonGroup } from "./button-group";
 import { Button } from "../button/button";
 import { ChipButton } from "../chip-button/chip-button";
 import { InlineButton } from "../inline-button/inline-button";
-import { ResizableIcon } from "../icon/icon-wrappers";
+import { ResizableIcon } from "../icon";
 import styles from "./button-group.stories.module.css";
 
 type ButtonGroupStoryArgs = ComponentProps<typeof ButtonGroup> & {

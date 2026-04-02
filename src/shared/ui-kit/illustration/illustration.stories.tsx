@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Icon28 } from "../icon/icon-wrappers";
+import { Icon28 } from "../icon";
 import { Illustration } from "./illustration";
 import {
   illustrationSrcMap,

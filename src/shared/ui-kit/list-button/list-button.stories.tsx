@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ListButton } from "./list-button";
-import { Icon28 } from "../icon/icon-wrappers";
+import { Icon28 } from "../icon";
 import { Icon28Icons, type Icon28IconKeys } from "../icon/packs/28";
 import styles from "./list-button.stories.module.css";
 

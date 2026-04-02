@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { ResizableIcon } from "../icon/icon-wrappers";
+import { ResizableIcon } from "../icon";
 import type { ResizableIconKeys } from "../icon/packs/resizable";
 import { Typography } from "../typography/typography";
 import styles from "./colored-chip.module.css";
