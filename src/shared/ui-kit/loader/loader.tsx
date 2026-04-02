@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
 import { resolveSvgComponent } from "../icon/icon-wrappers";
-import LoaderIcon24Svg from "./loader_24.svg";
-import LoaderIcon28Svg from "./loader_28.svg";
-import LoaderIcon32Svg from "./loader_32.svg";
+import LoaderIcon24Svg from "./assets/loader_24.svg";
+import LoaderIcon28Svg from "./assets/loader_28.svg";
+import LoaderIcon32Svg from "./assets/loader_32.svg";
 import styles from "./loader.module.css";
 
 // Resolve SVG components at the module level to satisfy the linter.

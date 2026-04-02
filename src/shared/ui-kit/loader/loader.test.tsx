@@ -3,7 +3,8 @@ import { isValidElement } from "react";
 
 // Using a factory that returns a component or an object that matches resolveSvgComponent expectations.
 const MockIcon = () => null;
-const resolveSvgPath = (fileName: string) => require.resolve(`./${fileName}`);
+const resolveSvgPath = (fileName: string) =>
+  require.resolve(`./assets/${fileName}`);
 
 describe("Loader", () => {
   beforeEach(() => {
