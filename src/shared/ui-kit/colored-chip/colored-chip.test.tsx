@@ -1,14 +1,15 @@
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 import { ColoredChip } from "./colored-chip";
+import { ResizableIcons } from "../icon/packs/resizable";
 
 describe("ColoredChip", () => {
   it("renders label with both icons", () => {
     const element = ColoredChip({
       label: "Сортировка",
       color: "#00c621",
-      startIcon: "Unarchive24",
-      endIcon: "InformationSquare",
+      startIcon: ResizableIcons.Unarchive24,
+      endIcon: ResizableIcons.InformationSquare,
     });
 
     expect(isValidElement(element)).toBe(true);

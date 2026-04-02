@@ -1,13 +1,22 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ColoredChip } from "./colored-chip";
-import { ResizableIcons } from "../icon/packs/resizable";
+import {
+  ResizableIcons,
+  type ResizableIconKeys,
+} from "../icon/packs/resizable";
 import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import styles from "./colored-chip.stories.module.css";
 
-const resizableIconNames = Object.keys(ResizableIcons);
+const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];
 
-type ColoredChipStoryArgs = ComponentProps<typeof ColoredChip>;
+type ColoredChipStoryArgs = Omit<
+  ComponentProps<typeof ColoredChip>,
+  "startIcon" | "endIcon"
+> & {
+  startIcon?: ResizableIconKeys;
+  endIcon?: ResizableIconKeys;
+};
 
 const meta: Meta<ColoredChipStoryArgs> = {
   title: "UI Kit/ColoredChip",
@@ -38,13 +47,22 @@ export const Playground: Story = {
     label: "Стадия_номер_1",
     color: "#fa8703",
   },
-  render: (args) => (
-    <div className={styles.stage}>
-      <div className={styles.componentFrame}>
-        <ColoredChip {...args} />
+  render: ({ startIcon, endIcon, ...args }) => {
+    const resolvedStartIcon = startIcon ? ResizableIcons[startIcon] : undefined;
+    const resolvedEndIcon = endIcon ? ResizableIcons[endIcon] : undefined;
+
+    return (
+      <div className={styles.stage}>
+        <div className={styles.componentFrame}>
+          <ColoredChip
+            {...args}
+            startIcon={resolvedStartIcon}
+            endIcon={resolvedEndIcon}
+          />
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const Showcase: Story = {
@@ -62,18 +80,18 @@ export const Showcase: Story = {
             <ColoredChip
               label="Меточка"
               color="#00c621"
-              startIcon="Unarchive24"
+              startIcon={ResizableIcons.Unarchive24}
             />
             <ColoredChip
               label="Стадия_номер_1"
               color="#fa8703"
-              endIcon="LinkForward"
+              endIcon={ResizableIcons.Unarchive24}
             />
             <ColoredChip
               label="Сортировка"
               color="#00c621"
-              startIcon="Unarchive24"
-              endIcon="InformationSquare"
+              startIcon={ResizableIcons.Unarchive24}
+              endIcon={ResizableIcons.InformationSquare}
             />
             <ColoredChip
               label={"Много-много\nтекста в\nнесколько строк"}
@@ -83,20 +101,20 @@ export const Showcase: Story = {
             <ColoredChip
               label={"Много-много\nтекста в\nнесколько строк"}
               color="#00c621"
-              startIcon="Unarchive24"
+              startIcon={ResizableIcons.Unarchive24}
               multiline
             />
             <ColoredChip
               label={"Много-много\nтекста в\nнесколько строк"}
               color="#00c621"
-              endIcon="LinkForward"
+              endIcon={ResizableIcons.LinkForward}
               multiline
             />
             <ColoredChip
               label={"Много-\nмного\nтекста в\nнесколько\nстрок"}
               color="#00c621"
-              startIcon="Unarchive24"
-              endIcon="InformationSquare"
+              startIcon={ResizableIcons.Unarchive24}
+              endIcon={ResizableIcons.InformationSquare}
               multiline
             />
           </div>

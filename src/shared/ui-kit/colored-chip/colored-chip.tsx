@@ -1,8 +1,8 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import { ResizableIcon } from "../icon";
-import type { ResizableIconKeys } from "../icon/packs/resizable";
+import type { ComponentType, HTMLAttributes, ReactNode, SVGProps } from "react";
 import { Typography } from "../typography/typography";
 import styles from "./colored-chip.module.css";
+
+type ColoredChipIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface ColoredChipProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -10,13 +10,13 @@ export interface ColoredChipProps extends Omit<
 > {
   label: ReactNode;
   color: string;
-  startIcon?: ResizableIconKeys;
-  endIcon?: ResizableIconKeys;
+  startIcon?: ColoredChipIcon;
+  endIcon?: ColoredChipIcon;
   multiline?: boolean;
 }
 
-const renderIcon = (icon: ResizableIconKeys) => {
-  return <ResizableIcon icon={icon} size={20} color="inherit" />;
+const renderIcon = (Icon: ColoredChipIcon) => {
+  return <Icon width={20} height={20} color="inherit" />;
 };
 
 export const ColoredChip = ({
