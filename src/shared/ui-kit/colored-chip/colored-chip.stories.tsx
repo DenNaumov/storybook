@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import type { ComponentType } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ColoredChip } from "./colored-chip";
 import {
@@ -20,7 +21,8 @@ type ColoredChipStoryArgs = Omit<
 
 const meta: Meta<ColoredChipStoryArgs> = {
   title: "UI Kit/ColoredChip",
-  component: ColoredChip,
+  component:
+    ColoredChip as unknown as ComponentType<ColoredChipStoryArgs>,
   parameters: {
     layout: "fullscreen",
   },
