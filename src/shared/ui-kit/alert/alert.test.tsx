@@ -4,7 +4,10 @@ import { describe, expect, it, jest } from "@jest/globals";
 import { Alert } from "./alert";
 
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
-type ClickableElement = ReactElement<{ onClick?: unknown; children?: ReactNode }>;
+type ClickableElement = ReactElement<{
+  onClick?: unknown;
+  children?: ReactNode;
+}>;
 
 describe("Alert", () => {
   it("renders title, description and primary action", () => {

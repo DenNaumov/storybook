@@ -47,7 +47,7 @@ describe("BannerScreen", () => {
     expect(isValidElement(element)).toBe(true);
     expect(element.props.className).toContain("custom-banner-screen");
     expect(
-      ((element.props.children[0] as ElementWithChildren).props.children),
+      (element.props.children[0] as ElementWithChildren).props.children,
     ).toBe("custom-media");
   });
 });

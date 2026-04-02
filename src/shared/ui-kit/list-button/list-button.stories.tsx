@@ -38,13 +38,13 @@ export default meta;
 type Story = StoryObj<ListButtonStoryArgs>;
 
 const renderIcon = (icon?: Icon28IconKeys | "Нет") =>
-  icon && icon !== "Нет" ? (
-    (() => {
-      const Icon = Icon28Icons[icon];
+  icon && icon !== "Нет"
+    ? (() => {
+        const Icon = Icon28Icons[icon];
 
-      return <Icon width={28} height={28} />;
-    })()
-  ) : undefined;
+        return <Icon width={28} height={28} />;
+      })()
+    : undefined;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

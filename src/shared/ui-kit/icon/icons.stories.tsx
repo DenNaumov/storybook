@@ -78,7 +78,9 @@ const renderResizableIcon = (
 ) => {
   const Icon = ResizableIcons[icon];
 
-  return <Icon width={size} height={size} color={color} className={className} />;
+  return (
+    <Icon width={size} height={size} color={color} className={className} />
+  );
 };
 
 export const Pack16_List: StoryObj = {
@@ -204,9 +206,7 @@ export const Resizable_List: StoryObj = {
         <IconStoryRow
           key={name}
           label={name}
-          icon={
-            renderResizableIcon(name, 24, undefined, styles.resizableIcon)
-          }
+          icon={renderResizableIcon(name, 24, undefined, styles.resizableIcon)}
         />
       ))}
     </IconStoryLayout>

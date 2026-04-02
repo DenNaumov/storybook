@@ -41,13 +41,12 @@ const meta: Meta<InlineButtonStoryArgs> = {
 export default meta;
 type Story = StoryObj<InlineButtonStoryArgs>;
 
-const renderIcon = (icon: ResizableIconKeys) => (
+const renderIcon = (icon: ResizableIconKeys) =>
   (() => {
     const Icon = ResizableIcons[icon];
 
     return <Icon width={24} height={24} />;
-  })()
-);
+  })();
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

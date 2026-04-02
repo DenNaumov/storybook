@@ -18,7 +18,8 @@ type InputMasterStoryArgs = Omit<
 
 const meta: Meta<InputMasterStoryArgs> = {
   title: "UI Kit/Inputs/InputMaster",
-  component: InputMaster as unknown as React.ComponentType<InputMasterStoryArgs>,
+  component:
+    InputMaster as unknown as React.ComponentType<InputMasterStoryArgs>,
   parameters: {
     layout: "fullscreen",
   },

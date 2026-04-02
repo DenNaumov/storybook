@@ -4,7 +4,10 @@ import { describe, expect, it, jest } from "@jest/globals";
 import { Snackbar } from "./snackbar";
 
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
-type ClickableElement = ReactElement<{ onClick?: unknown; children?: ReactNode }>;
+type ClickableElement = ReactElement<{
+  onClick?: unknown;
+  children?: ReactNode;
+}>;
 
 describe("Snackbar", () => {
   it("renders a plain message without controls by default", () => {

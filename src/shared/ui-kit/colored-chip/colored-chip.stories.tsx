@@ -21,8 +21,7 @@ type ColoredChipStoryArgs = Omit<
 
 const meta: Meta<ColoredChipStoryArgs> = {
   title: "UI Kit/ColoredChip",
-  component:
-    ColoredChip as unknown as ComponentType<ColoredChipStoryArgs>,
+  component: ColoredChip as unknown as ComponentType<ColoredChipStoryArgs>,
   parameters: {
     layout: "fullscreen",
   },

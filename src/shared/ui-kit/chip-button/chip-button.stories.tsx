@@ -50,13 +50,13 @@ export default meta;
 type Story = StoryObj<ChipButtonStoryArgs>;
 
 const renderIcon = (icon?: ResizableIconKeys | "Нет") =>
-  icon && icon !== "Нет" ? (
-    (() => {
-      const Icon = ResizableIcons[icon];
+  icon && icon !== "Нет"
+    ? (() => {
+        const Icon = ResizableIcons[icon];
 
-      return <Icon width={24} height={24} />;
-    })()
-  ) : undefined;
+        return <Icon width={24} height={24} />;
+      })()
+    : undefined;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

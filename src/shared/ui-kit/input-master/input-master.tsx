@@ -103,7 +103,10 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
             {isExpanded && label ? (
               <label
                 htmlFor={inputId}
-                className={joinClasses(styles.label, error && styles.labelError)}
+                className={joinClasses(
+                  styles.label,
+                  error && styles.labelError,
+                )}
               >
                 {label}
               </label>
