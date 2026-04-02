@@ -17,7 +17,6 @@ export interface TextAreaProps {
 
 export const TextArea = ({
   label,
-  placeholder,
   value,
   assistiveText,
   disabled = false,

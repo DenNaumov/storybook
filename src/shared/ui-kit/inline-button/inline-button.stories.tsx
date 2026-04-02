@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { InlineButton } from "./inline-button";
-import { ResizableIcon } from "../icon";
 import {
   ResizableIcons,
   type ResizableIconKeys,
@@ -43,7 +42,11 @@ export default meta;
 type Story = StoryObj<InlineButtonStoryArgs>;
 
 const renderIcon = (icon: ResizableIconKeys) => (
-  <ResizableIcon icon={icon} size={24} />
+  (() => {
+    const Icon = ResizableIcons[icon];
+
+    return <Icon width={24} height={24} />;
+  })()
 );
 
 export const Showcase: Story = {

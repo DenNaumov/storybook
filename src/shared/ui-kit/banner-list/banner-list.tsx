@@ -1,11 +1,12 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { Icon20, ResizableIcon } from "../icon";
+import { Icon20Icons } from "../icon/packs/20";
+import { ResizableIcons } from "../icon/packs/resizable";
 import { Typography } from "../typography/typography";
 import styles from "./banner-list.module.css";
 
 export interface BannerListProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
-  "title" | "children"
+  "title" | "children" | "onToggle"
 > {
   title: ReactNode;
   description?: ReactNode;
@@ -43,9 +44,9 @@ export const BannerList = ({
     <>
       <span className={styles.icon} aria-hidden="true">
         {icon ?? (
-          <ResizableIcon
-            icon="InformationCircle"
-            size={24}
+          <ResizableIcons.InformationCircle
+            width={24}
+            height={24}
             color="var(--theme-icon-brand-main)"
           />
         )}
@@ -75,11 +76,19 @@ export const BannerList = ({
 
       {isCollapsible ? (
         <span className={styles.chevron} aria-hidden="true">
-          <Icon20
-            icon={expanded ? "ChevronUp" : "ChevronDown"}
-            size={24}
-            color="var(--theme-icon-default)"
-          />
+          {expanded ? (
+            <Icon20Icons.ChevronUp
+              width={24}
+              height={24}
+              color="var(--theme-icon-default)"
+            />
+          ) : (
+            <Icon20Icons.ChevronDown
+              width={24}
+              height={24}
+              color="var(--theme-icon-default)"
+            />
+          )}
         </span>
       ) : null}
     </>

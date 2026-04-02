@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ChipButton } from "./chip-button";
-import { ResizableIcon } from "../icon";
 import {
   ResizableIcons,
   type ResizableIconKeys,
@@ -51,7 +50,13 @@ export default meta;
 type Story = StoryObj<ChipButtonStoryArgs>;
 
 const renderIcon = (icon?: ResizableIconKeys | "Нет") =>
-  icon && icon !== "Нет" ? <ResizableIcon icon={icon} size={24} /> : undefined;
+  icon && icon !== "Нет" ? (
+    (() => {
+      const Icon = ResizableIcons[icon];
+
+      return <Icon width={24} height={24} />;
+    })()
+  ) : undefined;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

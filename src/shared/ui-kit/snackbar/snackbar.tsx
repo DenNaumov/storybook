@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { Icon28 } from "../icon";
 import { Icon20Icons } from "../icon/packs/20";
+import { Icon28Icons } from "../icon/packs/28";
 import { IconButton } from "../icon-button/icon-button";
 import { Typography } from "../typography/typography";
 import styles from "./snackbar.module.css";
@@ -25,17 +25,17 @@ export interface SnackbarProps extends Omit<
 const variantToIcon = {
   neutral: null,
   success: (
-    <Icon28
-      icon="Check"
-      size={28}
+    <Icon28Icons.Check
+      width={28}
+      height={28}
       color="var(--theme-icon-success)"
       aria-hidden="true"
     />
   ),
   error: (
-    <Icon28
-      icon="Warning"
-      size={28}
+    <Icon28Icons.Warning
+      width={28}
+      height={28}
       color="var(--theme-icon-error)"
       aria-hidden="true"
     />

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ComponentProps } from "react";
 
-import { Icon24 } from "../icon";
 import { Icon24Icons, type Icon24IconKeys } from "../icon/packs/24";
 import { Button } from "./button";
 import styles from "./button.stories.module.css";
@@ -52,9 +51,11 @@ type Story = StoryObj<ButtonStoryArgs>;
 
 const icon24Options = Object.keys(Icon24Icons) as Icon24IconKeys[];
 
-const Icon24Preview = ({ name }: { name: Icon24IconKeys }) => (
-  <Icon24 icon={name} />
-);
+const Icon24Preview = ({ name }: { name: Icon24IconKeys }) => {
+  const Icon = Icon24Icons[name];
+
+  return <Icon width={24} height={24} />;
+};
 const defaultIcon = icon24Options[0];
 
 const StateRow = ({

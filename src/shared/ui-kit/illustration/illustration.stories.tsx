@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Icon28 } from "../icon";
+import { Icon28Icons } from "../icon/packs/28";
 import { Illustration } from "./illustration";
 import {
   illustrationSrcMap,
@@ -55,9 +55,9 @@ export const Showcase: Story = {
     <div className={styles.stage}>
       <div className={styles.surface}>
         <div className={styles.title}>
-          <Icon28
-            icon="FancyIcon"
-            size={28}
+          <Icon28Icons.FancyIcon
+            width={28}
+            height={28}
             color="currentColor"
             aria-hidden="true"
           />

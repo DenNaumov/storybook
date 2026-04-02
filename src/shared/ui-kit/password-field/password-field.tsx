@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { InputMaster } from "../input-master/input-master";
-import { ResizableIcon } from "../icon";
+import { ResizableIcons } from "../icon/packs/resizable";
 import styles from "./password-field.module.css";
 
 export interface PasswordFieldProps extends Omit<
@@ -35,6 +35,9 @@ export const PasswordField = React.forwardRef<
     ref,
   ) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const VisibilityIcon = passwordVisible
+      ? ResizableIcons.ViewOffSlash
+      : ResizableIcons.View;
 
     return (
       <div className={[styles.root, className].filter(Boolean).join(" ")}>
@@ -59,10 +62,7 @@ export const PasswordField = React.forwardRef<
           aria-label={passwordVisible ? "Скрыть пароль" : "Показать пароль"}
           aria-pressed={passwordVisible}
         >
-          <ResizableIcon
-            icon={passwordVisible ? "ViewOffSlash" : "View"}
-            size={24}
-          />
+          <VisibilityIcon width={24} height={24} />
         </button>
       </div>
     );

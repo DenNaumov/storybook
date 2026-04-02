@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ListButton } from "./list-button";
-import { Icon28 } from "../icon";
 import { Icon28Icons, type Icon28IconKeys } from "../icon/packs/28";
 import styles from "./list-button.stories.module.css";
 
@@ -39,7 +38,13 @@ export default meta;
 type Story = StoryObj<ListButtonStoryArgs>;
 
 const renderIcon = (icon?: Icon28IconKeys | "Нет") =>
-  icon && icon !== "Нет" ? <Icon28 icon={icon} size={28} /> : undefined;
+  icon && icon !== "Нет" ? (
+    (() => {
+      const Icon = Icon28Icons[icon];
+
+      return <Icon width={28} height={28} />;
+    })()
+  ) : undefined;
 
 export const Showcase: Story = {
   parameters: { controls: { disable: true } },

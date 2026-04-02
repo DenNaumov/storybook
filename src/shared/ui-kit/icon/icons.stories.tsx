@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ReactNode } from "react";
-import { Icon16, Icon20, Icon24, Icon28, ResizableIcon } from ".";
 import styles from "./icons.stories.module.css";
 import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
 import { Icon20Icons, type Icon20IconKeys } from "./packs/20";
@@ -47,11 +46,46 @@ const IconStoryRow = ({ label, icon }: { label: string; icon: ReactNode }) => (
   </div>
 );
 
+const renderPack16Icon = (icon: Icon16IconKeys, color?: string) => {
+  const Icon = Icon16Icons[icon];
+
+  return <Icon width={16} height={16} color={color} />;
+};
+
+const renderPack20Icon = (icon: Icon20IconKeys, color?: string) => {
+  const Icon = Icon20Icons[icon];
+
+  return <Icon width={20} height={20} color={color} />;
+};
+
+const renderPack24Icon = (icon: Icon24IconKeys, color?: string) => {
+  const Icon = Icon24Icons[icon];
+
+  return <Icon width={24} height={24} color={color} />;
+};
+
+const renderPack28Icon = (icon: Icon28IconKeys, color?: string) => {
+  const Icon = Icon28Icons[icon];
+
+  return <Icon width={28} height={28} color={color} />;
+};
+
+const renderResizableIcon = (
+  icon: ResizableIconKeys,
+  size: number,
+  color?: string,
+  className?: string,
+) => {
+  const Icon = ResizableIcons[icon];
+
+  return <Icon width={size} height={size} color={color} className={className} />;
+};
+
 export const Pack16_List: StoryObj = {
   render: () => (
     <IconStoryLayout>
       {icons16.map((name) => (
-        <IconStoryRow key={name} label={name} icon={<Icon16 icon={name} />} />
+        <IconStoryRow key={name} label={name} icon={renderPack16Icon(name)} />
       ))}
     </IconStoryLayout>
   ),
@@ -70,7 +104,7 @@ export const Pack16_Playground: StoryObj<FixedPackStoryArgs<Icon16IconKeys>> = {
     <IconStoryLayout>
       <IconStoryRow
         label={args.icon}
-        icon={<Icon16 icon={args.icon} color={args.color} />}
+        icon={renderPack16Icon(args.icon, args.color)}
       />
     </IconStoryLayout>
   ),
@@ -80,7 +114,7 @@ export const Pack20_List: StoryObj = {
   render: () => (
     <IconStoryLayout>
       {icons20.map((name) => (
-        <IconStoryRow key={name} label={name} icon={<Icon20 icon={name} />} />
+        <IconStoryRow key={name} label={name} icon={renderPack20Icon(name)} />
       ))}
     </IconStoryLayout>
   ),
@@ -99,7 +133,7 @@ export const Pack20_Playground: StoryObj<FixedPackStoryArgs<Icon20IconKeys>> = {
     <IconStoryLayout>
       <IconStoryRow
         label={args.icon}
-        icon={<Icon20 icon={args.icon} color={args.color} />}
+        icon={renderPack20Icon(args.icon, args.color)}
       />
     </IconStoryLayout>
   ),
@@ -109,7 +143,7 @@ export const Pack24_List: StoryObj = {
   render: () => (
     <IconStoryLayout>
       {icons24.map((name) => (
-        <IconStoryRow key={name} label={name} icon={<Icon24 icon={name} />} />
+        <IconStoryRow key={name} label={name} icon={renderPack24Icon(name)} />
       ))}
     </IconStoryLayout>
   ),
@@ -128,7 +162,7 @@ export const Pack24_Playground: StoryObj<FixedPackStoryArgs<Icon24IconKeys>> = {
     <IconStoryLayout>
       <IconStoryRow
         label={args.icon}
-        icon={<Icon24 icon={args.icon} color={args.color} />}
+        icon={renderPack24Icon(args.icon, args.color)}
       />
     </IconStoryLayout>
   ),
@@ -138,7 +172,7 @@ export const Pack28_List: StoryObj = {
   render: () => (
     <IconStoryLayout>
       {icons28.map((name) => (
-        <IconStoryRow key={name} label={name} icon={<Icon28 icon={name} />} />
+        <IconStoryRow key={name} label={name} icon={renderPack28Icon(name)} />
       ))}
     </IconStoryLayout>
   ),
@@ -157,7 +191,7 @@ export const Pack28_Playground: StoryObj<FixedPackStoryArgs<Icon28IconKeys>> = {
     <IconStoryLayout>
       <IconStoryRow
         label={args.icon}
-        icon={<Icon28 icon={args.icon} color={args.color} />}
+        icon={renderPack28Icon(args.icon, args.color)}
       />
     </IconStoryLayout>
   ),
@@ -171,11 +205,7 @@ export const Resizable_List: StoryObj = {
           key={name}
           label={name}
           icon={
-            <ResizableIcon
-              icon={name}
-              size={24}
-              className={styles.resizableIcon}
-            />
+            renderResizableIcon(name, 24, undefined, styles.resizableIcon)
           }
         />
       ))}
@@ -203,14 +233,12 @@ export const Resizable_Playground: StoryObj<ResizableStoryArgs> = {
     <IconStoryLayout>
       <IconStoryRow
         label={args.icon}
-        icon={
-          <ResizableIcon
-            icon={args.icon}
-            size={args.size}
-            color={args.color}
-            className={styles.resizableIcon}
-          />
-        }
+        icon={renderResizableIcon(
+          args.icon,
+          args.size,
+          args.color,
+          styles.resizableIcon,
+        )}
       />
     </IconStoryLayout>
   ),

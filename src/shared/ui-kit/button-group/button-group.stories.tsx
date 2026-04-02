@@ -4,7 +4,7 @@ import { ButtonGroup } from "./button-group";
 import { Button } from "../button/button";
 import { ChipButton } from "../chip-button/chip-button";
 import { InlineButton } from "../inline-button/inline-button";
-import { ResizableIcon } from "../icon";
+import { ResizableIcons } from "../icon/packs/resizable";
 import styles from "./button-group.stories.module.css";
 
 type ButtonGroupStoryArgs = ComponentProps<typeof ButtonGroup> & {
@@ -42,9 +42,11 @@ const meta: Meta<ButtonGroupStoryArgs> = {
 export default meta;
 type Story = StoryObj<ButtonGroupStoryArgs>;
 
-const SortIcon = <ResizableIcon icon="ArrowUpDown" size={24} />;
+const SortIcon = <ResizableIcons.ArrowUpDown width={24} height={24} />;
 
-const CalendarRemoveIcon = <ResizableIcon icon="CalendarRemove24" size={24} />;
+const CalendarRemoveIcon = (
+  <ResizableIcons.CalendarRemove24 width={24} height={24} />
+);
 
 const layoutClassNames: Partial<
   Record<NonNullable<ButtonGroupStoryArgs["direction"]>, string>
