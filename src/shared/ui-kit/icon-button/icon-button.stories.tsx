@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { ComponentType } from "react";
 import { ResizableIcons } from "../icon/packs/resizable";
 import { IconButton, type SvgIconComponent } from "./icon-button";
 import styles from "./icon-button.stories.module.css";
@@ -20,7 +21,7 @@ const iconMap: Record<IconButtonStoryArgs["iconName"], SvgIconComponent> = {
 
 const meta: Meta<IconButtonStoryArgs> = {
   title: "UI Kit/Buttons/IconButton",
-  component: IconButton,
+  component: IconButton as unknown as ComponentType<IconButtonStoryArgs>,
   parameters: {
     layout: "fullscreen",
   },
@@ -52,10 +53,6 @@ const meta: Meta<IconButtonStoryArgs> = {
     },
     disabled: {
       control: "boolean",
-    },
-    icon: {
-      control: false,
-      table: { disable: true },
     },
   },
 };

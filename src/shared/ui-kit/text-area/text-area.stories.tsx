@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 const TextAreaExample = ({
   initialValue = "",
   ...props
-}: Omit<ComponentProps<typeof TextArea>, "value" | "onChange"> & {
+}: Omit<ComponentProps<typeof TextArea>, "value" | "onValueChange"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
@@ -27,6 +27,10 @@ const TextAreaExample = ({
 };
 
 export const Showcase: Story = {
+  args: {
+    value: "",
+    onValueChange: () => undefined,
+  },
   render: () => (
     <div className={styles.stage}>
       <div className={styles.card}>
