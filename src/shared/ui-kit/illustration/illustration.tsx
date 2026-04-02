@@ -21,16 +21,12 @@ export interface IllustrationProps extends Omit<
 > {
   illustration: IllustrationName;
   size?: number;
-  autoplay?: boolean;
-  loop?: boolean;
   label?: string;
 }
 
 export const Illustration = ({
   illustration,
   size = 184,
-  autoplay = true,
-  loop = true,
   label,
   className = "",
   style,
@@ -52,8 +48,8 @@ export const Illustration = ({
     >
       <DotLottieReact
         src={illustrationSrcMap[illustration]}
-        autoplay={autoplay}
-        loop={loop}
+        autoplay
+        loop
         className={styles.player}
       />
     </div>

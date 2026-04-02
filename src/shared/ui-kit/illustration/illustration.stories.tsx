@@ -27,12 +27,6 @@ const meta: Meta<IllustrationStoryArgs> = {
     size: {
       control: { type: "number", min: 64, max: 240, step: 4 },
     },
-    autoplay: {
-      control: "boolean",
-    },
-    loop: {
-      control: "boolean",
-    },
     label: {
       control: "text",
     },
@@ -46,8 +40,6 @@ export const Playground: Story = {
   args: {
     illustration: "UserLimit",
     size: 184,
-    autoplay: true,
-    loop: true,
     label: "User limit illustration",
   },
   render: (args) => (
