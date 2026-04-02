@@ -1,6 +1,10 @@
+import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
 import { Alert } from "./alert";
+
+type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
+type ClickableElement = ReactElement<{ onClick?: unknown; children?: ReactNode }>;
 
 describe("Alert", () => {
   it("renders title, description and primary action", () => {
@@ -27,10 +31,14 @@ describe("Alert", () => {
       throw new Error("Expected alert body and actions to be React elements.");
     }
 
-    const bodyChildren = Children.toArray(bodyNode.props.children);
+    const bodyChildren = Children.toArray(
+      (bodyNode as ElementWithChildren).props.children,
+    );
     expect(bodyChildren).toHaveLength(2);
 
-    const actionsChildren = Children.toArray(actionsNode.props.children);
+    const actionsChildren = Children.toArray(
+      (actionsNode as ElementWithChildren).props.children,
+    );
     expect(actionsChildren).toHaveLength(1);
 
     const primarySlot = actionsChildren[0];
@@ -39,13 +47,17 @@ describe("Alert", () => {
       throw new Error("Expected primary action slot to be a React element.");
     }
 
-    const primaryButton = Children.toArray(primarySlot.props.children)[0];
+    const primaryButton = Children.toArray(
+      (primarySlot as ElementWithChildren).props.children,
+    )[0];
     expect(isValidElement(primaryButton)).toBe(true);
     if (!isValidElement(primaryButton)) {
       throw new Error("Expected primary button to be a React element.");
     }
 
-    expect(primaryButton.props.onClick).toBe(onPrimaryAction);
+    expect((primaryButton as ClickableElement).props.onClick).toBe(
+      onPrimaryAction,
+    );
   });
 
   it("renders media before the text content when provided", () => {
@@ -63,7 +75,7 @@ describe("Alert", () => {
       throw new Error("Expected media node to be a React element.");
     }
 
-    expect(mediaNode.props.children).toBe("media");
+    expect((mediaNode as ElementWithChildren).props.children).toBe("media");
   });
 
   it("renders two actions when secondary action is provided", () => {
@@ -82,7 +94,9 @@ describe("Alert", () => {
       throw new Error("Expected actions node to be a React element.");
     }
 
-    const actionsChildren = Children.toArray(actionsNode.props.children);
+    const actionsChildren = Children.toArray(
+      (actionsNode as ElementWithChildren).props.children,
+    );
     expect(actionsChildren).toHaveLength(2);
   });
 });

@@ -1,6 +1,10 @@
+import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
 import { Snackbar } from "./snackbar";
+
+type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
+type ClickableElement = ReactElement<{ onClick?: unknown; children?: ReactNode }>;
 
 describe("Snackbar", () => {
   it("renders a plain message without controls by default", () => {
@@ -40,7 +44,9 @@ describe("Snackbar", () => {
       throw new Error("Expected controls node to be a React element.");
     }
 
-    const controlsChildren = Children.toArray(controlsNode.props.children);
+    const controlsChildren = Children.toArray(
+      (controlsNode as ElementWithChildren).props.children,
+    );
     expect(controlsChildren).toHaveLength(2);
 
     const actionButton = controlsChildren[0];
@@ -53,9 +59,11 @@ describe("Snackbar", () => {
       throw new Error("Expected control buttons to be React elements.");
     }
 
-    expect(actionButton.props.onClick).toBe(onAction);
+    expect((actionButton as ClickableElement).props.onClick).toBe(onAction);
 
-    const dismissChildren = Children.toArray(dismissButton.props.children);
+    const dismissChildren = Children.toArray(
+      (dismissButton as ElementWithChildren).props.children,
+    );
     expect(dismissChildren).toHaveLength(1);
 
     const dismissIconButton = dismissChildren[0];
@@ -64,7 +72,9 @@ describe("Snackbar", () => {
       throw new Error("Expected dismiss icon button to be a React element.");
     }
 
-    expect(dismissIconButton.props.onClick).toBe(onDismiss);
+    expect((dismissIconButton as ClickableElement).props.onClick).toBe(
+      onDismiss,
+    );
   });
 
   it("omits the variant icon when hideIcon is enabled", () => {
@@ -82,7 +92,9 @@ describe("Snackbar", () => {
       throw new Error("Expected content node to be a React element.");
     }
 
-    const contentChildren = Children.toArray(contentNode.props.children);
+    const contentChildren = Children.toArray(
+      (contentNode as ElementWithChildren).props.children,
+    );
     expect(contentChildren).toHaveLength(1);
     expect(contentChildren[0]).toBeDefined();
   });

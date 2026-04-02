@@ -1,6 +1,10 @@
+import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
 import { BannerScreen } from "./banner-screen";
+
+type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
+type ActionElement = ReactElement<{ onClick?: unknown; label?: string }>;
 
 describe("BannerScreen", () => {
   it("renders media, text and action", () => {
@@ -23,14 +27,14 @@ describe("BannerScreen", () => {
       throw new Error("Expected action wrapper to be a React element.");
     }
 
-    const actionButton = actionNode.props.children;
+    const actionButton = (actionNode as ElementWithChildren).props.children;
     expect(isValidElement(actionButton)).toBe(true);
     if (!isValidElement(actionButton)) {
       throw new Error("Expected action button to be a React element.");
     }
 
-    expect(actionButton.props.onClick).toBe(onAction);
-    expect(actionButton.props.label).toBe("Создать");
+    expect((actionButton as ActionElement).props.onClick).toBe(onAction);
+    expect((actionButton as ActionElement).props.label).toBe("Создать");
   });
 
   it("passes through custom className and media", () => {
@@ -42,6 +46,8 @@ describe("BannerScreen", () => {
 
     expect(isValidElement(element)).toBe(true);
     expect(element.props.className).toContain("custom-banner-screen");
-    expect(element.props.children[0].props.children).toBe("custom-media");
+    expect(
+      ((element.props.children[0] as ElementWithChildren).props.children),
+    ).toBe("custom-media");
   });
 });
