@@ -1,4 +1,5 @@
 import { z } from "zod";
+import type { FieldPath } from "react-hook-form";
 
 export const profileFormSchema = z.object({
   firstName: z.string().trim().min(1, "Укажите имя"),
@@ -14,3 +15,7 @@ export const profileFormSchema = z.object({
 });
 
 export type ProfileFormData = z.infer<typeof profileFormSchema>;
+
+export const isProfileFormFieldRequired = (
+  fieldName: FieldPath<ProfileFormData>,
+) => !profileFormSchema.shape[fieldName].safeParse("").success;

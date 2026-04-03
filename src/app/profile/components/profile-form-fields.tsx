@@ -6,14 +6,9 @@ import {
 } from "react-hook-form";
 import { TextLine } from "@/shared/ui-kit/text-line/text-line";
 import { Button } from "@/shared/ui-kit/button/button";
+import { isProfileFormFieldRequired } from "./profile-form.schema";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
-
-const requiredFieldNames: Array<FieldPath<ProfileFormData>> = [
-  "email",
-  "lastName",
-  "firstName",
-];
 
 interface ProfileFormFieldProps {
   name: FieldPath<ProfileFormData>;
@@ -37,7 +32,7 @@ const ProfileFormField = ({ name, label, type }: ProfileFormFieldProps) => {
     onChange: handleValueChange,
     ref: fieldRef,
   } = field;
-  const isRequired = requiredFieldNames.includes(name);
+  const isRequired = isProfileFormFieldRequired(name);
   const fieldLabel = isRequired ? `${label} *` : label;
 
   return (
