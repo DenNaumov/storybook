@@ -2,9 +2,11 @@
 
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { appendPathSegment } from "@/shared/lib/routing/pathname";
 import { useForm, FormProvider } from "react-hook-form";
 import { ProfileFormFields } from "./profile-form-fields";
+import { profileFormSchema } from "./profile-form.schema";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
 
@@ -12,6 +14,7 @@ export const ProfileForm = () => {
   const router = useRouter();
   const pathname = usePathname();
   const methods = useForm<ProfileFormData>({
+    resolver: zodResolver(profileFormSchema),
     defaultValues: {
       firstName: "",
       lastName: "",

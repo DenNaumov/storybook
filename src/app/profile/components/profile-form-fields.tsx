@@ -3,31 +3,33 @@ import {
   useController,
   useFormContext,
   type FieldPath,
-  type RegisterOptions,
 } from "react-hook-form";
 import { TextLine } from "@/shared/ui-kit/text-line/text-line";
 import { Button } from "@/shared/ui-kit/button/button";
 import type { ProfileFormData } from "./profile-form.types";
 import styles from "./profile-form.module.css";
 
+const requiredFieldNames: Array<FieldPath<ProfileFormData>> = [
+  "email",
+  "lastName",
+  "firstName",
+];
+
 interface ProfileFormFieldProps {
   name: FieldPath<ProfileFormData>;
   label: string;
   type?: InputHTMLAttributes<HTMLInputElement>["type"];
-  rules?: RegisterOptions<ProfileFormData, FieldPath<ProfileFormData>>;
 }
 
-const ProfileFormField = ({
-  name,
-  label,
-  type,
-  rules,
-}: ProfileFormFieldProps) => {
+const ProfileFormField = ({ name, label, type }: ProfileFormFieldProps) => {
   const {
     control,
     formState: { isSubmitting },
   } = useFormContext<ProfileFormData>();
-  const { field } = useController<ProfileFormData>({ name, control, rules });
+  const { field, fieldState } = useController<ProfileFormData>({
+    name,
+    control,
+  });
   const {
     name: fieldName,
     value: fieldValue,
@@ -35,7 +37,7 @@ const ProfileFormField = ({
     onChange: handleValueChange,
     ref: fieldRef,
   } = field;
-  const isRequired = Boolean(rules?.required);
+  const isRequired = requiredFieldNames.includes(name);
   const fieldLabel = isRequired ? `${label} *` : label;
 
   return (
@@ -47,6 +49,7 @@ const ProfileFormField = ({
       onBlur={handleBlur}
       onChange={handleValueChange}
       ref={fieldRef}
+      error={Boolean(fieldState.error)}
       disabled={isSubmitting}
     />
   );
@@ -60,27 +63,11 @@ export const ProfileFormFields = () => {
   return (
     <>
       <div className={styles.fieldsGroup}>
-        <ProfileFormField
-          name="email"
-          label="E-mail"
-          type="email"
-          rules={{
-            required: true,
-            pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-          }}
-        />
+        <ProfileFormField name="email" label="E-mail" type="email" />
 
-        <ProfileFormField
-          name="lastName"
-          label="Фамилия"
-          rules={{ required: true }}
-        />
+        <ProfileFormField name="lastName" label="Фамилия" />
 
-        <ProfileFormField
-          name="firstName"
-          label="Имя"
-          rules={{ required: true }}
-        />
+        <ProfileFormField name="firstName" label="Имя" />
 
         <ProfileFormField name="middleName" label="Отчество" />
 
