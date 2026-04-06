@@ -20,9 +20,6 @@
     border-color 160ms ease;
 }
 
-.field:focus-within {
-}
-
 .fieldDisabled {
   background: var(--theme-bg-fill-disabled);
 }
@@ -51,18 +48,11 @@
   gap: 0;
 }
 
-.contentError {
-  width: 100%;
-}
-
 .label {
   display: inline-flex;
   align-items: center;
   width: 100%;
   min-height: 16px;
-}
-
-.labelError {
 }
 
 .inputRow {
@@ -107,9 +97,6 @@
   cursor: not-allowed;
 }
 
-.inputDisabled {
-}
-
 .centerLabel {
   position: absolute;
   inset: 0;
@@ -117,9 +104,6 @@
   align-items: center;
   width: 100%;
   pointer-events: none;
-}
-
-.centerLabelError {
 }
 
 .inputTypography {
@@ -143,22 +127,6 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-}
-
-.clearButton {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  border-radius: 12px;
-  color: var(--theme-icon-default);
 }
 
 .errorText {

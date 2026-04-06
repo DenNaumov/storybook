@@ -101,17 +101,10 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
             className={joinClasses(
               styles.content,
               isExpanded ? styles.contentExpanded : styles.contentCentered,
-              error && styles.contentError,
             )}
           >
             {isExpanded && label ? (
-              <label
-                htmlFor={inputId}
-                className={joinClasses(
-                  styles.label,
-                  error && styles.labelError,
-                )}
-              >
+              <label htmlFor={inputId} className={styles.label}>
                 <Typography
                   as="span"
                   variant="caption1-regular"
@@ -123,13 +116,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
             ) : null}
             <div className={styles.inputRow}>
               {!isExpanded && (placeholder || label) ? (
-                <label
-                  htmlFor={inputId}
-                  className={joinClasses(
-                    styles.centerLabel,
-                    error && styles.centerLabelError,
-                  )}
-                >
+                <label htmlFor={inputId} className={styles.centerLabel}>
                   <Typography
                     as="span"
                     variant="subheadline2-semibold"
@@ -149,11 +136,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   {...restProps}
                   id={inputId}
                   ref={inputRef}
-                  className={joinClasses(
-                    styles.input,
-                    disabled && styles.inputDisabled,
-                    error && styles.inputError,
-                  )}
+                  className={joinClasses(styles.input, error && styles.inputError)}
                   value={value}
                   placeholder={isExpanded ? placeholder : ""}
                   disabled={disabled}
