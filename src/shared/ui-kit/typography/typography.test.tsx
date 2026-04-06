@@ -27,6 +27,24 @@ describe("Typography", () => {
     expect(element).toHaveStyle({ color: "var(--theme-text-brand-main)" });
   });
 
+  it("applies provided className and alignment class", () => {
+    render(
+      <Typography
+        variant="headline-semibold"
+        align="center"
+        className="custom-class"
+      >
+        Centered
+      </Typography>,
+    );
+
+    const element = screen.getByText("Centered");
+
+    expect(element.className).toContain("custom-class");
+    expect(element.className).toContain(styles.alignCenter);
+    expect(element.className).toContain(styles.headlineSemibold);
+  });
+
   it("respects the as prop", () => {
     render(
       <Typography as="label" variant="subheadline2-semibold">
