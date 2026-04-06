@@ -1,6 +1,7 @@
 import React, { useId, useImperativeHandle, useRef, useState } from "react";
 import { IconButton } from "../icon-button/icon-button";
 import { Icon24Icons } from "../icon/packs/24";
+import { Typography } from "../typography/typography";
 import styles from "./input-master.module.css";
 
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
@@ -53,6 +54,19 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     const isExpanded = focused || hasValue || disabled;
     const showClearButton = clearable && hasValue && !disabled;
     const clearLabel = label?.trim() ? `Очистить ${label}` : "Очистить";
+    const labelColor = error
+      ? "error"
+      : disabled
+        ? "var(--theme-text-disabled)"
+        : "secondary";
+    const inputColor = error
+      ? "var(--theme-text-error)"
+      : disabled
+        ? "var(--theme-text-disabled)"
+        : "var(--theme-text-primary)";
+    const assistiveColor = disabled
+      ? "var(--theme-text-disabled)"
+      : "secondary";
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setFocused(true);
@@ -104,7 +118,13 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   error && styles.labelError,
                 )}
               >
-                {label}
+                <Typography
+                  as="span"
+                  variant="caption1-regular"
+                  color={labelColor}
+                >
+                  {label}
+                </Typography>
               </label>
             ) : null}
             <div className={styles.inputRow}>
@@ -116,26 +136,39 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                     error && styles.centerLabelError,
                   )}
                 >
-                  {placeholder || label}
+                  <Typography
+                    as="span"
+                    variant="subheadline2-semibold"
+                    color={labelColor}
+                  >
+                    {placeholder || label}
+                  </Typography>
                 </label>
               ) : null}
-              <input
-                {...restProps}
-                id={inputId}
-                ref={inputRef}
-                className={joinClasses(
-                  styles.input,
-                  disabled && styles.inputDisabled,
-                  error && styles.inputError,
-                )}
-                value={value}
-                placeholder={isExpanded ? placeholder : ""}
-                disabled={disabled}
-                aria-invalid={error || undefined}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              />
+              <Typography
+                as="div"
+                variant="subheadline2-semibold"
+                className={styles.inputTypography}
+                style={{ color: inputColor }}
+              >
+                <input
+                  {...restProps}
+                  id={inputId}
+                  ref={inputRef}
+                  className={joinClasses(
+                    styles.input,
+                    disabled && styles.inputDisabled,
+                    error && styles.inputError,
+                  )}
+                  value={value}
+                  placeholder={isExpanded ? placeholder : ""}
+                  disabled={disabled}
+                  aria-invalid={error || undefined}
+                  onChange={handleChange}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </Typography>
             </div>
           </div>
           {showClearButton ? (
@@ -149,9 +182,25 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
             />
           ) : null}
         </div>
-        {errorText ? <div className={styles.errorText}>{errorText}</div> : null}
+        {errorText ? (
+          <Typography
+            as="div"
+            variant="caption1-regular"
+            color="error"
+            className={styles.errorText}
+          >
+            {errorText}
+          </Typography>
+        ) : null}
         {assistiveText ? (
-          <div className={styles.assistiveText}>{assistiveText}</div>
+          <Typography
+            as="div"
+            variant="caption1-regular"
+            color={assistiveColor}
+            className={styles.assistiveText}
+          >
+            {assistiveText}
+          </Typography>
         ) : null}
       </div>
     );
