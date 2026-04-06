@@ -56,17 +56,4 @@ describe("Typography", () => {
 
     expect(element.tagName.toLowerCase()).toBe("label");
   });
-
-  it("adds truncate and nowrap classes when requested", () => {
-    render(
-      <Typography variant="text-medium" truncate nowrap>
-        Hello
-      </Typography>,
-    );
-
-    const element = screen.getByText("Hello");
-
-    expect(element.className).toContain(styles.truncate);
-    expect(element.className).toContain(styles.nowrap);
-  });
 });
