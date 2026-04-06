@@ -93,6 +93,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const colorOnlyControls = {
+  controls: {
+    include: ["color"],
+  },
+} as const;
+
 /* ========================
    HELPERS & COMPONENTS
    ======================== */
@@ -265,11 +271,12 @@ const variantMetadata: Record<
 
 interface VariantCardProps {
   variant: TypographyVariant;
+  color?: TypographyColor;
   label?: string;
   specs?: string;
 }
 
-const VariantCard = ({ variant, label, specs }: VariantCardProps) => {
+const VariantCard = ({ variant, color, label, specs }: VariantCardProps) => {
   const meta = variantMetadata[variant];
 
   // Format name: 'subheadline1' -> 'Subheadline 1'
@@ -287,7 +294,7 @@ const VariantCard = ({ variant, label, specs }: VariantCardProps) => {
 
   return (
     <div className={styles.card}>
-      <Typography variant={variant} as="p">
+      <Typography variant={variant} color={color} as="p">
         {displayLabel}
       </Typography>
       <Typography
@@ -396,134 +403,142 @@ export const Caption2Bold: Story = {
 };
 
 export const AllTitle3Variants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section>
-        <VariantCard variant="title3-regular" />
-        <VariantCard variant="title3-semibold" />
-        <VariantCard variant="title3-bold" />
+        <VariantCard variant="title3-regular" color={args.color} />
+        <VariantCard variant="title3-semibold" color={args.color} />
+        <VariantCard variant="title3-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const AllHeadlineVariants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section>
-        <VariantCard variant="headline-regular" />
-        <VariantCard variant="headline-semibold" />
-        <VariantCard variant="headline-bold" />
+        <VariantCard variant="headline-regular" color={args.color} />
+        <VariantCard variant="headline-semibold" color={args.color} />
+        <VariantCard variant="headline-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const AllTextVariants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section className={styles.grid4}>
-        <VariantCard variant="text-regular" />
-        <VariantCard variant="text-medium" />
-        <VariantCard variant="text-semibold" />
-        <VariantCard variant="text-bold" />
+        <VariantCard variant="text-regular" color={args.color} />
+        <VariantCard variant="text-medium" color={args.color} />
+        <VariantCard variant="text-semibold" color={args.color} />
+        <VariantCard variant="text-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const AllSubheadline1Variants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section>
-        <VariantCard variant="subheadline1-regular" />
-        <VariantCard variant="subheadline1-semibold" />
-        <VariantCard variant="subheadline1-bold" />
+        <VariantCard variant="subheadline1-regular" color={args.color} />
+        <VariantCard variant="subheadline1-semibold" color={args.color} />
+        <VariantCard variant="subheadline1-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const AllSubheadline2Variants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section>
-        <VariantCard variant="subheadline2-regular" />
-        <VariantCard variant="subheadline2-semibold" />
-        <VariantCard variant="subheadline2-bold" />
+        <VariantCard variant="subheadline2-regular" color={args.color} />
+        <VariantCard variant="subheadline2-semibold" color={args.color} />
+        <VariantCard variant="subheadline2-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const AllCaption1Variants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section>
-        <VariantCard variant="caption1-regular" />
-        <VariantCard variant="caption1-semibold" />
-        <VariantCard variant="caption1-bold" />
+        <VariantCard variant="caption1-regular" color={args.color} />
+        <VariantCard variant="caption1-semibold" color={args.color} />
+        <VariantCard variant="caption1-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const AllCaption2Variants: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.container}>
       <Section>
-        <VariantCard variant="caption2-regular" />
-        <VariantCard variant="caption2-semibold" />
-        <VariantCard variant="caption2-bold" />
+        <VariantCard variant="caption2-regular" color={args.color} />
+        <VariantCard variant="caption2-semibold" color={args.color} />
+        <VariantCard variant="caption2-bold" color={args.color} />
       </Section>
     </div>
   ),
 };
 
 export const FullTypographyShowcase: Story = {
-  render: () => (
+  parameters: colorOnlyControls,
+  render: (args) => (
     <div className={styles.showcase}>
       <Section>
-        <VariantCard variant="title3-regular" label="Title 3" />
-        <VariantCard variant="title3-semibold" label="Title 3" />
-        <VariantCard variant="title3-bold" label="Title 3" />
+        <VariantCard variant="title3-regular" color={args.color} label="Title 3" />
+        <VariantCard variant="title3-semibold" color={args.color} label="Title 3" />
+        <VariantCard variant="title3-bold" color={args.color} label="Title 3" />
       </Section>
 
       <Section>
-        <VariantCard variant="headline-regular" label="Headline" />
-        <VariantCard variant="headline-semibold" label="Headline" />
-        <VariantCard variant="headline-bold" label="Headline" />
+        <VariantCard variant="headline-regular" color={args.color} label="Headline" />
+        <VariantCard variant="headline-semibold" color={args.color} label="Headline" />
+        <VariantCard variant="headline-bold" color={args.color} label="Headline" />
       </Section>
 
       <Section className={styles.grid4}>
-        <VariantCard variant="text-regular" label="Text" />
-        <VariantCard variant="text-medium" label="Text" />
-        <VariantCard variant="text-semibold" label="Text" />
-        <VariantCard variant="text-bold" label="Text" />
+        <VariantCard variant="text-regular" color={args.color} label="Text" />
+        <VariantCard variant="text-medium" color={args.color} label="Text" />
+        <VariantCard variant="text-semibold" color={args.color} label="Text" />
+        <VariantCard variant="text-bold" color={args.color} label="Text" />
       </Section>
 
       <Section>
-        <VariantCard variant="subheadline1-regular" label="Subheadline 1" />
-        <VariantCard variant="subheadline1-semibold" label="Subheadline 1" />
-        <VariantCard variant="subheadline1-bold" label="Subheadline 1" />
+        <VariantCard variant="subheadline1-regular" color={args.color} label="Subheadline 1" />
+        <VariantCard variant="subheadline1-semibold" color={args.color} label="Subheadline 1" />
+        <VariantCard variant="subheadline1-bold" color={args.color} label="Subheadline 1" />
       </Section>
 
       <Section>
-        <VariantCard variant="subheadline2-regular" label="Subheadline 2" />
-        <VariantCard variant="subheadline2-semibold" label="Subheadline 2" />
-        <VariantCard variant="subheadline2-bold" label="Subheadline 2" />
+        <VariantCard variant="subheadline2-regular" color={args.color} label="Subheadline 2" />
+        <VariantCard variant="subheadline2-semibold" color={args.color} label="Subheadline 2" />
+        <VariantCard variant="subheadline2-bold" color={args.color} label="Subheadline 2" />
       </Section>
 
       <Section>
-        <VariantCard variant="caption1-regular" label="Caption 1" />
-        <VariantCard variant="caption1-semibold" label="Caption 1" />
-        <VariantCard variant="caption1-bold" label="Caption 1" />
+        <VariantCard variant="caption1-regular" color={args.color} label="Caption 1" />
+        <VariantCard variant="caption1-semibold" color={args.color} label="Caption 1" />
+        <VariantCard variant="caption1-bold" color={args.color} label="Caption 1" />
       </Section>
 
       <Section>
-        <VariantCard variant="caption2-regular" label="Caption 2" />
-        <VariantCard variant="caption2-semibold" label="Caption 2" />
-        <VariantCard variant="caption2-bold" label="Caption 2" />
+        <VariantCard variant="caption2-regular" color={args.color} label="Caption 2" />
+        <VariantCard variant="caption2-semibold" color={args.color} label="Caption 2" />
+        <VariantCard variant="caption2-bold" color={args.color} label="Caption 2" />
       </Section>
     </div>
   ),
