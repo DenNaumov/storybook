@@ -41,6 +41,8 @@ export interface TypographyProps {
 export const typographyColors = [
   "primary",
   "secondary",
+  "disabled",
+  "onMain",
   "brand",
   "error",
 ] as const;
@@ -75,6 +77,8 @@ const variantClassMap: Record<TypographyVariant, string> = {
 const colorClassMap: Record<(typeof typographyColors)[number], string> = {
   primary: "var(--theme-text-primary)",
   secondary: "var(--theme-text-secondary)",
+  disabled: "var(--theme-text-disabled)",
+  onMain: "var(--theme-text-on-main)",
   brand: "var(--theme-text-brand-main)",
   error: "var(--theme-text-error)",
 };

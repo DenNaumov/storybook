@@ -45,7 +45,8 @@ const meta = {
     color: {
       control: "select",
       options: typographyColors,
-      description: "Text color",
+      description:
+        "Text theme token: primary, secondary, disabled, onMain, brand, error",
     },
     align: {
       control: "radio",
