@@ -33,7 +33,7 @@ export const PasswordField = React.forwardRef<
       ...restProps
     },
     ref,
-  ) => {
+    ) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const VisibilityIcon = passwordVisible
       ? ResizableIcons.ViewOffSlash
@@ -51,19 +51,25 @@ export const PasswordField = React.forwardRef<
           error={error}
           errorText={errorText}
           clearable={clearable}
+          endAdornment={
+            <button
+              type="button"
+              className={styles.visibilityButton}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => setPasswordVisible((current) => !current)}
+              aria-label={
+                passwordVisible ? "Скрыть пароль" : "Показать пароль"
+              }
+              aria-pressed={passwordVisible}
+              disabled={restProps.disabled}
+            >
+              <VisibilityIcon width={24} height={24} color="default" />
+            </button>
+          }
           autoComplete={autoComplete}
           className={styles.field}
           spellCheck={false}
         />
-        <button
-          type="button"
-          className={styles.visibilityButton}
-          onClick={() => setPasswordVisible((current) => !current)}
-          aria-label={passwordVisible ? "Скрыть пароль" : "Показать пароль"}
-          aria-pressed={passwordVisible}
-        >
-          <VisibilityIcon width={24} height={24} />
-        </button>
       </div>
     );
   },

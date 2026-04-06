@@ -19,6 +19,7 @@ export interface InputMasterProps extends Omit<
   error?: boolean;
   clearable?: boolean;
   onClear?: () => void;
+  endAdornment?: React.ReactNode;
   className?: string;
 }
 
@@ -34,6 +35,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
       disabled = false,
       clearable = false,
       onClear,
+      endAdornment,
       className,
       placeholder,
       id,
@@ -53,6 +55,8 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     const hasValue = value.length > 0;
     const isExpanded = focused || hasValue || disabled;
     const showClearButton = clearable && hasValue && !disabled;
+    const hasEndAdornment = Boolean(endAdornment);
+    const hasActions = showClearButton || hasEndAdornment;
     const clearLabel = label?.trim() ? `Очистить ${label}` : "Очистить";
     const labelColor = error ? "error" : disabled ? "disabled" : "secondary";
     const inputColor = error ? "error" : disabled ? "disabled" : "primary";
@@ -161,15 +165,22 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
               </Typography>
             </div>
           </div>
-          {showClearButton ? (
-            <IconButton
-              buttonSize="m"
-              iconSize="m"
-              icon={Icon24Icons.Cancel}
-              onMouseDown={(event) => event.preventDefault()}
-              onClick={handleClear}
-              aria-label={clearLabel}
-            />
+          {hasActions ? (
+            <div className={styles.actions}>
+              {showClearButton ? (
+                <IconButton
+                  buttonSize="m"
+                  iconSize="m"
+                  icon={Icon24Icons.Cancel}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={handleClear}
+                  aria-label={clearLabel}
+                />
+              ) : null}
+              {endAdornment ? (
+                <div className={styles.endAdornment}>{endAdornment}</div>
+              ) : null}
+            </div>
           ) : null}
         </div>
         {errorText ? (
