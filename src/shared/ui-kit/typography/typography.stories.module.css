@@ -55,3 +55,10 @@
 .truncateWrapper {
   width: 300px;
 }
+
+.playground {
+  padding: 24px;
+  background-color: var(--theme-bg-fill-primary);
+  border: 1px dashed var(--theme-border-default);
+  border-radius: 12px;
+}

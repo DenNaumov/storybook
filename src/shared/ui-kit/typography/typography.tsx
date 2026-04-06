@@ -33,10 +33,10 @@ export interface TypographyProps {
   children?: React.ReactNode;
   variant: TypographyVariant;
   color?: TypographyColor;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div" | "label";
   align?: "left" | "center" | "right";
   truncate?: boolean;
   nowrap?: boolean;
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div" | "label";
   className?: string;
   style?: React.CSSProperties;
 }
@@ -85,10 +85,10 @@ export const Typography = ({
   children,
   variant,
   color,
+  as: Component = "span",
   align = "left",
   truncate = false,
   nowrap = false,
-  as: Component = "span",
   className = "",
   style,
 }: TypographyProps) => {

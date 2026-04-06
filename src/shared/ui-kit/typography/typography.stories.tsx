@@ -12,18 +12,61 @@ const typographyColors = [
   "error",
 ] as const satisfies readonly TypographyColor[];
 
+type TypographyStoryArgs = {
+  text: string;
+  variant: TypographyVariant;
+  color?: TypographyColor;
+  align?: "left" | "center" | "right";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div" | "label";
+  truncate?: boolean;
+  nowrap?: boolean;
+};
+
 const meta = {
   title: "UI Kit/Typography",
   component: Typography,
+  render: ({ text, ...args }) => <Typography {...args}>{text}</Typography>,
   parameters: {
     layout: "centered",
+    controls: {
+      include: ["text", "variant", "color", "as", "align", "truncate", "nowrap"],
+      sort: "none",
+    },
   },
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div className={styles.playground}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     variant: "text-regular",
-    children: "Typography",
+    color: "primary",
+    text: "Typography",
   },
   argTypes: {
+    text: {
+      control: "text",
+      description: "Text content",
+    },
+    as: {
+      control: "select",
+      options: [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p",
+        "span",
+        "div",
+        "label",
+      ],
+      description: "HTML element to render",
+    },
     variant: {
       control: "select",
       options: [
@@ -63,22 +106,6 @@ const meta = {
       options: ["left", "center", "right"],
       description: "Text alignment",
     },
-    as: {
-      control: "select",
-      options: [
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "p",
-        "span",
-        "div",
-        "label",
-      ],
-      description: "HTML element to render",
-    },
     truncate: {
       control: "boolean",
       description: "Truncate overflowing text with ellipsis",
@@ -87,8 +114,18 @@ const meta = {
       control: "boolean",
       description: "Prevent text from wrapping",
     },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    style: {
+      table: {
+        disable: true,
+      },
+    },
   },
-} satisfies Meta<typeof Typography>;
+} satisfies Meta<TypographyStoryArgs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -318,88 +355,88 @@ const Section = ({
 }) => <div className={className || styles.grid3}>{children}</div>;
 
 export const Title3Regular: Story = {
-  args: { children: "Title 3 · Regular", variant: "title3-regular" },
+  args: { text: "Title 3 · Regular", variant: "title3-regular" },
 };
 export const Title3Semibold: Story = {
-  args: { children: "Title 3 · Semibold", variant: "title3-semibold" },
+  args: { text: "Title 3 · Semibold", variant: "title3-semibold" },
 };
 export const Title3Bold: Story = {
-  args: { children: "Title 3 · Bold", variant: "title3-bold" },
+  args: { text: "Title 3 · Bold", variant: "title3-bold" },
 };
 
 export const HeadlineRegular: Story = {
-  args: { children: "Headline · Regular", variant: "headline-regular" },
+  args: { text: "Headline · Regular", variant: "headline-regular" },
 };
 export const HeadlineSemibold: Story = {
-  args: { children: "Headline · Semibold", variant: "headline-semibold" },
+  args: { text: "Headline · Semibold", variant: "headline-semibold" },
 };
 export const HeadlineBold: Story = {
-  args: { children: "Headline · Bold", variant: "headline-bold" },
+  args: { text: "Headline · Bold", variant: "headline-bold" },
 };
 
 export const TextRegular: Story = {
-  args: { children: "Text · Regular", variant: "text-regular" },
+  args: { text: "Text · Regular", variant: "text-regular" },
 };
 export const TextMedium: Story = {
-  args: { children: "Text · Medium", variant: "text-medium" },
+  args: { text: "Text · Medium", variant: "text-medium" },
 };
 export const TextSemibold: Story = {
-  args: { children: "Text · Semibold", variant: "text-semibold" },
+  args: { text: "Text · Semibold", variant: "text-semibold" },
 };
 export const TextBold: Story = {
-  args: { children: "Text · Bold", variant: "text-bold" },
+  args: { text: "Text · Bold", variant: "text-bold" },
 };
 
 export const Subheadline1Regular: Story = {
   args: {
-    children: "Subheadline 1 · Regular",
+    text: "Subheadline 1 · Regular",
     variant: "subheadline1-regular",
   },
 };
 export const Subheadline1Semibold: Story = {
   args: {
-    children: "Subheadline 1 · Semibold",
+    text: "Subheadline 1 · Semibold",
     variant: "subheadline1-semibold",
   },
 };
 export const Subheadline1Bold: Story = {
-  args: { children: "Subheadline 1 · Bold", variant: "subheadline1-bold" },
+  args: { text: "Subheadline 1 · Bold", variant: "subheadline1-bold" },
 };
 
 export const Subheadline2Regular: Story = {
   args: {
-    children: "Subheadline 2 · Regular",
+    text: "Subheadline 2 · Regular",
     variant: "subheadline2-regular",
   },
 };
 export const Subheadline2Semibold: Story = {
   args: {
-    children: "Subheadline 2 · Semibold",
+    text: "Subheadline 2 · Semibold",
     variant: "subheadline2-semibold",
   },
 };
 export const Subheadline2Bold: Story = {
-  args: { children: "Subheadline 2 · Bold", variant: "subheadline2-bold" },
+  args: { text: "Subheadline 2 · Bold", variant: "subheadline2-bold" },
 };
 
 export const Caption1Regular: Story = {
-  args: { children: "Caption 1 · Regular", variant: "caption1-regular" },
+  args: { text: "Caption 1 · Regular", variant: "caption1-regular" },
 };
 export const Caption1Semibold: Story = {
-  args: { children: "Caption 1 · Semibold", variant: "caption1-semibold" },
+  args: { text: "Caption 1 · Semibold", variant: "caption1-semibold" },
 };
 export const Caption1Bold: Story = {
-  args: { children: "Caption 1 · Bold", variant: "caption1-bold" },
+  args: { text: "Caption 1 · Bold", variant: "caption1-bold" },
 };
 
 export const Caption2Regular: Story = {
-  args: { children: "Caption 2 · Regular", variant: "caption2-regular" },
+  args: { text: "Caption 2 · Regular", variant: "caption2-regular" },
 };
 export const Caption2Semibold: Story = {
-  args: { children: "Caption 2 · Semibold", variant: "caption2-semibold" },
+  args: { text: "Caption 2 · Semibold", variant: "caption2-semibold" },
 };
 export const Caption2Bold: Story = {
-  args: { children: "Caption 2 · Bold", variant: "caption2-bold" },
+  args: { text: "Caption 2 · Bold", variant: "caption2-bold" },
 };
 
 export const AllTitle3Variants: Story = {
@@ -546,7 +583,7 @@ export const FullTypographyShowcase: Story = {
 
 export const TruncatedText: Story = {
   args: {
-    children:
+    text:
       "This is a very long text that will be truncated with an ellipsis because it exceeds the available width of its container element",
     variant: "text-regular",
     truncate: true,
