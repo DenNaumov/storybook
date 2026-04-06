@@ -54,7 +54,7 @@ import Sortalphabetically from "./sortalphabetically_28.svg";
 import Stats from "./stats_28.svg";
 import Theme from "./theme_28.svg";
 import Warning from "./warning_28.svg";
-import { createThemedIcons } from "../../create-themed-icon";
+import { createThemedIcons } from "../../icon.utils";
 
 export const Icon28Icons = createThemedIcons({
   FancyIcon,

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ReactNode } from "react";
 import styles from "./icons.stories.module.css";
-import type { ThemeIconColor } from "./theme-icon-color";
+import type { ThemeIconColor } from "./icon.utils";
 import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
 import { Icon20Icons, type Icon20IconKeys } from "./packs/20";
 import { Icon24Icons, type Icon24IconKeys } from "./packs/24";

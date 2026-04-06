@@ -45,7 +45,7 @@ import ViewOffSlash from "./view-off-slash.svg";
 import View from "./view.svg";
 import Warning from "./warning.svg";
 import Whatsapp from "./whatsapp.svg";
-import { createThemedIcons } from "../../create-themed-icon";
+import { createThemedIcons } from "../../icon.utils";
 
 export const ResizableIcons = createThemedIcons({
   SBBOL,

@@ -11,7 +11,7 @@ import Copy from "./copy_20.svg";
 import EllipsisVertical from "./ellipsis_vertical_20.svg";
 import Questionmark from "./questionmark_20.svg";
 import Search from "./search_20.svg";
-import { createThemedIcons } from "../../create-themed-icon";
+import { createThemedIcons } from "../../icon.utils";
 
 export const Icon20Icons = createThemedIcons({
   ArrowDownCircleFill,

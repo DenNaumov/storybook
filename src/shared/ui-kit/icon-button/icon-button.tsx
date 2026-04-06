@@ -1,6 +1,6 @@
 import { Badge } from "../badge/badge";
 import type { ButtonHTMLAttributes } from "react";
-import type { ThemedSvgIconComponent } from "../icon/create-themed-icon";
+import type { ThemedSvgIconComponent } from "../icon/icon.utils";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
