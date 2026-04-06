@@ -76,7 +76,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
       onValueChange(event.target.value);
     };
 
-    const handleClear = () => {
+    const handleClearButton = () => {
       const input = inputRef.current;
 
       if (!input) {
@@ -154,7 +154,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   iconSize="m"
                   icon={Icon24Icons.Cancel}
                   onMouseDown={(event) => event.preventDefault()}
-                  onClick={handleClear}
+                  onClick={handleClearButton}
                   aria-label={clearLabel}
                 />
               )}
