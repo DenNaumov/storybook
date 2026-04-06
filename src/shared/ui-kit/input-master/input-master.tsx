@@ -10,10 +10,10 @@ export interface InputMasterProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "defaultValue" | "value" | "onChange"
 > {
-  label?: React.ReactNode;
-  value?: string | null;
+  label?: string;
+  value: string;
   onValueChange: (value: string) => void;
-  assistiveText?: React.ReactNode;
+  assistiveText?: string;
   errorText?: string;
   error?: boolean;
   clearable?: boolean;
@@ -42,7 +42,6 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     },
     ref,
   ) => {
-    const normalizedValue = value ?? "";
     const generatedId = useId();
     const inputId = id ?? generatedId;
     const inputRef = useRef<HTMLInputElement>(null);
@@ -50,13 +49,10 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
 
     useImperativeHandle(ref, () => inputRef.current as HTMLInputElement);
 
-    const hasValue = normalizedValue.length > 0;
+    const hasValue = value.length > 0;
     const isExpanded = focused || hasValue || disabled;
     const showClearButton = clearable && hasValue && !disabled;
-    const clearLabel =
-      typeof label === "string" && label.trim().length > 0
-        ? `Очистить ${label}`
-        : "Очистить";
+    const clearLabel = label?.trim() ? `Очистить ${label}` : "Очистить";
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setFocused(true);
@@ -132,7 +128,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   disabled && styles.inputDisabled,
                   error && styles.inputError,
                 )}
-                value={normalizedValue}
+                value={value}
                 placeholder={isExpanded ? placeholder : ""}
                 disabled={disabled}
                 aria-invalid={error || undefined}

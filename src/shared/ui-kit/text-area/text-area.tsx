@@ -1,11 +1,10 @@
-import type { ReactNode } from "react";
 import { InputMaster } from "../input-master/input-master";
 
 export interface TextAreaProps {
   label?: string;
   placeholder?: string;
   value: string;
-  assistiveText?: ReactNode;
+  assistiveText?: string;
   disabled?: boolean;
   error?: boolean;
   clearable?: boolean;
