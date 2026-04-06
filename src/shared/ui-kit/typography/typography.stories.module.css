@@ -1,13 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-  background-color: var(--theme-bg-fill-primary);
-  border-radius: 12px;
-  border: 1px dashed var(--theme-border-default);
-}
-
 .showcase {
   display: flex;
   flex-direction: column;
@@ -16,7 +6,6 @@
   max-width: 900px;
   background-color: var(--theme-bg-fill-primary);
   border-radius: 12px;
-  border: 1px dashed var(--theme-border-default);
 }
 
 .grid3 {

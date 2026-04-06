@@ -21,7 +21,10 @@ const typographyStyleColorRule = {
   create(context) {
     return {
       JSXOpeningElement(node) {
-        if (node.name.type !== "JSXIdentifier" || node.name.name !== "Typography") {
+        if (
+          node.name.type !== "JSXIdentifier" ||
+          node.name.name !== "Typography"
+        ) {
           return;
         }
 
