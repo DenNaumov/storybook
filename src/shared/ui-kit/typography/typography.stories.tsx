@@ -1,6 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Typography, TypographyVariant, typographyColors } from "./typography";
+import type { TypographyColor, TypographyVariant } from "./typography";
+import { Typography } from "./typography";
 import styles from "./typography.stories.module.css";
+
+const typographyColors = [
+  "primary",
+  "secondary",
+  "disabled",
+  "onMain",
+  "brandMain",
+  "error",
+] as const satisfies readonly TypographyColor[];
 
 const meta = {
   title: "UI Kit/Typography",
@@ -46,7 +56,7 @@ const meta = {
       control: "select",
       options: typographyColors,
       description:
-        "Text theme token: primary, secondary, disabled, onMain, brand, error",
+        "Text theme token: primary, secondary, disabled, onMain, brandMain, error",
     },
     align: {
       control: "radio",

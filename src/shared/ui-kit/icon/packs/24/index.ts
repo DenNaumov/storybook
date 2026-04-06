@@ -53,8 +53,9 @@ import Stats from "./stats_24.svg";
 import Sun from "./sun_24.svg";
 import SunLow from "./sun_low_24.svg";
 import Theme from "./theme_24.svg";
+import { createThemedIcons } from "../../create-themed-icon";
 
-export const Icon24Icons = {
+export const Icon24Icons = createThemedIcons({
   Actions,
   AddCircleFill,
   Addhome,
@@ -110,6 +111,6 @@ export const Icon24Icons = {
   Sun,
   SunLow,
   Theme,
-};
+});
 
-export type Icon24IconKeys = keyof typeof Icon24Icons;
+export type Icon24IconKeys = keyof typeof Icon24Icons & string;

@@ -28,7 +28,7 @@ const variantToIcon = {
     <Icon28Icons.Check
       width={28}
       height={28}
-      color="var(--theme-icon-success)"
+      color="success"
       aria-hidden="true"
     />
   ),
@@ -36,7 +36,7 @@ const variantToIcon = {
     <Icon28Icons.Warning
       width={28}
       height={28}
-      color="var(--theme-icon-error)"
+      color="error"
       aria-hidden="true"
     />
   ),
@@ -98,7 +98,7 @@ export const Snackbar = ({
                 as="span"
                 variant="subheadline1-regular"
                 className={styles.actionLabel}
-                color="brand"
+                color="brandMain"
               >
                 {actionLabel}
               </Typography>

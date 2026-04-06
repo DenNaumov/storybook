@@ -47,7 +47,7 @@ export const BannerList = ({
           <ResizableIcons.InformationCircle
             width={24}
             height={24}
-            color="var(--theme-icon-brand-main)"
+            color="brandMain"
           />
         )}
       </span>
@@ -80,13 +80,13 @@ export const BannerList = ({
             <Icon20Icons.ChevronUp
               width={24}
               height={24}
-              color="var(--theme-icon-default)"
+              color="default"
             />
           ) : (
             <Icon20Icons.ChevronDown
               width={24}
               height={24}
-              color="var(--theme-icon-default)"
+              color="default"
             />
           )}
         </span>

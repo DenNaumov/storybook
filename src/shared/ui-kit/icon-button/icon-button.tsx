@@ -1,16 +1,16 @@
-import type { ButtonHTMLAttributes, ComponentType, SVGProps } from "react";
 import { Badge } from "../badge/badge";
+import type { ButtonHTMLAttributes } from "react";
+import type { ThemedSvgIconComponent } from "../icon/create-themed-icon";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
 export type IconSize = "s" | "m";
+export type SvgIconComponent = ThemedSvgIconComponent;
 
 const iconSizeToPixels: Record<IconSize, number> = {
   s: 20,
   m: 24,
 };
-
-export type SvgIconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 export interface IconButtonProps extends Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -18,7 +18,7 @@ export interface IconButtonProps extends Omit<
 > {
   buttonSize: IconButtonSize;
   iconSize: IconSize;
-  icon: SvgIconComponent;
+  icon: ThemedSvgIconComponent;
   badgeCount?: number | string;
   /** Storybook-only pressed state */
   pressed?: boolean;

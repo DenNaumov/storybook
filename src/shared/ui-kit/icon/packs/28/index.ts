@@ -54,8 +54,9 @@ import Sortalphabetically from "./sortalphabetically_28.svg";
 import Stats from "./stats_28.svg";
 import Theme from "./theme_28.svg";
 import Warning from "./warning_28.svg";
+import { createThemedIcons } from "../../create-themed-icon";
 
-export const Icon28Icons = {
+export const Icon28Icons = createThemedIcons({
   FancyIcon,
   Actions,
   AddCircle,
@@ -112,6 +113,6 @@ export const Icon28Icons = {
   Stats,
   Theme,
   Warning,
-};
+});
 
-export type Icon28IconKeys = keyof typeof Icon28Icons;
+export type Icon28IconKeys = keyof typeof Icon28Icons & string;

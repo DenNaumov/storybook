@@ -1,21 +1,32 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ReactNode } from "react";
 import styles from "./icons.stories.module.css";
+import type { ThemeIconColor } from "./theme-icon-color";
 import { Icon16Icons, type Icon16IconKeys } from "./packs/16";
 import { Icon20Icons, type Icon20IconKeys } from "./packs/20";
 import { Icon24Icons, type Icon24IconKeys } from "./packs/24";
 import { Icon28Icons, type Icon28IconKeys } from "./packs/28";
 import { ResizableIcons, type ResizableIconKeys } from "./packs/resizable";
 
+const themeIconColors = [
+  "default",
+  "disabled",
+  "onMain",
+  "error",
+  "success",
+  "brandMain",
+  "info",
+] as const satisfies readonly ThemeIconColor[];
+
 type FixedPackStoryArgs<TIcon extends string> = {
   icon: TIcon;
-  color?: string;
+  color?: ThemeIconColor;
 };
 
 type ResizableStoryArgs = {
   icon: ResizableIconKeys;
   size: number;
-  color?: string;
+  color?: ThemeIconColor;
 };
 
 const meta: Meta = {
@@ -46,25 +57,25 @@ const IconStoryRow = ({ label, icon }: { label: string; icon: ReactNode }) => (
   </div>
 );
 
-const renderPack16Icon = (icon: Icon16IconKeys, color?: string) => {
+const renderPack16Icon = (icon: Icon16IconKeys, color?: ThemeIconColor) => {
   const Icon = Icon16Icons[icon];
 
   return <Icon width={16} height={16} color={color} />;
 };
 
-const renderPack20Icon = (icon: Icon20IconKeys, color?: string) => {
+const renderPack20Icon = (icon: Icon20IconKeys, color?: ThemeIconColor) => {
   const Icon = Icon20Icons[icon];
 
   return <Icon width={20} height={20} color={color} />;
 };
 
-const renderPack24Icon = (icon: Icon24IconKeys, color?: string) => {
+const renderPack24Icon = (icon: Icon24IconKeys, color?: ThemeIconColor) => {
   const Icon = Icon24Icons[icon];
 
   return <Icon width={24} height={24} color={color} />;
 };
 
-const renderPack28Icon = (icon: Icon28IconKeys, color?: string) => {
+const renderPack28Icon = (icon: Icon28IconKeys, color?: ThemeIconColor) => {
   const Icon = Icon28Icons[icon];
 
   return <Icon width={28} height={28} color={color} />;
@@ -73,13 +84,18 @@ const renderPack28Icon = (icon: Icon28IconKeys, color?: string) => {
 const renderResizableIcon = (
   icon: ResizableIconKeys,
   size: number,
-  color?: string,
+  color?: ThemeIconColor,
   className?: string,
 ) => {
   const Icon = ResizableIcons[icon];
 
   return (
-    <Icon width={size} height={size} color={color} className={className} />
+    <Icon
+      width={size}
+      height={size}
+      color={color}
+      className={className}
+    />
   );
 };
 
@@ -96,11 +112,16 @@ export const Pack16_List: StoryObj = {
 export const Pack16_Playground: StoryObj<FixedPackStoryArgs<Icon16IconKeys>> = {
   args: {
     icon: icons16[0],
-    color: "var(--theme-icon-brand-main)",
+    color: "brandMain",
   },
   argTypes: {
     icon: { control: "select", options: icons16 },
-    color: { control: "color" },
+    color: {
+      control: "select",
+      options: themeIconColors,
+      description:
+        "Icon theme token: default, disabled, onMain, error, success, brandMain, info",
+    },
   },
   render: (args: FixedPackStoryArgs<Icon16IconKeys>) => (
     <IconStoryLayout>
@@ -125,11 +146,16 @@ export const Pack20_List: StoryObj = {
 export const Pack20_Playground: StoryObj<FixedPackStoryArgs<Icon20IconKeys>> = {
   args: {
     icon: icons20[0],
-    color: "var(--theme-icon-brand-main)",
+    color: "brandMain",
   },
   argTypes: {
     icon: { control: "select", options: icons20 },
-    color: { control: "color" },
+    color: {
+      control: "select",
+      options: themeIconColors,
+      description:
+        "Icon theme token: default, disabled, onMain, error, success, brandMain, info",
+    },
   },
   render: (args: FixedPackStoryArgs<Icon20IconKeys>) => (
     <IconStoryLayout>
@@ -154,11 +180,16 @@ export const Pack24_List: StoryObj = {
 export const Pack24_Playground: StoryObj<FixedPackStoryArgs<Icon24IconKeys>> = {
   args: {
     icon: icons24[0],
-    color: "var(--theme-icon-brand-main)",
+    color: "brandMain",
   },
   argTypes: {
     icon: { control: "select", options: icons24 },
-    color: { control: "color" },
+    color: {
+      control: "select",
+      options: themeIconColors,
+      description:
+        "Icon theme token: default, disabled, onMain, error, success, brandMain, info",
+    },
   },
   render: (args: FixedPackStoryArgs<Icon24IconKeys>) => (
     <IconStoryLayout>
@@ -183,11 +214,16 @@ export const Pack28_List: StoryObj = {
 export const Pack28_Playground: StoryObj<FixedPackStoryArgs<Icon28IconKeys>> = {
   args: {
     icon: icons28[0],
-    color: "var(--theme-icon-brand-main)",
+    color: "brandMain",
   },
   argTypes: {
     icon: { control: "select", options: icons28 },
-    color: { control: "color" },
+    color: {
+      control: "select",
+      options: themeIconColors,
+      description:
+        "Icon theme token: default, disabled, onMain, error, success, brandMain, info",
+    },
   },
   render: (args: FixedPackStoryArgs<Icon28IconKeys>) => (
     <IconStoryLayout>
@@ -217,7 +253,7 @@ export const Resizable_Playground: StoryObj<ResizableStoryArgs> = {
   args: {
     icon: "AddCircle28",
     size: 40,
-    color: "var(--theme-icon-brand-main)",
+    color: "brandMain",
   },
   argTypes: {
     icon: {
@@ -227,7 +263,12 @@ export const Resizable_Playground: StoryObj<ResizableStoryArgs> = {
     size: {
       control: { type: "number", min: 12, max: 96, step: 2 },
     },
-    color: { control: "color" },
+    color: {
+      control: "select",
+      options: themeIconColors,
+      description:
+        "Icon theme token: default, disabled, onMain, error, success, brandMain, info",
+    },
   },
   render: (args: ResizableStoryArgs) => (
     <IconStoryLayout>

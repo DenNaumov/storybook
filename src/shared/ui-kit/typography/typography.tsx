@@ -1,4 +1,5 @@
 import React from "react";
+import type { ThemeTextColors } from "../theme/theme.types";
 import styles from "./typography.module.css";
 
 /** Typography variant combining size and weight according to Figma design */
@@ -38,16 +39,7 @@ export interface TypographyProps {
   style?: React.CSSProperties;
 }
 
-export const typographyColors = [
-  "primary",
-  "secondary",
-  "disabled",
-  "onMain",
-  "brand",
-  "error",
-] as const;
-
-export type TypographyColor = (typeof typographyColors)[number] | (string & {});
+export type TypographyColor = keyof ThemeTextColors | (string & {});
 
 const variantClassMap: Record<TypographyVariant, string> = {
   "title3-regular": styles.title3Regular,
@@ -74,12 +66,12 @@ const variantClassMap: Record<TypographyVariant, string> = {
   "caption2-bold": styles.caption2Bold,
 };
 
-const colorClassMap: Record<(typeof typographyColors)[number], string> = {
+const colorClassMap: Record<keyof ThemeTextColors, string> = {
   primary: "var(--theme-text-primary)",
   secondary: "var(--theme-text-secondary)",
   disabled: "var(--theme-text-disabled)",
   onMain: "var(--theme-text-on-main)",
-  brand: "var(--theme-text-brand-main)",
+  brandMain: "var(--theme-text-brand-main)",
   error: "var(--theme-text-error)",
 };
 

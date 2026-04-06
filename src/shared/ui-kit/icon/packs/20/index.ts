@@ -11,8 +11,9 @@ import Copy from "./copy_20.svg";
 import EllipsisVertical from "./ellipsis_vertical_20.svg";
 import Questionmark from "./questionmark_20.svg";
 import Search from "./search_20.svg";
+import { createThemedIcons } from "../../create-themed-icon";
 
-export const Icon20Icons = {
+export const Icon20Icons = createThemedIcons({
   ArrowDownCircleFill,
   ArrowLeft,
   ArrowUpCircleFill,
@@ -26,6 +27,6 @@ export const Icon20Icons = {
   EllipsisVertical,
   Questionmark,
   Search,
-};
+});
 
-export type Icon20IconKeys = keyof typeof Icon20Icons;
+export type Icon20IconKeys = keyof typeof Icon20Icons & string;

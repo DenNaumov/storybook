@@ -45,8 +45,9 @@ import ViewOffSlash from "./view-off-slash.svg";
 import View from "./view.svg";
 import Warning from "./warning.svg";
 import Whatsapp from "./whatsapp.svg";
+import { createThemedIcons } from "../../create-themed-icon";
 
-export const ResizableIcons = {
+export const ResizableIcons = createThemedIcons({
   SBBOL,
   Add01,
   AddCircle28,
@@ -94,6 +95,6 @@ export const ResizableIcons = {
   View,
   Warning,
   Whatsapp,
-};
+});
 
-export type ResizableIconKeys = keyof typeof ResizableIcons;
+export type ResizableIconKeys = keyof typeof ResizableIcons & string;
