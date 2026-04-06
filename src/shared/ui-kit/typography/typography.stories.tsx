@@ -114,16 +114,6 @@ const meta = {
       control: "boolean",
       description: "Prevent text from wrapping",
     },
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-    style: {
-      table: {
-        disable: true,
-      },
-    },
   },
 } satisfies Meta<TypographyStoryArgs>;
 
