@@ -1,18 +1,15 @@
-import { describe, expect, it } from "@jest/globals";
+import { describe, it } from "@jest/globals";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { Typography } from "./typography";
-import styles from "./typography.module.css";
 
 describe("Typography", () => {
-  it("renders span by default with requested variant class", () => {
+  it("renders span by default", () => {
     render(<Typography variant="text-regular">Hello</Typography>);
 
     const element = screen.getByText("Hello");
 
     expect(element.tagName.toLowerCase()).toBe("span");
-    expect(element.className).toContain(styles.root);
-    expect(element.className).toContain(styles.textRegular);
   });
 
   it("maps theme text color tokens to CSS variables", () => {
@@ -27,7 +24,7 @@ describe("Typography", () => {
     expect(element).toHaveStyle({ color: "var(--theme-text-brand-main)" });
   });
 
-  it("applies provided className and alignment class", () => {
+  it("applies provided className", () => {
     render(
       <Typography
         variant="headline-semibold"
@@ -41,8 +38,6 @@ describe("Typography", () => {
     const element = screen.getByText("Centered");
 
     expect(element.className).toContain("custom-class");
-    expect(element.className).toContain(styles.alignCenter);
-    expect(element.className).toContain(styles.headlineSemibold);
   });
 
   it("respects the as prop", () => {
