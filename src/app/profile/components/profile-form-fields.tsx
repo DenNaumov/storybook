@@ -1,9 +1,5 @@
 import type { InputHTMLAttributes } from "react";
-import {
-  useController,
-  useFormContext,
-  type FieldPath,
-} from "react-hook-form";
+import { useController, useFormContext, type FieldPath } from "react-hook-form";
 import { TextLine } from "@/shared/ui-kit/text-line/text-line";
 import { Button } from "@/shared/ui-kit/button/button";
 import { isProfileFormFieldRequired } from "./profile-form.schema";

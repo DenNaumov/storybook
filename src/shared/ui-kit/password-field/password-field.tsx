@@ -12,8 +12,6 @@ export interface PasswordFieldProps extends Omit<
   onChange: (value: string) => void;
   error?: boolean;
   errorText?: string;
-  clearable?: boolean;
-  onClear?: () => void;
 }
 
 export const PasswordField = React.forwardRef<
@@ -28,12 +26,11 @@ export const PasswordField = React.forwardRef<
       error = false,
       errorText,
       className,
-      clearable = false,
       autoComplete = "current-password",
       ...restProps
     },
     ref,
-    ) => {
+  ) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const VisibilityIcon = passwordVisible
       ? ResizableIcons.ViewOffSlash
@@ -50,16 +47,13 @@ export const PasswordField = React.forwardRef<
           onValueChange={onChange}
           error={error}
           errorText={errorText}
-          clearable={clearable}
           endAdornment={
             <button
               type="button"
               className={styles.visibilityButton}
               onMouseDown={(event) => event.preventDefault()}
               onClick={() => setPasswordVisible((current) => !current)}
-              aria-label={
-                passwordVisible ? "Скрыть пароль" : "Показать пароль"
-              }
+              aria-label={passwordVisible ? "Скрыть пароль" : "Показать пароль"}
               aria-pressed={passwordVisible}
               disabled={restProps.disabled}
             >

@@ -77,17 +77,9 @@ export const BannerList = ({
       {isCollapsible ? (
         <span className={styles.chevron} aria-hidden="true">
           {expanded ? (
-            <Icon20Icons.ChevronUp
-              width={24}
-              height={24}
-              color="default"
-            />
+            <Icon20Icons.ChevronUp width={24} height={24} color="default" />
           ) : (
-            <Icon20Icons.ChevronDown
-              width={24}
-              height={24}
-              color="default"
-            />
+            <Icon20Icons.ChevronDown width={24} height={24} color="default" />
           )}
         </span>
       ) : null}

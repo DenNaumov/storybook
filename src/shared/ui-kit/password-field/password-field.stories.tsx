@@ -14,7 +14,6 @@ const meta: Meta<typeof PasswordField> = {
     value: "",
     disabled: false,
     error: false,
-    clearable: false,
   },
 };
 

@@ -90,12 +90,7 @@ const renderResizableIcon = (
   const Icon = ResizableIcons[icon];
 
   return (
-    <Icon
-      width={size}
-      height={size}
-      color={color}
-      className={className}
-    />
+    <Icon width={size} height={size} color={color} className={className} />
   );
 };
 

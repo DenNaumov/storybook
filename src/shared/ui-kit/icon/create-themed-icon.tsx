@@ -1,8 +1,10 @@
 import type { ComponentType, SVGProps } from "react";
 import { resolveThemeIconColor, type ThemeIconColor } from "./theme-icon-color";
 
-export interface ThemedSvgIconProps
-  extends Omit<SVGProps<SVGSVGElement>, "color"> {
+export interface ThemedSvgIconProps extends Omit<
+  SVGProps<SVGSVGElement>,
+  "color"
+> {
   color?: ThemeIconColor | (string & {});
 }
 
