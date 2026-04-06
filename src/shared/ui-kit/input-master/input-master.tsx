@@ -55,8 +55,8 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     const hasValue = value.length > 0;
     const isExpanded = focused || hasValue || disabled;
     const showClearButton = clearable && hasValue && !disabled;
-    const hasEndAdornment = Boolean(endAdornment);
-    const hasActions = showClearButton || hasEndAdornment;
+    const hasRightActions = Boolean(endAdornment);
+    const hasActions = showClearButton || hasRightActions;
     const clearLabel = label?.trim() ? `Очистить ${label}` : "Очистить";
     const labelColor = error ? "error" : disabled ? "disabled" : "secondary";
     const inputColor = error ? "error" : disabled ? "disabled" : "primary";
@@ -178,7 +178,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                 />
               ) : null}
               {endAdornment ? (
-                <div className={styles.endAdornment}>{endAdornment}</div>
+                <div className={styles.rightAction}>{endAdornment}</div>
               ) : null}
             </div>
           ) : null}
