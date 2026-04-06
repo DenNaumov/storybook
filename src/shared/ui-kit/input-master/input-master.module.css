@@ -76,16 +76,11 @@
   font: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  caret-color: var(--theme-text-brand-main);
   outline: none;
 }
 
 .input::placeholder {
   color: var(--theme-text-secondary);
-}
-
-.inputError {
-  caret-color: var(--theme-text-error);
 }
 
 .inputError::placeholder {
@@ -112,8 +107,6 @@
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  width: 80px;
-  min-width: 80px;
   height: 40px;
   justify-content: flex-end;
 }
