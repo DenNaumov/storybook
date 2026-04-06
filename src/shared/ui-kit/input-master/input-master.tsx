@@ -105,11 +105,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
           >
             {isExpanded && label && (
               <label htmlFor={inputId} className={styles.label}>
-                <Typography
-                  as="span"
-                  variant="caption1-regular"
-                  color={labelColor}
-                >
+                <Typography variant="caption1-regular" color={labelColor}>
                   {label}
                 </Typography>
               </label>
@@ -118,7 +114,6 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
               {!isExpanded && (placeholder || label) && (
                 <label htmlFor={inputId} className={styles.centerLabel}>
                   <Typography
-                    as="span"
                     variant="subheadline2-semibold"
                     color={labelColor}
                   >
@@ -171,7 +166,6 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
         </div>
         {errorText && (
           <Typography
-            as="div"
             variant="caption1-regular"
             color="error"
             className={styles.errorText}
@@ -181,7 +175,6 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
         )}
         {assistiveText && (
           <Typography
-            as="div"
             variant="caption1-regular"
             color={assistiveColor}
             className={styles.assistiveText}
