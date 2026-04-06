@@ -38,7 +38,7 @@ export const BannerScreen = ({
           variant="headline-semibold"
           align="center"
           className={styles.title}
-          style={{ color: "var(--theme-text-primary)" }}
+          color="primary"
         >
           {title}
         </Typography>

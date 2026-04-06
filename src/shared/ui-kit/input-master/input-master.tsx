@@ -54,19 +54,9 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
     const isExpanded = focused || hasValue || disabled;
     const showClearButton = clearable && hasValue && !disabled;
     const clearLabel = label?.trim() ? `Очистить ${label}` : "Очистить";
-    const labelColor = error
-      ? "error"
-      : disabled
-        ? "var(--theme-text-disabled)"
-        : "secondary";
-    const inputColor = error
-      ? "var(--theme-text-error)"
-      : disabled
-        ? "var(--theme-text-disabled)"
-        : "var(--theme-text-primary)";
-    const assistiveColor = disabled
-      ? "var(--theme-text-disabled)"
-      : "secondary";
+    const labelColor = error ? "error" : disabled ? "disabled" : "secondary";
+    const inputColor = error ? "error" : disabled ? "disabled" : "primary";
+    const assistiveColor = disabled ? "disabled" : "secondary";
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setFocused(true);
@@ -148,8 +138,8 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
               <Typography
                 as="div"
                 variant="subheadline2-semibold"
+                color={inputColor}
                 className={styles.inputTypography}
-                style={{ color: inputColor }}
               >
                 <input
                   {...restProps}

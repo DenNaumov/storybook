@@ -57,7 +57,7 @@ export const BannerList = ({
           as="span"
           variant="subheadline2-semibold"
           className={styles.title}
-          style={{ color: "var(--theme-text-primary)" }}
+          color="primary"
         >
           {title}
         </Typography>

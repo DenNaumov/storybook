@@ -78,7 +78,7 @@ export const Snackbar = ({
             as="span"
             variant="caption1-semibold"
             className={styles.message}
-            style={{ color: "var(--theme-text-on-main)" }}
+            color="onMain"
           >
             {message}
           </Typography>
@@ -98,7 +98,7 @@ export const Snackbar = ({
                 as="span"
                 variant="subheadline1-regular"
                 className={styles.actionLabel}
-                style={{ color: "var(--theme-text-brand-main)" }}
+                color="brand"
               >
                 {actionLabel}
               </Typography>
