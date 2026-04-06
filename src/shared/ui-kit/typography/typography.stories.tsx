@@ -544,9 +544,3 @@ export const TruncatedText: Story = {
     ),
   ],
 };
-export const CustomColor: Story = {
-  args: {
-    children: "Custom HEX Color",
-    color: "#7B61FF",
-  },
-};

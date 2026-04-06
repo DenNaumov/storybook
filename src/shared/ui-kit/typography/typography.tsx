@@ -27,6 +27,8 @@ export type TypographyVariant =
   | "caption2-semibold"
   | "caption2-bold";
 
+export type TypographyColor = keyof ThemeTextColors | (string & {});
+
 export interface TypographyProps {
   children?: React.ReactNode;
   variant: TypographyVariant;
@@ -38,8 +40,6 @@ export interface TypographyProps {
   className?: string;
   style?: React.CSSProperties;
 }
-
-export type TypographyColor = keyof ThemeTextColors | (string & {});
 
 const variantClassMap: Record<TypographyVariant, string> = {
   "title3-regular": styles.title3Regular,
