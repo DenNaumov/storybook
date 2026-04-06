@@ -136,7 +136,10 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   {...restProps}
                   id={inputId}
                   ref={inputRef}
-                  className={joinClasses(styles.input, error && styles.inputError)}
+                  className={joinClasses(
+                    styles.input,
+                    error && styles.inputError,
+                  )}
                   value={value}
                   placeholder={isExpanded ? placeholder : ""}
                   disabled={disabled}
