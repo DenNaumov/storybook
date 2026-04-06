@@ -37,7 +37,7 @@ export default function ProfileVerifyPage() {
         <header className={styles.header}>
           <Typography
             variant="headline-semibold"
-            color="default"
+            color="primary"
             className={styles.title}
           >
             Проверка для защиты аккаунта

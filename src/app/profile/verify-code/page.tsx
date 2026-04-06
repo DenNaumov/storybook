@@ -26,7 +26,7 @@ export default function ProfileVerifyCodePage() {
         <header className={styles.header}>
           <Typography
             variant="headline-semibold"
-            color="default"
+            color="primary"
             className={styles.title}
           >
             Введите код из письма
