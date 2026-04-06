@@ -103,7 +103,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
               isExpanded ? styles.contentExpanded : styles.contentCentered,
             )}
           >
-            {isExpanded && label ? (
+            {isExpanded && label && (
               <label htmlFor={inputId} className={styles.label}>
                 <Typography
                   as="span"
@@ -113,9 +113,9 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   {label}
                 </Typography>
               </label>
-            ) : null}
+            )}
             <div className={styles.inputRow}>
-              {!isExpanded && (placeholder || label) ? (
+              {!isExpanded && (placeholder || label) && (
                 <label htmlFor={inputId} className={styles.centerLabel}>
                   <Typography
                     as="span"
@@ -125,7 +125,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                     {placeholder || label}
                   </Typography>
                 </label>
-              ) : null}
+              )}
               <Typography
                 as="div"
                 variant="subheadline2-semibold"
@@ -151,9 +151,9 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
               </Typography>
             </div>
           </div>
-          {hasActions ? (
+          {hasActions && (
             <div className={styles.actions}>
-              {showClearButton ? (
+              {showClearButton && (
                 <IconButton
                   buttonSize="m"
                   iconSize="m"
@@ -162,14 +162,14 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
                   onClick={handleClear}
                   aria-label={clearLabel}
                 />
-              ) : null}
-              {endAdornment ? (
+              )}
+              {endAdornment && (
                 <div className={styles.rightAction}>{endAdornment}</div>
-              ) : null}
+              )}
             </div>
-          ) : null}
+          )}
         </div>
-        {errorText ? (
+        {errorText && (
           <Typography
             as="div"
             variant="caption1-regular"
@@ -178,8 +178,8 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
           >
             {errorText}
           </Typography>
-        ) : null}
-        {assistiveText ? (
+        )}
+        {assistiveText && (
           <Typography
             as="div"
             variant="caption1-regular"
@@ -188,7 +188,7 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
           >
             {assistiveText}
           </Typography>
-        ) : null}
+        )}
       </div>
     );
   },
