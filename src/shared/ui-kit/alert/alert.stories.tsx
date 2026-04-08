@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Icon28Icons } from "../icon/packs/28";
+import { Icon28Icons } from "../icon";
 import { Illustration } from "../illustration/illustration";
 import { Alert } from "./alert";
 import styles from "./alert.stories.module.css";

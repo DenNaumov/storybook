@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import type { ComponentType } from "react";
-import { ResizableIcons } from "../icon/packs/resizable";
+import { ResizableIcons } from "../icon";
 import { IconButton, type SvgIconComponent } from "./icon-button";
 import styles from "./icon-button.stories.module.css";
 

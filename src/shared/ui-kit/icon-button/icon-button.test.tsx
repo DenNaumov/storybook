@@ -2,7 +2,7 @@ import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 
-import { ResizableIcons } from "../icon/packs/resizable";
+import { ResizableIcons } from "../icon";
 import { IconButton } from "./icon-button";
 
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;

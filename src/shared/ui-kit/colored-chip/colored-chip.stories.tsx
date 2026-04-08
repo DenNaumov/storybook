@@ -5,7 +5,7 @@ import { ColoredChip } from "./colored-chip";
 import {
   ResizableIcons,
   type ResizableIconKeys,
-} from "../icon/packs/resizable";
+} from "../icon";
 import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import styles from "./colored-chip.stories.module.css";
 

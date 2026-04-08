@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { Icon20Icons } from "../icon/packs/20";
-import { Icon28Icons } from "../icon/packs/28";
+import { Icon20Icons } from "../icon";
+import { Icon28Icons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
 import { Typography } from "../typography/typography";
 import styles from "./snackbar.module.css";

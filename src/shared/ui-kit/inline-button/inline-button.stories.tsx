@@ -4,7 +4,7 @@ import { InlineButton } from "./inline-button";
 import {
   ResizableIcons,
   type ResizableIconKeys,
-} from "../icon/packs/resizable";
+} from "../icon";
 import styles from "./inline-button.stories.module.css";
 
 const resizableIconNames = Object.keys(ResizableIcons) as ResizableIconKeys[];

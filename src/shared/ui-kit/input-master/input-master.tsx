@@ -1,6 +1,6 @@
 import React, { useId, useImperativeHandle, useRef, useState } from "react";
 import { IconButton } from "../icon-button/icon-button";
-import { Icon24Icons } from "../icon/packs/24";
+import { Icon24Icons } from "../icon";
 import { Typography } from "../typography/typography";
 import styles from "./input-master.module.css";
 

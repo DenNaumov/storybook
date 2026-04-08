@@ -1,7 +1,7 @@
 import { Children, isValidElement } from "react";
 import { describe, expect, it } from "@jest/globals";
 import { ColoredChip } from "./colored-chip";
-import { ResizableIcons } from "../icon/packs/resizable";
+import { ResizableIcons } from "../icon";
 
 describe("ColoredChip", () => {
   it("renders label with both icons", () => {
