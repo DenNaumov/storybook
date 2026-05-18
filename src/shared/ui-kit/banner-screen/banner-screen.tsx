@@ -20,8 +20,8 @@ export const BannerScreen = ({
   description,
   media,
   actionLabel,
-  onAction,
   actionVariant = "primary",
+  onAction,
   className = "",
   ...props
 }: BannerScreenProps) => {
@@ -30,7 +30,7 @@ export const BannerScreen = ({
       className={[styles.bannerScreen, className].filter(Boolean).join(" ")}
       {...props}
     >
-      {media ? <div className={styles.media}>{media}</div> : null}
+      {media && <div className={styles.media}>{media}</div>}
 
       <div className={styles.body}>
         <Typography
@@ -56,7 +56,7 @@ export const BannerScreen = ({
         ) : null}
       </div>
 
-      {actionLabel ? (
+      {onAction && (
         <div className={styles.action}>
           <Button
             variant={actionVariant}
@@ -65,7 +65,7 @@ export const BannerScreen = ({
             onClick={onAction}
           />
         </div>
-      ) : null}
+      )}
     </section>
   );
 };

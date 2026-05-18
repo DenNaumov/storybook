@@ -36,7 +36,9 @@ export const Alert = ({
 }: AlertProps) => {
   const hasMedia = Boolean(media);
   const hasDescription = Boolean(description);
-  const hasActions = Boolean(primaryActionLabel || secondaryActionLabel);
+  const isPrimaryAction = Boolean(primaryActionLabel || onPrimaryAction);
+  const isSecondaryAction = Boolean(secondaryActionLabel || onSecondaryAction);
+  const hasActions = Boolean(isPrimaryAction || isSecondaryAction);
 
   const alertClassName = [
     styles.alert,
@@ -49,16 +51,14 @@ export const Alert = ({
 
   return (
     <section className={alertClassName} {...props}>
-      {media ? <div className={styles.media}>{media}</div> : null}
+      {media && <div className={styles.media}>{media}</div>}
 
       <div className={styles.body}>
         <h3 className={styles.title}>{title}</h3>
-        {description ? (
-          <p className={styles.description}>{description}</p>
-        ) : null}
+        {description && <p className={styles.description}>{description}</p>}
       </div>
 
-      {hasActions ? (
+      {hasActions && (
         <ButtonGroup
           direction={actionsLayout === "inline" ? "horizontal" : "vertical"}
           className={[
@@ -66,7 +66,7 @@ export const Alert = ({
             styles[`actions${capitalize(actionsLayout)}`],
           ].join(" ")}
         >
-          {secondaryActionLabel ? (
+          {isSecondaryAction && (
             <div className={styles.actionSlot}>
               <Button
                 variant={secondaryActionVariant}
@@ -75,9 +75,9 @@ export const Alert = ({
                 onClick={onSecondaryAction}
               />
             </div>
-          ) : null}
+          )}
 
-          {primaryActionLabel ? (
+          {isPrimaryAction && (
             <div className={styles.actionSlot}>
               <Button
                 variant={primaryActionVariant}
@@ -86,9 +86,9 @@ export const Alert = ({
                 onClick={onPrimaryAction}
               />
             </div>
-          ) : null}
+          )}
         </ButtonGroup>
-      ) : null}
+      )}
     </section>
   );
 };
