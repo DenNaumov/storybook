@@ -34,7 +34,9 @@ const meta: Meta<BannerListStoryArgs> = {
     expanded: { control: "boolean" },
     collapsible: { control: "boolean" },
     icon: { control: false, table: { disable: true } },
-    onToggle: { control: false },
+    onToggle: { table: { disable: true } },
+    className: { table: { disable: true } },
+    toggleAriaLabel: { table: { disable: true } },
     iconName: {
       control: "select",
       options: [undefined, ...resizableIconOptions],
