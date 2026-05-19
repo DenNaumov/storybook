@@ -2,10 +2,7 @@ import type { ComponentProps } from "react";
 import type { ComponentType } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { ColoredChip } from "./colored-chip";
-import {
-  ResizableIcons,
-  type ResizableIconKeys,
-} from "../icon";
+import { ResizableIcons, type ResizableIconKeys } from "../icon";
 import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import styles from "./colored-chip.stories.module.css";
 

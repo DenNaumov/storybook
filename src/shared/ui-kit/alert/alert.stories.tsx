@@ -32,7 +32,10 @@ const meta: Meta<AlertStoryArgs> = {
     },
     illustration: {
       control: "select",
-      options: [undefined, ...(Object.keys(illustrationSrcMap) as IllustrationName[])],
+      options: [
+        undefined,
+        ...(Object.keys(illustrationSrcMap) as IllustrationName[]),
+      ],
     },
     actionsLayout: {
       control: "select",

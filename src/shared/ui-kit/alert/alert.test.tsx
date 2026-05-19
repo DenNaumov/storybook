@@ -78,12 +78,16 @@ describe("Alert", () => {
       throw new Error("Expected media node to be a React element.");
     }
 
-    const illustrationComponent = (mediaNode as ElementWithChildren).props.children;
+    const illustrationComponent = (mediaNode as ElementWithChildren).props
+      .children;
     expect(isValidElement(illustrationComponent)).toBe(true);
     if (!isValidElement(illustrationComponent)) {
       throw new Error("Expected illustration component to be a React element.");
     }
-    expect((illustrationComponent as ReactElement).props.illustration).toBe("UserLimit");
+    expect(
+      (illustrationComponent as ReactElement<{ illustration: string }>).props
+        .illustration,
+    ).toBe("UserLimit");
   });
 
   it("renders two actions when secondary action is provided", () => {
