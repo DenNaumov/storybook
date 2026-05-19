@@ -1,6 +1,9 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { Illustration } from "../illustration/illustration";
+import {
+  illustrationSrcMap,
+  type IllustrationName,
+} from "../illustration/illustration.constants";
 import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
 import { BannerScreen } from "./banner-screen";
 import styles from "./banner-screen.stories.module.css";
@@ -8,7 +11,6 @@ import styles from "./banner-screen.stories.module.css";
 type BannerScreenStoryArgs = ComponentProps<typeof BannerScreen>;
 
 const noop = () => undefined;
-const bannerMedia = <Illustration illustration="EmptyListNoAdd" size={184} />;
 
 const meta: Meta<BannerScreenStoryArgs> = {
   title: "UI Kit/BannerScreen",
@@ -21,7 +23,10 @@ const meta: Meta<BannerScreenStoryArgs> = {
     title: { control: "text" },
     description: { control: "text" },
     actionLabel: { control: "text" },
-    media: { control: false },
+    illustration: {
+      control: "select",
+      options: [undefined, ...(Object.keys(illustrationSrcMap) as IllustrationName[])],
+    },
     onAction: { control: false },
   },
 };
@@ -34,7 +39,7 @@ export const Playground: Story = {
     title: "Список пуст",
     description: "В списке нет значений",
     actionLabel: "Создать",
-    media: bannerMedia,
+    illustration: "EmptyListNoAdd",
   },
   render: (args) => (
     <div className={styles.stage}>
@@ -61,7 +66,7 @@ export const Showcase: Story = {
               title="Список пуст"
               description="В списке нет значений"
               actionLabel="Создать"
-              media={bannerMedia}
+              illustration="EmptyListNoAdd"
               onAction={noop}
             />
           </StoryPreviewFrame>
@@ -80,7 +85,7 @@ export const Showcase: Story = {
                 title="Список пуст"
                 description="В списке нет значений"
                 actionLabel="Создать"
-                media={bannerMedia}
+                illustration="EmptyListNoAdd"
                 onAction={noop}
               />
 
@@ -90,7 +95,7 @@ export const Showcase: Story = {
                     title="Список пуст"
                     description="В списке нет значений"
                     actionLabel="Создать"
-                    media={bannerMedia}
+                    illustration="EmptyListNoAdd"
                     onAction={noop}
                   />
                 </div>
@@ -99,7 +104,7 @@ export const Showcase: Story = {
               <BannerScreen
                 title="Список пуст"
                 description="В списке нет значений"
-                media={bannerMedia}
+                illustration="EmptyListNoAdd"
               />
             </div>
           </StoryPreviewFrame>

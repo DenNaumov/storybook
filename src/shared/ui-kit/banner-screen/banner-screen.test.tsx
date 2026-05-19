@@ -7,12 +7,12 @@ type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 type ActionElement = ReactElement<{ onClick?: unknown; label?: string }>;
 
 describe("BannerScreen", () => {
-  it("renders media, text and action", () => {
+  it("renders illustration, text and action", () => {
     const onAction = jest.fn();
     const element = BannerScreen({
       title: "Список пуст",
       description: "В списке нет значений",
-      media: "banner-media",
+      illustration: "EmptyListNoAdd",
       actionLabel: "Создать",
       onAction,
     });
@@ -37,17 +37,30 @@ describe("BannerScreen", () => {
     expect((actionButton as ActionElement).props.label).toBe("Создать");
   });
 
-  it("passes through custom className and media", () => {
+  it("passes through custom className and illustration", () => {
     const element = BannerScreen({
       title: "Список пуст",
-      media: "custom-media",
+      illustration: "EmptyListNoAdd",
       className: "custom-banner-screen",
     });
 
     expect(isValidElement(element)).toBe(true);
     expect(element.props.className).toContain("custom-banner-screen");
+
+    const mediaNode = element.props.children[0];
+    expect(isValidElement(mediaNode)).toBe(true);
+    if (!isValidElement(mediaNode)) {
+      throw new Error("Expected media wrapper to be a React element.");
+    }
+
+    const illustrationComponent = (mediaNode as ElementWithChildren).props.children;
+    expect(isValidElement(illustrationComponent)).toBe(true);
+    if (!isValidElement(illustrationComponent)) {
+      throw new Error("Expected illustration component to be a React element.");
+    }
     expect(
-      (element.props.children[0] as ElementWithChildren).props.children,
-    ).toBe("custom-media");
+      (illustrationComponent as ReactElement<{ illustration: string }>).props
+        .illustration,
+    ).toBe("EmptyListNoAdd");
   });
 });

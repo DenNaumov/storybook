@@ -1,6 +1,8 @@
 import type { HTMLAttributes, ReactNode } from "react";
 import { Button, type ButtonVariant } from "../button/button";
 import { Typography } from "../typography/typography";
+import { Illustration } from "../illustration/illustration";
+import { type IllustrationName } from "../illustration/illustration.constants";
 import styles from "./banner-screen.module.css";
 
 export interface BannerScreenProps extends Omit<
@@ -9,7 +11,7 @@ export interface BannerScreenProps extends Omit<
 > {
   title: ReactNode;
   description?: ReactNode;
-  media?: ReactNode;
+  illustration?: IllustrationName;
   actionLabel?: string;
   onAction?: () => void;
   actionVariant?: ButtonVariant;
@@ -18,7 +20,7 @@ export interface BannerScreenProps extends Omit<
 export const BannerScreen = ({
   title,
   description,
-  media,
+  illustration,
   actionLabel,
   actionVariant = "primary",
   onAction,
@@ -30,7 +32,11 @@ export const BannerScreen = ({
       className={[styles.bannerScreen, className].filter(Boolean).join(" ")}
       {...props}
     >
-      {media && <div className={styles.media}>{media}</div>}
+      {illustration && (
+        <div className={styles.media}>
+          <Illustration illustration={illustration} size={184} />
+        </div>
+      )}
 
       <div className={styles.body}>
         <Typography
