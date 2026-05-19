@@ -53,7 +53,8 @@ describe("BannerScreen", () => {
       throw new Error("Expected media wrapper to be a React element.");
     }
 
-    const illustrationComponent = (mediaNode as ElementWithChildren).props.children;
+    const illustrationComponent = (mediaNode as ElementWithChildren).props
+      .children;
     expect(isValidElement(illustrationComponent)).toBe(true);
     if (!isValidElement(illustrationComponent)) {
       throw new Error("Expected illustration component to be a React element.");

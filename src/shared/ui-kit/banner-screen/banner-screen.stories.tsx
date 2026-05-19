@@ -25,7 +25,10 @@ const meta: Meta<BannerScreenStoryArgs> = {
     actionLabel: { control: "text" },
     illustration: {
       control: "select",
-      options: [undefined, ...(Object.keys(illustrationSrcMap) as IllustrationName[])],
+      options: [
+        undefined,
+        ...(Object.keys(illustrationSrcMap) as IllustrationName[]),
+      ],
     },
     actionVariant: {
       control: "select",
