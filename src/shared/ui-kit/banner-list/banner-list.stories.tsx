@@ -2,17 +2,27 @@ import { useState } from "react";
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
+import { ResizableIcons, type ResizableIconKeys } from "../icon";
 import { BannerList } from "./banner-list";
 import styles from "./banner-list.stories.module.css";
 
-type BannerListStoryArgs = ComponentProps<typeof BannerList>;
+const resizableIconOptions = Object.keys(ResizableIcons) as ResizableIconKeys[];
+
+const ResizableIconPreview = ({ name }: { name: ResizableIconKeys }) => {
+  const Icon = ResizableIcons[name];
+  return <Icon width={24} height={24} color="brandMain" />;
+};
+
+type BannerListStoryArgs = ComponentProps<typeof BannerList> & {
+  iconName?: ResizableIconKeys;
+};
 
 const detailsText =
   "Поле «Наименование задачи»:\nПоле является обязательным к заполнению\nПоле «Тип»: Какой-то текст ошибки\nПоле «Тип»: Какой-то текст ошибки\nПоле «Тип»: Какой-то текст ошибки";
 
 const meta: Meta<BannerListStoryArgs> = {
   title: "UI Kit/BannerList",
-  component: BannerList,
+  component: BannerList as unknown as React.ComponentType<BannerListStoryArgs>,
   parameters: {
     layout: "fullscreen",
   },
@@ -23,8 +33,13 @@ const meta: Meta<BannerListStoryArgs> = {
     details: { control: "text" },
     expanded: { control: "boolean" },
     collapsible: { control: "boolean" },
-    icon: { control: false },
+    icon: { control: false, table: { disable: true } },
     onToggle: { control: false },
+    iconName: {
+      control: "select",
+      options: [undefined, ...resizableIconOptions],
+      name: "Icon",
+    },
   },
 };
 
@@ -37,16 +52,21 @@ export const Playground: Story = {
     description: "Некорректно заполнены поля объекта",
     details: detailsText,
     expanded: true,
+    iconName: undefined,
   },
   render: (args) => {
     const Example = () => {
       const [expanded, setExpanded] = useState(Boolean(args.expanded));
+      const { iconName, ...restArgs } = args;
 
       return (
         <div className={styles.stage}>
           <div className={styles.componentFrame}>
             <BannerList
-              {...args}
+              {...restArgs}
+              icon={
+                iconName ? <ResizableIconPreview name={iconName} /> : undefined
+              }
               expanded={expanded}
               onToggle={() => setExpanded((value) => !value)}
             />
