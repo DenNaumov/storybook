@@ -63,10 +63,10 @@ describe("Alert", () => {
     );
   });
 
-  it("renders media before the text content when provided", () => {
+  it("renders illustration before the text content when provided", () => {
     const element = Alert({
       title: "Title",
-      media: "media",
+      illustration: "UserLimit",
     });
 
     const children = Children.toArray(element.props.children);
@@ -78,7 +78,12 @@ describe("Alert", () => {
       throw new Error("Expected media node to be a React element.");
     }
 
-    expect((mediaNode as ElementWithChildren).props.children).toBe("media");
+    const illustrationComponent = (mediaNode as ElementWithChildren).props.children;
+    expect(isValidElement(illustrationComponent)).toBe(true);
+    if (!isValidElement(illustrationComponent)) {
+      throw new Error("Expected illustration component to be a React element.");
+    }
+    expect((illustrationComponent as ReactElement).props.illustration).toBe("UserLimit");
   });
 
   it("renders two actions when secondary action is provided", () => {
