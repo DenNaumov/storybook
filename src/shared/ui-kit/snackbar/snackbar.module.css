@@ -6,7 +6,7 @@
   min-height: 44px;
   padding: 8px 12px;
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
   background: rgba(73, 76, 78, 0.75);
   backdrop-filter: blur(16px);
   box-sizing: border-box;
@@ -60,17 +60,14 @@
 }
 
 .action {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 76px;
-  height: 28px;
-  cursor: pointer;
-}
-
-.action {
+  width: 76px;
+  height: 36px;
   padding: 0;
   color: var(--theme-text-brand-main);
+  cursor: pointer;
 }
 
 .dismiss {
@@ -79,6 +76,10 @@
   justify-content: center;
   width: 36px;
   height: 36px;
+}
+
+.dismiss button {
+  color: var(--theme-icon-default);
 }
 
 .actionLabel {
