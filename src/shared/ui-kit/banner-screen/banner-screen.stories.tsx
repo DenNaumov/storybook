@@ -27,7 +27,16 @@ const meta: Meta<BannerScreenStoryArgs> = {
       control: "select",
       options: [undefined, ...(Object.keys(illustrationSrcMap) as IllustrationName[])],
     },
-    onAction: { control: false },
+    actionVariant: {
+      control: "select",
+      options: ["primary", "bezeled", "outlined", "text"],
+    },
+    onAction: {
+      table: { disable: true },
+    },
+    className: {
+      table: { disable: true },
+    },
   },
 };
 
@@ -38,8 +47,9 @@ export const Playground: Story = {
   args: {
     title: "Список пуст",
     description: "В списке нет значений",
-    actionLabel: "Создать",
     illustration: "EmptyListNoAdd",
+    actionLabel: "Создать",
+    actionVariant: "primary",
   },
   render: (args) => (
     <div className={styles.stage}>

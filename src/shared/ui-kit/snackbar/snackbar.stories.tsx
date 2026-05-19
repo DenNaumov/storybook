@@ -20,6 +20,9 @@ const meta: Meta<SnackbarStoryArgs> = {
       control: "select",
       options: ["neutral", "success", "error"],
     },
+    message: {
+      control: "text",
+    },
     hideIcon: {
       control: "boolean",
     },
@@ -27,13 +30,19 @@ const meta: Meta<SnackbarStoryArgs> = {
       control: "text",
     },
     onAction: {
-      control: false,
+      table: { disable: true },
     },
     onDismiss: {
-      control: false,
+      table: { disable: true },
     },
-    message: {
-      control: "text",
+    actionAriaLabel: {
+      table: { disable: true },
+    },
+    dismissAriaLabel: {
+      table: { disable: true },
+    },
+    className: {
+      table: { disable: true },
     },
   },
 };
