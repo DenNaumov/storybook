@@ -1,7 +1,10 @@
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { Icon28Icons } from "../icon";
-import { Illustration } from "../illustration/illustration";
+import {
+  illustrationSrcMap,
+  type IllustrationName,
+} from "../illustration/illustration.constants";
 import { Alert } from "./alert";
 import styles from "./alert.stories.module.css";
 
@@ -27,32 +30,33 @@ const meta: Meta<AlertStoryArgs> = {
     description: {
       control: "text",
     },
-    primaryActionLabel: {
-      control: "text",
+    illustration: {
+      control: "select",
+      options: [undefined, ...(Object.keys(illustrationSrcMap) as IllustrationName[])],
     },
-    secondaryActionLabel: {
+    actionsLayout: {
+      control: "select",
+      options: ["stack", "inline"],
+    },
+    primaryActionLabel: {
       control: "text",
     },
     primaryActionVariant: {
       control: "select",
       options: ["primary", "bezeled", "outlined", "text"],
     },
+    secondaryActionLabel: {
+      control: "text",
+    },
     secondaryActionVariant: {
       control: "select",
       options: ["primary", "bezeled", "outlined", "text"],
     },
-    actionsLayout: {
-      control: "select",
-      options: ["stack", "inline"],
-    },
-    media: {
-      control: false,
-    },
     onPrimaryAction: {
-      control: false,
+      table: { disable: true },
     },
     onSecondaryAction: {
-      control: false,
+      table: { disable: true },
     },
   },
 };
@@ -64,9 +68,12 @@ export const Playground: Story = {
   args: {
     title: defaultTitle,
     description: defaultDescription,
+    illustration: undefined,
+    actionsLayout: "stack",
     primaryActionLabel: "Сохранить",
     primaryActionVariant: "primary",
-    actionsLayout: "stack",
+    secondaryActionLabel: undefined,
+    secondaryActionVariant: "outlined",
   },
   render: (args) => (
     <div className={styles.stage}>
@@ -95,7 +102,7 @@ export const Showcase: Story = {
             title={defaultTitle}
             description={defaultDescription}
             primaryActionLabel="Сохранить"
-            media={<Illustration illustration="UserLimit" size={184} />}
+            illustration="UserLimit"
             onPrimaryAction={noop}
           />
         </div>
@@ -162,7 +169,7 @@ export const Showcase: Story = {
                   secondaryActionLabel="Сохранить"
                   secondaryActionVariant="bezeled"
                   actionsLayout="stack"
-                  media={<Illustration illustration="UserLimit" size={184} />}
+                  illustration="UserLimit"
                   onPrimaryAction={noop}
                   onSecondaryAction={noop}
                 />

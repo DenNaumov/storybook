@@ -1,6 +1,8 @@
 import type { HTMLAttributes, ReactNode } from "react";
 import { Button, type ButtonVariant } from "../button/button";
 import { ButtonGroup } from "../button-group/button-group";
+import { Illustration } from "../illustration/illustration";
+import { type IllustrationName } from "../illustration/illustration.constants";
 import styles from "./alert.module.css";
 
 export type AlertActionsLayout = "stack" | "inline";
@@ -11,20 +13,20 @@ export interface AlertProps extends Omit<
 > {
   title: ReactNode;
   description?: ReactNode;
-  media?: ReactNode;
+  illustration?: IllustrationName;
+  actionsLayout?: AlertActionsLayout;
   primaryActionLabel?: string;
-  onPrimaryAction?: () => void;
   primaryActionVariant?: ButtonVariant;
   secondaryActionLabel?: string;
-  onSecondaryAction?: () => void;
   secondaryActionVariant?: ButtonVariant;
-  actionsLayout?: AlertActionsLayout;
+  onPrimaryAction?: () => void;
+  onSecondaryAction?: () => void;
 }
 
 export const Alert = ({
   title,
   description,
-  media,
+  illustration,
   primaryActionLabel,
   onPrimaryAction,
   primaryActionVariant = "primary",
@@ -34,7 +36,7 @@ export const Alert = ({
   actionsLayout = "stack",
   ...props
 }: AlertProps) => {
-  const hasMedia = Boolean(media);
+  const hasMedia = Boolean(illustration);
   const hasDescription = Boolean(description);
   const isPrimaryAction = Boolean(primaryActionLabel || onPrimaryAction);
   const isSecondaryAction = Boolean(secondaryActionLabel || onSecondaryAction);
@@ -51,7 +53,11 @@ export const Alert = ({
 
   return (
     <section className={alertClassName} {...props}>
-      {media && <div className={styles.media}>{media}</div>}
+      {illustration && (
+        <div className={styles.media}>
+          <Illustration illustration={illustration} size={184} />
+        </div>
+      )}
 
       <div className={styles.body}>
         <h3 className={styles.title}>{title}</h3>
