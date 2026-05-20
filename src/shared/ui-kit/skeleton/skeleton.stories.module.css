@@ -1,0 +1,177 @@
+.stage {
+  min-height: 100vh;
+  padding: 40px;
+  background: var(--theme-bg-tabbar);
+  box-sizing: border-box;
+  color: var(--theme-text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.playgroundContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 16px;
+  background: var(--theme-bg-brand-light);
+  border: 1px solid var(--theme-border-default);
+}
+
+.previewFrame {
+  width: 900px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 56px 64px;
+  border-radius: 32px;
+  background: var(--theme-bg-brand-light);
+  box-shadow: 0 4px 52px rgb(0 0 0 / 4%);
+}
+
+.showcaseSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--theme-text-brand-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+/* Base Shapes */
+.shapesRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: var(--theme-bg-surface-primary);
+  border-radius: 16px;
+  border: 1px dashed var(--theme-border-default);
+}
+
+.shapesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* User Card Showcase */
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--theme-bg-surface-primary);
+  border-radius: 16px;
+  border: 1px solid var(--theme-border-default);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.userCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* Post/Article Card Showcase */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--theme-bg-surface-primary);
+  border-radius: 20px;
+  border: 1px solid var(--theme-border-default);
+  box-sizing: border-box;
+}
+
+.postCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.postCardHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.postCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.postCardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+/* Form Loader Showcase */
+.formLoader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: var(--theme-bg-surface-primary);
+  border-radius: 16px;
+  border: 1px solid var(--theme-border-default);
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .stage {
+    padding: 16px;
+  }
+
+  .previewFrame {
+    padding: 32px 24px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+}
