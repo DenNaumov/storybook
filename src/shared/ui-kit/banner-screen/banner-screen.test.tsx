@@ -29,7 +29,9 @@ describe("BannerScreen", () => {
       "data-illustration",
       "EmptyListNoAdd",
     );
-    expect(screen.getByRole("heading", { name: "Список пуст" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Список пуст" }),
+    ).toBeInTheDocument();
     expect(screen.getByText("В списке нет значений")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Создать" }));

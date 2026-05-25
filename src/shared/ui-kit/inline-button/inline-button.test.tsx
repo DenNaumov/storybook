@@ -23,12 +23,7 @@ describe("InlineButton", () => {
 
   it("applies disabled state", () => {
     render(
-      <InlineButton
-        variant="bezeled"
-        icon="calendar"
-        label="Reset"
-        disabled
-      />,
+      <InlineButton variant="bezeled" icon="calendar" label="Reset" disabled />,
     );
 
     expect(

@@ -14,9 +14,8 @@ jest.mock("../icon", () => ({
   },
 }));
 
-const { Snackbar } = jest.requireActual<typeof import("./snackbar")>(
-  "./snackbar",
-);
+const { Snackbar } =
+  jest.requireActual<typeof import("./snackbar")>("./snackbar");
 
 describe("Snackbar", () => {
   it("renders a plain message without controls by default", () => {

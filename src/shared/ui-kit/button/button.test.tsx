@@ -46,9 +46,7 @@ describe("Button", () => {
   });
 
   it("passes through pressed and disabled state when requested", () => {
-    render(
-      <Button variant="text" size="m" label="Save" pressed disabled />,
-    );
+    render(<Button variant="text" size="m" label="Save" pressed disabled />);
 
     const button = screen.getByRole("button", { name: "Save" });
 

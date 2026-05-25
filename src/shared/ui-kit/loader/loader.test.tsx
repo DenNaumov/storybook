@@ -54,8 +54,8 @@ describe("Loader", () => {
 
     render(<Loader size="large" />);
 
-    expect(screen.getByRole("status", { name: "Загрузка" }).className).toContain(
-      "sizeLarge",
-    );
+    expect(
+      screen.getByRole("status", { name: "Загрузка" }).className,
+    ).toContain("sizeLarge");
   });
 });
