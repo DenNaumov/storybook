@@ -48,4 +48,29 @@ describe("BannerList", () => {
     const children = Children.toArray(element.props.children);
     expect(children).toHaveLength(1);
   });
+
+  it("renders static header when details are empty", () => {
+    const onToggle = jest.fn();
+    const element = BannerList({
+      title: "Произошла ошибка",
+      description: "Некорректно заполнены поля объекта",
+      details: "",
+      expanded: true,
+      collapsible: true,
+      onToggle,
+    });
+
+    const children = Children.toArray(element.props.children);
+    expect(children).toHaveLength(1);
+
+    const headerNode = children[0];
+    expect(isValidElement(headerNode)).toBe(true);
+    if (!isValidElement(headerNode)) {
+      throw new Error("Expected header node to be a React element.");
+    }
+
+    expect((headerNode as HeaderElement).props.type).toBeUndefined();
+    expect((headerNode as HeaderElement).props["aria-expanded"]).toBeUndefined();
+    expect((headerNode as HeaderElement).props.onClick).toBeUndefined();
+  });
 });

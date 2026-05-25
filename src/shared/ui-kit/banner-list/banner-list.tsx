@@ -30,10 +30,12 @@ export const BannerList = ({
   className = "",
   ...props
 }: BannerListProps) => {
-  const isCollapsible = collapsible ?? Boolean(details || onToggle);
+  const hasDetails = Boolean(details);
+  const isCollapsible =
+    hasDetails && (collapsible ?? Boolean(details || onToggle));
   const rootClassName = [
     styles.bannerList,
-    isCollapsible ? styles.collapsible : styles.static,
+    !isCollapsible ? styles.static : null,
     expanded ? styles.expanded : styles.collapsed,
     className,
   ]
@@ -102,7 +104,7 @@ export const BannerList = ({
         <div className={styles.header}>{headerContent}</div>
       )}
 
-      {expanded && details ? (
+      {expanded && hasDetails ? (
         <div className={styles.details}>{details}</div>
       ) : null}
     </section>
