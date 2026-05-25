@@ -1,7 +1,16 @@
 import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
-import { BannerScreen } from "./banner-screen";
+
+jest.mock("../illustration/illustration", () => ({
+  Illustration: ({ illustration }: { illustration: string }) => (
+    <div data-illustration={illustration} />
+  ),
+}));
+
+const { BannerScreen } = jest.requireActual<typeof import("./banner-screen")>(
+  "./banner-screen",
+);
 
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 type ActionElement = ReactElement<{ onClick?: unknown; label?: string }>;
