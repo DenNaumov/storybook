@@ -1,30 +1,31 @@
-import { Children, isValidElement } from "react";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "@jest/globals";
 import { ColoredChip } from "./colored-chip";
-import { ResizableIcons } from "../icon";
+
+const SvgMock = () => <svg data-testid="chip-icon" />;
 
 describe("ColoredChip", () => {
   it("renders label with both icons", () => {
-    const element = ColoredChip({
-      label: "Сортировка",
-      color: "#00c621",
-      startIcon: ResizableIcons.Unarchive24,
-      endIcon: ResizableIcons.InformationSquare,
-    });
+    const { container } = render(
+      <ColoredChip
+        label="Сортировка"
+        color="#00c621"
+        startIcon={SvgMock}
+        endIcon={SvgMock}
+      />,
+    );
 
-    expect(isValidElement(element)).toBe(true);
-
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(3);
+    expect(screen.getByText("Сортировка")).toBeInTheDocument();
+    expect(container.querySelectorAll("svg")).toHaveLength(2);
   });
 
   it("applies multiline class when requested", () => {
-    const element = ColoredChip({
-      label: "Много\nстрок",
-      color: "#00c621",
-      multiline: true,
-    });
+    render(<ColoredChip label={"Много\nстрок"} color="#00c621" multiline />);
 
-    expect(element.props.className).toContain("multiline");
+    expect(screen.getByText(/Много/).className).toContain("label");
+    expect(screen.getByText(/Много/).closest("div")?.className).toContain(
+      "multiline",
+    );
   });
 });

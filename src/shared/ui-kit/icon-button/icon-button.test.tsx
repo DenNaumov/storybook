@@ -1,65 +1,53 @@
-import type { ReactElement, ReactNode } from "react";
-import { Children, isValidElement } from "react";
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "@jest/globals";
 
-import { ResizableIcons } from "../icon";
 import { IconButton } from "./icon-button";
 
-type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
+const SvgMock = () => <svg data-testid="button-icon" />;
 
 describe("IconButton", () => {
   it("renders when explicit sizes are passed", () => {
-    const element = IconButton({
-      buttonSize: "m",
-      iconSize: "m",
-      icon: ResizableIcons.Add01,
-    });
+    const { container } = render(
+      <IconButton
+        buttonSize="m"
+        iconSize="m"
+        icon={SvgMock}
+        aria-label="Add"
+      />,
+    );
 
-    expect(isValidElement(element)).toBe(true);
-
-    const wrapper = Children.toArray(element.props.children)[0];
-    expect(isValidElement(wrapper)).toBe(true);
-    if (!isValidElement(wrapper)) {
-      throw new Error("Expected wrapper to be a React element.");
-    }
+    expect(screen.getByRole("button", { name: "Add" })).toBeInTheDocument();
+    expect(container.querySelector("svg")).not.toBeNull();
   });
 
   it("renders custom sizes and badge count", () => {
-    const element = IconButton({
-      icon: ResizableIcons.Add01,
-      buttonSize: "s",
-      iconSize: "s",
-      badgeCount: "9",
-    });
-
-    const wrapper = Children.toArray(element.props.children)[0];
-    expect(isValidElement(wrapper)).toBe(true);
-    if (!isValidElement(wrapper)) {
-      throw new Error("Expected wrapper to be a React element.");
-    }
-
-    const wrapperChildren = Children.toArray(
-      (wrapper as ElementWithChildren).props.children,
+    render(
+      <IconButton
+        icon={SvgMock}
+        buttonSize="s"
+        iconSize="s"
+        badgeCount="9"
+        aria-label="Add"
+      />,
     );
-    expect(wrapperChildren).toHaveLength(2);
-    expect(isValidElement(wrapperChildren[0])).toBe(true);
-    const badgeNode = wrapperChildren[1];
-    expect(isValidElement(badgeNode)).toBe(true);
-    if (!isValidElement(badgeNode)) {
-      throw new Error("Expected badge node to be a React element.");
-    }
-    expect((badgeNode as ElementWithChildren).props.children).toBe("9");
+
+    expect(screen.getByRole("button", { name: "Add" })).toBeInTheDocument();
+    expect(screen.getByText("9")).toBeInTheDocument();
   });
 
   it("passes through pressed and disabled state", () => {
-    const element = IconButton({
-      icon: ResizableIcons.Add01,
-      buttonSize: "m",
-      iconSize: "m",
-      pressed: true,
-      disabled: true,
-    });
+    render(
+      <IconButton
+        icon={SvgMock}
+        buttonSize="m"
+        iconSize="m"
+        pressed
+        disabled
+        aria-label="Add"
+      />,
+    );
 
-    expect(element.props.disabled).toBe(true);
+    expect(screen.getByRole("button", { name: "Add" })).toBeDisabled();
   });
 });

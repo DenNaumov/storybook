@@ -1,104 +1,67 @@
-import type { ReactElement, ReactNode } from "react";
-import { Children, isValidElement } from "react";
+import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, jest } from "@jest/globals";
-import { Snackbar } from "./snackbar";
 
-type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
-type ClickableElement = ReactElement<{
-  onClick?: unknown;
-  children?: ReactNode;
-}>;
+const MockSvg = () => <svg data-testid="snackbar-icon" />;
+
+jest.mock("../icon", () => ({
+  Icon20Icons: {
+    Cancel: MockSvg,
+  },
+  Icon28Icons: {
+    Check: MockSvg,
+    Warning: MockSvg,
+  },
+}));
+
+const { Snackbar } = jest.requireActual<typeof import("./snackbar")>(
+  "./snackbar",
+);
 
 describe("Snackbar", () => {
   it("renders a plain message without controls by default", () => {
-    const element = Snackbar({
-      message: "Body",
-    });
+    render(<Snackbar message="Body" />);
 
-    expect(isValidElement(element)).toBe(true);
-    expect(element.props.role).toBe("status");
-    expect(element.props["aria-live"]).toBe("polite");
+    const snackbar = screen.getByRole("status");
 
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(1);
+    expect(snackbar).toHaveAttribute("aria-live", "polite");
+    expect(screen.getByText("Body")).toBeInTheDocument();
+    expect(screen.queryByRole("button")).toBeNull();
   });
 
   it("renders action and dismiss controls when callbacks are provided", () => {
     const onAction = jest.fn();
     const onDismiss = jest.fn();
 
-    const element = Snackbar({
-      variant: "error",
-      message: "Body",
-      actionLabel: "Отменить",
-      onAction,
-      onDismiss,
-    });
-
-    expect(element.props.role).toBe("alert");
-    expect(element.props["aria-live"]).toBe("assertive");
-
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(2);
-
-    const controlsNode = children[1];
-    expect(isValidElement(controlsNode)).toBe(true);
-    if (!isValidElement(controlsNode)) {
-      throw new Error("Expected controls node to be a React element.");
-    }
-
-    const controlsChildren = Children.toArray(
-      (controlsNode as ElementWithChildren).props.children,
+    render(
+      <Snackbar
+        variant="error"
+        message="Body"
+        actionLabel="Отменить"
+        onAction={onAction}
+        onDismiss={onDismiss}
+      />,
     );
-    expect(controlsChildren).toHaveLength(2);
 
-    const actionButton = controlsChildren[0];
-    const dismissButton = controlsChildren[1];
+    const snackbar = screen.getByRole("alert");
 
-    expect(isValidElement(actionButton)).toBe(true);
-    expect(isValidElement(dismissButton)).toBe(true);
+    expect(snackbar).toHaveAttribute("aria-live", "assertive");
 
-    if (!isValidElement(actionButton) || !isValidElement(dismissButton)) {
-      throw new Error("Expected control buttons to be React elements.");
-    }
-
-    expect((actionButton as ClickableElement).props.onClick).toBe(onAction);
-
-    const dismissChildren = Children.toArray(
-      (dismissButton as ElementWithChildren).props.children,
+    fireEvent.click(screen.getByRole("button", { name: "Отменить" }));
+    fireEvent.click(
+      screen.getByRole("button", { name: "Закрыть уведомление" }),
     );
-    expect(dismissChildren).toHaveLength(1);
 
-    const dismissIconButton = dismissChildren[0];
-    expect(isValidElement(dismissIconButton)).toBe(true);
-    if (!isValidElement(dismissIconButton)) {
-      throw new Error("Expected dismiss icon button to be a React element.");
-    }
-
-    expect((dismissIconButton as ClickableElement).props.onClick).toBe(
-      onDismiss,
-    );
+    expect(onAction).toHaveBeenCalledTimes(1);
+    expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
   it("omits the variant icon when hideIcon is enabled", () => {
-    const element = Snackbar({
-      variant: "success",
-      message: "Saved",
-      hideIcon: true,
-    });
-
-    const children = Children.toArray(element.props.children);
-    const contentNode = children[0];
-
-    expect(isValidElement(contentNode)).toBe(true);
-    if (!isValidElement(contentNode)) {
-      throw new Error("Expected content node to be a React element.");
-    }
-
-    const contentChildren = Children.toArray(
-      (contentNode as ElementWithChildren).props.children,
+    const { container } = render(
+      <Snackbar variant="success" message="Saved" hideIcon />,
     );
-    expect(contentChildren).toHaveLength(1);
-    expect(contentChildren[0]).toBeDefined();
+
+    expect(screen.getByText("Saved")).toBeInTheDocument();
+    expect(container.querySelector("svg")).toBeNull();
   });
 });

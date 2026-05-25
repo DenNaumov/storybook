@@ -1,46 +1,46 @@
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "@jest/globals";
 
 import { ButtonGroup } from "./button-group";
 
 describe("ButtonGroup", () => {
   it("renders children by default", () => {
-    const element = ButtonGroup({
-      children: "content",
-    });
+    render(<ButtonGroup>content</ButtonGroup>);
 
-    expect(element.props.children).toBe("content");
+    expect(screen.getByText("content")).toBeInTheDocument();
   });
 
   it("passes through custom props", () => {
-    const element = ButtonGroup({
-      children: "content",
-      withSpacing: true,
-      className: "custom-group",
-      id: "group-id",
-    });
+    render(
+      <ButtonGroup withSpacing className="custom-group" id="group-id">
+        content
+      </ButtonGroup>,
+    );
 
-    expect(element.props.id).toBe("group-id");
-    expect(element.props.children).toBe("content");
+    const group = screen.getByText("content");
+
+    expect(group).toHaveAttribute("id", "group-id");
+    expect(group).toHaveClass("custom-group");
   });
 
   it("supports different layout props", () => {
-    const element = ButtonGroup({
-      children: "content",
-      direction: "horizontalFixed",
-      gap: 0,
-    });
+    render(
+      <ButtonGroup direction="horizontalFixed" gap={0}>
+        content
+      </ButtonGroup>,
+    );
 
-    expect(element.props.children).toBe("content");
+    expect(screen.getByText("content")).toBeInTheDocument();
   });
 
   it("renders horizontal direction and passes through extra props", () => {
-    const element = ButtonGroup({
-      children: "content",
-      direction: "horizontal",
-      id: "group-id",
-    });
+    render(
+      <ButtonGroup direction="horizontal" id="group-id">
+        content
+      </ButtonGroup>,
+    );
 
-    expect(element.props.id).toBe("group-id");
-    expect(element.props.children).toBe("content");
+    expect(screen.getByText("content")).toHaveAttribute("id", "group-id");
   });
 });

@@ -1,7 +1,8 @@
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it, jest, beforeEach } from "@jest/globals";
-import { isValidElement } from "react";
 
-const MockIcon = () => null;
+const MockIcon = () => <svg data-testid="loader-icon" />;
 const resolveSvgPath = (fileName: string) =>
   require.resolve(`./assets/${fileName}`);
 
@@ -37,20 +38,24 @@ describe("Loader", () => {
   it("uses medium size by default", () => {
     // Require inside the test to ensure mocks are applied
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Loader } = require("./loader");
-    const element = Loader({});
+    const { Loader } = require("./loader") as typeof import("./loader");
 
-    expect(isValidElement(element)).toBe(true);
-    expect(element.props.role).toBe("status");
-    expect(element.props["aria-label"]).toBe("Загрузка");
+    render(<Loader />);
+
+    const loader = screen.getByRole("status", { name: "Загрузка" });
+
+    expect(loader).toBeInTheDocument();
+    expect(screen.getByTestId("loader-icon")).toBeInTheDocument();
   });
 
   it("renders the requested icon size for each variant", () => {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Loader } = require("./loader");
-    const element = Loader({ size: "large" });
+    const { Loader } = require("./loader") as typeof import("./loader");
 
-    expect(isValidElement(element)).toBe(true);
-    expect(element.props.className).toContain("sizeLarge");
+    render(<Loader size="large" />);
+
+    expect(screen.getByRole("status", { name: "Загрузка" }).className).toContain(
+      "sizeLarge",
+    );
   });
 });
