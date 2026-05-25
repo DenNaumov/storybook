@@ -1,114 +1,83 @@
-import type { ReactElement, ReactNode } from "react";
-import { Children, isValidElement } from "react";
-import { describe, expect, it, jest } from "@jest/globals";
-import { Alert } from "./alert";
+import "@testing-library/jest-dom";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { jest } from "@jest/globals";
 
-type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
-type ClickableElement = ReactElement<{
-  onClick?: unknown;
-  children?: ReactNode;
-}>;
+jest.mock("../illustration/illustration", () => ({
+  Illustration: ({ illustration }: { illustration: string }) => (
+    <div data-illustration={illustration} data-testid="alert-illustration" />
+  ),
+}));
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { Alert } = require("./alert") as typeof import("./alert");
 
 describe("Alert", () => {
   it("renders title, description and primary action", () => {
     const onPrimaryAction = jest.fn();
-    const element = Alert({
-      title: "Title",
-      description: "Description",
-      primaryActionLabel: "Save",
-      onPrimaryAction,
-    });
 
-    expect(isValidElement(element)).toBe(true);
-
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(2);
-
-    const bodyNode = children[0];
-    const actionsNode = children[1];
-
-    expect(isValidElement(bodyNode)).toBe(true);
-    expect(isValidElement(actionsNode)).toBe(true);
-
-    if (!isValidElement(bodyNode) || !isValidElement(actionsNode)) {
-      throw new Error("Expected alert body and actions to be React elements.");
-    }
-
-    const bodyChildren = Children.toArray(
-      (bodyNode as ElementWithChildren).props.children,
+    render(
+      <Alert
+        title="Title"
+        description="Description"
+        primaryActionLabel="Save"
+        onPrimaryAction={onPrimaryAction}
+      />,
     );
-    expect(bodyChildren).toHaveLength(2);
 
-    const actionsChildren = Children.toArray(
-      (actionsNode as ElementWithChildren).props.children,
-    );
-    expect(actionsChildren).toHaveLength(1);
+    expect(screen.getByText("Title")).toBeInTheDocument();
+    expect(screen.getByText("Description")).toBeInTheDocument();
 
-    const primarySlot = actionsChildren[0];
-    expect(isValidElement(primarySlot)).toBe(true);
-    if (!isValidElement(primarySlot)) {
-      throw new Error("Expected primary action slot to be a React element.");
-    }
+    fireEvent.click(screen.getByRole("button", { name: "Save" }));
 
-    const primaryButton = Children.toArray(
-      (primarySlot as ElementWithChildren).props.children,
-    )[0];
-    expect(isValidElement(primaryButton)).toBe(true);
-    if (!isValidElement(primaryButton)) {
-      throw new Error("Expected primary button to be a React element.");
-    }
-
-    expect((primaryButton as ClickableElement).props.onClick).toBe(
-      onPrimaryAction,
-    );
+    expect(onPrimaryAction).toHaveBeenCalledTimes(1);
   });
 
   it("renders illustration before the text content when provided", () => {
-    const element = Alert({
-      title: "Title",
-      illustration: "UserLimit",
-    });
+    const { container } = render(
+      <Alert title="Title" illustration="UserLimit" />,
+    );
 
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(2);
+    const alert = container.querySelector("section");
 
-    const mediaNode = children[0];
-    expect(isValidElement(mediaNode)).toBe(true);
-    if (!isValidElement(mediaNode)) {
-      throw new Error("Expected media node to be a React element.");
-    }
+    expect(alert).not.toBeNull();
+    expect(screen.getByTestId("alert-illustration")).toHaveAttribute(
+      "data-illustration",
+      "UserLimit",
+    );
 
-    const illustrationComponent = (mediaNode as ElementWithChildren).props
-      .children;
-    expect(isValidElement(illustrationComponent)).toBe(true);
-    if (!isValidElement(illustrationComponent)) {
-      throw new Error("Expected illustration component to be a React element.");
-    }
-    expect(
-      (illustrationComponent as ReactElement<{ illustration: string }>).props
-        .illustration,
-    ).toBe("UserLimit");
+    const alertChildren = Array.from(alert?.children ?? []);
+    const illustrationNode = screen.getByTestId("alert-illustration");
+    const titleNode = screen.getByText("Title");
+
+    expect(alertChildren[0]).toContainElement(illustrationNode);
+    expect(alertChildren[1]).toContainElement(titleNode);
   });
 
   it("renders two actions when secondary action is provided", () => {
-    const element = Alert({
-      title: "Title",
-      primaryActionLabel: "Primary",
-      secondaryActionLabel: "Secondary",
-      actionsLayout: "inline",
-    });
+    const onPrimaryAction = jest.fn();
+    const onSecondaryAction = jest.fn();
 
-    const children = Children.toArray(element.props.children);
-    const actionsNode = children[1];
-
-    expect(isValidElement(actionsNode)).toBe(true);
-    if (!isValidElement(actionsNode)) {
-      throw new Error("Expected actions node to be a React element.");
-    }
-
-    const actionsChildren = Children.toArray(
-      (actionsNode as ElementWithChildren).props.children,
+    render(
+      <Alert
+        title="Title"
+        primaryActionLabel="Primary"
+        secondaryActionLabel="Secondary"
+        actionsLayout="inline"
+        onPrimaryAction={onPrimaryAction}
+        onSecondaryAction={onSecondaryAction}
+      />,
     );
-    expect(actionsChildren).toHaveLength(2);
+
+    const buttons = screen.getAllByRole("button");
+
+    expect(buttons).toHaveLength(2);
+    expect(within(buttons[0]).getByText("Secondary")).toBeInTheDocument();
+    expect(within(buttons[1]).getByText("Primary")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "Secondary" }));
+    fireEvent.click(screen.getByRole("button", { name: "Primary" }));
+
+    expect(onSecondaryAction).toHaveBeenCalledTimes(1);
+    expect(onPrimaryAction).toHaveBeenCalledTimes(1);
   });
 });
