@@ -1,5 +1,4 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { capitalize } from "@/shared/utils/capitalize";
 import { Icon20Icons } from "../icon";
 import { Icon28Icons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
@@ -61,11 +60,7 @@ export const Snackbar = ({
 
   return (
     <div
-      className={[
-        styles.snackbar,
-        styles[`variant${capitalize(variant)}`],
-        className,
-      ]
+      className={[styles.snackbar, className]
         .filter(Boolean)
         .join(" ")}
       role={role}
