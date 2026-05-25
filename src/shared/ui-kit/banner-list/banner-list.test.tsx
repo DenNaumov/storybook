@@ -1,51 +1,90 @@
-import type { ReactElement } from "react";
-import { Children, isValidElement } from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, jest } from "@jest/globals";
-import { BannerList } from "./banner-list";
 
-type HeaderElement = ReactElement<{
-  type?: string;
-  onClick?: unknown;
-  "aria-expanded"?: boolean;
-}>;
+const SvgMock = () => <svg />;
+
+jest.mock("../icon/packs/20/chevron_down_20.svg", () => ({
+  __esModule: true,
+  default: SvgMock,
+}));
+
+jest.mock("../icon/packs/20/chevron_up_20.svg", () => ({
+  __esModule: true,
+  default: SvgMock,
+}));
+
+jest.mock("../icon/packs/resizable/information-circle.svg", () => ({
+  __esModule: true,
+  default: SvgMock,
+}));
+
+const { BannerList } =
+  jest.requireActual<typeof import("./banner-list")>("./banner-list");
 
 describe("BannerList", () => {
   it("renders toggle button when banner is collapsible", () => {
     const onToggle = jest.fn();
-    const element = BannerList({
-      title: "Произошла ошибка",
-      description: "Некорректно заполнены поля объекта",
-      details: "Подробности",
-      expanded: true,
-      onToggle,
+
+    render(
+      <BannerList
+        title="Произошла ошибка"
+        description="Некорректно заполнены поля объекта"
+        details="Подробности"
+        expanded
+        onToggle={onToggle}
+      />,
+    );
+
+    expect(screen.getByText("Произошла ошибка")).toBeDefined();
+    expect(
+      screen.getByText("Некорректно заполнены поля объекта"),
+    ).toBeDefined();
+    expect(screen.getByText("Подробности")).toBeDefined();
+
+    const toggle = screen.getByRole("button", {
+      name: "Переключить баннер",
     });
 
-    expect(isValidElement(element)).toBe(true);
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
 
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(2);
+    fireEvent.click(toggle);
 
-    const headerNode = children[0];
-    expect(isValidElement(headerNode)).toBe(true);
-    if (!isValidElement(headerNode)) {
-      throw new Error("Expected header node to be a React element.");
-    }
-
-    expect((headerNode as HeaderElement).props.type).toBe("button");
-    expect((headerNode as HeaderElement).props["aria-expanded"]).toBe(true);
-    expect((headerNode as HeaderElement).props.onClick).toBe(onToggle);
+    expect(onToggle).toHaveBeenCalledTimes(1);
   });
 
   it("does not render details when collapsed", () => {
-    const element = BannerList({
-      title: "Произошла ошибка",
-      description: "Некорректно заполнены поля объекта",
-      details: "Подробности",
-      expanded: false,
-      collapsible: true,
-    });
+    render(
+      <BannerList
+        title="Произошла ошибка"
+        description="Некорректно заполнены поля объекта"
+        details="Подробности"
+        expanded={false}
+        collapsible
+      />,
+    );
 
-    const children = Children.toArray(element.props.children);
-    expect(children).toHaveLength(1);
+    expect(screen.getByText("Произошла ошибка")).toBeDefined();
+    expect(screen.queryByText("Подробности")).toBeNull();
+  });
+
+  it("renders static header when details are empty", () => {
+    const onToggle = jest.fn();
+
+    render(
+      <BannerList
+        title="Произошла ошибка"
+        description="Некорректно заполнены поля объекта"
+        details=""
+        expanded
+        collapsible
+        onToggle={onToggle}
+      />,
+    );
+
+    expect(screen.getByText("Произошла ошибка")).toBeDefined();
+    expect(
+      screen.queryByRole("button", { name: "Переключить баннер" }),
+    ).toBeNull();
+    expect(onToggle).not.toHaveBeenCalled();
   });
 });

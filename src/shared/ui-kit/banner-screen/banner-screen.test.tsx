@@ -8,9 +8,8 @@ jest.mock("../illustration/illustration", () => ({
   ),
 }));
 
-const { BannerScreen } = jest.requireActual<typeof import("./banner-screen")>(
-  "./banner-screen",
-);
+const { BannerScreen } =
+  jest.requireActual<typeof import("./banner-screen")>("./banner-screen");
 
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 type ActionElement = ReactElement<{ onClick?: unknown; label?: string }>;
