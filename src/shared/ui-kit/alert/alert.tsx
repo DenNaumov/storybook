@@ -3,6 +3,7 @@ import { Button, type ButtonVariant } from "../button/button";
 import { ButtonGroup } from "../button-group/button-group";
 import { Illustration } from "../illustration/illustration";
 import { type IllustrationName } from "../illustration/illustration.constants";
+import { Typography } from "../typography/typography";
 import styles from "./alert.module.css";
 
 export type AlertActionsLayout = "stack" | "inline";
@@ -60,8 +61,24 @@ export const Alert = ({
       )}
 
       <div className={styles.body}>
-        <h3 className={styles.title}>{title}</h3>
-        {description && <p className={styles.description}>{description}</p>}
+        <Typography
+          variant="headline-semibold"
+          align="center"
+          className={styles.title}
+          color="primary"
+        >
+          {title}
+        </Typography>
+        {description && (
+          <Typography
+            variant="subheadline1-regular"
+            align="center"
+            className={styles.description}
+            color="secondary"
+          >
+            {description}
+          </Typography>
+        )}
       </div>
 
       {hasActions && (
