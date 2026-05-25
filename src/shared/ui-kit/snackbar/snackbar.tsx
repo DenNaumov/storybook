@@ -60,9 +60,7 @@ export const Snackbar = ({
 
   return (
     <div
-      className={[styles.snackbar, className]
-        .filter(Boolean)
-        .join(" ")}
+      className={[styles.snackbar, className].filter(Boolean).join(" ")}
       role={role}
       aria-live={liveMode}
       {...props}

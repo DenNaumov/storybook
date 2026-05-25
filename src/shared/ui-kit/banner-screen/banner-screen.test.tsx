@@ -1,7 +1,17 @@
 import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { describe, expect, it, jest } from "@jest/globals";
-import { BannerScreen } from "./banner-screen";
+
+jest.mock("../illustration/illustration", () => ({
+  Illustration: ({ illustration }: { illustration: string }) => (
+    <div data-illustration={illustration} />
+  ),
+}));
+
+const bannerScreenModule =
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  require("./banner-screen") as typeof import("./banner-screen");
+const { BannerScreen } = bannerScreenModule;
 
 type ElementWithChildren = ReactElement<{ children?: ReactNode }>;
 type ActionElement = ReactElement<{ onClick?: unknown; label?: string }>;

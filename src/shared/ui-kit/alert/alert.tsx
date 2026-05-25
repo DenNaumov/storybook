@@ -89,9 +89,10 @@ export const Alert = ({
       {hasActions && (
         <ButtonGroup
           direction={actionsLayout === "inline" ? "horizontal" : "vertical"}
-          className={[styles.actions, actionsLayoutClassMap[actionsLayout]].join(
-            " ",
-          )}
+          className={[
+            styles.actions,
+            actionsLayoutClassMap[actionsLayout],
+          ].join(" ")}
         >
           {isSecondaryAction && (
             <div className={styles.actionSlot}>

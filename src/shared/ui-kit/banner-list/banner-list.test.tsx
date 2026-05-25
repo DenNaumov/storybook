@@ -70,7 +70,9 @@ describe("BannerList", () => {
     }
 
     expect((headerNode as HeaderElement).props.type).toBeUndefined();
-    expect((headerNode as HeaderElement).props["aria-expanded"]).toBeUndefined();
+    expect(
+      (headerNode as HeaderElement).props["aria-expanded"],
+    ).toBeUndefined();
     expect((headerNode as HeaderElement).props.onClick).toBeUndefined();
   });
 });
