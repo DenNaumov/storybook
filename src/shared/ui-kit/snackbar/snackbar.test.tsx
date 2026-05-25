@@ -23,8 +23,8 @@ describe("Snackbar", () => {
 
     const snackbar = screen.getByRole("status");
 
-    expect(snackbar).toHaveAttribute("aria-live", "polite");
-    expect(screen.getByText("Body")).toBeInTheDocument();
+    expect(snackbar.getAttribute("aria-live")).toBe("polite");
+    expect(screen.getByText("Body")).toBeDefined();
     expect(screen.queryByRole("button")).toBeNull();
   });
 
@@ -44,7 +44,7 @@ describe("Snackbar", () => {
 
     const snackbar = screen.getByRole("alert");
 
-    expect(snackbar).toHaveAttribute("aria-live", "assertive");
+    expect(snackbar.getAttribute("aria-live")).toBe("assertive");
 
     fireEvent.click(screen.getByRole("button", { name: "Отменить" }));
     fireEvent.click(
@@ -60,7 +60,7 @@ describe("Snackbar", () => {
       <Snackbar variant="success" message="Saved" hideIcon />,
     );
 
-    expect(screen.getByText("Saved")).toBeInTheDocument();
+    expect(screen.getByText("Saved")).toBeDefined();
     expect(container.querySelector("svg")).toBeNull();
   });
 });

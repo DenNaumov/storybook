@@ -25,14 +25,15 @@ describe("BannerScreen", () => {
       />,
     );
 
-    expect(screen.getByTestId("banner-illustration")).toHaveAttribute(
-      "data-illustration",
-      "EmptyListNoAdd",
-    );
+    expect(
+      screen
+        .getByTestId("banner-illustration")
+        .getAttribute("data-illustration"),
+    ).toBe("EmptyListNoAdd");
     expect(
       screen.getByRole("heading", { name: "Список пуст" }),
-    ).toBeInTheDocument();
-    expect(screen.getByText("В списке нет значений")).toBeInTheDocument();
+    ).toBeDefined();
+    expect(screen.getByText("В списке нет значений")).toBeDefined();
 
     fireEvent.click(screen.getByRole("button", { name: "Создать" }));
 
@@ -48,12 +49,13 @@ describe("BannerScreen", () => {
       />,
     );
 
-    expect(container.querySelector("section")).toHaveClass(
+    expect(container.querySelector("section")?.className).toContain(
       "custom-banner-screen",
     );
-    expect(screen.getByTestId("banner-illustration")).toHaveAttribute(
-      "data-illustration",
-      "EmptyListNoAdd",
-    );
+    expect(
+      screen
+        .getByTestId("banner-illustration")
+        .getAttribute("data-illustration"),
+    ).toBe("EmptyListNoAdd");
   });
 });
