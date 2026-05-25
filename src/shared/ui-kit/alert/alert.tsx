@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import { capitalize } from "@/shared/utils/capitalize";
 import { Button, type ButtonVariant } from "../button/button";
 import { ButtonGroup } from "../button-group/button-group";
 import { Illustration } from "../illustration/illustration";
@@ -8,6 +7,11 @@ import { Typography } from "../typography/typography";
 import styles from "./alert.module.css";
 
 export type AlertActionsLayout = "stack" | "inline";
+
+const actionsLayoutClassMap: Record<AlertActionsLayout, string> = {
+  stack: styles.actionsStack,
+  inline: styles.actionsInline,
+};
 
 export interface AlertProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
@@ -85,10 +89,9 @@ export const Alert = ({
       {hasActions && (
         <ButtonGroup
           direction={actionsLayout === "inline" ? "horizontal" : "vertical"}
-          className={[
-            styles.actions,
-            styles[`actions${capitalize(actionsLayout)}`],
-          ].join(" ")}
+          className={[styles.actions, actionsLayoutClassMap[actionsLayout]].join(
+            " ",
+          )}
         >
           {isSecondaryAction && (
             <div className={styles.actionSlot}>
