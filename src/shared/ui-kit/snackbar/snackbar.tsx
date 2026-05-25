@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import { capitalize } from "@/shared/utils/capitalize";
 import { Icon20Icons } from "../icon";
 import { Icon28Icons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
@@ -121,6 +122,3 @@ export const Snackbar = ({
     </div>
   );
 };
-
-const capitalize = (value: string) =>
-  value.charAt(0).toUpperCase() + value.slice(1);

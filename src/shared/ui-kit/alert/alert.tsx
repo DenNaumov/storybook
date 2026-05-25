@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactNode } from "react";
+import { capitalize } from "@/shared/utils/capitalize";
 import { Button, type ButtonVariant } from "../button/button";
 import { ButtonGroup } from "../button-group/button-group";
 import { Illustration } from "../illustration/illustration";
@@ -115,6 +116,3 @@ export const Alert = ({
     </section>
   );
 };
-
-const capitalize = (value: string) =>
-  value.charAt(0).toUpperCase() + value.slice(1);
