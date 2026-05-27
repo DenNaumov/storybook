@@ -2,14 +2,14 @@
 
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
-import { initialSelectedDate, tasks } from "./calendar-view.mock";
+import { tasks } from "./calendar-view.mock";
 import { CalendarTimeline } from "./calendar-timeline";
 import { CalendarWeekStrip } from "./calendar-week-strip";
 import { buildMonthLabel, buildWeekDays } from "./calendar-view.utils";
 import { MonthPickerModal } from "./month-picker-modal";
 
 export const ViewModeCalendar = () => {
-  const [selectedDate, setSelectedDate] = useState(initialSelectedDate);
+  const [selectedDate, setSelectedDate] = useState(() => dayjs());
   const [isMonthPickerOpen, setMonthPickerOpen] = useState(false);
 
   const monthLabel = useMemo(() => buildMonthLabel(selectedDate), [selectedDate]);

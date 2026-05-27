@@ -1,8 +1,6 @@
-import dayjs from "dayjs";
 import type { TaskItem, ViewMode } from "./calendar-view.types";
 
 export const activeViewMode: ViewMode = "calendar";
-export const initialSelectedDate = dayjs("2026-04-02");
 
 export const tasks: TaskItem[] = [
   {
