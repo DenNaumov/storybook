@@ -51,14 +51,7 @@ export const CalendarWeekStrip = ({
 
     <ol className={styles.dayGrid}>
       {weekDays.map((item) => (
-        <li
-          className={[
-            styles.day,
-            item.isSelected ? styles.daySelected : "",
-            item.isToday ? styles.dayToday : "",
-          ].join(" ")}
-          key={item.id}
-        >
+        <li className={styles.day} key={item.id}>
           <button
             className={styles.dayButton}
             type="button"
@@ -69,10 +62,19 @@ export const CalendarWeekStrip = ({
               as="span"
               variant="subheadline2-regular"
               className={item.isWeekend ? styles.weekend : styles.weekday}
+              color={item.isWeekend ? "#ff3b3b" : "#adadad"}
             >
               {item.weekday}
             </Typography>
-            <Typography as="span" variant="headline-regular">
+            <Typography
+              as="span"
+              variant="headline-regular"
+              className={[
+                styles.dayNumber,
+                item.isSelected ? styles.dayNumberSelected : "",
+                item.isToday ? styles.dayNumberToday : "",
+              ].join(" ")}
+            >
               {item.dayNumber}
             </Typography>
           </button>

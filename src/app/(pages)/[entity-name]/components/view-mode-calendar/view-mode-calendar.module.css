@@ -123,8 +123,6 @@
 .day {
   min-width: 0;
   aspect-ratio: 1 / 1;
-  border: 2px solid transparent;
-  border-radius: 22px;
   color: #ffffff;
 }
 
@@ -150,19 +148,21 @@
   color: #ff3b3b;
 }
 
-.daySelected {
+.dayNumber {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.dayNumberSelected {
   background: #2d96ff;
 }
 
-.daySelected .weekday {
-  color: #adadad;
-}
-
-.daySelected .weekend {
-  color: #ff3b3b;
-}
-
-.dayToday {
+.dayNumberToday {
   border-color: #55575a;
 }
 
@@ -389,6 +389,14 @@
   border-radius: 22px;
 }
 
+.modalDayCell.daySelected {
+  background: #2d96ff;
+}
+
+.modalDayCell.dayToday {
+  border-color: #55575a;
+}
+
 .modalDayButton {
   display: grid;
   place-items: center;
@@ -456,6 +464,12 @@
 
   .day {
     border-radius: 20px;
+  }
+
+  .dayNumber {
+    width: 48px;
+    height: 48px;
+    border-radius: 18px;
   }
 
   .weekday,
