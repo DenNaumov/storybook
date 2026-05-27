@@ -1,4 +1,4 @@
-import { Icon24Icons } from "@/shared/ui-kit/icon";
+import { Icon20Icons, Icon24Icons } from "@/shared/ui-kit/icon";
 import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./view-mode-calendar.module.css";
@@ -27,7 +27,7 @@ export const CalendarWeekStrip = ({
         <Typography as="span" variant="title3-bold" className={styles.monthLabel}>
           {monthLabel}
         </Typography>
-        <span aria-hidden>▾</span>
+        <Icon20Icons.ChevronDown aria-hidden width={20} height={20} />
       </button>
       <div className={styles.monthNav}>
         <IconButton
