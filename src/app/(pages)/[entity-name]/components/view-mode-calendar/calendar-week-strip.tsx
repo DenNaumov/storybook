@@ -8,6 +8,7 @@ interface CalendarWeekStripProps {
   onPrevWeek: () => void;
   onNextWeek: () => void;
   onSelectDay: (dateKey: string) => void;
+  onOpenMonthPicker: () => void;
 }
 
 export const CalendarWeekStrip = ({
@@ -16,10 +17,11 @@ export const CalendarWeekStrip = ({
   onPrevWeek,
   onNextWeek,
   onSelectDay,
+  onOpenMonthPicker,
 }: CalendarWeekStripProps) => (
   <section className={styles.calendarCard} aria-label="Неделя">
     <div className={styles.calendarTopline}>
-      <button className={styles.monthButton} type="button">
+      <button className={styles.monthButton} type="button" onClick={onOpenMonthPicker}>
         <Typography as="span" variant="title3-bold" className={styles.monthLabel}>
           {monthLabel}
         </Typography>

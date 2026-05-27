@@ -276,6 +276,127 @@
   font-weight: 700;
 }
 
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modalSurface {
+  width: min(100%, 780px);
+  max-height: calc(100vh - 32px);
+  padding: 22px 20px 18px;
+  overflow-y: auto;
+  border-radius: 22px;
+  background: #222326;
+}
+
+.modalHeader {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+}
+
+.modalTitle {
+  font-size: 54px;
+  line-height: 1.1;
+  color: #f4f4f4;
+}
+
+.modalCloseButton {
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  color: #acb0b6;
+  background: transparent;
+  font-size: 64px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modalCalendarCard {
+  padding: 24px;
+  border-radius: 22px;
+  background: #131417;
+}
+
+.modalMonthTopline {
+  display: grid;
+  grid-template-columns: 58px 1fr 58px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.modalMonthLabel {
+  text-align: center;
+  color: #ffffff;
+  font-size: 42px;
+  line-height: 1.1;
+}
+
+.modalMonthNavButton {
+  width: 58px;
+  height: 58px;
+  border: 0;
+  color: #2f96ff;
+  background: transparent;
+  font-size: 72px;
+  line-height: 0.7;
+  cursor: pointer;
+}
+
+.modalWeekdayRow,
+.modalMonthGrid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.modalWeekdayRow {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.modalWeekdayRow .weekday,
+.modalWeekdayRow .weekend {
+  font-size: 20px;
+}
+
+.modalMonthGrid {
+  gap: 8px;
+}
+
+.modalDayCell {
+  min-height: 92px;
+  border: 2px solid transparent;
+  border-radius: 22px;
+}
+
+.modalDayButton {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 20px;
+  color: #f1f1f1;
+  background: transparent;
+  cursor: pointer;
+}
+
+.modalOutsideMonthDay {
+  color: #8f9499;
+}
+
 @media (max-width: 640px) {
   .phone {
     padding-inline: 16px;
@@ -344,5 +465,40 @@
   .metaValue,
   .chip {
     font-size: 24px;
+  }
+
+  .modalSurface {
+    width: calc(100% - 14px);
+    max-height: calc(100vh - 14px);
+    padding: 14px 12px 10px;
+  }
+
+  .modalTitle {
+    font-size: 40px;
+  }
+
+  .modalCloseButton {
+    width: 52px;
+    height: 52px;
+    font-size: 52px;
+  }
+
+  .modalCalendarCard {
+    padding: 16px 12px 14px;
+  }
+
+  .modalMonthLabel {
+    font-size: 30px;
+  }
+
+  .modalMonthNavButton {
+    width: 44px;
+    height: 44px;
+    font-size: 52px;
+  }
+
+  .modalDayCell {
+    min-height: 64px;
+    border-radius: 18px;
   }
 }
