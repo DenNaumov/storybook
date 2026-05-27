@@ -2,13 +2,10 @@
 
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
-import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "./view-mode-calendar.module.css";
-import { activeViewMode, initialSelectedDate, tasks } from "./calendar-view.mock";
+import { initialSelectedDate, tasks } from "./calendar-view.mock";
 import { CalendarTimeline } from "./calendar-timeline";
 import { CalendarWeekStrip } from "./calendar-week-strip";
 import { buildMonthLabel, buildWeekDays } from "./calendar-view.utils";
-import { ViewModeSwitcher } from "./view-mode-switcher";
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(initialSelectedDate);
@@ -28,24 +25,15 @@ export const ViewModeCalendar = () => {
   };
 
   return (
-    <main className={styles.shell}>
-      <div className={styles.phone}>
-        <header className={styles.header}>
-          <Typography as="h1" variant="headline-bold" className={styles.title}>
-            Задачи
-          </Typography>
-          <ViewModeSwitcher activeMode={activeViewMode} />
-        </header>
-
-        <CalendarWeekStrip
-          monthLabel={monthLabel}
-          weekDays={weekDays}
-          onPrevWeek={() => shiftWeek(-7)}
-          onNextWeek={() => shiftWeek(7)}
-          onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
-        />
-        <CalendarTimeline tasks={filteredTasks} />
-      </div>
-    </main>
+    <>
+      <CalendarWeekStrip
+        monthLabel={monthLabel}
+        weekDays={weekDays}
+        onPrevWeek={() => shiftWeek(-7)}
+        onNextWeek={() => shiftWeek(7)}
+        onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
+      />
+      <CalendarTimeline tasks={filteredTasks} />
+    </>
   );
 };
