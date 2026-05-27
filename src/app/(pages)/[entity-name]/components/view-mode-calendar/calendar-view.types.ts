@@ -2,6 +2,7 @@ export type ViewMode = "list" | "calendar" | "board";
 
 export interface CalendarDay {
   id: string;
+  dateKey: string;
   weekday: string;
   dayNumber: string;
   isWeekend?: boolean;
@@ -20,6 +21,7 @@ export interface TaskChip {
 export interface TaskItem {
   id: string;
   time: string;
+  scheduledAt: string;
   title: string;
   dueAt: string;
   priority: TaskPriority;

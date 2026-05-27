@@ -7,6 +7,7 @@ interface CalendarWeekStripProps {
   weekDays: CalendarDay[];
   onPrevWeek: () => void;
   onNextWeek: () => void;
+  onSelectDay: (dateKey: string) => void;
 }
 
 export const CalendarWeekStrip = ({
@@ -14,6 +15,7 @@ export const CalendarWeekStrip = ({
   weekDays,
   onPrevWeek,
   onNextWeek,
+  onSelectDay,
 }: CalendarWeekStripProps) => (
   <section className={styles.calendarCard} aria-label="Неделя">
     <div className={styles.calendarTopline}>
@@ -53,16 +55,23 @@ export const CalendarWeekStrip = ({
           ].join(" ")}
           key={item.id}
         >
-          <Typography
-            as="span"
-            variant="subheadline2-regular"
-            className={item.isWeekend ? styles.weekend : styles.weekday}
+          <button
+            className={styles.dayButton}
+            type="button"
+            onClick={() => onSelectDay(item.dateKey)}
+            aria-pressed={item.isSelected}
           >
-            {item.weekday}
-          </Typography>
-          <Typography as="span" variant="headline-regular">
-            {item.dayNumber}
-          </Typography>
+            <Typography
+              as="span"
+              variant="subheadline2-regular"
+              className={item.isWeekend ? styles.weekend : styles.weekday}
+            >
+              {item.weekday}
+            </Typography>
+            <Typography as="span" variant="headline-regular">
+              {item.dayNumber}
+            </Typography>
+          </button>
         </li>
       ))}
     </ol>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import dayjs from "dayjs";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./view-mode-calendar.module.css";
 import { activeViewMode, initialSelectedDate, tasks } from "./calendar-view.mock";
@@ -14,13 +15,16 @@ export const ViewModeCalendar = () => {
 
   const monthLabel = useMemo(() => buildMonthLabel(selectedDate), [selectedDate]);
   const weekDays = useMemo(() => buildWeekDays(selectedDate), [selectedDate]);
+  const filteredTasks = useMemo(
+    () =>
+      tasks.filter((task) =>
+        dayjs(task.scheduledAt).isSame(selectedDate.startOf("day"), "day"),
+      ),
+    [selectedDate],
+  );
 
   const shiftWeek = (days: number) => {
-    setSelectedDate((prev) => {
-      const next = new Date(prev);
-      next.setDate(prev.getDate() + days);
-      return next;
-    });
+    setSelectedDate((prev) => prev.add(days, "day"));
   };
 
   return (
@@ -38,8 +42,9 @@ export const ViewModeCalendar = () => {
           weekDays={weekDays}
           onPrevWeek={() => shiftWeek(-7)}
           onNextWeek={() => shiftWeek(7)}
+          onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
         />
-        <CalendarTimeline tasks={tasks} />
+        <CalendarTimeline tasks={filteredTasks} />
       </div>
     </main>
   );
