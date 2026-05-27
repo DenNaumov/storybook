@@ -1,3 +1,5 @@
+import { Icon24Icons } from "@/shared/ui-kit/icon";
+import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./view-mode-calendar.module.css";
 import type { CalendarDay } from "./calendar-view.types";
@@ -28,22 +30,22 @@ export const CalendarWeekStrip = ({
         <span aria-hidden>▾</span>
       </button>
       <div className={styles.monthNav}>
-        <button
+        <IconButton
           className={styles.navButton}
-          type="button"
+          buttonSize="m"
+          iconSize="m"
+          icon={Icon24Icons.ChevronLeft}
           aria-label="Предыдущая неделя"
           onClick={onPrevWeek}
-        >
-          <span aria-hidden>‹</span>
-        </button>
-        <button
+        />
+        <IconButton
           className={styles.navButton}
-          type="button"
+          buttonSize="m"
+          iconSize="m"
+          icon={Icon24Icons.ChevronRight}
           aria-label="Следующая неделя"
           onClick={onNextWeek}
-        >
-          <span aria-hidden>›</span>
-        </button>
+        />
       </div>
     </div>
 

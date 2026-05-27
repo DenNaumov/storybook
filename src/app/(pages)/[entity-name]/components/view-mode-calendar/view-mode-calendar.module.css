@@ -100,12 +100,15 @@
 .navButton {
   width: 72px;
   height: 72px;
+  min-width: 72px;
+  min-height: 72px;
   padding: 0;
+  border-radius: 16px;
 }
 
-.navButton span {
-  font-size: 76px;
-  line-height: 0.7;
+.navButton :global(svg) {
+  width: 42px;
+  height: 42px;
 }
 
 .dayGrid {
@@ -344,12 +347,14 @@
 .modalMonthNavButton {
   width: 58px;
   height: 58px;
-  border: 0;
-  color: #2f96ff;
-  background: transparent;
-  font-size: 72px;
-  line-height: 0.7;
-  cursor: pointer;
+  min-width: 58px;
+  min-height: 58px;
+  border-radius: 14px;
+}
+
+.modalMonthNavButton :global(svg) {
+  width: 34px;
+  height: 34px;
 }
 
 .modalWeekdayRow,
@@ -433,10 +438,13 @@
   .navButton {
     width: 56px;
     height: 56px;
+    min-width: 56px;
+    min-height: 56px;
   }
 
-  .navButton span {
-    font-size: 56px;
+  .navButton :global(svg) {
+    width: 32px;
+    height: 32px;
   }
 
   .dayGrid {
@@ -500,7 +508,13 @@
   .modalMonthNavButton {
     width: 44px;
     height: 44px;
-    font-size: 52px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .modalMonthNavButton :global(svg) {
+    width: 26px;
+    height: 26px;
   }
 
   .modalDayCell {

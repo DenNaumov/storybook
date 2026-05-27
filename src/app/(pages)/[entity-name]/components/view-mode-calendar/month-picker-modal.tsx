@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import { type Dayjs } from "dayjs";
+import { Icon24Icons } from "@/shared/ui-kit/icon";
+import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./view-mode-calendar.module.css";
 import { buildMonthGridDays, buildMonthLabel } from "./calendar-view.utils";
@@ -39,25 +41,25 @@ export const MonthPickerModal = ({
 
         <section className={styles.modalCalendarCard}>
           <div className={styles.modalMonthTopline}>
-            <button
+            <IconButton
               className={styles.modalMonthNavButton}
-              type="button"
+              buttonSize="m"
+              iconSize="m"
+              icon={Icon24Icons.ChevronLeft}
               aria-label="Предыдущий месяц"
               onClick={() => setVisibleMonth((prev) => prev.subtract(1, "month"))}
-            >
-              ‹
-            </button>
+            />
             <Typography as="p" variant="title3-bold" className={styles.modalMonthLabel}>
               {monthLabel}
             </Typography>
-            <button
+            <IconButton
               className={styles.modalMonthNavButton}
-              type="button"
+              buttonSize="m"
+              iconSize="m"
+              icon={Icon24Icons.ChevronRight}
               aria-label="Следующий месяц"
               onClick={() => setVisibleMonth((prev) => prev.add(1, "month"))}
-            >
-              ›
-            </button>
+            />
           </div>
 
           <ol className={styles.modalWeekdayRow}>
