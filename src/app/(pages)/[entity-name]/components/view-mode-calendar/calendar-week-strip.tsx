@@ -5,11 +5,15 @@ import type { CalendarDay } from "./calendar-view.types";
 interface CalendarWeekStripProps {
   monthLabel: string;
   weekDays: CalendarDay[];
+  onPrevWeek: () => void;
+  onNextWeek: () => void;
 }
 
 export const CalendarWeekStrip = ({
   monthLabel,
   weekDays,
+  onPrevWeek,
+  onNextWeek,
 }: CalendarWeekStripProps) => (
   <section className={styles.calendarCard} aria-label="Неделя">
     <div className={styles.calendarTopline}>
@@ -20,10 +24,20 @@ export const CalendarWeekStrip = ({
         <span aria-hidden>▾</span>
       </button>
       <div className={styles.monthNav}>
-        <button className={styles.navButton} type="button" aria-label="Предыдущая неделя">
+        <button
+          className={styles.navButton}
+          type="button"
+          aria-label="Предыдущая неделя"
+          onClick={onPrevWeek}
+        >
           <span aria-hidden>‹</span>
         </button>
-        <button className={styles.navButton} type="button" aria-label="Следующая неделя">
+        <button
+          className={styles.navButton}
+          type="button"
+          aria-label="Следующая неделя"
+          onClick={onNextWeek}
+        >
           <span aria-hidden>›</span>
         </button>
       </div>

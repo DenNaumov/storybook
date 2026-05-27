@@ -1,18 +1,7 @@
-import type { CalendarDay, TaskItem, ViewMode } from "./calendar-view.types";
+import type { TaskItem, ViewMode } from "./calendar-view.types";
 
 export const activeViewMode: ViewMode = "calendar";
-
-export const monthLabel = "Апрель 2026";
-
-export const weekDays: CalendarDay[] = [
-  { id: "mon", weekday: "Пн", dayNumber: "1" },
-  { id: "tue", weekday: "Вт", dayNumber: "2", isSelected: true },
-  { id: "wed", weekday: "Ср", dayNumber: "3" },
-  { id: "thu", weekday: "Чт", dayNumber: "4", isToday: true },
-  { id: "fri", weekday: "Пт", dayNumber: "5" },
-  { id: "sat", weekday: "Сб", dayNumber: "6", isWeekend: true },
-  { id: "sun", weekday: "Вс", dayNumber: "7", isWeekend: true },
-];
+export const initialSelectedDate = new Date(2026, 3, 2);
 
 export const tasks: TaskItem[] = [
   {
