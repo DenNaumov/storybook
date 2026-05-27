@@ -154,9 +154,12 @@
   background: #2d96ff;
 }
 
-.daySelected .weekday,
+.daySelected .weekday {
+  color: #adadad;
+}
+
 .daySelected .weekend {
-  color: #ffffff;
+  color: #ff3b3b;
 }
 
 .dayToday {
