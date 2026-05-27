@@ -1,5 +1,5 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "../../page.module.css";
+import styles from "./view-mode-calendar.module.css";
 import type { CalendarDay } from "./calendar-view.types";
 
 interface CalendarWeekStripProps {

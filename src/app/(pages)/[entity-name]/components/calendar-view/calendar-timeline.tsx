@@ -1,4 +1,4 @@
-import styles from "../../page.module.css";
+import styles from "./view-mode-calendar.module.css";
 import { TaskCard } from "./task-card";
 import type { TaskItem } from "./calendar-view.types";
 

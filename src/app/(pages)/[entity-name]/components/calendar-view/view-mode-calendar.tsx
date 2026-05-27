@@ -1,5 +1,5 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "../../page.module.css";
+import styles from "./view-mode-calendar.module.css";
 import { activeViewMode, monthLabel, tasks, weekDays } from "./calendar-view.mock";
 import { CalendarTimeline } from "./calendar-timeline";
 import { CalendarWeekStrip } from "./calendar-week-strip";
