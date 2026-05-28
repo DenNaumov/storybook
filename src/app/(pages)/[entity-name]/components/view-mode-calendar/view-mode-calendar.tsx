@@ -10,7 +10,7 @@ import {
   buildWeekDays,
 } from "./calendar-view.utils";
 import { MonthPickerModal } from "./components/month-picker-modal/month-picker-modal";
-import { useFetchEntityElementsFilterTime } from "./use-fetch-entity-elements-filter-time";
+import { useFetchEntityElementsFilterTime } from "@/lib/hooks/useFetchEntityElementsFilterTime";
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(() => dayjs());

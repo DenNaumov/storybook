@@ -2,8 +2,8 @@
 
 import { useMemo } from "react";
 import dayjs from "dayjs";
-import { tasks } from "./calendar-view.mock";
-import type { TaskItem } from "./calendar-view.types";
+import { tasks } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.mock";
+import type { TaskItem } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.types";
 
 interface UseObjectFilterDateParams {
   entityId: string;
