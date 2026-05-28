@@ -1,16 +1,7 @@
-.shell {
-  min-height: 100vh;
-  background: #000000;
-  color: #f6f6f6;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.phone {
-  width: min(100%, 780px);
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 13px 24px 48px;
-  background: #000000;
+.viewModeCalendar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .header {
@@ -19,14 +10,10 @@
   justify-content: space-between;
   gap: 24px;
   margin-bottom: 16px;
-}
-
-.title {
-  margin: 0;
-  font-size: 34px;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0;
+  width: min(100%, 780px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 13px 24px 0;
 }
 
 .viewSwitcher {
@@ -80,10 +67,6 @@
   padding: 0;
   color: #ffffff;
   line-height: 1;
-}
-
-.monthLabel {
-  color: inherit;
 }
 
 .monthButton svg {
@@ -219,12 +202,6 @@
   justify-items: start;
   gap: 8px;
   margin-top: 18px;
-}
-
-.metaLabel {
-  color: #a7a7a7;
-  font-size: 22px;
-  line-height: 1;
 }
 
 .metaValue {
@@ -415,12 +392,8 @@
 }
 
 @media (max-width: 640px) {
-  .phone {
+  .header {
     padding-inline: 16px;
-  }
-
-  .title {
-    font-size: 30px;
   }
 
   .viewSwitcher {
@@ -488,10 +461,6 @@
 
   .taskTitle {
     font-size: 31px;
-  }
-
-  .metaLabel {
-    font-size: 20px;
   }
 
   .metaValue,

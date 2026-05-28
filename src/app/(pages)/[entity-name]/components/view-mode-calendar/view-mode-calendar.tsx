@@ -11,6 +11,7 @@ import {
 } from "./calendar-view.utils";
 import { MonthPickerModal } from "./components/month-picker-modal/month-picker-modal";
 import { useFetchEntityElementsFilterTime } from "@/lib/hooks/useFetchEntityElementsFilterTime";
+import styles from "./view-mode-calendar.module.css";
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(() => dayjs());
@@ -42,7 +43,7 @@ export const ViewModeCalendar = () => {
   };
 
   return (
-    <>
+    <section className={styles.viewModeCalendar}>
       <CalendarWeekStrip
         monthLabel={monthLabel}
         weekDays={weekDays}
@@ -67,6 +68,6 @@ export const ViewModeCalendar = () => {
           }}
         />
       )}
-    </>
+    </section>
   );
 };

@@ -6,17 +6,15 @@ import styles from "./components/view-mode-calendar/view-mode-calendar.module.cs
 
 export default function EntityListPage() {
   return (
-    <main className={styles.shell}>
-      <div className={styles.phone}>
-        <header className={styles.header}>
-          <Typography as="h1" variant="headline-bold">
-            Задачи
-          </Typography>
-          <ViewModeSwitcher activeMode={activeViewMode} />
-        </header>
+    <>
+      <header className={styles.header}>
+        <Typography as="h1" variant="headline-bold">
+          Задачи
+        </Typography>
+        <ViewModeSwitcher activeMode={activeViewMode} />
+      </header>
 
-        <ViewModeCalendar />
-      </div>
-    </main>
+      <ViewModeCalendar />
+    </>
   );
 }
