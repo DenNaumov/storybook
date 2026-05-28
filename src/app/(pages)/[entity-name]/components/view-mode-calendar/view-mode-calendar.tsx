@@ -22,20 +22,22 @@ export const ViewModeCalendar = () => {
     [selectedDate],
   );
 
-  const shiftWeek = (days: number) => {
-    setSelectedDate((prev) => prev.add(days, "day"));
+  const shiftWeek = (direction: "prev" | "next") => {
+    setSelectedDate((prev) =>
+      direction === "prev" ? prev.subtract(1, "week") : prev.add(1, "week"),
+    );
   };
 
   return (
     <>
-      <CalendarWeekStrip
-        monthLabel={monthLabel}
-        weekDays={weekDays}
-        onPrevWeek={() => shiftWeek(-7)}
-        onNextWeek={() => shiftWeek(7)}
-        onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
-        onOpenMonthPicker={() => setMonthPickerOpen(true)}
-      />
+        <CalendarWeekStrip
+          monthLabel={monthLabel}
+          weekDays={weekDays}
+          onPrevWeek={() => shiftWeek("prev")}
+          onNextWeek={() => shiftWeek("next")}
+          onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
+          onOpenMonthPicker={() => setMonthPickerOpen(true)}
+        />
       <CalendarTimeline tasks={filteredTasks} />
       {isMonthPickerOpen ? (
         <MonthPickerModal
