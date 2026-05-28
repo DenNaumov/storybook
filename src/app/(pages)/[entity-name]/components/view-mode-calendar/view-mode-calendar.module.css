@@ -41,7 +41,6 @@
 }
 
 .viewButton,
-.navButton,
 .monthButton {
   display: inline-flex;
   align-items: center;
@@ -97,16 +96,16 @@
   align-items: center;
 }
 
-.navButton {
+.navButtonWrap {
   width: 72px;
   height: 72px;
   min-width: 72px;
   min-height: 72px;
-  padding: 0;
-  border-radius: 16px;
+  display: grid;
+  place-items: center;
 }
 
-.navButton :global(svg) {
+.navButtonWrap :global(svg) {
   width: 42px;
   height: 42px;
 }
@@ -313,18 +312,19 @@
   color: #f4f4f4;
 }
 
-.modalCloseButton {
+.modalCloseButtonWrap {
   position: absolute;
   right: 0;
   top: -4px;
   width: 64px;
   height: 64px;
-  border: 0;
-  color: #acb0b6;
-  background: transparent;
-  font-size: 64px;
-  line-height: 1;
-  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.modalCloseButtonWrap :global(svg) {
+  width: 34px;
+  height: 34px;
 }
 
 .modalCalendarCard {
@@ -347,15 +347,16 @@
   line-height: 1.1;
 }
 
-.modalMonthNavButton {
+.modalMonthNavButtonWrap {
   width: 58px;
   height: 58px;
   min-width: 58px;
   min-height: 58px;
-  border-radius: 14px;
+  display: grid;
+  place-items: center;
 }
 
-.modalMonthNavButton :global(svg) {
+.modalMonthNavButtonWrap :global(svg) {
   width: 34px;
   height: 34px;
 }
@@ -446,14 +447,14 @@
     gap: 14px;
   }
 
-  .navButton {
+  .navButtonWrap {
     width: 56px;
     height: 56px;
     min-width: 56px;
     min-height: 56px;
   }
 
-  .navButton :global(svg) {
+  .navButtonWrap :global(svg) {
     width: 32px;
     height: 32px;
   }
@@ -508,10 +509,14 @@
     font-size: 40px;
   }
 
-  .modalCloseButton {
+  .modalCloseButtonWrap {
     width: 52px;
     height: 52px;
-    font-size: 52px;
+  }
+
+  .modalCloseButtonWrap :global(svg) {
+    width: 28px;
+    height: 28px;
   }
 
   .modalCalendarCard {
@@ -522,14 +527,14 @@
     font-size: 30px;
   }
 
-  .modalMonthNavButton {
+  .modalMonthNavButtonWrap {
     width: 44px;
     height: 44px;
     min-width: 44px;
     min-height: 44px;
   }
 
-  .modalMonthNavButton :global(svg) {
+  .modalMonthNavButtonWrap :global(svg) {
     width: 26px;
     height: 26px;
   }

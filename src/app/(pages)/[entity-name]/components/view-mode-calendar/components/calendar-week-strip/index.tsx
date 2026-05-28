@@ -1,8 +1,8 @@
 import { Icon20Icons, Icon24Icons } from "@/shared/ui-kit/icon";
 import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "./view-mode-calendar.module.css";
-import type { CalendarDay } from "./calendar-view.types";
+import styles from "../../view-mode-calendar.module.css";
+import type { CalendarDay } from "../../calendar-view.types";
 
 interface CalendarWeekStripProps {
   monthLabel: string;
@@ -24,28 +24,30 @@ export const CalendarWeekStrip = ({
   <section className={styles.calendarCard} aria-label="Неделя">
     <div className={styles.calendarTopline}>
       <button className={styles.monthButton} type="button" onClick={onOpenMonthPicker}>
-        <Typography as="span" variant="title3-bold" className={styles.monthLabel}>
+        <Typography variant="title3-bold" className={styles.monthLabel}>
           {monthLabel}
         </Typography>
         <Icon20Icons.ChevronDown aria-hidden width={20} height={20} />
       </button>
       <div className={styles.monthNav}>
-        <IconButton
-          className={styles.navButton}
-          buttonSize="m"
-          iconSize="m"
-          icon={Icon24Icons.ChevronLeft}
-          aria-label="Предыдущая неделя"
-          onClick={onPrevWeek}
-        />
-        <IconButton
-          className={styles.navButton}
-          buttonSize="m"
-          iconSize="m"
-          icon={Icon24Icons.ChevronRight}
-          aria-label="Следующая неделя"
-          onClick={onNextWeek}
-        />
+        <div className={styles.navButtonWrap}>
+          <IconButton
+            buttonSize="m"
+            iconSize="m"
+            icon={Icon24Icons.ChevronLeft}
+            aria-label="Предыдущая неделя"
+            onClick={onPrevWeek}
+          />
+        </div>
+        <div className={styles.navButtonWrap}>
+          <IconButton
+            buttonSize="m"
+            iconSize="m"
+            icon={Icon24Icons.ChevronRight}
+            aria-label="Следующая неделя"
+            onClick={onNextWeek}
+          />
+        </div>
       </div>
     </div>
 
@@ -59,7 +61,6 @@ export const CalendarWeekStrip = ({
             aria-pressed={item.isSelected}
           >
             <Typography
-              as="span"
               variant="subheadline2-regular"
               className={item.isWeekend ? styles.weekend : styles.weekday}
               color={item.isWeekend ? "#ff3b3b" : "#adadad"}
@@ -67,7 +68,6 @@ export const CalendarWeekStrip = ({
               {item.weekday}
             </Typography>
             <Typography
-              as="span"
               variant="headline-regular"
               className={[
                 styles.dayNumber,

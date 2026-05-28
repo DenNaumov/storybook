@@ -1,6 +1,6 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "./view-mode-calendar.module.css";
-import type { TaskChip, TaskItem } from "./calendar-view.types";
+import styles from "../../view-mode-calendar.module.css";
+import type { TaskChip, TaskItem } from "../../calendar-view.types";
 
 interface TaskCardProps {
   task: TaskItem;
@@ -36,7 +36,7 @@ export const TaskCard = ({ task }: TaskCardProps) => (
       </div>
 
       <div className={styles.metaBlock}>
-        <Typography as="span" variant="subheadline1-regular" className={styles.metaLabel}>
+        <Typography variant="subheadline1-regular" className={styles.metaLabel}>
           Крайний срок
         </Typography>
         <Typography as="time" variant="text-regular" className={styles.metaValue}>
@@ -46,13 +46,12 @@ export const TaskCard = ({ task }: TaskCardProps) => (
 
       {task.tags ? (
         <div className={styles.metaBlock}>
-          <Typography as="span" variant="subheadline1-regular" className={styles.metaLabel}>
+          <Typography variant="subheadline1-regular" className={styles.metaLabel}>
             Метки
           </Typography>
           <div className={styles.chipRow}>
             {task.tags.map((tag) => (
               <Typography
-                as="span"
                 variant="text-regular"
                 className={`${styles.chip} ${toneClassMap[tag.tone]}`}
                 key={tag.label}
@@ -68,11 +67,10 @@ export const TaskCard = ({ task }: TaskCardProps) => (
       ) : null}
 
       <div className={styles.metaBlock}>
-        <Typography as="span" variant="subheadline1-regular" className={styles.metaLabel}>
+        <Typography variant="subheadline1-regular" className={styles.metaLabel}>
           Стадия
         </Typography>
         <Typography
-          as="span"
           variant="text-regular"
           className={`${styles.chip} ${toneClassMap[task.stage.tone]}`}
         >

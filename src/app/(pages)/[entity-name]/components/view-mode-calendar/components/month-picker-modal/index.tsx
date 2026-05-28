@@ -3,8 +3,8 @@ import { type Dayjs } from "dayjs";
 import { Icon24Icons } from "@/shared/ui-kit/icon";
 import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "./view-mode-calendar.module.css";
-import { buildMonthGridDays, buildMonthLabel } from "./calendar-view.utils";
+import styles from "../../view-mode-calendar.module.css";
+import { buildMonthGridDays, buildMonthLabel } from "../../calendar-view.utils";
 
 interface MonthPickerModalProps {
   selectedDate: Dayjs;
@@ -34,39 +34,46 @@ export const MonthPickerModal = ({
           <Typography as="h2" variant="headline-bold" className={styles.modalTitle}>
             Выберите дату
           </Typography>
-          <button className={styles.modalCloseButton} type="button" onClick={onClose}>
-            ×
-          </button>
+          <div className={styles.modalCloseButtonWrap}>
+            <IconButton
+              buttonSize="m"
+              iconSize="m"
+              icon={Icon24Icons.Close}
+              aria-label="Закрыть окно выбора даты"
+              onClick={onClose}
+            />
+          </div>
         </header>
 
         <section className={styles.modalCalendarCard}>
           <div className={styles.modalMonthTopline}>
-            <IconButton
-              className={styles.modalMonthNavButton}
-              buttonSize="m"
-              iconSize="m"
-              icon={Icon24Icons.ChevronLeft}
-              aria-label="Предыдущий месяц"
-              onClick={() => setVisibleMonth((prev) => prev.subtract(1, "month"))}
-            />
-            <Typography as="p" variant="title3-bold" className={styles.modalMonthLabel}>
+            <div className={styles.modalMonthNavButtonWrap}>
+              <IconButton
+                buttonSize="m"
+                iconSize="m"
+                icon={Icon24Icons.ChevronLeft}
+                aria-label="Предыдущий месяц"
+                onClick={() => setVisibleMonth((prev) => prev.subtract(1, "month"))}
+              />
+            </div>
+            <Typography variant="title3-bold" className={styles.modalMonthLabel}>
               {monthLabel}
             </Typography>
-            <IconButton
-              className={styles.modalMonthNavButton}
-              buttonSize="m"
-              iconSize="m"
-              icon={Icon24Icons.ChevronRight}
-              aria-label="Следующий месяц"
-              onClick={() => setVisibleMonth((prev) => prev.add(1, "month"))}
-            />
+            <div className={styles.modalMonthNavButtonWrap}>
+              <IconButton
+                buttonSize="m"
+                iconSize="m"
+                icon={Icon24Icons.ChevronRight}
+                aria-label="Следующий месяц"
+                onClick={() => setVisibleMonth((prev) => prev.add(1, "month"))}
+              />
+            </div>
           </div>
 
           <ol className={styles.modalWeekdayRow}>
             {weekdayHeaders.map((weekday, index) => (
               <li key={weekday}>
                 <Typography
-                  as="span"
                   variant="subheadline2-regular"
                   className={index >= 5 ? styles.weekend : styles.weekday}
                 >
@@ -96,7 +103,6 @@ export const MonthPickerModal = ({
                   }}
                 >
                   <Typography
-                    as="span"
                     variant="headline-regular"
                     className={day.isOutsideMonth ? styles.modalOutsideMonthDay : ""}
                   >
