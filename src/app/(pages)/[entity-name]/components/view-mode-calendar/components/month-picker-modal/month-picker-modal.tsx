@@ -19,19 +19,33 @@ export const MonthPickerModal = ({
   onClose,
   onSelectDate,
 }: MonthPickerModalProps) => {
-  const [visibleMonth, setVisibleMonth] = useState(selectedDate.startOf("month"));
+  const [visibleMonth, setVisibleMonth] = useState(
+    selectedDate.startOf("month"),
+  );
 
-  const monthLabel = useMemo(() => buildMonthLabel(visibleMonth), [visibleMonth]);
+  const monthLabel = useMemo(
+    () => buildMonthLabel(visibleMonth),
+    [visibleMonth],
+  );
   const monthDays = useMemo(
     () => buildMonthGridDays(visibleMonth, selectedDate),
     [selectedDate, visibleMonth],
   );
 
   return (
-    <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-label="Выбор даты">
+    <div
+      className={styles.modalOverlay}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Выбор даты"
+    >
       <div className={styles.modalSurface}>
         <header className={styles.modalHeader}>
-          <Typography as="h2" variant="headline-bold" className={styles.modalTitle}>
+          <Typography
+            as="h2"
+            variant="headline-bold"
+            className={styles.modalTitle}
+          >
             Выберите дату
           </Typography>
           <div className={styles.modalCloseButtonWrap}>
@@ -53,10 +67,15 @@ export const MonthPickerModal = ({
                 iconSize="m"
                 icon={Icon24Icons.ChevronLeft}
                 aria-label="Предыдущий месяц"
-                onClick={() => setVisibleMonth((prev) => prev.subtract(1, "month"))}
+                onClick={() =>
+                  setVisibleMonth((prev) => prev.subtract(1, "month"))
+                }
               />
             </div>
-            <Typography variant="title3-bold" className={styles.modalMonthLabel}>
+            <Typography
+              variant="title3-bold"
+              className={styles.modalMonthLabel}
+            >
               {monthLabel}
             </Typography>
             <div className={styles.modalMonthNavButtonWrap}>
@@ -104,7 +123,9 @@ export const MonthPickerModal = ({
                 >
                   <Typography
                     variant="headline-regular"
-                    className={day.isOutsideMonth ? styles.modalOutsideMonthDay : ""}
+                    className={
+                      day.isOutsideMonth ? styles.modalOutsideMonthDay : ""
+                    }
                   >
                     {day.dayNumber}
                   </Typography>

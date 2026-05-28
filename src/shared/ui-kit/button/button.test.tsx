@@ -25,13 +25,7 @@ describe("Button", () => {
 
   it("renders icons and loading state correctly", () => {
     render(
-      <Button
-        size="m"
-        label="Save"
-        startIcon="start"
-        endIcon="end"
-        loading
-      />,
+      <Button size="m" label="Save" startIcon="start" endIcon="end" loading />,
     );
 
     const button = screen.getByRole("button", { name: "start Save end" });

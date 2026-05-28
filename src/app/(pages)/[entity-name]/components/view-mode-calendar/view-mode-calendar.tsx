@@ -13,7 +13,10 @@ export const ViewModeCalendar = () => {
   const [visibleWeekDate, setVisibleWeekDate] = useState(() => dayjs());
   const [isMonthPickerOpen, setMonthPickerOpen] = useState(false);
 
-  const monthLabel = useMemo(() => buildMonthLabel(visibleWeekDate), [visibleWeekDate]);
+  const monthLabel = useMemo(
+    () => buildMonthLabel(visibleWeekDate),
+    [visibleWeekDate],
+  );
   const weekDays = useMemo(
     () => buildWeekDays(visibleWeekDate, selectedDate),
     [selectedDate, visibleWeekDate],

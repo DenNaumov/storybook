@@ -30,9 +30,7 @@ describe("BannerScreen", () => {
         .getByTestId("banner-illustration")
         .getAttribute("data-illustration"),
     ).toBe("EmptyListNoAdd");
-    expect(
-      screen.getByRole("heading", { name: "Список пуст" }),
-    ).toBeDefined();
+    expect(screen.getByRole("heading", { name: "Список пуст" })).toBeDefined();
     expect(screen.getByText("В списке нет значений")).toBeDefined();
 
     fireEvent.click(screen.getByRole("button", { name: "Создать" }));

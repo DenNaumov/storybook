@@ -25,13 +25,15 @@ const PriorityMark = ({ priority }: { priority: TaskItem["priority"] }) => (
 export const TaskCard = ({ task }: TaskCardProps) => (
   <article className={styles.taskGroup}>
     <time dateTime={task.scheduledAt} className={styles.time}>
-      <Typography variant="headline-bold">
-        {task.time}
-      </Typography>
+      <Typography variant="headline-bold">{task.time}</Typography>
     </time>
     <div className={styles.taskCard}>
       <div className={styles.cardHeader}>
-        <Typography as="h2" variant="headline-regular" className={styles.taskTitle}>
+        <Typography
+          as="h2"
+          variant="headline-regular"
+          className={styles.taskTitle}
+        >
           {task.title}
         </Typography>
         <PriorityMark priority={task.priority} />
@@ -42,9 +44,7 @@ export const TaskCard = ({ task }: TaskCardProps) => (
           Крайний срок
         </Typography>
         <time dateTime={task.scheduledAt} className={styles.metaValue}>
-          <Typography variant="text-regular">
-            {task.dueAt}
-          </Typography>
+          <Typography variant="text-regular">{task.dueAt}</Typography>
         </time>
       </div>
 
