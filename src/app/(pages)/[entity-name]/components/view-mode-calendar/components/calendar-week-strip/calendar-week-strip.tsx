@@ -24,9 +24,7 @@ export const CalendarWeekStrip = ({
   <section className={styles.calendarCard} aria-label="Неделя">
     <div className={styles.calendarTopline}>
       <button className={styles.monthButton} type="button" onClick={onOpenMonthPicker}>
-        <Typography variant="title3-bold" className={styles.monthLabel}>
-          {monthLabel}
-        </Typography>
+        <Typography variant="title3-bold">{monthLabel}</Typography>
         <Icon20Icons.ChevronDown aria-hidden width={20} height={20} />
       </button>
       <div className={styles.monthNav}>

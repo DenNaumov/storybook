@@ -24,9 +24,11 @@ const PriorityMark = ({ priority }: { priority: TaskItem["priority"] }) => (
 
 export const TaskCard = ({ task }: TaskCardProps) => (
   <article className={styles.taskGroup}>
-    <Typography as="time" variant="headline-bold" className={styles.time}>
-      {task.time}
-    </Typography>
+    <time dateTime={task.scheduledAt} className={styles.time}>
+      <Typography variant="headline-bold">
+        {task.time}
+      </Typography>
+    </time>
     <div className={styles.taskCard}>
       <div className={styles.cardHeader}>
         <Typography as="h2" variant="headline-regular" className={styles.taskTitle}>
@@ -36,17 +38,19 @@ export const TaskCard = ({ task }: TaskCardProps) => (
       </div>
 
       <div className={styles.metaBlock}>
-        <Typography variant="subheadline1-regular" className={styles.metaLabel}>
+        <Typography variant="subheadline1-regular" color="#a7a7a7">
           Крайний срок
         </Typography>
-        <Typography as="time" variant="text-regular" className={styles.metaValue}>
-          {task.dueAt}
-        </Typography>
+        <time dateTime={task.scheduledAt} className={styles.metaValue}>
+          <Typography variant="text-regular">
+            {task.dueAt}
+          </Typography>
+        </time>
       </div>
 
       {task.tags ? (
         <div className={styles.metaBlock}>
-          <Typography variant="subheadline1-regular" className={styles.metaLabel}>
+          <Typography variant="subheadline1-regular" color="#a7a7a7">
             Метки
           </Typography>
           <div className={styles.chipRow}>
@@ -67,7 +71,7 @@ export const TaskCard = ({ task }: TaskCardProps) => (
       ) : null}
 
       <div className={styles.metaBlock}>
-        <Typography variant="subheadline1-regular" className={styles.metaLabel}>
+        <Typography variant="subheadline1-regular" color="#a7a7a7">
           Стадия
         </Typography>
         <Typography

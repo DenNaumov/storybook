@@ -9,7 +9,7 @@ export default function EntityListPage() {
     <main className={styles.shell}>
       <div className={styles.phone}>
         <header className={styles.header}>
-          <Typography as="h1" variant="headline-bold" className={styles.title}>
+          <Typography as="h1" variant="headline-bold">
             Задачи
           </Typography>
           <ViewModeSwitcher activeMode={activeViewMode} />
