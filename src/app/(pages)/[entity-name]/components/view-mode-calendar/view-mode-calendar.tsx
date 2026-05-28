@@ -10,7 +10,7 @@ import {
   buildWeekDays,
 } from "./calendar-view.utils";
 import { MonthPickerModal } from "./components/month-picker-modal/month-picker-modal";
-import { useObjectFilterDate } from "./use-object-filter-date";
+import { useFetchEntityElementsFilterTime } from "./use-fetch-entity-elements-filter-time";
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(() => dayjs());
@@ -29,7 +29,7 @@ export const ViewModeCalendar = () => {
     () => buildUtcRangeForLocalDay(selectedDate),
     [selectedDate],
   );
-  const filteredTasks = useObjectFilterDate({
+  const filteredTasks = useFetchEntityElementsFilterTime({
     entityId: "tasks",
     fromUtc: selectedDayUtcRange.fromUtc,
     toUtc: selectedDayUtcRange.toUtc,

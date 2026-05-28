@@ -11,7 +11,7 @@ interface UseObjectFilterDateParams {
   toUtc: string;
 }
 
-export const useObjectFilterDate = ({
+export const useFetchEntityElementsFilterTime = ({
   entityId,
   fromUtc,
   toUtc,
