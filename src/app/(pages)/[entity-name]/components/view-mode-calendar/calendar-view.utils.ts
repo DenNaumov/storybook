@@ -42,8 +42,11 @@ export const buildMonthGridDays = (
   });
 };
 
-export const buildWeekDays = (selectedDate: Dayjs): CalendarDay[] => {
-  const weekStart = getWeekStartMonday(selectedDate);
+export const buildWeekDays = (
+  weekAnchorDate: Dayjs,
+  selectedDate: Dayjs,
+): CalendarDay[] => {
+  const weekStart = getWeekStartMonday(weekAnchorDate);
   const today = dayjs().startOf("day");
 
   return WEEKDAY_LABELS.map((weekday, index) => {

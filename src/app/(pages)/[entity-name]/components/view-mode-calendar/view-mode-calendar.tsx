@@ -10,10 +10,14 @@ import { MonthPickerModal } from "./components/month-picker-modal/month-picker-m
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(() => dayjs());
+  const [visibleWeekDate, setVisibleWeekDate] = useState(() => dayjs());
   const [isMonthPickerOpen, setMonthPickerOpen] = useState(false);
 
-  const monthLabel = useMemo(() => buildMonthLabel(selectedDate), [selectedDate]);
-  const weekDays = useMemo(() => buildWeekDays(selectedDate), [selectedDate]);
+  const monthLabel = useMemo(() => buildMonthLabel(visibleWeekDate), [visibleWeekDate]);
+  const weekDays = useMemo(
+    () => buildWeekDays(visibleWeekDate, selectedDate),
+    [selectedDate, visibleWeekDate],
+  );
   const filteredTasks = useMemo(
     () =>
       tasks.filter((task) =>
@@ -23,7 +27,7 @@ export const ViewModeCalendar = () => {
   );
 
   const shiftWeek = (direction: "prev" | "next") => {
-    setSelectedDate((prev) =>
+    setVisibleWeekDate((prev) =>
       direction === "prev" ? prev.subtract(1, "week") : prev.add(1, "week"),
     );
   };
@@ -35,17 +39,25 @@ export const ViewModeCalendar = () => {
         weekDays={weekDays}
         onPrevWeek={() => shiftWeek("prev")}
         onNextWeek={() => shiftWeek("next")}
-        onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
+        onSelectDay={(dateKey) => {
+          const nextSelectedDate = dayjs(dateKey);
+          setSelectedDate(nextSelectedDate);
+          setVisibleWeekDate(nextSelectedDate);
+        }}
         onOpenMonthPicker={() => setMonthPickerOpen(true)}
       />
       <DailyList tasks={filteredTasks} />
-      {isMonthPickerOpen ? (
+      {isMonthPickerOpen && (
         <MonthPickerModal
           selectedDate={selectedDate}
           onClose={() => setMonthPickerOpen(false)}
-          onSelectDate={(dateKey) => setSelectedDate(dayjs(dateKey))}
+          onSelectDate={(dateKey) => {
+            const nextSelectedDate = dayjs(dateKey);
+            setSelectedDate(nextSelectedDate);
+            setVisibleWeekDate(nextSelectedDate);
+          }}
         />
-      ) : null}
+      )}
     </>
   );
 };
