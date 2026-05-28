@@ -2,11 +2,11 @@
 
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
-import { tasks } from "../calendar-view.mock";
-import { DailyList } from "../components/daily-list";
-import { CalendarWeekStrip } from "../components/calendar-week-strip";
-import { buildMonthLabel, buildWeekDays } from "../calendar-view.utils";
-import { MonthPickerModal } from "../components/month-picker-modal";
+import { tasks } from "./calendar-view.mock";
+import { DailyList } from "./components/daily-list/daily-list";
+import { CalendarWeekStrip } from "./components/calendar-week-strip/calendar-week-strip";
+import { buildMonthLabel, buildWeekDays } from "./calendar-view.utils";
+import { MonthPickerModal } from "./components/month-picker-modal/month-picker-modal";
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(() => dayjs());
@@ -30,14 +30,14 @@ export const ViewModeCalendar = () => {
 
   return (
     <>
-        <CalendarWeekStrip
-          monthLabel={monthLabel}
-          weekDays={weekDays}
-          onPrevWeek={() => shiftWeek("prev")}
-          onNextWeek={() => shiftWeek("next")}
-          onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
-          onOpenMonthPicker={() => setMonthPickerOpen(true)}
-        />
+      <CalendarWeekStrip
+        monthLabel={monthLabel}
+        weekDays={weekDays}
+        onPrevWeek={() => shiftWeek("prev")}
+        onNextWeek={() => shiftWeek("next")}
+        onSelectDay={(dateKey) => setSelectedDate(dayjs(dateKey))}
+        onOpenMonthPicker={() => setMonthPickerOpen(true)}
+      />
       <DailyList tasks={filteredTasks} />
       {isMonthPickerOpen ? (
         <MonthPickerModal

@@ -1,5 +1,5 @@
 import styles from "../../view-mode-calendar.module.css";
-import { TaskCard } from "../task-card";
+import { TaskCard } from "../task-card/task-card";
 import type { TaskItem } from "../../calendar-view.types";
 
 interface DailyListProps {
