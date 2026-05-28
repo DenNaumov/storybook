@@ -1,5 +1,5 @@
 import type { ViewMode } from "../view-mode-calendar/calendar-view.types";
-import styles from "../view-mode-calendar/view-mode-calendar.module.css";
+import styles from "./view-mode-switcher.module.css";
 
 interface ViewModeSwitcherProps {
   activeMode: ViewMode;

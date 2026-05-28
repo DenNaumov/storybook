@@ -1,5 +1,5 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "../../view-mode-calendar.module.css";
+import styles from "./task-card.module.css";
 import type { TaskChip, TaskItem } from "../../calendar-view.types";
 
 interface TaskCardProps {

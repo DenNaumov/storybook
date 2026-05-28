@@ -3,7 +3,7 @@ import { type Dayjs } from "dayjs";
 import { Icon24Icons } from "@/shared/ui-kit/icon";
 import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "../../view-mode-calendar.module.css";
+import styles from "./month-picker-modal.module.css";
 import { buildMonthGridDays, buildMonthLabel } from "../../calendar-view.utils";
 
 interface MonthPickerModalProps {

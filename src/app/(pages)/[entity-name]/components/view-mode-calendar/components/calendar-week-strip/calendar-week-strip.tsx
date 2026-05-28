@@ -1,7 +1,7 @@
 import { Icon20Icons, Icon24Icons } from "@/shared/ui-kit/icon";
 import { IconButton } from "@/shared/ui-kit/icon-button/icon-button";
 import { Typography } from "@/shared/ui-kit/typography/typography";
-import styles from "../../view-mode-calendar.module.css";
+import styles from "./calendar-week-strip.module.css";
 import type { CalendarDay } from "../../calendar-view.types";
 
 interface CalendarWeekStripProps {

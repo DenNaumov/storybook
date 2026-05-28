@@ -43,7 +43,7 @@ export const ViewModeCalendar = () => {
   };
 
   return (
-    <section className={styles.viewModeCalendar}>
+    <section className={styles.container}>
       <CalendarWeekStrip
         monthLabel={monthLabel}
         weekDays={weekDays}
