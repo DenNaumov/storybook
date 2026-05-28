@@ -30,8 +30,10 @@ export interface TaskChip {
 
 export interface TaskItem {
   id: string;
+  entityId: string;
   time: string;
   scheduledAt: string;
+  finalDate: string;
   title: string;
   dueAt: string;
   priority: TaskPriority;

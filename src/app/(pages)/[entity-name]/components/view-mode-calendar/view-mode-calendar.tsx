@@ -2,11 +2,15 @@
 
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
-import { tasks } from "./calendar-view.mock";
 import { DailyList } from "./components/daily-list/daily-list";
 import { CalendarWeekStrip } from "./components/calendar-week-strip/calendar-week-strip";
-import { buildMonthLabel, buildWeekDays } from "./calendar-view.utils";
+import {
+  buildMonthLabel,
+  buildUtcRangeForLocalDay,
+  buildWeekDays,
+} from "./calendar-view.utils";
 import { MonthPickerModal } from "./components/month-picker-modal/month-picker-modal";
+import { useObjectFilterDate } from "./use-object-filter-date";
 
 export const ViewModeCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(() => dayjs());
@@ -21,13 +25,15 @@ export const ViewModeCalendar = () => {
     () => buildWeekDays(visibleWeekDate, selectedDate),
     [selectedDate, visibleWeekDate],
   );
-  const filteredTasks = useMemo(
-    () =>
-      tasks.filter((task) =>
-        dayjs(task.scheduledAt).isSame(selectedDate.startOf("day"), "day"),
-      ),
+  const selectedDayUtcRange = useMemo(
+    () => buildUtcRangeForLocalDay(selectedDate),
     [selectedDate],
   );
+  const filteredTasks = useObjectFilterDate({
+    entityId: "tasks",
+    fromUtc: selectedDayUtcRange.fromUtc,
+    toUtc: selectedDayUtcRange.toUtc,
+  });
 
   const shiftWeek = (direction: "prev" | "next") => {
     setVisibleWeekDate((prev) =>

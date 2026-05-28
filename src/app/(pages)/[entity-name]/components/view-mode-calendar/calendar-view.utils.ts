@@ -64,3 +64,8 @@ export const buildWeekDays = (
     };
   });
 };
+
+export const buildUtcRangeForLocalDay = (selectedDate: Dayjs) => ({
+  fromUtc: selectedDate.startOf("day").toISOString(),
+  toUtc: selectedDate.endOf("day").toISOString(),
+});
