@@ -10,8 +10,18 @@
   padding: 13px 24px 0;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 @media (max-width: 640px) {
   .header {
     padding-inline: 16px;
+  }
+
+  .controls {
+    gap: 8px;
   }
 }

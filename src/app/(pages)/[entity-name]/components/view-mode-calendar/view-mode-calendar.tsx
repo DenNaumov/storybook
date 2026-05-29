@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
+import type { Dayjs } from "dayjs";
 import { DailyList } from "./components/daily-list/daily-list";
 import { CalendarWeekStrip } from "./components/calendar-week-strip/calendar-week-strip";
 import {
@@ -13,8 +14,15 @@ import { MonthPickerModal } from "./components/month-picker-modal/month-picker-m
 import { useFetchEntityElementsFilterTime } from "@/lib/hooks/useFetchEntityElementsFilterTime";
 import styles from "./view-mode-calendar.module.css";
 
-export const ViewModeCalendar = () => {
-  const [selectedDate, setSelectedDate] = useState(() => dayjs());
+interface ViewModeCalendarProps {
+  selectedDate: Dayjs;
+  onSelectedDateChange: (nextDate: Dayjs) => void;
+}
+
+export const ViewModeCalendar = ({
+  selectedDate,
+  onSelectedDateChange,
+}: ViewModeCalendarProps) => {
   const [visibleWeekDate, setVisibleWeekDate] = useState(() => dayjs());
   const [isMonthPickerOpen, setMonthPickerOpen] = useState(false);
 
@@ -51,7 +59,7 @@ export const ViewModeCalendar = () => {
         onNextWeek={() => shiftWeek("next")}
         onSelectDay={(dateKey) => {
           const nextSelectedDate = dayjs(dateKey);
-          setSelectedDate(nextSelectedDate);
+          onSelectedDateChange(nextSelectedDate);
           setVisibleWeekDate(nextSelectedDate);
         }}
         onOpenMonthPicker={() => setMonthPickerOpen(true)}
@@ -63,7 +71,7 @@ export const ViewModeCalendar = () => {
           onClose={() => setMonthPickerOpen(false)}
           onSelectDate={(dateKey) => {
             const nextSelectedDate = dayjs(dateKey);
-            setSelectedDate(nextSelectedDate);
+            onSelectedDateChange(nextSelectedDate);
             setVisibleWeekDate(nextSelectedDate);
           }}
         />
