@@ -1,9 +1,9 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
+import type { EntityObjectType } from "@/lib/app/services/entityElementTypes";
 import styles from "./entity-element-card.module.css";
-import { tasks } from "../../calendar-view.mock";
 
 interface EntityElementCardProps {
-  item: (typeof tasks)[number]["rawItem"];
+  item: EntityObjectType;
 }
 
 const toneClassMap = {
@@ -13,7 +13,19 @@ const toneClassMap = {
   important: styles.chipimportant,
 } as const;
 
-const PriorityMark = ({ priority }: { priority: (typeof tasks)[number]["rawItem"]["priority"] }) => (
+const getToneClass = (tone: unknown) => {
+  switch (tone) {
+    case "new":
+    case "progress":
+    case "review":
+    case "important":
+      return toneClassMap[tone];
+    default:
+      return "";
+  }
+};
+
+const PriorityMark = ({ priority }: { priority: unknown }) => (
   <span
     className={priority === "high" ? styles.fireHigh : styles.fireDefault}
     aria-label={priority === "high" ? "Высокий приоритет" : "Обычный приоритет"}
@@ -53,7 +65,7 @@ export const EntityElementCard = ({ item }: EntityElementCardProps) => (
           {item.tags.map((tag) => (
             <Typography
               variant="text-regular"
-              className={`${styles.chip} ${toneClassMap[tag.tone] ?? ""}`}
+              className={`${styles.chip} ${getToneClass(tag.tone)}`}
               key={tag.label}
             >
               <span className={styles.alertMark} aria-hidden>
@@ -72,7 +84,7 @@ export const EntityElementCard = ({ item }: EntityElementCardProps) => (
       </Typography>
         <Typography
           variant="text-regular"
-          className={`${styles.chip} ${toneClassMap[item.stage.tone] ?? ""}`}
+          className={`${styles.chip} ${getToneClass(item.stage.tone)}`}
         >
           {item.stage.label}
         </Typography>

@@ -1,11 +1,11 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
+import type { EntityElementViewModel } from "@/lib/app/services/entityElementTypes";
 import styles from "./daily-list.module.css";
 import { EntityElementCard } from "../entity-element-card/entity-element-card";
-import { tasks } from "../../calendar-view.mock";
 import { groupItemsByHour } from "./daily-list.utils";
 
 interface DailyListProps {
-  items: typeof tasks;
+  items: EntityElementViewModel[];
 }
 
 export const DailyList = ({ items }: DailyListProps) => {
