@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
-import type { EntityElementViewModel } from "../../calendar-view.types";
+import { tasks } from "../../calendar-view.mock";
 
-export const groupItemsByHour = (items: EntityElementViewModel[]) => {
-  const groups = items.reduce<Record<string, EntityElementViewModel[]>>((acc, item) => {
-    const hourKey = dayjs(item.finalDate).format("HH:00");
+export const groupItemsByHour = (items: typeof tasks) => {
+  const groups = items.reduce<Record<string, Array<(typeof tasks)[number]>>>((acc, item) => {
+    const hourKey = dayjs(item.rawItem.finalDate).format("HH:00");
 
     if (!acc[hourKey]) {
       acc[hourKey] = [];

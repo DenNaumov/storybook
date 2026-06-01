@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import dayjs from "dayjs";
 import { tasks } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.mock";
-import type { EntityElementViewModel } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.types";
 
 interface UseObjectFilterDateParams {
   entityId: string;
@@ -15,15 +14,15 @@ export const useFetchEntityElementsFilterTime = ({
   entityId,
   fromUtc,
   toUtc,
-}: UseObjectFilterDateParams): EntityElementViewModel[] =>
+}: UseObjectFilterDateParams) =>
   useMemo(() => {
     const from = dayjs(fromUtc);
     const to = dayjs(toUtc);
 
     return tasks
-      .filter((item) => item.entityId === entityId)
+      .filter((item) => item.rawItem.entityId === entityId)
       .filter((item) => {
-        const finalDate = dayjs(item.finalDate);
+        const finalDate = dayjs(item.rawItem.finalDate);
         return (
           finalDate.isAfter(from) ||
           finalDate.isSame(from)
@@ -33,8 +32,8 @@ export const useFetchEntityElementsFilterTime = ({
         );
       })
       .sort((left, right) => {
-        const leftFinalDate = dayjs(left.finalDate);
-        const rightFinalDate = dayjs(right.finalDate);
+        const leftFinalDate = dayjs(left.rawItem.finalDate);
+        const rightFinalDate = dayjs(right.rawItem.finalDate);
 
         if (leftFinalDate.isSame(rightFinalDate)) {
           return left.id.localeCompare(right.id);

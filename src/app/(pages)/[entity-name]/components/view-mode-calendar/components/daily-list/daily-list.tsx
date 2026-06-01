@@ -1,11 +1,11 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./daily-list.module.css";
 import { EntityElementCard } from "../entity-element-card/entity-element-card";
-import type { EntityElementViewModel } from "../../calendar-view.types";
+import { tasks } from "../../calendar-view.mock";
 import { groupItemsByHour } from "./daily-list.utils";
 
 interface DailyListProps {
-  items: EntityElementViewModel[];
+  items: typeof tasks;
 }
 
 export const DailyList = ({ items }: DailyListProps) => {
@@ -20,7 +20,7 @@ export const DailyList = ({ items }: DailyListProps) => {
           </div>
           <div className={styles.cards}>
             {hourItems.map((item) => (
-              <EntityElementCard key={item.id} item={item} />
+              <EntityElementCard key={item.id} item={item.rawItem} />
             ))}
           </div>
         </div>

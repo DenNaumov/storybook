@@ -28,12 +28,13 @@ export interface TaskChip {
   tone: TaskChipTone;
 }
 
-interface EntityObjectType {
-  id: string
-  name: string
+interface BaseEntityElement {
+  id: string;
+  name: string;
   entityId: string;
-  finalDate?: string;
 }
+
+export type EntityObjectType = Record<string, any> & BaseEntityElement;
 
 export interface EntityElementViewModel {
   id: string;

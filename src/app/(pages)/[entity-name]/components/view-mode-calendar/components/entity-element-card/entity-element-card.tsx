@@ -1,19 +1,19 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./entity-element-card.module.css";
-import type { TaskChip, EntityElementViewModel } from "../../calendar-view.types";
+import { tasks } from "../../calendar-view.mock";
 
 interface EntityElementCardProps {
-  item: EntityElementViewModel;
+  item: (typeof tasks)[number]["rawItem"];
 }
 
-const toneClassMap: Record<TaskChip["tone"], string> = {
+const toneClassMap = {
   new: styles.chipnew,
   progress: styles.chipprogress,
   review: styles.chipreview,
   important: styles.chipimportant,
-};
+} as const;
 
-const PriorityMark = ({ priority }: { priority: EntityElementViewModel["priority"] }) => (
+const PriorityMark = ({ priority }: { priority: (typeof tasks)[number]["rawItem"]["priority"] }) => (
   <span
     className={priority === "high" ? styles.fireHigh : styles.fireDefault}
     aria-label={priority === "high" ? "Высокий приоритет" : "Обычный приоритет"}
@@ -30,7 +30,7 @@ export const EntityElementCard = ({ item }: EntityElementCardProps) => (
         variant="headline-regular"
         className={styles.taskTitle}
       >
-        {item.title}
+        {item.name}
       </Typography>
       <PriorityMark priority={item.priority} />
     </div>
@@ -53,7 +53,7 @@ export const EntityElementCard = ({ item }: EntityElementCardProps) => (
           {item.tags.map((tag) => (
             <Typography
               variant="text-regular"
-              className={`${styles.chip} ${toneClassMap[tag.tone]}`}
+              className={`${styles.chip} ${toneClassMap[tag.tone] ?? ""}`}
               key={tag.label}
             >
               <span className={styles.alertMark} aria-hidden>
@@ -72,7 +72,7 @@ export const EntityElementCard = ({ item }: EntityElementCardProps) => (
       </Typography>
         <Typography
           variant="text-regular"
-          className={`${styles.chip} ${toneClassMap[item.stage.tone]}`}
+          className={`${styles.chip} ${toneClassMap[item.stage.tone] ?? ""}`}
         >
           {item.stage.label}
         </Typography>
