@@ -1,6 +1,6 @@
 import type {
   ViewMode,
-} from "./calendar-view.types";
+} from "@/lib/app/services/entityElementTypes";
 
 export const activeViewMode: ViewMode = "calendar";
 

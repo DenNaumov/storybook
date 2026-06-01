@@ -1,4 +1,4 @@
-import type { ViewMode } from "../view-mode-calendar/calendar-view.types";
+import type { ViewMode } from "@/lib/app/services/entityElementTypes";
 import styles from "./view-mode-switcher.module.css";
 
 interface ViewModeSwitcherProps {

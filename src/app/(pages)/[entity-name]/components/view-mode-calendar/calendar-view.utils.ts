@@ -1,6 +1,6 @@
 import dayjs, { type Dayjs } from "dayjs";
 import "dayjs/locale/ru";
-import type { CalendarDay, MonthGridDay } from "./calendar-view.types";
+import type { CalendarDay, MonthGridDay } from "./calendar-types";
 
 const WEEKDAY_LABELS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"] as const;
 
