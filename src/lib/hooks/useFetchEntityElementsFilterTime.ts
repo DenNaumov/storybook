@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import dayjs from "dayjs";
 import { tasks } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.mock";
-import type { TaskItem } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.types";
+import type { EntityElementViewModel } from "@/app/(pages)/[entity-name]/components/view-mode-calendar/calendar-view.types";
 
 interface UseObjectFilterDateParams {
   entityId: string;
@@ -15,7 +15,7 @@ export const useFetchEntityElementsFilterTime = ({
   entityId,
   fromUtc,
   toUtc,
-}: UseObjectFilterDateParams): TaskItem[] =>
+}: UseObjectFilterDateParams): EntityElementViewModel[] =>
   useMemo(() => {
     const from = dayjs(fromUtc);
     const to = dayjs(toUtc);

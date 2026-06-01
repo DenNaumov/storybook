@@ -1,9 +1,9 @@
 import { Typography } from "@/shared/ui-kit/typography/typography";
 import styles from "./entity-element-card.module.css";
-import type { TaskChip, TaskItem } from "../../calendar-view.types";
+import type { TaskChip, EntityElementViewModel } from "../../calendar-view.types";
 
 interface EntityElementCardProps {
-  item: TaskItem;
+  item: EntityElementViewModel;
 }
 
 const toneClassMap: Record<TaskChip["tone"], string> = {
@@ -13,7 +13,7 @@ const toneClassMap: Record<TaskChip["tone"], string> = {
   important: styles.chipimportant,
 };
 
-const PriorityMark = ({ priority }: { priority: TaskItem["priority"] }) => (
+const PriorityMark = ({ priority }: { priority: EntityElementViewModel["priority"] }) => (
   <span
     className={priority === "high" ? styles.fireHigh : styles.fireDefault}
     aria-label={priority === "high" ? "Высокий приоритет" : "Обычный приоритет"}

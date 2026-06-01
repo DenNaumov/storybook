@@ -38,7 +38,7 @@ export const ViewModeCalendar = ({
     () => buildUtcRangeForLocalDay(selectedDate),
     [selectedDate],
   );
-  const filteredTasks = useFetchEntityElementsFilterTime({
+  const filteredItems = useFetchEntityElementsFilterTime({
     entityId: "tasks",
     fromUtc: selectedDayUtcRange.fromUtc,
     toUtc: selectedDayUtcRange.toUtc,
@@ -64,7 +64,7 @@ export const ViewModeCalendar = ({
         }}
         onOpenMonthPicker={() => setMonthPickerOpen(true)}
       />
-      <DailyList tasks={filteredTasks} />
+      <DailyList items={filteredItems} />
       {isMonthPickerOpen && (
         <MonthPickerModal
           selectedDate={selectedDate}

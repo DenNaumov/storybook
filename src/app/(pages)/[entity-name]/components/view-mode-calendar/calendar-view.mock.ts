@@ -1,8 +1,8 @@
-import type { TaskItem, ViewMode } from "./calendar-view.types";
+import type { EntityElementViewModel, ViewMode } from "./calendar-view.types";
 
 export const activeViewMode: ViewMode = "calendar";
 
-export const tasks: TaskItem[] = [
+export const tasks: EntityElementViewModel[] = [
   {
     id: "task-10",
     entityId: "tasks",

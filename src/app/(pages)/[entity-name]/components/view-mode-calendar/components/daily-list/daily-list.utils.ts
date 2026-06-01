@@ -1,12 +1,8 @@
 import dayjs from "dayjs";
-import type { TaskItem } from "../../calendar-view.types";
+import type { EntityElementViewModel } from "../../calendar-view.types";
 
-export interface GroupedHourItem {
-  rawItem: TaskItem;
-}
-
-export const groupTasksByHour = (tasks: TaskItem[]) => {
-  const groups = tasks.reduce<Record<string, GroupedHourItem[]>>((acc, rawItem) => {
+export const groupItemsByHour = (items: EntityElementViewModel[]) => {
+  const groups = items.reduce<Record<string, { rawItem: EntityElementViewModel }[]>>((acc, rawItem) => {
     const hourKey = dayjs(rawItem.finalDate).format("HH:00");
 
     if (!acc[hourKey]) {

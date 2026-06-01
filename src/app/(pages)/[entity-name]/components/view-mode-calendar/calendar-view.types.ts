@@ -28,7 +28,7 @@ export interface TaskChip {
   tone: TaskChipTone;
 }
 
-export interface TaskItem {
+export interface EntityElementViewModel {
   id: string;
   entityId: string;
   finalDate: string;
