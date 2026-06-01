@@ -23,64 +23,59 @@ const PriorityMark = ({ priority }: { priority: TaskItem["priority"] }) => (
 );
 
 export const TaskCard = ({ task }: TaskCardProps) => (
-  <article className={styles.taskGroup}>
-    <time dateTime={task.scheduledAt} className={styles.time}>
-      <Typography variant="headline-bold">{task.time}</Typography>
-    </time>
-    <div className={styles.taskCard}>
-      <div className={styles.cardHeader}>
-        <Typography
-          as="h2"
-          variant="headline-regular"
-          className={styles.taskTitle}
-        >
-          {task.title}
-        </Typography>
-        <PriorityMark priority={task.priority} />
-      </div>
+  <article className={styles.taskCard}>
+    <div className={styles.cardHeader}>
+      <Typography
+        as="h2"
+        variant="headline-regular"
+        className={styles.taskTitle}
+      >
+        {task.title}
+      </Typography>
+      <PriorityMark priority={task.priority} />
+    </div>
 
+    <div className={styles.metaBlock}>
+      <Typography variant="subheadline1-regular" color="#a7a7a7">
+        Крайний срок
+      </Typography>
+      <time dateTime={task.finalDate} className={styles.metaValue}>
+        <Typography variant="text-regular">{task.dueAt}</Typography>
+      </time>
+    </div>
+
+    {task.tags ? (
       <div className={styles.metaBlock}>
         <Typography variant="subheadline1-regular" color="#a7a7a7">
-          Крайний срок
+          Метки
         </Typography>
-        <time dateTime={task.scheduledAt} className={styles.metaValue}>
-          <Typography variant="text-regular">{task.dueAt}</Typography>
-        </time>
-      </div>
-
-      {task.tags ? (
-        <div className={styles.metaBlock}>
-          <Typography variant="subheadline1-regular" color="#a7a7a7">
-            Метки
-          </Typography>
-          <div className={styles.chipRow}>
-            {task.tags.map((tag) => (
-              <Typography
-                variant="text-regular"
-                className={`${styles.chip} ${toneClassMap[tag.tone]}`}
-                key={tag.label}
-              >
-                <span className={styles.alertMark} aria-hidden>
-                  !
-                </span>
-                {tag.label}
-              </Typography>
-            ))}
-          </div>
+        <div className={styles.chipRow}>
+          {task.tags.map((tag) => (
+            <Typography
+              variant="text-regular"
+              className={`${styles.chip} ${toneClassMap[tag.tone]}`}
+              key={tag.label}
+            >
+              <span className={styles.alertMark} aria-hidden>
+                !
+              </span>
+              {tag.label}
+            </Typography>
+          ))}
         </div>
-      ) : null}
-
-      <div className={styles.metaBlock}>
-        <Typography variant="subheadline1-regular" color="#a7a7a7">
-          Стадия
-        </Typography>
-        <Typography
-          variant="text-regular"
-          className={`${styles.chip} ${toneClassMap[task.stage.tone]}`}
-        >
-          {task.stage.label}
-        </Typography>
       </div>
+    ) : null}
+
+    <div className={styles.metaBlock}>
+      <Typography variant="subheadline1-regular" color="#a7a7a7">
+        Стадия
+      </Typography>
+      <Typography
+        variant="text-regular"
+        className={`${styles.chip} ${toneClassMap[task.stage.tone]}`}
+      >
+        {task.stage.label}
+      </Typography>
     </div>
   </article>
 );

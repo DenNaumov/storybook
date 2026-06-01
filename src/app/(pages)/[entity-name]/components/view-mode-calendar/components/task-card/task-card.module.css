@@ -1,15 +1,3 @@
-.taskGroup + .taskGroup {
-  margin-top: 17px;
-}
-
-.time {
-  display: block;
-  margin-bottom: 17px;
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1;
-}
-
 .taskCard {
   padding: 26px 32px 25px;
   border-radius: 21px;
@@ -105,10 +93,6 @@
 }
 
 @media (max-width: 640px) {
-  .time {
-    font-size: 32px;
-  }
-
   .taskCard {
     padding: 24px 24px 25px;
   }

@@ -6,8 +6,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-10",
     entityId: "tasks",
-    time: "10:00",
-    scheduledAt: "2026-04-02T10:00:00",
     finalDate: "2026-04-02T07:00:00.000Z",
     title: "Отправить закрывающие документы клиенту",
     dueAt: "02.04.2026 10:00",
@@ -17,8 +15,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-12",
     entityId: "tasks",
-    time: "12:00",
-    scheduledAt: "2026-04-02T12:00:00",
     finalDate: "2026-04-02T09:00:00.000Z",
     title: "Заключить договор поставки с партнерами",
     dueAt: "02.04.2026 12:00",
@@ -29,8 +25,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-09-next-day",
     entityId: "tasks",
-    time: "09:00",
-    scheduledAt: "2026-04-03T09:00:00",
     finalDate: "2026-04-03T06:00:00.000Z",
     title: "Согласовать этап отгрузки с логистикой",
     dueAt: "03.04.2026 09:00",
@@ -40,8 +34,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-11-next-day",
     entityId: "tasks",
-    time: "11:30",
-    scheduledAt: "2026-04-03T11:30:00",
     finalDate: "2026-04-03T08:30:00.000Z",
     title: "Проверить изменения в договоре от юристов",
     dueAt: "03.04.2026 11:30",
@@ -52,8 +44,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-15-next-day",
     entityId: "tasks",
-    time: "15:00",
-    scheduledAt: "2026-04-03T15:00:00",
     finalDate: "2026-04-03T12:00:00.000Z",
     title: "Подтвердить график оплат с бухгалтерией",
     dueAt: "03.04.2026 15:00",
@@ -63,8 +53,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-08-day4",
     entityId: "tasks",
-    time: "08:45",
-    scheduledAt: "2026-04-04T08:45:00",
     finalDate: "2026-04-04T05:45:00.000Z",
     title: "Собрать отчёт по просроченным платежам",
     dueAt: "04.04.2026 08:45",
@@ -74,8 +62,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-13-day4",
     entityId: "tasks",
-    time: "13:15",
-    scheduledAt: "2026-04-04T13:15:00",
     finalDate: "2026-04-04T10:15:00.000Z",
     title: "Обновить статусы задач в карточке проекта",
     dueAt: "04.04.2026 13:15",
@@ -85,8 +71,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-17-day4",
     entityId: "tasks",
-    time: "17:00",
-    scheduledAt: "2026-04-04T17:00:00",
     finalDate: "2026-04-04T14:00:00.000Z",
     title: "Отправить заказчику финальный пакет документов",
     dueAt: "04.04.2026 17:00",
@@ -97,8 +81,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-10-day5",
     entityId: "tasks",
-    time: "10:20",
-    scheduledAt: "2026-04-05T10:20:00",
     finalDate: "2026-04-05T07:20:00.000Z",
     title: "Созвон с партнерами по условиям поставки",
     dueAt: "05.04.2026 10:20",
@@ -108,8 +90,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-12-day5",
     entityId: "tasks",
-    time: "12:40",
-    scheduledAt: "2026-04-05T12:40:00",
     finalDate: "2026-04-05T09:40:00.000Z",
     title: "Сверить KPI отдела по текущему кварталу",
     dueAt: "05.04.2026 12:40",
@@ -119,8 +99,6 @@ export const tasks: TaskItem[] = [
   {
     id: "task-16-day5",
     entityId: "tasks",
-    time: "16:10",
-    scheduledAt: "2026-04-05T16:10:00",
     finalDate: "2026-04-05T13:10:00.000Z",
     title: "Подготовить отчет за неделю для руководства",
     dueAt: "05.04.2026 16:10",
