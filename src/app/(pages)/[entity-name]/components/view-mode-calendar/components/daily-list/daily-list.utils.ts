@@ -1,15 +1,19 @@
 import dayjs from "dayjs";
 import type { TaskItem } from "../../calendar-view.types";
 
+export interface GroupedHourItem {
+  rawItem: TaskItem;
+}
+
 export const groupTasksByHour = (tasks: TaskItem[]) => {
-  const groups = tasks.reduce<Record<string, TaskItem[]>>((acc, task) => {
-    const hourKey = dayjs(task.finalDate).format("HH:00");
+  const groups = tasks.reduce<Record<string, GroupedHourItem[]>>((acc, rawItem) => {
+    const hourKey = dayjs(rawItem.finalDate).format("HH:00");
 
     if (!acc[hourKey]) {
       acc[hourKey] = [];
     }
 
-    acc[hourKey].push(task);
+    acc[hourKey].push({ rawItem });
     return acc;
   }, {});
 
