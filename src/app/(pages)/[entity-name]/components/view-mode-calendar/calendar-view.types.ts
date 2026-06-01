@@ -28,13 +28,15 @@ export interface TaskChip {
   tone: TaskChipTone;
 }
 
+interface EntityObjectType {
+  id: string
+  name: string
+  entityId: string;
+  finalDate?: string;
+}
+
 export interface EntityElementViewModel {
   id: string;
-  entityId: string;
-  finalDate: string;
   title: string;
-  dueAt: string;
-  priority: TaskPriority;
-  tags?: TaskChip[];
-  stage: TaskChip;
+  rawItem: EntityObjectType
 }

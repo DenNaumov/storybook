@@ -20,7 +20,7 @@ export const DailyList = ({ items }: DailyListProps) => {
           </div>
           <div className={styles.cards}>
             {hourItems.map((item) => (
-              <EntityElementCard key={item.rawItem.id} item={item.rawItem} />
+              <EntityElementCard key={item.id} item={item} />
             ))}
           </div>
         </div>
