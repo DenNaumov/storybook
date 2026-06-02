@@ -13,7 +13,7 @@ export const groupItemsByHour = (items: EntityElementViewModel[]) => {
     return acc;
   }, {});
 
-  return Object.entries(groups).sort(([left], [right]) =>
-    left.localeCompare(right),
+  return Object.entries(groups).sort(([hourA], [hourB]) =>
+    hourA.localeCompare(hourB),
   );
 };

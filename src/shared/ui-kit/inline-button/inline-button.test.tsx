@@ -30,4 +30,14 @@ describe("InlineButton", () => {
       screen.getByRole("button", { name: "calendar Reset" }),
     ).toBeDisabled();
   });
+
+  it("applies custom class name", () => {
+    render(
+      <InlineButton icon="calendar" label="Reset" className="custom-class" />,
+    );
+
+    expect(screen.getByRole("button", { name: "calendar Reset" })).toHaveClass(
+      "custom-class",
+    );
+  });
 });

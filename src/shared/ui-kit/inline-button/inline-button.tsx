@@ -4,10 +4,8 @@ import styles from "./inline-button.module.css";
 
 export type InlineButtonVariant = "surface" | "bezeled" | "primary";
 
-export interface InlineButtonProps extends Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  "className"
-> {
+export interface InlineButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: InlineButtonVariant;
   icon: ReactNode;
   label: string;
@@ -22,11 +20,13 @@ export const InlineButton = ({
   icon,
   label,
   disabled,
+  className,
   ...props
 }: InlineButtonProps) => {
   const classes = [
     styles.inlineButton,
     styles[`variant${variant.charAt(0).toUpperCase() + variant.slice(1)}`],
+    className,
     disabled ? styles.disabled : "",
   ]
     .filter(Boolean)

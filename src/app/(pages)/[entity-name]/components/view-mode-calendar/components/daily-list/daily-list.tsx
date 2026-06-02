@@ -12,12 +12,10 @@ export const DailyList = ({ items }: DailyListProps) => {
   const groupedItems = groupItemsByHour(items);
 
   return (
-    <section className={styles.timeline} aria-label="Задачи на выбранный день">
+    <section className={styles.list} aria-label="Задачи на выбранный день">
       {groupedItems.map(([time, hourItems]) => (
         <div className={styles.hourGroup} key={time}>
-          <div className={styles.hourTime}>
-            <Typography variant="headline-bold">{time}</Typography>
-          </div>
+          <Typography variant="headline-bold">{time}</Typography>
           <div className={styles.cards}>
             {hourItems.map((item) => (
               <EntityElementCard key={item.id} item={item.rawItem} />

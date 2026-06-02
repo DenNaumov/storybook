@@ -42,7 +42,7 @@ export default function EntityListPage() {
   };
 
   return (
-    <>
+    <section className={styles.page}>
       <header className={styles.header}>
         <Typography as="h1" variant="headline-bold">
           Задачи
@@ -57,6 +57,6 @@ export default function EntityListPage() {
         selectedDate={selectedDate}
         onSelectedDateChange={setSelectedDate}
       />
-    </>
+    </section>
   );
 }
