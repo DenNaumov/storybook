@@ -1,0 +1,76 @@
+.stage {
+  min-height: 100vh;
+  padding: 0;
+  background: var(--black-1000);
+  color: var(--theme-text-primary);
+}
+
+.itemFrame {
+  position: relative;
+  box-sizing: border-box;
+  width: 140px;
+  height: 144px;
+  margin-left: 160px;
+  border: 1px dashed #8a38f5;
+  border-radius: 5px;
+}
+
+.frameItemOn,
+.frameItemOff {
+  position: absolute;
+  left: 20px;
+  width: 100px;
+}
+
+.frameItemOn {
+  top: 20px;
+}
+
+.frameItemOff {
+  top: 92px;
+}
+
+.longItems {
+  display: grid;
+  gap: 134px;
+  width: 300px;
+  margin-top: 113px;
+}
+
+.controlFrame {
+  position: relative;
+  box-sizing: border-box;
+  width: 442px;
+  height: 336px;
+  border: 1px dashed #8a38f5;
+  border-radius: 5px;
+}
+
+.controlRow {
+  position: absolute;
+  left: 20px;
+  width: 358px;
+  height: 32px;
+}
+
+.controlRow:nth-child(1) {
+  top: 20px;
+}
+
+.controlRow:nth-child(2) {
+  top: 108px;
+}
+
+.controlRow:nth-child(3) {
+  top: 196px;
+}
+
+.controlRow:nth-child(4) {
+  top: 284px;
+}
+
+.playgroundBox {
+  width: 560px;
+  max-width: 100%;
+  padding: 32px;
+}
