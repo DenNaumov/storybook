@@ -1,14 +1,12 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import { useState } from "react";
+import type {
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  MouseEventHandler,
+  ReactNode,
+} from "react";
 import { Typography } from "../typography/typography";
 import styles from "./segmented-control.module.css";
-
-export interface SegmentedControlProps extends Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "children"
-> {
-  children: ReactNode;
-  fullWidth?: boolean;
-}
 
 export interface SegmentedControlItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   selected?: boolean;
@@ -16,13 +14,46 @@ export interface SegmentedControlItemProps extends ButtonHTMLAttributes<HTMLButt
   children?: ReactNode;
 }
 
+export interface SegmentedControlItemConfig extends Omit<
+  SegmentedControlItemProps,
+  "children" | "onClick" | "key"
+> {
+  key: string;
+  label: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+}
+
+export interface SegmentedControlProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "children" | "defaultValue" | "onChange"
+> {
+  children?: ReactNode;
+  fullWidth?: boolean;
+  items?: SegmentedControlItemConfig[];
+  defaultValue?: string;
+  onChange?: (
+    key: string,
+    item: SegmentedControlItemConfig,
+    index: number,
+  ) => void;
+}
+
 export const SegmentedControl = ({
   children,
   fullWidth = false,
+  items,
+  defaultValue,
+  onChange,
   className,
   role = "radiogroup",
   ...props
 }: SegmentedControlProps) => {
+  const [selectedKey, setSelectedKey] = useState(
+    () =>
+      defaultValue ??
+      items?.find((item) => item.selected)?.key ??
+      items?.[0]?.key,
+  );
   const classes = [
     styles.segmentedControl,
     fullWidth ? styles.fullWidth : "",
@@ -33,7 +64,30 @@ export const SegmentedControl = ({
 
   return (
     <div className={classes} role={role} {...props}>
-      {children}
+      {items
+        ? items.map((item, index) => {
+            const { label, key, onClick, ...itemProps } = item;
+
+            return (
+              <SegmentedControlItem
+                key={key}
+                label={label}
+                onClick={(event) => {
+                  onClick?.(event);
+
+                  if (event.defaultPrevented) {
+                    return;
+                  }
+
+                  setSelectedKey(key);
+                  onChange?.(key, item, index);
+                }}
+                {...itemProps}
+                selected={selectedKey === key}
+              />
+            );
+          })
+        : children}
     </div>
   );
 };

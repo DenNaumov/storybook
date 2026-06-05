@@ -40,6 +40,88 @@ describe("SegmentedControl", () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
+  it("renders items from config", () => {
+    render(
+      <SegmentedControl
+        aria-label="Tabs"
+        items={[
+          { key: "main", label: "Основное", selected: true },
+          { key: "second", label: "Item #2" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("radio", { name: "Основное" })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+    expect(screen.getByRole("radio", { name: "Item #2" })).toHaveAttribute(
+      "aria-checked",
+      "false",
+    );
+  });
+
+  it("calls configured item click handler", () => {
+    const handleClick = jest.fn();
+
+    render(
+      <SegmentedControl
+        items={[{ key: "clickable", label: "Clickable", onClick: handleClick }]}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("radio", { name: "Clickable" }));
+
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("uses default key for configured items", () => {
+    render(
+      <SegmentedControl
+        defaultValue="second"
+        items={[
+          { key: "main", label: "Основное" },
+          { key: "second", label: "Item #2" },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("radio", { name: "Основное" })).toHaveAttribute(
+      "aria-checked",
+      "false",
+    );
+    expect(screen.getByRole("radio", { name: "Item #2" })).toHaveAttribute(
+      "aria-checked",
+      "true",
+    );
+  });
+
+  it("changes selected item and calls onChange", () => {
+    const handleChange = jest.fn();
+
+    render(
+      <SegmentedControl
+        defaultValue="main"
+        onChange={handleChange}
+        items={[
+          { key: "main", label: "Основное" },
+          { key: "second", label: "Item #2" },
+        ]}
+      />,
+    );
+
+    const secondItem = screen.getByRole("radio", { name: "Item #2" });
+
+    fireEvent.click(secondItem);
+
+    expect(secondItem).toHaveAttribute("aria-checked", "true");
+    expect(handleChange).toHaveBeenCalledWith(
+      "second",
+      expect.objectContaining({ label: "Item #2", key: "second" }),
+      1,
+    );
+  });
+
   it("supports full width layout and custom props", () => {
     render(
       <SegmentedControl fullWidth className="custom-control" id="view-mode">

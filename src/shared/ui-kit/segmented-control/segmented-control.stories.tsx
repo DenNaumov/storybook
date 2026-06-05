@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import { useState } from "react";
+import type { ComponentProps } from "react";
 import { SegmentedControl, SegmentedControlItem } from "./segmented-control";
 import styles from "./segmented-control.stories.module.css";
 
-const meta: Meta<typeof SegmentedControl> = {
+type SegmentedControlStoryArgs = ComponentProps<typeof SegmentedControl> & {
+  items: NonNullable<ComponentProps<typeof SegmentedControl>["items"]>;
+};
+
+const meta: Meta<SegmentedControlStoryArgs> = {
   title: "UI Kit/Inputs/SegmentedControl",
   component: SegmentedControl,
   parameters: {
@@ -14,16 +18,25 @@ const meta: Meta<typeof SegmentedControl> = {
     fullWidth: {
       control: "boolean",
     },
+    defaultValue: {
+      control: "text",
+    },
+    items: { control: "object" },
+    onChange: { table: { disable: true } },
     children: { control: false, table: { disable: true } },
     className: { control: false, table: { disable: true } },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof SegmentedControl>;
+type Story = StoryObj<SegmentedControlStoryArgs>;
 
-const options = ["Список", "Календарь", "Канбан"];
 const controlRows = [1, 2, 3, 4];
+const playgroundItems: SegmentedControlStoryArgs["items"] = [
+  { key: "main", label: "Основное" },
+  { key: "second", label: "Item #2" },
+  { key: "third", label: "Item #3" },
+];
 
 export const ItemShowcase: Story = {
   parameters: { controls: { disable: true } },
@@ -67,15 +80,15 @@ export const SegmentedControlShowcase: Story = {
             key={count}
             className={styles.controlRow}
             aria-label={`Segmented control ${count}`}
-          >
-            <SegmentedControlItem label="Основное" selected />
-            {Array.from({ length: count - 1 }, (_, index) => (
-              <SegmentedControlItem
-                key={index + 2}
-                label={`Item #${index + 2}`}
-              />
-            ))}
-          </SegmentedControl>
+            defaultValue="main"
+            items={[
+              { key: "main", label: "Основное" },
+              ...Array.from({ length: count - 1 }, (_, index) => ({
+                key: `item-${index + 2}`,
+                label: `Item #${index + 2}`,
+              })),
+            ]}
+          />
         ))}
       </div>
     </div>
@@ -85,25 +98,20 @@ export const SegmentedControlShowcase: Story = {
 export const Playground: Story = {
   args: {
     fullWidth: false,
+    defaultValue: "main",
+    items: playgroundItems,
   },
-  render: (args) => {
-    const [selectedOption, setSelectedOption] = useState(options[0]);
-
-    return (
-      <div className={styles.stage}>
-        <div className={styles.playgroundBox}>
-          <SegmentedControl {...args} aria-label="Вид отображения">
-            {options.map((option) => (
-              <SegmentedControlItem
-                key={option}
-                label={option}
-                selected={selectedOption === option}
-                onClick={() => setSelectedOption(option)}
-              />
-            ))}
-          </SegmentedControl>
-        </div>
+  render: (args) => (
+    <div className={styles.stage}>
+      <div className={styles.playgroundBox}>
+        <SegmentedControl
+          key={`${args.defaultValue}-${args.items.map((item) => item.key).join("-")}`}
+          fullWidth={args.fullWidth}
+          defaultValue={args.defaultValue}
+          items={args.items}
+          aria-label="Вид отображения"
+        />
       </div>
-    );
-  },
+    </div>
+  ),
 };
