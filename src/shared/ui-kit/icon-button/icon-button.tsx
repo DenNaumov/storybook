@@ -1,6 +1,9 @@
 import { Badge } from "../badge/badge";
 import type { ButtonHTMLAttributes } from "react";
-import type { ThemedSvgIconComponent } from "../icon/icon.utils";
+import type {
+  ThemeIconColor,
+  ThemedSvgIconComponent,
+} from "../icon/icon.utils";
 import styles from "./icon-button.module.css";
 
 export type IconButtonSize = "s" | "m";
@@ -19,6 +22,7 @@ export interface IconButtonProps extends Omit<
   buttonSize: IconButtonSize;
   iconSize: IconSize;
   icon: ThemedSvgIconComponent;
+  iconColor?: ThemeIconColor;
   badgeCount?: number | string;
   /** Storybook-only pressed state */
   pressed?: boolean;
@@ -38,6 +42,7 @@ export const IconButton = ({
   buttonSize,
   iconSize,
   icon: IconComponent,
+  iconColor,
   badgeCount,
   pressed = false,
   disabled,
@@ -60,7 +65,7 @@ export const IconButton = ({
   return (
     <button className={classes} disabled={disabled} type="button" {...props}>
       <div className={iconWrapperClasses}>
-        <IconComponent width={size} height={size} />
+        <IconComponent width={size} height={size} color={iconColor} />
         {badgeCount !== undefined && (
           <Badge variant="critical" className={styles.badge}>
             {badgeCount}

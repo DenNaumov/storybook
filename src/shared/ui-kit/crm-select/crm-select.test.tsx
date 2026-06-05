@@ -1,0 +1,89 @@
+import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, jest } from "@jest/globals";
+import type { SVGProps } from "react";
+
+jest.mock("../icon", () => ({
+  Icon24Icons: {
+    ChevronRight: (props: SVGProps<SVGSVGElement>) => <svg {...props} />,
+    Cancel: (props: SVGProps<SVGSVGElement>) => <svg {...props} />,
+  },
+  ResizableIcons: {
+    Calculate: (props: SVGProps<SVGSVGElement>) => <svg {...props} />,
+  },
+}));
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { CrmSelect } = require("./crm-select") as typeof import("./crm-select");
+
+describe("CrmSelect", () => {
+  it("renders placeholder as a combobox", () => {
+    render(<CrmSelect value="" onValueChange={jest.fn()} />);
+
+    expect(
+      screen.getByRole("combobox", { name: "Label" }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Label_placeholder")).toBeInTheDocument();
+  });
+
+  it("opens select from the input and action button", () => {
+    const onOpen = jest.fn();
+
+    render(<CrmSelect value="" onValueChange={jest.fn()} onOpen={onOpen} />);
+
+    fireEvent.click(screen.getByRole("combobox", { name: "Label" }));
+    fireEvent.click(screen.getByRole("button", { name: "Открыть список" }));
+
+    expect(onOpen).toHaveBeenCalledTimes(2);
+  });
+
+  it("clears selected value", () => {
+    const onValueChange = jest.fn();
+    const onClear = jest.fn();
+
+    render(
+      <CrmSelect
+        value="Value"
+        onValueChange={onValueChange}
+        onClear={onClear}
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Очистить" }));
+
+    expect(onValueChange).toHaveBeenCalledWith("");
+    expect(onClear).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders dictionary action when requested", () => {
+    render(
+      <CrmSelect
+        value="Value"
+        onValueChange={jest.fn()}
+        showDictionaryIcon
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", { name: "Открыть справочник" }),
+    ).toBeInTheDocument();
+  });
+
+  it("does not open when disabled", () => {
+    const onOpen = jest.fn();
+
+    render(
+      <CrmSelect
+        value=""
+        onValueChange={jest.fn()}
+        onOpen={onOpen}
+        disabled
+      />,
+    );
+
+    fireEvent.click(screen.getByRole("combobox", { name: "Label" }));
+
+    expect(screen.getByRole("combobox", { name: "Label" })).toBeDisabled();
+    expect(onOpen).not.toHaveBeenCalled();
+  });
+});
