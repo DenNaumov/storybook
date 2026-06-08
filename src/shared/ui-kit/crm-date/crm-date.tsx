@@ -3,10 +3,7 @@ import { Icon24Icons, ResizableIcons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
 import { InputMaster } from "../input-master/input-master";
 
-export interface CrmDateProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "defaultValue" | "value" | "onChange"
-> {
+export interface CrmDateProps {
   label?: string;
   placeholder?: string;
   value: string;
@@ -14,6 +11,7 @@ export interface CrmDateProps extends Omit<
   onOpen?: () => void;
   error?: boolean;
   errorText?: string;
+  disabled?: boolean;
   showCalendarIcon?: boolean;
   showDictionaryIcon?: boolean;
 }
@@ -31,10 +29,6 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
       showCalendarIcon = true,
       showDictionaryIcon = false,
       disabled = false,
-      className,
-      onKeyDown,
-      "aria-label": ariaLabel,
-      ...restProps
     },
     ref,
   ) => {
@@ -45,8 +39,6 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      onKeyDown?.(event);
-
       if ((event.key === "Enter" || event.key === " ") && onOpen) {
         event.preventDefault();
         handleOpen();
@@ -57,7 +49,6 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
 
     return (
       <InputMaster
-        {...restProps}
         ref={ref}
         label={label}
         placeholder={placeholder}
@@ -66,9 +57,8 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
         error={error}
         errorText={errorText}
         disabled={disabled}
-        className={className}
         inputMode="numeric"
-        aria-label={ariaLabel ?? label}
+        aria-label={label}
         onKeyDown={handleKeyDown}
         endAdornment={
           hasActions ? (

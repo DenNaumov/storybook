@@ -7,19 +7,15 @@ import styles from "./crm-select.module.css";
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
   classNames.filter(Boolean).join(" ");
 
-export interface CrmSelectProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  "defaultValue" | "value" | "onChange" | "readOnly"
-> {
+export interface CrmSelectProps {
   label?: string;
   placeholder?: string;
   value: string;
-  onValueChange?: (value: string) => void;
+  onValueChange: (value: string) => void;
   onOpen?: () => void;
-  clearable?: boolean;
-  onClear?: () => void;
   error?: boolean;
   errorText?: string;
+  disabled?: boolean;
   markerColor?: string;
   showDictionaryIcon?: boolean;
 }
@@ -32,23 +28,16 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
       value,
       onValueChange,
       onOpen,
-      clearable = true,
-      onClear,
       error = false,
       errorText,
       markerColor,
       showDictionaryIcon = false,
       disabled = false,
-      className,
-      onClick,
-      onKeyDown,
-      "aria-label": ariaLabel,
-      ...restProps
     },
     ref,
   ) => {
     const hasValue = value.length > 0;
-    const showClearButton = clearable && hasValue && !disabled;
+    const showClearButton = hasValue && !disabled;
     const showMarker = Boolean(markerColor && hasValue);
 
     const handleOpen = () => {
@@ -57,14 +46,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
       }
     };
 
-    const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
-      onClick?.(event);
-      handleOpen();
-    };
-
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-      onKeyDown?.(event);
-
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         handleOpen();
@@ -72,8 +54,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
     };
 
     const handleClear = () => {
-      onValueChange?.("");
-      onClear?.();
+      onValueChange("");
     };
 
     return (
@@ -82,24 +63,22 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
           styles.container,
           showMarker && styles.withMarker,
           disabled && styles.disabled,
-          className,
         )}
       >
         <InputMaster
-          {...restProps}
           ref={ref}
           role="combobox"
           aria-expanded="false"
-          aria-label={ariaLabel ?? label}
+          aria-label={label}
           label={label}
           placeholder={placeholder}
           value={value}
-          onValueChange={onValueChange ?? (() => undefined)}
+          onValueChange={onValueChange}
           error={error}
           errorText={errorText}
           disabled={disabled}
           readOnly
-          onClick={handleClick}
+          onClick={handleOpen}
           onKeyDown={handleKeyDown}
           endAdornment={
             <div className={styles.actions}>

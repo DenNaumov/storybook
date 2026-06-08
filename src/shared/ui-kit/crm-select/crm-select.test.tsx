@@ -39,20 +39,12 @@ describe("CrmSelect", () => {
 
   it("clears selected value", () => {
     const onValueChange = jest.fn();
-    const onClear = jest.fn();
 
-    render(
-      <CrmSelect
-        value="Value"
-        onValueChange={onValueChange}
-        onClear={onClear}
-      />,
-    );
+    render(<CrmSelect value="Value" onValueChange={onValueChange} />);
 
     fireEvent.click(screen.getByRole("button", { name: "Очистить" }));
 
     expect(onValueChange).toHaveBeenCalledWith("");
-    expect(onClear).toHaveBeenCalledTimes(1);
   });
 
   it("renders dictionary action when requested", () => {

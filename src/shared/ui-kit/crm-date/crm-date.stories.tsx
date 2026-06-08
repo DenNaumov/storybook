@@ -23,9 +23,6 @@ const meta: Meta<typeof CrmDate> = {
   argTypes: {
     onValueChange: { control: false, table: { disable: true } },
     onOpen: { control: false, table: { disable: true } },
-    onFocus: { control: false, table: { disable: true } },
-    onBlur: { control: false, table: { disable: true } },
-    className: { control: false, table: { disable: true } },
   },
 };
 
@@ -70,9 +67,9 @@ export const Showcase: Story = {
         <div className={styles.selectionFrame}>
           <div className={styles.stack}>
             <CrmDateExample />
-            <CrmDateExample autoFocus />
-            <CrmDateExample initialValue="10.10.20" autoFocus />
-            <CrmDateExample initialValue="09.09.2029 22:22" autoFocus />
+            <CrmDateExample />
+            <CrmDateExample initialValue="10.10.20" />
+            <CrmDateExample initialValue="09.09.2029 22:22" />
             <CrmDateExample initialValue="09.09.2029 22:22" />
             <CrmDateExample disabled showCalendarIcon={false} />
             <CrmDateExample
@@ -90,7 +87,6 @@ export const Showcase: Story = {
             <CrmDateExample
               initialValue="09.09.2029 22:22"
               showDictionaryIcon
-              autoFocus
             />
             <CrmDateExample
               initialValue="09.09.2029 22:22"
