@@ -1,5 +1,5 @@
 import React from "react";
-import { InputMaster } from "../input-master/input-master";
+import { BaseInput } from "../base-input/base-input";
 
 export interface TextLineProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -26,7 +26,7 @@ export const TextLine = React.forwardRef<HTMLInputElement, TextLineProps>(
     },
     ref,
   ) => (
-    <InputMaster
+    <BaseInput
       {...restProps}
       ref={ref}
       label={label}

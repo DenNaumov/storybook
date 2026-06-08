@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon24Icons, ResizableIcons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
-import { InputMaster } from "../input-master/input-master";
+import { BaseInput } from "../base-input/base-input";
 import styles from "./crm-select.module.css";
 
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
@@ -65,7 +65,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
           disabled && styles.disabled,
         )}
       >
-        <InputMaster
+        <BaseInput
           ref={ref}
           role="combobox"
           aria-expanded="false"

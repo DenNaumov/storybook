@@ -1,4 +1,4 @@
-import { InputMaster } from "../input-master/input-master";
+import { BaseInput } from "../base-input/base-input";
 
 export interface TextAreaProps {
   label?: string;
@@ -24,7 +24,7 @@ export const TextArea = ({
   className,
   ...restProps
 }: TextAreaProps) => (
-  <InputMaster
+  <BaseInput
     {...restProps}
     label={label}
     value={value}

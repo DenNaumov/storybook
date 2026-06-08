@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon24Icons, ResizableIcons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
-import { InputMaster } from "../input-master/input-master";
+import { BaseInput } from "../base-input/base-input";
 
 export interface CrmDateProps {
   label?: string;
@@ -48,7 +48,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
     const hasActions = showCalendarIcon || showDictionaryIcon;
 
     return (
-      <InputMaster
+      <BaseInput
         ref={ref}
         label={label}
         placeholder={placeholder}

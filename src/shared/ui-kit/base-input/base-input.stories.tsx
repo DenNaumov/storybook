@@ -2,14 +2,14 @@ import { useState } from "react";
 import type { ComponentProps } from "react";
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { StoryPreviewFrame } from "../story-preview/story-preview-frame";
-import { InputMaster } from "./input-master";
-import styles from "./input-master.stories.module.css";
+import { BaseInput } from "./base-input";
+import styles from "./base-input.stories.module.css";
 
-type InputMasterStoryArgs = ComponentProps<typeof InputMaster>;
+type BaseInputStoryArgs = ComponentProps<typeof BaseInput>;
 
-const meta: Meta<InputMasterStoryArgs> = {
-  title: "UI Kit/Inputs/InputMaster",
-  component: InputMaster,
+const meta: Meta<BaseInputStoryArgs> = {
+  title: "UI Kit/Inputs/BaseInput",
+  component: BaseInput,
   parameters: {
     layout: "fullscreen",
   },
@@ -35,17 +35,17 @@ const meta: Meta<InputMasterStoryArgs> = {
 
 export default meta;
 
-type Story = StoryObj<InputMasterStoryArgs>;
+type Story = StoryObj<BaseInputStoryArgs>;
 
-const InputMasterExample = ({
+const BaseInputExample = ({
   initialValue = "",
   ...props
-}: Omit<InputMasterStoryArgs, "value" | "onValueChange"> & {
+}: Omit<BaseInputStoryArgs, "value" | "onValueChange"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <InputMaster {...props} value={value} onValueChange={setValue} />;
+  return <BaseInput {...props} value={value} onValueChange={setValue} />;
 };
 
 export const Playground: Story = {
@@ -55,7 +55,7 @@ export const Playground: Story = {
     return (
       <div className={styles.stage}>
         <div className={styles.componentFrame}>
-          <InputMaster {...args} value={value} onValueChange={setValue} />
+          <BaseInput {...args} value={value} onValueChange={setValue} />
         </div>
       </div>
     );
@@ -68,30 +68,30 @@ export const Showcase: Story = {
     <div className={styles.stage}>
       <StoryPreviewFrame
         className={styles.previewFrame}
-        title="InputMaster"
+        title="BaseInput"
         description="Базовое поле ввода с плавающим лейблом и состояниями"
       >
         <div className={styles.selectionFrame}>
           <div className={styles.stack}>
-            <InputMasterExample
+            <BaseInputExample
               label="Label"
               placeholder="Label_placeholder"
               assistiveText="Assistive_text"
             />
-            <InputMasterExample
+            <BaseInputExample
               label="Label"
               placeholder="Label_placeholder"
               initialValue="Value"
               clearable
               assistiveText="Assistive_text"
             />
-            <InputMasterExample
+            <BaseInputExample
               label="Label"
               placeholder="Label_placeholder"
               error
               errorText="Error_text"
             />
-            <InputMasterExample
+            <BaseInputExample
               label="Label"
               placeholder="Label_placeholder"
               initialValue="Value"

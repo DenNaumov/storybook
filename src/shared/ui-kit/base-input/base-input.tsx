@@ -2,12 +2,12 @@ import React, { useId, useImperativeHandle, useRef, useState } from "react";
 import { IconButton } from "../icon-button/icon-button";
 import { Icon24Icons } from "../icon";
 import { Typography } from "../typography/typography";
-import styles from "./input-master.module.css";
+import styles from "./base-input.module.css";
 
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
   classNames.filter(Boolean).join(" ");
 
-export interface InputMasterProps extends Omit<
+export interface BaseInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "defaultValue" | "value" | "onChange"
 > {
@@ -23,7 +23,7 @@ export interface InputMasterProps extends Omit<
   className?: string;
 }
 
-export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
+export const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
   (
     {
       value,
@@ -187,4 +187,4 @@ export const InputMaster = React.forwardRef<HTMLInputElement, InputMasterProps>(
   },
 );
 
-InputMaster.displayName = "InputMaster";
+BaseInput.displayName = "BaseInput";

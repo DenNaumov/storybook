@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InputMaster } from "../input-master/input-master";
+import { BaseInput } from "../base-input/base-input";
 import { ResizableIcons } from "../icon";
 import styles from "./password-field.module.css";
 
@@ -37,7 +37,7 @@ export const PasswordField = React.forwardRef<
       : ResizableIcons.View;
 
     return (
-      <InputMaster
+      <BaseInput
         {...restProps}
         ref={ref}
         label={label}
