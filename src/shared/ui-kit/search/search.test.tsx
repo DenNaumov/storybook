@@ -17,16 +17,18 @@ const { Search } = require("./search") as typeof import("./search");
 
 describe("Search", () => {
   it("renders search input with default accessible name", () => {
-    render(<Search value="" onChange={jest.fn()} />);
+    render(<Search value="" onValueChange={jest.fn()} />);
 
-    expect(screen.getByRole("searchbox", { name: "Поиск" })).toBeInTheDocument();
-    expect(screen.getByText("Поиск")).toBeInTheDocument();
+    expect(screen.getByRole("searchbox", { name: "Поиск" })).toHaveAttribute(
+      "placeholder",
+      "Поиск",
+    );
   });
 
   it("notifies about value changes", () => {
     const onChange = jest.fn();
 
-    render(<Search value="" onChange={onChange} />);
+    render(<Search value="" onValueChange={onChange} />);
 
     fireEvent.change(screen.getByRole("searchbox", { name: "Поиск" }), {
       target: { value: "Value" },
@@ -35,21 +37,18 @@ describe("Search", () => {
     expect(onChange).toHaveBeenCalledWith("Value");
   });
 
-  it("clears value and keeps focus on clear button click", () => {
+  it("clears value on clear button click", () => {
     const onChange = jest.fn();
-    const onClear = jest.fn();
 
-    render(<Search value="Value" onChange={onChange} onClear={onClear} />);
+    render(<Search value="Value" onValueChange={onChange} />);
 
     fireEvent.click(screen.getByRole("button", { name: "Очистить" }));
 
     expect(onChange).toHaveBeenCalledWith("");
-    expect(onClear).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole("searchbox", { name: "Поиск" })).toHaveFocus();
   });
 
   it("hides clear button when disabled", () => {
-    render(<Search value="Value" onChange={jest.fn()} disabled />);
+    render(<Search value="Value" onValueChange={jest.fn()} disabled />);
 
     expect(screen.getByRole("searchbox", { name: "Поиск" })).toBeDisabled();
     expect(screen.queryByRole("button", { name: "Очистить" })).toBeNull();

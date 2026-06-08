@@ -15,14 +15,9 @@ const meta: Meta<typeof Search> = {
     placeholder: "Поиск",
     value: "",
     disabled: false,
-    clearable: true,
   },
   argTypes: {
-    onChange: { control: false, table: { disable: true } },
-    onFocus: { control: false, table: { disable: true } },
-    onBlur: { control: false, table: { disable: true } },
-    onClear: { control: false, table: { disable: true } },
-    className: { control: false, table: { disable: true } },
+    onValueChange: { control: false, table: { disable: true } },
   },
 };
 
@@ -33,12 +28,12 @@ type Story = StoryObj<typeof meta>;
 const SearchExample = ({
   initialValue = "",
   ...props
-}: Omit<React.ComponentProps<typeof Search>, "value" | "onChange"> & {
+}: Omit<React.ComponentProps<typeof Search>, "value" | "onValueChange"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <Search {...props} value={value} onChange={setValue} />;
+  return <Search {...props} value={value} onValueChange={setValue} />;
 };
 
 export const Playground: Story = {
@@ -48,7 +43,7 @@ export const Playground: Story = {
     return (
       <div className={styles.stage}>
         <div className={styles.stack}>
-          <Search {...args} value={value} onChange={setValue} />
+          <Search {...args} value={value} onValueChange={setValue} />
         </div>
       </div>
     );
@@ -67,8 +62,8 @@ export const Showcase: Story = {
         <div className={styles.selectionFrame}>
           <div className={styles.stack}>
             <SearchExample />
-            <SearchExample autoFocus />
-            <SearchExample initialValue="Value" autoFocus />
+            <SearchExample />
+            <SearchExample initialValue="Value" />
             <SearchExample initialValue="Value Value Value Value Value Value Value" />
             <SearchExample initialValue="Value" disabled />
           </div>

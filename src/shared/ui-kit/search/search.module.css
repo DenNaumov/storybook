@@ -22,32 +22,8 @@
   background: var(--theme-bg-fill-disabled);
 }
 
-.inputWrap {
-  position: relative;
-  display: flex;
-  flex: 1 1 auto;
-  align-items: center;
-  min-width: 0;
-  height: 20px;
-}
-
-.placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  color: var(--theme-text-secondary);
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.23px;
-  pointer-events: none;
-}
-
 .input {
+  flex: 1 1 auto;
   width: 100%;
   min-width: 0;
   height: 20px;
@@ -64,6 +40,10 @@
   line-height: 20px;
   letter-spacing: -0.23px;
   outline: none;
+}
+
+.input::placeholder {
+  color: var(--theme-text-secondary);
 }
 
 .input:disabled {
