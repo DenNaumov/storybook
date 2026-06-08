@@ -44,18 +44,5 @@
 .markerText {
   min-width: 0;
   overflow: hidden;
-  color: var(--theme-text-primary);
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.23px;
   text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.disabled .markerText {
-  color: var(--theme-text-disabled);
 }

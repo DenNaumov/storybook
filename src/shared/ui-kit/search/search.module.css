@@ -22,8 +22,13 @@
   background: var(--theme-bg-fill-disabled);
 }
 
-.input {
+.inputTypography {
   flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.input {
   width: 100%;
   min-width: 0;
   height: 20px;
@@ -31,14 +36,8 @@
   padding: 0;
   border: none;
   background: transparent;
-  color: var(--theme-text-primary);
-  font-family:
-    "SF Pro", "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial,
-    sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: -0.23px;
+  color: inherit;
+  font: inherit;
   outline: none;
 }
 
@@ -47,7 +46,6 @@
 }
 
 .input:disabled {
-  color: var(--theme-text-disabled);
   cursor: not-allowed;
 }
 

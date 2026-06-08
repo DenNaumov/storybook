@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Icon20Icons, Icon24Icons } from "../icon";
+import { Typography } from "../typography/typography";
 import styles from "./search.module.css";
 
 export interface SearchProps {
@@ -18,6 +19,7 @@ export const Search = ({
   const [focused, setFocused] = useState(false);
   const hasValue = value.length > 0;
   const iconColor = disabled ? "disabled" : focused ? "brandMain" : "default";
+  const inputColor = disabled ? "disabled" : "primary";
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onValueChange(event.target.value);
@@ -31,19 +33,26 @@ export const Search = ({
     <div className={styles.container}>
       <div className={`${styles.field} ${disabled ? styles.fieldDisabled : ""}`}>
         <Icon20Icons.Search width={20} height={20} color={iconColor} />
-        <input
-          className={styles.input}
-          type="search"
-          value={value}
-          placeholder={focused ? "" : placeholder}
-          disabled={disabled}
-          autoComplete="off"
-          aria-label={placeholder}
-          spellCheck={false}
-          onChange={handleChange}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-        />
+        <Typography
+          as="div"
+          variant="subheadline2-semibold"
+          color={inputColor}
+          className={styles.inputTypography}
+        >
+          <input
+            className={styles.input}
+            type="search"
+            value={value}
+            placeholder={focused ? "" : placeholder}
+            disabled={disabled}
+            autoComplete="off"
+            aria-label={placeholder}
+            spellCheck={false}
+            onChange={handleChange}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+          />
+        </Typography>
         {hasValue && !disabled && (
           <button
             type="button"

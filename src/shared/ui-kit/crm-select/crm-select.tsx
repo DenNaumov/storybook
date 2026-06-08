@@ -2,6 +2,7 @@ import React from "react";
 import { Icon24Icons, ResizableIcons } from "../icon";
 import { IconButton } from "../icon-button/icon-button";
 import { BaseInput } from "../base-input/base-input";
+import { Typography } from "../typography/typography";
 import styles from "./crm-select.module.css";
 
 const joinClasses = (...classNames: Array<string | false | undefined>) =>
@@ -125,7 +126,14 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
               className={styles.marker}
               style={{ backgroundColor: markerColor }}
             />
-            <span className={styles.markerText}>{value}</span>
+            <Typography
+              variant="subheadline2-semibold"
+              color={disabled ? "disabled" : "primary"}
+              className={styles.markerText}
+              nowrap
+            >
+              {value}
+            </Typography>
           </div>
         )}
       </div>
