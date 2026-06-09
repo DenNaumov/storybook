@@ -17,7 +17,7 @@ const meta: Meta<typeof CrmSelect> = {
     value: "",
     disabled: false,
     error: false,
-    showDictionaryIcon: false,
+    showCalculatorIcon: false,
   },
   argTypes: {
     onValueChange: { control: false, table: { disable: true } },
@@ -75,14 +75,10 @@ export const Showcase: Story = {
               error
               errorText="Error_text"
             />
-            <CrmSelectExample showDictionaryIcon />
-            <CrmSelectExample initialValue="Value" showDictionaryIcon />
-            <CrmSelectExample initialValue="-" disabled showDictionaryIcon />
-            <CrmSelectExample initialValue="-" showDictionaryIcon />
             <CrmSelectExample
               initialValue="Value"
               markerColor="#f30fb4"
-              showDictionaryIcon
+              showCalculatorIcon
             />
             <CrmSelectExample initialValue="Value" markerColor="#f30fb4" />
             <CrmSelectExample
@@ -95,12 +91,12 @@ export const Showcase: Story = {
               initialValue="Value"
               markerColor="#a10b67"
               disabled
+              showCalculatorIcon
             />
             <CrmSelectExample
               initialValue="Value"
               markerColor="#a10b67"
               disabled
-              showDictionaryIcon
             />
           </div>
         </div>

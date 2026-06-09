@@ -13,7 +13,7 @@ export interface CrmDateProps {
   errorText?: string;
   disabled?: boolean;
   showCalendarIcon?: boolean;
-  showDictionaryIcon?: boolean;
+  showCalculatorIcon?: boolean;
 }
 
 export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
@@ -27,7 +27,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
       error = false,
       errorText,
       showCalendarIcon = true,
-      showDictionaryIcon = false,
+      showCalculatorIcon = false,
       disabled = false,
     },
     ref,
@@ -45,8 +45,6 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
       }
     };
 
-    const hasActions = showCalendarIcon || showDictionaryIcon;
-
     return (
       <BaseInput
         ref={ref}
@@ -61,7 +59,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
         aria-label={label}
         onKeyDown={handleKeyDown}
         endAdornment={
-          hasActions ? (
+          showCalendarIcon || showCalculatorIcon ? (
             <>
               {showCalendarIcon && (
                 <IconButton
@@ -75,7 +73,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
                   disabled={disabled}
                 />
               )}
-              {showDictionaryIcon && (
+              {showCalculatorIcon && (
                 <IconButton
                   buttonSize="m"
                   iconSize="s"
@@ -83,7 +81,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
                   iconColor={disabled ? "disabled" : "default"}
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={handleOpen}
-                  aria-label="Открыть справочник"
+                  aria-label="Открыть калькулятор"
                   disabled={disabled}
                 />
               )}

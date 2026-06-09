@@ -18,7 +18,7 @@ const meta: Meta<typeof CrmDate> = {
     disabled: false,
     error: false,
     showCalendarIcon: true,
-    showDictionaryIcon: false,
+    showCalculatorIcon: false,
   },
   argTypes: {
     onValueChange: { control: false, table: { disable: true } },
@@ -83,31 +83,22 @@ export const Showcase: Story = {
               error
               errorText="Error_text"
             />
-            <CrmDateExample showDictionaryIcon />
-            <CrmDateExample
-              initialValue="09.09.2029 22:22"
-              showDictionaryIcon
-            />
-            <CrmDateExample
-              initialValue="09.09.2029 22:22"
-              showDictionaryIcon
-            />
             <CrmDateExample
               initialValue="-"
               disabled
               showCalendarIcon={false}
-              showDictionaryIcon
+              showCalculatorIcon
             />
             <CrmDateExample
               initialValue="-"
               showCalendarIcon={false}
-              showDictionaryIcon
+              showCalculatorIcon
             />
             <CrmDateExample
               initialValue="09.09.2029 22:22"
               disabled
               showCalendarIcon={false}
-              showDictionaryIcon
+              showCalculatorIcon
             />
           </div>
         </div>

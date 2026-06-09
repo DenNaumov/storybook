@@ -45,17 +45,17 @@ describe("CrmDate", () => {
     expect(onOpen).toHaveBeenCalledTimes(1);
   });
 
-  it("renders dictionary action when requested", () => {
+  it("renders calculator action when requested", () => {
     render(
       <CrmDate
         value="09.09.2029 22:22"
         onValueChange={jest.fn()}
-        showDictionaryIcon
+        showCalculatorIcon
       />,
     );
 
     expect(
-      screen.getByRole("button", { name: "Открыть справочник" }),
+      screen.getByRole("button", { name: "Открыть калькулятор" }),
     ).toBeInTheDocument();
   });
 
@@ -68,7 +68,6 @@ describe("CrmDate", () => {
         onValueChange={jest.fn()}
         onOpen={onOpen}
         disabled
-        showDictionaryIcon
       />,
     );
 

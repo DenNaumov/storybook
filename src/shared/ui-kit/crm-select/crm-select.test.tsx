@@ -47,17 +47,17 @@ describe("CrmSelect", () => {
     expect(onValueChange).toHaveBeenCalledWith("");
   });
 
-  it("renders dictionary action when requested", () => {
+  it("renders calculator action when requested", () => {
     render(
       <CrmSelect
         value="Value"
         onValueChange={jest.fn()}
-        showDictionaryIcon
+        showCalculatorIcon
       />,
     );
 
     expect(
-      screen.getByRole("button", { name: "Открыть справочник" }),
+      screen.getByRole("button", { name: "Открыть калькулятор" }),
     ).toBeInTheDocument();
   });
 

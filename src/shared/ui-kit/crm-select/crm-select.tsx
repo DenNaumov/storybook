@@ -18,7 +18,7 @@ export interface CrmSelectProps {
   errorText?: string;
   disabled?: boolean;
   markerColor?: string;
-  showDictionaryIcon?: boolean;
+  showCalculatorIcon?: boolean;
 }
 
 export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
@@ -32,7 +32,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
       error = false,
       errorText,
       markerColor,
-      showDictionaryIcon = false,
+      showCalculatorIcon = false,
       disabled = false,
     },
     ref,
@@ -105,7 +105,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
                   aria-label="Открыть список"
                 />
               )}
-              {showDictionaryIcon && (
+              {showCalculatorIcon && (
                 <IconButton
                   buttonSize="m"
                   iconSize="s"
@@ -113,7 +113,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
                   iconColor={disabled ? "disabled" : "brandMain"}
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={handleOpen}
-                  aria-label="Открыть справочник"
+                  aria-label="Открыть калькулятор"
                   disabled={disabled}
                 />
               )}
