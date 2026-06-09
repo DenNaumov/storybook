@@ -18,7 +18,7 @@ const { CrmSelect } = require("./crm-select") as typeof import("./crm-select");
 
 describe("CrmSelect", () => {
   it("renders label as placeholder when value is empty", () => {
-    render(<CrmSelect value="" onValueChange={jest.fn()} />);
+    render(<CrmSelect value={null} onValueChange={jest.fn()} />);
 
     expect(
       screen.getByRole("combobox", { name: "Label" }),
@@ -29,7 +29,7 @@ describe("CrmSelect", () => {
   it("opens select from the input and action button", () => {
     const onOpen = jest.fn();
 
-    render(<CrmSelect value="" onValueChange={jest.fn()} onOpen={onOpen} />);
+    render(<CrmSelect value={null} onValueChange={jest.fn()} onOpen={onOpen} />);
 
     fireEvent.click(screen.getByRole("combobox", { name: "Label" }));
     fireEvent.click(screen.getByRole("button", { name: "Открыть список" }));
@@ -44,7 +44,7 @@ describe("CrmSelect", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Очистить" }));
 
-    expect(onValueChange).toHaveBeenCalledWith("");
+    expect(onValueChange).toHaveBeenCalledWith(null);
   });
 
   it("renders calculator action when requested", () => {
@@ -66,7 +66,7 @@ describe("CrmSelect", () => {
 
     render(
       <CrmSelect
-        value=""
+        value={null}
         onValueChange={jest.fn()}
         onOpen={onOpen}
         disabled

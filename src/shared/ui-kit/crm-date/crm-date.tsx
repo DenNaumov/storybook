@@ -6,8 +6,8 @@ import { BaseInput } from "../base-input/base-input";
 export interface CrmDateProps {
   label?: string;
   placeholder?: string;
-  value: string;
-  onValueChange: (value: string) => void;
+  value: string | null;
+  onValueChange: (value: string | null) => void;
   onOpen?: () => void;
   error?: boolean;
   errorText?: string;
@@ -32,6 +32,8 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
     },
     ref,
   ) => {
+    const inputValue = value ?? "";
+
     const handleOpen = () => {
       if (!disabled) {
         onOpen?.();
@@ -50,8 +52,8 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
         ref={ref}
         label={label}
         placeholder={placeholder}
-        value={value}
-        onValueChange={onValueChange}
+        value={inputValue}
+        onValueChange={(nextValue) => onValueChange(nextValue)}
         error={error}
         errorText={errorText}
         disabled={disabled}

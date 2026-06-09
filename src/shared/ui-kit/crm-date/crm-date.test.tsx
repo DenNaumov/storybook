@@ -17,7 +17,7 @@ const { CrmDate } = require("./crm-date") as typeof import("./crm-date");
 
 describe("CrmDate", () => {
   it("renders date input with placeholder", () => {
-    render(<CrmDate value="" onValueChange={jest.fn()} />);
+    render(<CrmDate value={null} onValueChange={jest.fn()} />);
 
     expect(screen.getByRole("textbox", { name: "Label" })).toBeInTheDocument();
     expect(screen.getByText("Label_placeholder")).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe("CrmDate", () => {
   it("notifies about value changes", () => {
     const onValueChange = jest.fn();
 
-    render(<CrmDate value="" onValueChange={onValueChange} />);
+    render(<CrmDate value={null} onValueChange={onValueChange} />);
 
     fireEvent.change(screen.getByRole("textbox", { name: "Label" }), {
       target: { value: "09.09.2029" },
@@ -38,7 +38,7 @@ describe("CrmDate", () => {
   it("opens calendar from action button", () => {
     const onOpen = jest.fn();
 
-    render(<CrmDate value="" onValueChange={jest.fn()} onOpen={onOpen} />);
+    render(<CrmDate value={null} onValueChange={jest.fn()} onOpen={onOpen} />);
 
     fireEvent.click(screen.getByRole("button", { name: "Открыть календарь" }));
 
@@ -64,7 +64,7 @@ describe("CrmDate", () => {
 
     render(
       <CrmDate
-        value=""
+        value={null}
         onValueChange={jest.fn()}
         onOpen={onOpen}
         disabled

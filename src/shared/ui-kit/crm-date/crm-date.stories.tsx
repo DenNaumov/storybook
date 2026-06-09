@@ -14,7 +14,7 @@ const meta: Meta<typeof CrmDate> = {
   args: {
     label: "Label",
     placeholder: "Label_placeholder",
-    value: "",
+    value: null,
     disabled: false,
     error: false,
     showCalendarIcon: true,
@@ -31,19 +31,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const CrmDateExample = ({
-  initialValue = "",
+  initialValue = null,
   ...props
 }: Omit<React.ComponentProps<typeof CrmDate>, "value" | "onValueChange"> & {
-  initialValue?: string;
+  initialValue?: string | null;
 }) => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState<string | null>(initialValue);
 
   return <CrmDate {...props} value={value} onValueChange={setValue} />;
 };
 
 export const Playground: Story = {
   render: (args) => {
-    const [value, setValue] = useState(args.value);
+    const [value, setValue] = useState<string | null>(args.value ?? null);
 
     return (
       <div className={styles.stage}>

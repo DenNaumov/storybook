@@ -13,7 +13,7 @@ const meta: Meta<typeof CrmSelect> = {
   tags: ["autodocs"],
   args: {
     label: "Label",
-    value: "",
+    value: null,
     disabled: false,
     error: false,
     showCalculatorIcon: false,
@@ -29,19 +29,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const CrmSelectExample = ({
-  initialValue = "",
+  initialValue = null,
   ...props
 }: Omit<React.ComponentProps<typeof CrmSelect>, "value" | "onValueChange"> & {
-  initialValue?: string;
+  initialValue?: string | null;
 }) => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState<string | null>(initialValue);
 
   return <CrmSelect {...props} value={value} onValueChange={setValue} />;
 };
 
 export const Playground: Story = {
   render: (args) => {
-    const [value, setValue] = useState(args.value);
+    const [value, setValue] = useState<string | null>(args.value ?? null);
 
     return (
       <div className={styles.stage}>

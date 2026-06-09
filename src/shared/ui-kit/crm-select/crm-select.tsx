@@ -10,8 +10,8 @@ const joinClasses = (...classNames: Array<string | false | undefined>) =>
 
 export interface CrmSelectProps {
   label?: string;
-  value: string;
-  onValueChange: (value: string) => void;
+  value: string | null;
+  onValueChange: (value: string | null) => void;
   onOpen?: () => void;
   error?: boolean;
   errorText?: string;
@@ -35,7 +35,8 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
     },
     ref,
   ) => {
-    const hasValue = value.length > 0;
+    const inputValue = value ?? "";
+    const hasValue = inputValue.length > 0;
     const showClearButton = hasValue && !disabled;
     const showMarker = Boolean(markerColor && hasValue);
 
@@ -53,7 +54,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
     };
 
     const handleClear = () => {
-      onValueChange("");
+      onValueChange(null);
     };
 
     return (
@@ -71,8 +72,8 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
           aria-label={label}
           label={label}
           placeholder={label}
-          value={value}
-          onValueChange={onValueChange}
+          value={inputValue}
+          onValueChange={(nextValue) => onValueChange(nextValue)}
           error={error}
           errorText={errorText}
           disabled={disabled}
@@ -130,7 +131,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
               className={styles.markerText}
               nowrap
             >
-              {value}
+              {inputValue}
             </Typography>
           </div>
         )}
