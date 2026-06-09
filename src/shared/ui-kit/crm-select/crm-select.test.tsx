@@ -37,6 +37,20 @@ describe("CrmSelect", () => {
     expect(onOpen).toHaveBeenCalledTimes(2);
   });
 
+  it("does not focus input", () => {
+    render(
+      <CrmSelect value={null} onValueChange={jest.fn()} onOpen={jest.fn()} />,
+    );
+
+    const select = screen.getByRole("combobox", { name: "Label" });
+
+    fireEvent.mouseDown(select);
+    fireEvent.focus(select);
+
+    expect(select).not.toHaveFocus();
+    expect(select).toHaveAttribute("tabindex", "-1");
+  });
+
   it("clears selected value", () => {
     const onValueChange = jest.fn();
 

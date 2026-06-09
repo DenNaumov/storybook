@@ -39,10 +39,9 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
     const hasValue = inputValue.length > 0;
     const showClearButton = hasValue && !disabled;
     const showMarker = Boolean(markerColor && hasValue);
-
     const handleOpen = () => {
-      if (!disabled) {
-        onOpen?.();
+      if (!disabled && onOpen) {
+        onOpen();
       }
     };
 
@@ -51,6 +50,14 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
         event.preventDefault();
         handleOpen();
       }
+    };
+
+    const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
+      event.preventDefault();
+    };
+
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+      event.currentTarget.blur();
     };
 
     const handleClear = () => {
@@ -78,7 +85,10 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
           errorText={errorText}
           disabled={disabled}
           readOnly
+          tabIndex={-1}
           onClick={handleOpen}
+          onMouseDown={handleMouseDown}
+          onFocus={handleFocus}
           onKeyDown={handleKeyDown}
           endAdornment={
             <div className={styles.actions}>
