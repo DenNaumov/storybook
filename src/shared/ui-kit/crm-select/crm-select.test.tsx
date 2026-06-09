@@ -17,13 +17,13 @@ jest.mock("../icon", () => ({
 const { CrmSelect } = require("./crm-select") as typeof import("./crm-select");
 
 describe("CrmSelect", () => {
-  it("renders placeholder as a combobox", () => {
+  it("renders label as placeholder when value is empty", () => {
     render(<CrmSelect value="" onValueChange={jest.fn()} />);
 
     expect(
       screen.getByRole("combobox", { name: "Label" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Label_placeholder")).toBeInTheDocument();
+    expect(screen.getByText("Label")).toBeInTheDocument();
   });
 
   it("opens select from the input and action button", () => {

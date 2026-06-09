@@ -13,7 +13,6 @@ const meta: Meta<typeof CrmSelect> = {
   tags: ["autodocs"],
   args: {
     label: "Label",
-    placeholder: "Label_placeholder",
     value: "",
     disabled: false,
     error: false,

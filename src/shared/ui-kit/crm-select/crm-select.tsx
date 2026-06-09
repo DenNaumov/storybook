@@ -10,7 +10,6 @@ const joinClasses = (...classNames: Array<string | false | undefined>) =>
 
 export interface CrmSelectProps {
   label?: string;
-  placeholder?: string;
   value: string;
   onValueChange: (value: string) => void;
   onOpen?: () => void;
@@ -25,7 +24,6 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
   (
     {
       label = "Label",
-      placeholder = "Label_placeholder",
       value,
       onValueChange,
       onOpen,
@@ -72,7 +70,7 @@ export const CrmSelect = React.forwardRef<HTMLInputElement, CrmSelectProps>(
           aria-expanded="false"
           aria-label={label}
           label={label}
-          placeholder={placeholder}
+          placeholder={label}
           value={value}
           onValueChange={onValueChange}
           error={error}
