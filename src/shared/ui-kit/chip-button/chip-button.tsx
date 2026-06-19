@@ -1,4 +1,9 @@
-import type { ReactNode, ButtonHTMLAttributes } from "react";
+import {
+  isValidElement,
+  type ButtonHTMLAttributes,
+  type MouseEventHandler,
+  type ReactNode,
+} from "react";
 import { Typography } from "../typography/typography";
 import styles from "./chip-button.module.css";
 
@@ -36,6 +41,9 @@ export const ChipButton = ({
   ...props
 }: ChipButtonProps) => {
   const content = label || children;
+  const endIconHasClickHandler =
+    isValidElement<{ onClick?: MouseEventHandler }>(endIcon) &&
+    typeof endIcon.props.onClick === "function";
   // Icon-only chips use a dedicated padding preset to keep the visual width consistent.
   const isIconOnly = !content && (startIcon || endIcon);
 
@@ -64,7 +72,18 @@ export const ChipButton = ({
           {content}
         </Typography>
       )}
-      {endIcon && <span className={styles.icon}>{endIcon}</span>}
+      {endIcon && (
+        <span
+          className={styles.icon}
+          onClick={
+            endIconHasClickHandler
+              ? (event) => event.stopPropagation()
+              : undefined
+          }
+        >
+          {endIcon}
+        </span>
+      )}
     </button>
   );
 };

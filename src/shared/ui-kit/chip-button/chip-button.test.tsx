@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
-import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "@jest/globals";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { describe, expect, it, jest } from "@jest/globals";
 
 import { ChipButton } from "./chip-button";
 
@@ -41,5 +41,41 @@ describe("ChipButton", () => {
 
     expect(button).toBeDisabled();
     expect(within(button).getByText("Custom content")).toBeInTheDocument();
+  });
+
+  it("does not call the chip handler when the end icon handles the click", () => {
+    const handleChipClick = jest.fn();
+    const handleEndIconClick = jest.fn();
+
+    render(
+      <ChipButton
+        size="m"
+        label="Filter"
+        endIcon={<span onClick={handleEndIconClick}>clear</span>}
+        onClick={handleChipClick}
+      />,
+    );
+
+    fireEvent.click(screen.getByText("clear"));
+
+    expect(handleEndIconClick).toHaveBeenCalledTimes(1);
+    expect(handleChipClick).not.toHaveBeenCalled();
+  });
+
+  it("calls the chip handler through a decorative end icon", () => {
+    const handleChipClick = jest.fn();
+
+    render(
+      <ChipButton
+        size="m"
+        label="Filter"
+        endIcon={<span>arrow</span>}
+        onClick={handleChipClick}
+      />,
+    );
+
+    fireEvent.click(screen.getByText("arrow"));
+
+    expect(handleChipClick).toHaveBeenCalledTimes(1);
   });
 });
