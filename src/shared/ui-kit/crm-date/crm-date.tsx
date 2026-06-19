@@ -9,6 +9,7 @@ export interface CrmDateProps {
   value: string | null;
   onValueChange: (value: string | null) => void;
   onOpen?: () => void;
+  onCalendarClick?: () => void;
   error?: boolean;
   errorText?: string;
   disabled?: boolean;
@@ -24,6 +25,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
       value,
       onValueChange,
       onOpen,
+      onCalendarClick,
       error = false,
       errorText,
       showCalendarIcon = true,
@@ -70,7 +72,7 @@ export const CrmDate = React.forwardRef<HTMLInputElement, CrmDateProps>(
                   icon={Icon24Icons.Calendar}
                   iconColor={disabled ? "disabled" : "brandMain"}
                   onMouseDown={(event) => event.preventDefault()}
-                  onClick={handleOpen}
+                  onClick={onCalendarClick}
                   aria-label="Открыть календарь"
                   disabled={disabled}
                 />

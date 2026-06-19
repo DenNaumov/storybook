@@ -23,6 +23,7 @@ const meta: Meta<typeof CrmDate> = {
   argTypes: {
     onValueChange: { control: false, table: { disable: true } },
     onOpen: { control: false, table: { disable: true } },
+    onCalendarClick: { control: false, table: { disable: true } },
   },
 };
 

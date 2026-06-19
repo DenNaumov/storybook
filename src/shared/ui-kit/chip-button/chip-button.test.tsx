@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import { describe, expect, it, jest } from "@jest/globals";
 
 import { ChipButton } from "./chip-button";
 

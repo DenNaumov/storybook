@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, jest } from "@jest/globals";
 import type { SVGProps } from "react";
 
 jest.mock("../icon", () => ({
@@ -35,14 +34,20 @@ describe("CrmDate", () => {
     expect(onValueChange).toHaveBeenCalledWith("09.09.2029");
   });
 
-  it("opens calendar from action button", () => {
-    const onOpen = jest.fn();
+  it("notifies about a calendar button click", () => {
+    const onCalendarClick = jest.fn();
 
-    render(<CrmDate value={null} onValueChange={jest.fn()} onOpen={onOpen} />);
+    render(
+      <CrmDate
+        value={null}
+        onValueChange={jest.fn()}
+        onCalendarClick={onCalendarClick}
+      />,
+    );
 
     fireEvent.click(screen.getByRole("button", { name: "Открыть календарь" }));
 
-    expect(onOpen).toHaveBeenCalledTimes(1);
+    expect(onCalendarClick).toHaveBeenCalledTimes(1);
   });
 
   it("renders calculator action when requested", () => {
@@ -60,13 +65,13 @@ describe("CrmDate", () => {
   });
 
   it("disables input and actions", () => {
-    const onOpen = jest.fn();
+    const onCalendarClick = jest.fn();
 
     render(
       <CrmDate
         value={null}
         onValueChange={jest.fn()}
-        onOpen={onOpen}
+        onCalendarClick={onCalendarClick}
         disabled
       />,
     );
@@ -78,6 +83,6 @@ describe("CrmDate", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Открыть календарь" }));
 
-    expect(onOpen).not.toHaveBeenCalled();
+    expect(onCalendarClick).not.toHaveBeenCalled();
   });
 });
