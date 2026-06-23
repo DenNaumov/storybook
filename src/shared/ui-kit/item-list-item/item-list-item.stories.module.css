@@ -1,0 +1,13 @@
+.stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  box-sizing: border-box;
+  background: #000000;
+}
+
+.list {
+  width: min(100%, 660px);
+  background: #000000;
+}

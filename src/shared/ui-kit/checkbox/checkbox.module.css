@@ -3,24 +3,32 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
 .input {
   position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   opacity: 0;
-  pointer-events: none;
+  cursor: inherit;
 }
 
 .box {
   width: 20px;
   height: 20px;
-  border-radius: 6px;
-  border: 1px solid #3a3a3a;
-  background: #1f1f1f;
+  border-radius: 5px;
+  border: 2px solid var(--theme-icon-default);
+  background: transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   transition:
     background-color 160ms ease,
     border-color 160ms ease;
@@ -29,8 +37,8 @@
 
 .box::after {
   content: "";
-  width: 10px;
-  height: 6px;
+  width: 12px;
+  height: 9px;
   border-left: 2px solid transparent;
   border-bottom: 2px solid transparent;
   transform: rotate(-45deg);
@@ -39,7 +47,7 @@
 }
 
 .input:checked + .box {
-  background: #2b8cff;
+  background: var(--theme-bg-fill-brand-main);
   border-color: transparent;
 }
 
@@ -50,12 +58,12 @@
 }
 
 .input:indeterminate + .box {
-  background: #2b8cff;
+  background: var(--theme-bg-fill-brand-main);
   border-color: transparent;
 }
 
 .input:indeterminate + .box::after {
-  width: 10px;
+  width: 12px;
   height: 2px;
   transform: none;
   background: #ffffff;
@@ -63,22 +71,15 @@
   opacity: 1;
 }
 
-.input:disabled + .box {
-  background: #171717;
-  border-color: #2a2a2a;
+.input:disabled ~ .box {
+  opacity: 0.35;
 }
 
-.input:disabled:checked + .box,
-.input:disabled:indeterminate + .box {
-  background: #0f2a46;
-  border-color: transparent;
+.input:disabled {
+  cursor: not-allowed;
 }
 
-.input:disabled + .box::after {
-  border-left-color: #6f86a1;
-  border-bottom-color: #6f86a1;
-}
-
-.input:disabled:indeterminate + .box::after {
-  background: #6f86a1;
+.input:focus-visible + .box {
+  outline: 3px solid rgb(41 144 255 / 36%);
+  outline-offset: 3px;
 }

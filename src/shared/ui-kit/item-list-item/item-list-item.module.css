@@ -1,0 +1,31 @@
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  color: var(--theme-text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.withDivider {
+  border-bottom: 1px solid var(--theme-border-default);
+}
+
+.label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.checkbox {
+  flex: 0 0 auto;
+  margin-left: 12px;
+}
+
+.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
+import { Typography } from "../typography/typography";
 import { Checkbox } from "./checkbox";
 import styles from "./checkbox.stories.module.css";
 
@@ -22,16 +23,34 @@ export const Showcase: Story = {
   render: () => (
     <div className={styles.stage}>
       <div className={styles.card}>
-        <div className={styles.title}>Checkbox</div>
-        <div className={styles.subtitle}>Компонент чекбокса</div>
+        <Typography
+          as="h1"
+          variant="title3-bold"
+          color="brandMain"
+          className={styles.title}
+        >
+          Checkbox
+        </Typography>
+        <Typography
+          as="p"
+          variant="text-regular"
+          color="secondary"
+          className={styles.subtitle}
+        >
+          Компонент чекбокса
+        </Typography>
         <div className={styles.divider} />
         <div className={styles.grid}>
-          <Checkbox />
-          <Checkbox checked />
-          <Checkbox indeterminate />
-          <Checkbox disabled />
-          <Checkbox checked disabled />
-          <Checkbox indeterminate disabled />
+          <Checkbox ariaLabel="Не выбран" />
+          <Checkbox checked ariaLabel="Выбран" />
+          <Checkbox indeterminate ariaLabel="Частично выбран" />
+          <Checkbox disabled ariaLabel="Не выбран, недоступен" />
+          <Checkbox checked disabled ariaLabel="Выбран, недоступен" />
+          <Checkbox
+            indeterminate
+            disabled
+            ariaLabel="Частично выбран, недоступен"
+          />
         </div>
       </div>
     </div>

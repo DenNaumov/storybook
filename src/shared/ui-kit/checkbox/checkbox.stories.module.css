@@ -4,33 +4,27 @@
   align-items: center;
   justify-content: center;
   padding: 48px;
-  background: radial-gradient(circle at 20% 0%, #1a1a1a, #0b0b0b 60%);
-  color: #d0d0d0;
+  background: var(--theme-bg-tabbar);
 }
 
 .card {
   width: min(520px, 92vw);
   padding: 28px 30px 32px;
   border-radius: 20px;
-  background: rgba(12, 12, 12, 0.95);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  background: var(--theme-bg-brand-light);
 }
 
 .title {
-  color: #2b8cff;
-  font-size: 22px;
-  font-weight: 600;
+  margin: 0;
 }
 
 .subtitle {
   margin-top: 6px;
-  color: #9a9a9a;
-  font-size: 14px;
 }
 
 .divider {
   height: 1px;
-  background: #3a3a3a;
+  background: var(--theme-border-default);
   margin: 16px 0 22px;
 }
 
