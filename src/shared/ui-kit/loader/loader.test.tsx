@@ -1,45 +1,35 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, jest, beforeEach } from "@jest/globals";
+import { describe, expect, it, jest } from "@jest/globals";
 
-const MockIcon = () => <svg data-testid="loader-icon" />;
-const resolveSvgPath = (fileName: string) =>
-  require.resolve(`./assets/${fileName}`);
+const mockSvgIcon = () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const React = require("react") as typeof import("react");
+
+  return React.createElement("svg", { "data-testid": "loader-icon" });
+};
+
+jest.mock("./assets/loader_24.svg", () => ({
+  __esModule: true,
+  default: mockSvgIcon,
+}));
+
+jest.mock("./assets/loader_28.svg", () => ({
+  __esModule: true,
+  default: mockSvgIcon,
+}));
+
+jest.mock("./assets/loader_32.svg", () => ({
+  __esModule: true,
+  default: mockSvgIcon,
+}));
+
+// Require after SVG mocks are registered so Loader receives component mocks.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { Loader } = require("./loader") as typeof import("./loader");
 
 describe("Loader", () => {
-  beforeEach(() => {
-    jest.resetModules();
-    jest.doMock(
-      resolveSvgPath("loader_24.svg"),
-      () => ({
-        __esModule: true,
-        default: MockIcon,
-      }),
-      { virtual: true },
-    );
-    jest.doMock(
-      resolveSvgPath("loader_28.svg"),
-      () => ({
-        __esModule: true,
-        default: MockIcon,
-      }),
-      { virtual: true },
-    );
-    jest.doMock(
-      resolveSvgPath("loader_32.svg"),
-      () => ({
-        __esModule: true,
-        default: MockIcon,
-      }),
-      { virtual: true },
-    );
-  });
-
   it("uses medium size by default", () => {
-    // Require inside the test to ensure mocks are applied
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Loader } = require("./loader") as typeof import("./loader");
-
     render(<Loader />);
 
     const loader = screen.getByRole("status", { name: "Загрузка" });
@@ -49,9 +39,6 @@ describe("Loader", () => {
   });
 
   it("renders the requested icon size for each variant", () => {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Loader } = require("./loader") as typeof import("./loader");
-
     render(<Loader size="large" />);
 
     expect(
@@ -60,9 +47,6 @@ describe("Loader", () => {
   });
 
   it("wraps loader with a centered container", () => {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Loader } = require("./loader") as typeof import("./loader");
-
     const { container } = render(<Loader className="loader-area" />);
 
     const loaderArea = container.firstElementChild;

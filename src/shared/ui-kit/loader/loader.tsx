@@ -1,12 +1,8 @@
 import type { HTMLAttributes } from "react";
-import LoaderIcon24Svg from "./assets/loader_24.svg";
-import LoaderIcon28Svg from "./assets/loader_28.svg";
-import LoaderIcon32Svg from "./assets/loader_32.svg";
+import LoaderIconSmall from "./assets/loader_24.svg";
+import LoaderIconMedium from "./assets/loader_28.svg";
+import LoaderIconLarge from "./assets/loader_32.svg";
 import styles from "./loader.module.css";
-
-const LoaderIconSmall = LoaderIcon24Svg;
-const LoaderIconMedium = LoaderIcon28Svg;
-const LoaderIconLarge = LoaderIcon32Svg;
 
 export type LoaderSize = "small" | "medium" | "large";
 
