@@ -11,7 +11,7 @@ const LoaderIconLarge = LoaderIcon32Svg;
 export type LoaderSize = "small" | "medium" | "large";
 
 export interface LoaderProps extends Omit<
-  HTMLAttributes<HTMLSpanElement>,
+  HTMLAttributes<HTMLDivElement>,
   "children"
 > {
   size?: LoaderSize;
@@ -23,17 +23,25 @@ const sizeMap: Record<LoaderSize, string> = {
   large: styles.sizeLarge,
 };
 
-export const Loader = ({ size = "medium", ...props }: LoaderProps) => (
-  <span
-    className={[styles.loader, sizeMap[size]].join(" ")}
-    role="status"
-    aria-label="Загрузка"
+export const Loader = ({
+  size = "medium",
+  className = "",
+  ...props
+}: LoaderProps) => (
+  <div
+    className={[styles.container, className].filter(Boolean).join(" ")}
     {...props}
   >
-    <span className={styles.icon} aria-hidden="true">
-      <LoaderGlyph size={size} />
+    <span
+      className={[styles.loader, sizeMap[size]].join(" ")}
+      role="status"
+      aria-label="Загрузка"
+    >
+      <span className={styles.icon} aria-hidden="true">
+        <LoaderGlyph size={size} />
+      </span>
     </span>
-  </span>
+  </div>
 );
 
 const LoaderGlyph = ({ size }: { size: LoaderSize }) => {

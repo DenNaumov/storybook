@@ -58,4 +58,19 @@ describe("Loader", () => {
       screen.getByRole("status", { name: "Загрузка" }).className,
     ).toContain("sizeLarge");
   });
+
+  it("wraps loader with a centered container", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { Loader } = require("./loader") as typeof import("./loader");
+
+    const { container } = render(<Loader className="loader-area" />);
+
+    const loaderArea = container.firstElementChild;
+
+    expect(loaderArea).toHaveClass("container");
+    expect(loaderArea).toHaveClass("loader-area");
+    expect(loaderArea).toContainElement(
+      screen.getByRole("status", { name: "Загрузка" }),
+    );
+  });
 });
