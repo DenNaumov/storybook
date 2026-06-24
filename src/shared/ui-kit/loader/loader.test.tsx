@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, jest } from "@jest/globals";
 
 const mockLoaderIcon = () => <svg data-testid="loader-icon" />;
 
